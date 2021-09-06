@@ -12,3 +12,6 @@ C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\
 C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.dll
 C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.pdb
 C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.genruntimeconfig.cache
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\LogicaNegocio.dll
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\LogicaNegocio.pdb
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csproj.CopyComplete

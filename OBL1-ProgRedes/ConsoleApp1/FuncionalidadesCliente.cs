@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicaNegocio;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Cliente
@@ -25,11 +26,45 @@ namespace Cliente
         public void MenuPrincipal()
         {
             int opcion = ObtenerOpcionSeleccionada(mensajeMenuPrincipal, 0, 2);
+
+            switch (opcion)
+            {
+                case 0:
+                    Console.WriteLine("Gracias por utilizar nuestro sistema.");
+                    break;
+                case 1:
+                    InicioSesion();
+                    break;
+                case 2:
+                    RegistroUsuario();
+                    break;
+            }
+
         }
 
         public void MenuFuncionalidades()
         {
             int opcion = ObtenerOpcionSeleccionada(mensajeMenuFuncionalidades, 0, 5);
+
+            switch (opcion)
+            {
+                case 0:
+                    Console.WriteLine("Gracias por utilizar nuestro sistema.");
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    PublicarJuego();
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+            }
         }
 
         private int ObtenerOpcionSeleccionada(string mensajeMenu, int opcionMinima, int opcionMaxima)
@@ -40,12 +75,58 @@ namespace Cliente
                 Console.WriteLine(mensajeMenu);
                 var opcion = Console.ReadLine();
 
-                if (!Regex.IsMatch(opcion, "^[opcionMinima-opcionMaxima]$"))
-                    Console.WriteLine(" \n Ingrese una opción valida. Entre opcionMinima y opcionMaxima \n");
+                if (!Regex.IsMatch(opcion, "^["+opcionMinima+"-"+opcionMaxima+"]$"))
+                    Console.WriteLine(" \n Ingrese una opción valida. Entre "+ opcionMinima+" y "
+                        + opcionMaxima +"\n");
                 else
                     return Convert.ToInt32(opcion);
             }
 
-        } 
+        }
+
+        private void InicioSesion()
+        {
+            Console.WriteLine("Ingrese su nombre de usuario");
+            string nombreUsuario = Console.ReadLine();
+
+            Console.WriteLine("Ingrese su contraseña");
+            string contraseña = Console.ReadLine();
+
+            MenuFuncionalidades();
+        }
+
+        private void RegistroUsuario()
+        {
+            Console.WriteLine("Ingrese un nombre de usuario ");
+            string nombreUsuario = Console.ReadLine();
+
+            Console.WriteLine("Ingrese una contraseña");
+            string contraseña = Console.ReadLine();
+
+            Usuario usuario = new Usuario(nombreUsuario, contraseña);
+
+            Console.WriteLine("Su usuario se dio de alta con éxito \n");
+
+            MenuPrincipal();
+        }
+
+        private void PublicarJuego()
+        {
+            Console.WriteLine("Ingrese titulo del juego \n");
+            string titulo = Console.ReadLine();
+
+            Console.WriteLine("Ingrese género");
+            string genero = Console.ReadLine();
+
+            Console.WriteLine("Ingrese sinopsis");
+            string sinopsis = Console.ReadLine();
+
+            Console.WriteLine("Ingrese caratula");
+            byte[] caratula; //Esperar respuesta de la profe
+
+            Juego juego = new Juego(titulo, genero, sinopsis, null);
+
+            Console.WriteLine("Se ha dado de alta el juego " + titulo + " con éxito");
+        }
     }
 }

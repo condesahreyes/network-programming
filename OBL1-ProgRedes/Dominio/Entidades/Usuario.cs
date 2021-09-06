@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Dominio
+namespace LogicaNegocio
 {
     public class Usuario
     {

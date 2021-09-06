@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cliente", "ConsoleApp1\Cliente.csproj", "{CF002A6F-DCE6-49D5-BD28-637934503688}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cliente", "ConsoleApp1\Cliente.csproj", "{CF002A6F-DCE6-49D5-BD28-637934503688}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{CAB30B80-10F3-4AFA-A4D0-5B3749B5E4D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicaNegocio", "Dominio\LogicaNegocio.csproj", "{CAB30B80-10F3-4AFA-A4D0-5B3749B5E4D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

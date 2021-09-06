@@ -6,14 +6,6 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Cliente/1.0.0": {
-        "dependencies": {
-          "LogicaNegocio": "1.0.0"
-        },
-        "runtime": {
-          "Cliente.dll": {}
-        }
-      },
       "LogicaNegocio/1.0.0": {
         "runtime": {
           "LogicaNegocio.dll": {}
@@ -22,11 +14,6 @@
     }
   },
   "libraries": {
-    "Cliente/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "LogicaNegocio/1.0.0": {
       "type": "project",
       "serviceable": false,
