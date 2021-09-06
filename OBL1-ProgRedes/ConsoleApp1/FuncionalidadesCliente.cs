@@ -112,21 +112,8 @@ namespace Cliente
 
         private void PublicarJuego()
         {
-            Console.WriteLine("Ingrese titulo del juego \n");
-            string titulo = Console.ReadLine();
+            Juego unJuego = Juego.CrearJuego();
 
-            Console.WriteLine("Ingrese género");
-            string genero = Console.ReadLine();
-
-            Console.WriteLine("Ingrese sinopsis");
-            string sinopsis = Console.ReadLine();
-
-            Console.WriteLine("Ingrese caratula");
-            byte[] caratula; //Esperar respuesta de la profe
-
-            Juego juego = new Juego(titulo, genero, sinopsis, null);
-
-            Console.WriteLine("Se ha dado de alta el juego " + titulo + " con éxito");
         }
     }
 }
