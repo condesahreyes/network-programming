@@ -1,0 +1,14 @@
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csproj.AssemblyReference.cache
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.AssemblyInfoInputs.cache
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.AssemblyInfo.cs
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.exe
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.deps.json
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.runtimeconfig.json
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.runtimeconfig.dev.json
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.dll
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.pdb
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.dll
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.pdb
+C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.genruntimeconfig.cache
