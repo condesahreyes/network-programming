@@ -8,13 +8,13 @@ namespace Servidor
 {
     public class SocketServidor
     {
-        private readonly int _portNumber = 9000;
-        private readonly int _backLog = 10;
+        private readonly int numeroPuerto = 9000;
+        private readonly int cantConexionesEnEspera = 10;
 
         public void StartListening()
         {
             // 127.0.0.1:9000
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, _portNumber);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, numeroPuerto);
 
             // Crear Socket TCP/IP
             Socket listener = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
@@ -22,7 +22,7 @@ namespace Servidor
             // Asociar el socket con la direccion ip y el puerto
             listener.Bind(endPoint);
             // escuchar por conexiones entrantes
-            listener.Listen(_backLog);
+            listener.Listen(cantConexionesEnEspera);
 
             while (true)
             {
@@ -46,7 +46,7 @@ namespace Servidor
                 int bytesRec = handler.Receive(bytes);
                 data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
 
-                if (data.IndexOf("*****") > -1)
+                if (data.IndexOf("<EOF>") > -1)
                 {
                     break;
                 }
