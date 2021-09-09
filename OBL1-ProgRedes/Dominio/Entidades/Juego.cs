@@ -5,13 +5,13 @@ namespace LogicaNegocio
 {
     public  class Juego
     {
-        List<Calificacion> calificaciones;
+        public List<Calificacion> calificaciones;
 
-        string Titulo { get; set; }
-        string Genero { get; set; }
-        string Sinopsis { get; set; }
+        public string Titulo { get; set; }
+        public string Genero { get; set; }
+        public string Sinopsis { get; set; }
 
-        Byte[] Caratula { get; set; }
+        public Byte[] Caratula { get; set; }
 
         public Juego(string titulo, string genero, string sinopsis, byte[] caratula)
         {
@@ -20,6 +20,11 @@ namespace LogicaNegocio
             this.calificaciones = new List<Calificacion>();
             this.Sinopsis = sinopsis;
             this.Caratula = caratula;
+        }
+
+        public Juego()
+        {
+            this.calificaciones = new List<Calificacion>();
         }
 
         public static Juego CrearJuego()
@@ -39,8 +44,11 @@ namespace LogicaNegocio
             Console.WriteLine("Se ha dado de alta el juego " + titulo + " con éxito");
 
             return new Juego(titulo, genero, sinopsis, null);
+        }
 
-            
+        public override string ToString()
+        {
+            return "Titulo: " + Titulo + " Genero: " + Genero + " Sinopsis: " + Sinopsis;
         }
     }
 }

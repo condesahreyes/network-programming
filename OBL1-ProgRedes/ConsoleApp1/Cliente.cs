@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicaNegocio;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -8,46 +9,19 @@ namespace Cliente
     public class Cliente
     {
         private static FuncionalidadesCliente funcionalidades;
+        private static ConexionCliente conexionCliente;
+
 
         static void Main(string[] args)
         {
-            StartClient();
-            Console.WriteLine("Continue...");
-            Console.Read();
-            funcionalidades = new FuncionalidadesCliente();
-            funcionalidades.MenuPrincipal();
-        }
-
-        public static void StartClient()
-        {
-            int port = 9000;
-            // 127.0.0.1:9000
-            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Loopback, port);
-
-            Socket sender = new Socket(ipEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
-            // Conectarse desde un socket client
-            sender.Connect(ipEndPoint);
-            Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
-
-            byte[] message = Encoding.ASCII.GetBytes("This is an example of connection. <EOF>");
-
-            // enviar mensaje al server
-            int bytesSent = sender.Send(message);
+            conexionCliente = new ConexionCliente();
+            funcionalidades = new FuncionalidadesCliente(conexionCliente);
             
-            // recibir respuesta del server
-            byte[] bytes = new byte[1024];
-            int bytesReceived = sender.Receive(bytes);
+            Usuario usuario = funcionalidades.MenuPrincipal();
 
-            // Parsear texto recibido
-            if (bytesReceived > 0)
-            {
-                Console.WriteLine("Mensaje recibido = {0}",
-                Encoding.ASCII.GetString(bytes, 0, bytesReceived));
-            }
-
-            sender.Shutdown(SocketShutdown.Both);
-            sender.Close();
+            conexionCliente.EnvioDeUsuarioAServidor(usuario);
+            funcionalidades.MenuFuncionalidades(usuario);
         }
+
     }
 }

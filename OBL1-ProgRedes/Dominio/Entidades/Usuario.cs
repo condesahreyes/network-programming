@@ -6,14 +6,12 @@ namespace LogicaNegocio
     public class Usuario
     {
         List<Juego> juegos;
-        string NombreUsuario { get; set; }
-        string Contraseña { get; set; } //Preguntarle a juli si le parece que aplica o lo sacamos
+        public string NombreUsuario { get; set; }
 
-        public Usuario(string nombreUsuario, string contraseña)
+        public Usuario(string nombreUsuario)
         {
             this.juegos = new List<Juego>();
             this.NombreUsuario = nombreUsuario;
-            this.Contraseña = contraseña;
         }
 
 

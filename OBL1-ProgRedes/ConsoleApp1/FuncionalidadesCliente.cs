@@ -6,11 +6,13 @@ namespace Cliente
 {
     public class FuncionalidadesCliente
     {
+
+        private ConexionCliente conexionCliente;
+
         string mensajeMenuPrincipal =
             "********************** Menú Principal **********************" +
             "\n 0. Salir" +
             "\n 1. Iniciar Sesión" +
-            "\n 2. Registrarse" +
             "\n Seleccione una opción \n";
 
         string mensajeMenuFuncionalidades =
@@ -23,9 +25,14 @@ namespace Cliente
             "\n 5. Buscar Juegos " +
             "\n Seleccione una opción \n";
 
-        public void MenuPrincipal()
+        public  FuncionalidadesCliente(ConexionCliente cliente)
         {
-            int opcion = ObtenerOpcionSeleccionada(mensajeMenuPrincipal, 0, 2);
+            this.conexionCliente = cliente;
+        }
+
+        public Usuario MenuPrincipal()
+        {
+            int opcion = ObtenerOpcionSeleccionada(mensajeMenuPrincipal, 0, 1);
 
             switch (opcion)
             {
@@ -33,22 +40,20 @@ namespace Cliente
                     Console.WriteLine("Gracias por utilizar nuestro sistema.");
                     break;
                 case 1:
-                    InicioSesion();
-                    break;
-                case 2:
-                    RegistroUsuario();
+                    return InicioSesion();
                     break;
             }
-
+            return null;
         }
 
-        public void MenuFuncionalidades()
+        public void MenuFuncionalidades(Usuario usuario)
         {
             int opcion = ObtenerOpcionSeleccionada(mensajeMenuFuncionalidades, 0, 5);
 
             switch (opcion)
             {
                 case 0:
+                    conexionCliente.DesconectarUsuario(usuario);
                     Console.WriteLine("Gracias por utilizar nuestro sistema.");
                     break;
                 case 1:
@@ -84,36 +89,20 @@ namespace Cliente
 
         }
 
-        private void InicioSesion()
+        private Usuario InicioSesion()
         {
             Console.WriteLine("Ingrese su nombre de usuario");
             string nombreUsuario = Console.ReadLine();
 
-            Console.WriteLine("Ingrese su contraseña");
-            string contraseña = Console.ReadLine();
+            Usuario usuario = new Usuario(nombreUsuario);
 
-            MenuFuncionalidades();
-        }
-
-        private void RegistroUsuario()
-        {
-            Console.WriteLine("Ingrese un nombre de usuario ");
-            string nombreUsuario = Console.ReadLine();
-
-            Console.WriteLine("Ingrese una contraseña");
-            string contraseña = Console.ReadLine();
-
-            Usuario usuario = new Usuario(nombreUsuario, contraseña);
-
-            Console.WriteLine("Su usuario se dio de alta con éxito \n");
-
-            MenuPrincipal();
+            return usuario;
         }
 
         private void PublicarJuego()
         {
             Juego unJuego = Juego.CrearJuego();
-
+            conexionCliente.MandarNuevoJuego(unJuego);
         }
     }
 }

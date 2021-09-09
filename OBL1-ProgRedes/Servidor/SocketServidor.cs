@@ -10,16 +10,20 @@ namespace Servidor
     {
         private readonly int numeroPuerto = 9000;
         private readonly int cantConexionesEnEspera = 10;
+        private FuncionalidadesServidor servidor;
+        Socket handler;
 
-        public void StartListening()
+        public SocketServidor(FuncionalidadesServidor servidor)
         {
-            // 127.0.0.1:9000
+            this.servidor = servidor;
+        }
+
+        public string StartListening()
+        {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, numeroPuerto);
 
-            // Crear Socket TCP/IP
             Socket listener = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
-            // Asociar el socket con la direccion ip y el puerto
             listener.Bind(endPoint);
             // escuchar por conexiones entrantes
             listener.Listen(cantConexionesEnEspera);
@@ -27,14 +31,13 @@ namespace Servidor
             while (true)
             {
                 Console.WriteLine("Esperando por conexiones....");
-                var handler = listener.Accept();
-                Thread threadProcessor = new Thread(() => HandleReceivedClients(handler));
+                handler = listener.Accept();
+                Thread threadProcessor = new Thread(() => EscucharPorUsuario(handler));
                 threadProcessor.Start();
             }
-
         }
 
-        private void HandleReceivedClients(Socket handler)
+        private void EscucharPorUsuario(Socket handler)
         {
 
             byte[] bytes = new byte[1024];
@@ -48,18 +51,41 @@ namespace Servidor
 
                 if (data.IndexOf("<EOF>") > -1)
                 {
-                    break;
+                    ValidarAccionDelCliente(data, bytes);
+                    data = "";
                 }
             }
-            Console.WriteLine("Texto recibido : {0}", data);
+        }
 
-            // Echo the data back to the client.  
-            byte[] msg = Encoding.ASCII.GetBytes("mensaje desde el server...");
-            handler.Send(msg);
+        public void ValidarAccionDelCliente(string accion, byte[] bytes)
+        {
+            String[] text = accion.Split(" ");
+            Console.WriteLine(text[0]);
 
+            if (text[0]== "conectar")
+                EnvioConfirmacionCliente(text[1]);            
+            if (text[0]== "Desconectar")
+                Desconectar(text[1]);
+            if (text[0] == "crearJuego")
+                servidor.CrearJuego(bytes);
+
+            
+
+        }
+
+        private void Desconectar(string usuarioDesconectado)
+        {
+            Console.WriteLine("El usuairo " + usuarioDesconectado+" se ha desconectado");
             handler.Shutdown(SocketShutdown.Both);
-
             handler.Close();
+        }
+
+        public void EnvioConfirmacionCliente(string data)
+        {
+            servidor.InicioSesionCliente(data);
+            byte[] msg = Encoding.ASCII.GetBytes("Usted inicio sesion en el servidor con " + data);
+            handler.Send(msg);
+            Console.ReadLine();
         }
     }
 }
