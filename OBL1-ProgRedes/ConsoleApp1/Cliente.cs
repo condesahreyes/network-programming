@@ -16,11 +16,8 @@ namespace Cliente
         {
             conexionCliente = new ConexionCliente();
             funcionalidades = new FuncionalidadesCliente(conexionCliente);
-            
-            Usuario usuario = funcionalidades.MenuPrincipal();
 
-            conexionCliente.EnvioDeUsuarioAServidor(usuario);
-            funcionalidades.MenuFuncionalidades(usuario);
+            funcionalidades.MenuPrincipal();
         }
 
     }

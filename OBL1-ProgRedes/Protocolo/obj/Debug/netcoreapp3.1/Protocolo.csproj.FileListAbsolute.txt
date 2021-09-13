@@ -1,0 +1,14 @@
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.AssemblyInfoInputs.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.AssemblyInfo.cs
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.csproj.CoreCompileInputs.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Protocolo.exe
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Protocolo.deps.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Protocolo.runtimeconfig.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Protocolo.runtimeconfig.dev.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Protocolo.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Protocolo.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.genruntimeconfig.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.csproj.AssemblyReference.cache

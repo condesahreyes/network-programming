@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hreye\\Desktop\\Personal\\Facultad\\Prog. Redes\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj": {}
+    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hreye\\Desktop\\Personal\\Facultad\\Prog. Redes\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj": {
+    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Personal\\Facultad\\Prog. Redes\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj",
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj",
         "projectName": "LogicaNegocio",
-        "projectPath": "C:\\Users\\hreye\\Desktop\\Personal\\Facultad\\Prog. Redes\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj",
         "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hreye\\Desktop\\Personal\\Facultad\\Prog. Redes\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",

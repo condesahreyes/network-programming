@@ -1,17 +1,23 @@
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.exe
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.deps.json
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.runtimeconfig.json
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.runtimeconfig.dev.json
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.dll
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.pdb
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.AssemblyInfoInputs.cache
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.AssemblyInfo.cs
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.csproj.CoreCompileInputs.cache
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.dll
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.pdb
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.genruntimeconfig.cache
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.csproj.AssemblyReference.cache
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\LogicaNegocio.dll
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\LogicaNegocio.pdb
-C:\Users\hreye\Desktop\Personal\Facultad\Prog. Redes\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.csproj.CopyComplete
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.csproj.AssemblyReference.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.AssemblyInfoInputs.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.AssemblyInfo.cs
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.csproj.CoreCompileInputs.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.deps.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.runtimeconfig.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.runtimeconfig.dev.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.exe
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.exe
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.deps.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.runtimeconfig.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.runtimeconfig.dev.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\LogicaNegocio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\LogicaNegocio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.csproj.CopyComplete
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.genruntimeconfig.cache

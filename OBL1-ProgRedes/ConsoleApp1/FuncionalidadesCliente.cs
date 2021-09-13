@@ -1,4 +1,5 @@
 ﻿using LogicaNegocio;
+using Protocolo;
 using System;
 using System.Text.RegularExpressions;
 
@@ -30,9 +31,10 @@ namespace Cliente
             this.conexionCliente = cliente;
         }
 
-        public Usuario MenuPrincipal()
+        public void MenuPrincipal()
         {
             int opcion = ObtenerOpcionSeleccionada(mensajeMenuPrincipal, 0, 1);
+            Usuario usuario = null;
 
             switch (opcion)
             {
@@ -40,16 +42,17 @@ namespace Cliente
                     Console.WriteLine("Gracias por utilizar nuestro sistema.");
                     break;
                 case 1:
-                    return InicioSesion();
+                    usuario = InicioSesion();
                     break;
             }
-            return null;
+
+
+            MenuFuncionalidades(usuario);
         }
 
         public void MenuFuncionalidades(Usuario usuario)
         {
             int opcion = ObtenerOpcionSeleccionada(mensajeMenuFuncionalidades, 0, 5);
-
             switch (opcion)
             {
                 case 0:
@@ -72,6 +75,31 @@ namespace Cliente
             }
         }
 
+        private Usuario InicioSesion()
+        {
+            Console.WriteLine("Ingrese su nombre de usuario");
+            string nombreUsuario = Console.ReadLine();
+
+            Usuario usuario = new Usuario(nombreUsuario);
+            var encabezado = new Encabezado(nombreUsuario.Length + ConstantesDelProtocolo.largoComando, Accion.Login);
+
+            //conexionCliente.EnvioEncabezado(encabezado);
+            conexionCliente.EnvioEncabezado(usuario);
+
+            Console.WriteLine("Presione enter para loguearse");
+            Console.ReadLine();
+
+            conexionCliente.EnvioDeMensaje(nombreUsuario);
+            return usuario;
+        }
+
+        private void PublicarJuego()
+        {
+            //Accion.PublicarJuego;
+            Juego unJuego = Juego.CrearJuego();
+            conexionCliente.MandarNuevoJuego(unJuego);
+        }
+
         private int ObtenerOpcionSeleccionada(string mensajeMenu, int opcionMinima, int opcionMaxima)
         {
 
@@ -86,23 +114,7 @@ namespace Cliente
                 else
                     return Convert.ToInt32(opcion);
             }
-
         }
 
-        private Usuario InicioSesion()
-        {
-            Console.WriteLine("Ingrese su nombre de usuario");
-            string nombreUsuario = Console.ReadLine();
-
-            Usuario usuario = new Usuario(nombreUsuario);
-
-            return usuario;
-        }
-
-        private void PublicarJuego()
-        {
-            Juego unJuego = Juego.CrearJuego();
-            conexionCliente.MandarNuevoJuego(unJuego);
-        }
     }
 }

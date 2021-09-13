@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Protocolo;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Servidor
         private readonly int cantConexionesEnEspera = 10;
         private FuncionalidadesServidor servidor;
         Socket handler;
+
 
         public SocketServidor(FuncionalidadesServidor servidor)
         {
@@ -39,22 +41,9 @@ namespace Servidor
 
         private void EscucharPorUsuario(Socket handler)
         {
+            int mensajeAccionLargo = TransferenciaDatos.EscucharPorEncabezado(handler);
 
-            byte[] bytes = new byte[1024];
-
-            string data = null;
-
-            while (true)
-            {
-                int bytesRec = handler.Receive(bytes);
-                data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-
-                if (data.IndexOf("<EOF>") > -1)
-                {
-                    ValidarAccionDelCliente(data, bytes);
-                    data = "";
-                }
-            }
+            TransferenciaDatos.EscucharPorMensajes(handler, mensajeAccionLargo);
         }
 
         public void ValidarAccionDelCliente(string accion, byte[] bytes)
@@ -68,9 +57,6 @@ namespace Servidor
                 Desconectar(text[1]);
             if (text[0] == "crearJuego")
                 servidor.CrearJuego(bytes);
-
-            
-
         }
 
         private void Desconectar(string usuarioDesconectado)

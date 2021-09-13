@@ -1,4 +1,5 @@
 ﻿using LogicaNegocio;
+using Protocolo;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,30 +23,42 @@ namespace Cliente
             ipEndPoint = new IPEndPoint(IPAddress.Loopback, port);
             sender = new Socket(ipEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
-
             // Conectarse desde un socket client
             sender.Connect(ipEndPoint);
             Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
-
         }
 
-        public  void EnvioDeUsuarioAServidor(Usuario usuario)
+        public  void EnvioEncabezado(Usuario usuario)
         {
-            byte[] message = Encoding.ASCII.GetBytes(usuario.NombreUsuario + " <EOF>");
+            int largoMensaje = usuario.NombreUsuario.Length;
+            string mensajeAEnviar = usuario.NombreUsuario;
+
+            EnvioDeEncabezado(Accion.Login, largoMensaje);
+
+            //Console.ReadLine();
+            //EnvioDeMensaje(mensajeAEnviar);
+            
+            //sender.Shutdown(SocketShutdown.Both);
+            //sender.Close();
+        }
+
+        public void EnvioDeMensaje(string mensaje)
+        {
+            byte[] message = Encoding.ASCII.GetBytes(mensaje);
+            int largoo = message.Length;
+            // enviar mensaje al server
+            int bytesSent = sender.Send(message);
+            //sender.Shutdown(SocketShutdown.Both);
+            //sender.Close();
+        }
+
+        public void EnvioDeEncabezado(string accion, int largoMensaje)
+        {
+            string mensaje = ""+largoMensaje;
+            byte[] message = Encoding.ASCII.GetBytes(mensaje);
 
             // enviar mensaje al server
             int bytesSent = sender.Send(message);
-
-            // recibir respuesta del server
-            byte[] bytes = new byte[1024];
-            int bytesReceived = sender.Receive(bytes);
-
-            // Parsear texto recibido
-            if (bytesReceived > 0)
-            {
-                Console.WriteLine("Mensaje recibido = {0}",
-                Encoding.ASCII.GetString(bytes, 0, bytesReceived));
-            }
 
             //sender.Shutdown(SocketShutdown.Both);
             //sender.Close();
@@ -85,19 +98,7 @@ namespace Cliente
 
         public void MandarNuevoJuego(Juego juego)
         {
-            EnvioDeObjetos(ObjetoEnByte(juego));
-        }
-
-        private byte[] ObjetoEnByte(Object obj)
-        {
-            if (obj == null)
-                return null;
-
-            BinaryFormatter bf = new BinaryFormatter();
-            MemoryStream ms = new MemoryStream();
-            bf.Serialize(ms, obj);
-
-            return ms.ToArray();
+            
         }
 
     }
