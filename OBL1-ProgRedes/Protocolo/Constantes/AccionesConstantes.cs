@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Protocolo
 {
-    public static class Accion
+    public static class AccionesConstantes
     {
         public const string Salir = "A";
         public const string Desconectarse = "B";

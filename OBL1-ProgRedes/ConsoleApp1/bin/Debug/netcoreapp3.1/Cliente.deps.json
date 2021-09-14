@@ -21,6 +21,9 @@
         }
       },
       "Protocolo/1.0.0": {
+        "dependencies": {
+          "LogicaNegocio": "1.0.0"
+        },
         "runtime": {
           "Protocolo.dll": {}
         }

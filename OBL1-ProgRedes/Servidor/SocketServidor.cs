@@ -1,4 +1,5 @@
-﻿using Protocolo;
+﻿using LogicaNegocio;
+using Protocolo;
 using System;
 using System.Net;
 using System.Net.Sockets;
@@ -11,13 +12,14 @@ namespace Servidor
     {
         private readonly int numeroPuerto = 9000;
         private readonly int cantConexionesEnEspera = 10;
-        private FuncionalidadesServidor servidor;
+        private FuncionalidadesServidor funcionalidadesServidor;
         Socket handler;
-
+        Transferencia transferencia;
+        Usuario usuario;
 
         public SocketServidor(FuncionalidadesServidor servidor)
         {
-            this.servidor = servidor;
+            this.funcionalidadesServidor = servidor;
         }
 
         public string StartListening()
@@ -34,6 +36,7 @@ namespace Servidor
             {
                 Console.WriteLine("Esperando por conexiones....");
                 handler = listener.Accept();
+                transferencia = new Transferencia(handler);
                 Thread threadProcessor = new Thread(() => EscucharPorUsuario(handler));
                 threadProcessor.Start();
             }
@@ -41,37 +44,23 @@ namespace Servidor
 
         private void EscucharPorUsuario(Socket handler)
         {
-            int mensajeAccionLargo = TransferenciaDatos.EscucharPorEncabezado(handler);
+            Encabezado encabezado = TransferenciaDatos.RecibirEncabezado(transferencia);
 
-            TransferenciaDatos.EscucharPorMensajes(handler, mensajeAccionLargo);
+            EjecutarAccion(encabezado);
         }
 
-        public void ValidarAccionDelCliente(string accion, byte[] bytes)
+        private void EjecutarAccion(Encabezado encabezado)
         {
-            String[] text = accion.Split(" ");
-            Console.WriteLine(text[0]);
-
-            if (text[0]== "conectar")
-                EnvioConfirmacionCliente(text[1]);            
-            if (text[0]== "Desconectar")
-                Desconectar(text[1]);
-            if (text[0] == "crearJuego")
-                servidor.CrearJuego(bytes);
-        }
-
-        private void Desconectar(string usuarioDesconectado)
-        {
-            Console.WriteLine("El usuairo " + usuarioDesconectado+" se ha desconectado");
-            handler.Shutdown(SocketShutdown.Both);
-            handler.Close();
-        }
-
-        public void EnvioConfirmacionCliente(string data)
-        {
-            servidor.InicioSesionCliente(data);
-            byte[] msg = Encoding.ASCII.GetBytes("Usted inicio sesion en el servidor con " + data);
-            handler.Send(msg);
-            Console.ReadLine();
+            string accion = encabezado.accion;
+            int largoMensajeARecibir = encabezado.largoMensaje;
+            
+            switch (accion)
+            {
+                case AccionesConstantes.Login:
+                    usuario = TransferenciaDatos.RecibirUsuario(transferencia, largoMensajeARecibir);
+                    funcionalidadesServidor.InicioSesionCliente(usuario);
+                    break;
+            }
         }
     }
 }

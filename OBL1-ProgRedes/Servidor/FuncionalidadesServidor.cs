@@ -11,14 +11,15 @@ namespace Servidor
     {
         FuncionalidadesUsuario funcionesUsuario;
         FuncionalidadesJuego funcionesJuego;
+
         public FuncionalidadesServidor()
         {
             funcionesUsuario = new FuncionalidadesUsuario();
             funcionesJuego = new FuncionalidadesJuego();
         }
-        internal void InicioSesionCliente(string nombreUsuario)
+        internal Usuario InicioSesionCliente(Usuario usuario)
         {
-            Usuario miUsuario = funcionesUsuario.ObtenerUsuario(nombreUsuario);
+            return funcionesUsuario.ObtenerUsuario(usuario);
         }
 
         public void CrearJuego(byte[] obj)

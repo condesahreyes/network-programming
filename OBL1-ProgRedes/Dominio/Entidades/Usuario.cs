@@ -14,6 +14,12 @@ namespace LogicaNegocio
             this.NombreUsuario = nombreUsuario;
         }
 
+        public static Usuario CrearUsuario()
+        {
+            Console.WriteLine("Ingrese su nombre de usuario");
+            string nombreUsuario = Console.ReadLine();
 
+            return new Usuario(nombreUsuario);
+        }
     }
 }

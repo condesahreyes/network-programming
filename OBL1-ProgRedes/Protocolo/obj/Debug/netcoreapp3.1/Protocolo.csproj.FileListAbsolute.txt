@@ -12,3 +12,6 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.genruntimeconfig.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.csproj.AssemblyReference.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\LogicaNegocio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\LogicaNegocio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.csproj.CopyComplete

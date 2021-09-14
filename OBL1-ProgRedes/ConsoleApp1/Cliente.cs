@@ -11,7 +11,6 @@ namespace Cliente
         private static FuncionalidadesCliente funcionalidades;
         private static ConexionCliente conexionCliente;
 
-
         static void Main(string[] args)
         {
             conexionCliente = new ConexionCliente();

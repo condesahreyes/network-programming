@@ -1,7 +1,7 @@
-﻿using LogicaNegocio;
+﻿using System.Text.RegularExpressions;
+using LogicaNegocio;
 using Protocolo;
 using System;
-using System.Text.RegularExpressions;
 
 namespace Cliente
 {
@@ -46,7 +46,6 @@ namespace Cliente
                     break;
             }
 
-
             MenuFuncionalidades(usuario);
         }
 
@@ -77,32 +76,27 @@ namespace Cliente
 
         private Usuario InicioSesion()
         {
-            Console.WriteLine("Ingrese su nombre de usuario");
-            string nombreUsuario = Console.ReadLine();
+            Usuario usuario = Usuario.CrearUsuario();
 
-            Usuario usuario = new Usuario(nombreUsuario);
-            var encabezado = new Encabezado(nombreUsuario.Length + ConstantesDelProtocolo.largoComando, Accion.Login);
+            string nombreUsuario = usuario.NombreUsuario;
 
-            //conexionCliente.EnvioEncabezado(encabezado);
-            conexionCliente.EnvioEncabezado(usuario);
+            var encabezado = new Encabezado(nombreUsuario.Length, AccionesConstantes.Login);
 
-            Console.WriteLine("Presione enter para loguearse");
-            Console.ReadLine();
+            conexionCliente.EnvioEncabezado(encabezado);
 
             conexionCliente.EnvioDeMensaje(nombreUsuario);
+
             return usuario;
         }
 
         private void PublicarJuego()
         {
-            //Accion.PublicarJuego;
             Juego unJuego = Juego.CrearJuego();
             conexionCliente.MandarNuevoJuego(unJuego);
         }
 
         private int ObtenerOpcionSeleccionada(string mensajeMenu, int opcionMinima, int opcionMaxima)
         {
-
             while (true)
             {
                 Console.WriteLine(mensajeMenu);
