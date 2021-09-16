@@ -40,17 +40,15 @@ namespace Cliente
 
         public void DesconectarUsuario(Usuario usuario)
         {
-            sender.Shutdown(SocketShutdown.Both);
-            Console.WriteLine("Se desconectoooo");
-            Console.ReadLine();
-            sender.Close();
-            //sender.Disconnect(true);
+            TransferenciaDatos.Desconectar(transferencia);
         }
 
-        public void MandarNuevoJuego(Juego juego)
+        internal string EsperarPorRespuesta()
         {
-            
-        }
+            string respuesta = TransferenciaDatos.RecibirMensajeGenerico(transferencia, ConstantesDelProtocolo.largoEncabezado);
+            string[] respuestas = respuesta.Split("#");
 
+            return respuestas[0];
+        }
     }
 }

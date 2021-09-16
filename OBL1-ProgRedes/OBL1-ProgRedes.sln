@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cliente", "ConsoleApp1\Cliente.csproj", "{CF002A6F-DCE6-49D5-BD28-637934503688}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicaNegocio", "Dominio\LogicaNegocio.csproj", "{CAB30B80-10F3-4AFA-A4D0-5B3749B5E4D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dominio", "Dominio\Dominio.csproj", "{CAB30B80-10F3-4AFA-A4D0-5B3749B5E4D7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servidor", "Servidor\Servidor.csproj", "{69C27692-A40C-4E63-8D9D-23F20E60E4EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Protocolo", "Protocolo\Protocolo.csproj", "{44DF3A97-6547-405F-900D-DE8538B8E00C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Protocolo", "Protocolo\Protocolo.csproj", "{44DF3A97-6547-405F-900D-DE8538B8E00C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

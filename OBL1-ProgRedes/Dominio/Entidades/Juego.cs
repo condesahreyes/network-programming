@@ -41,8 +41,6 @@ namespace LogicaNegocio
             Console.WriteLine("Ingrese caratula");
             byte[] caratula; //Esperar respuesta de la profe
 
-            Console.WriteLine("Se ha dado de alta el juego " + titulo + " con éxito");
-
             return new Juego(titulo, genero, sinopsis, null);
         }
 

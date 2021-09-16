@@ -1,7 +1,5 @@
 ﻿using LogicaNegocio;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Protocolo
 {
@@ -37,6 +35,26 @@ namespace Protocolo
         public static string UsuarioAString(Usuario usuario)
         {
             return usuario.NombreUsuario;
+        }
+
+        public static string JuegoAString(Juego juego)
+        {
+            string juegoEnString = juego.Titulo + "#" + juego.Genero + "#" + juego.Sinopsis;
+
+            return juegoEnString;
+        }
+
+        public static Juego StringAJuego(string juegoEnString)
+        {
+            string[] datosDelJuego = juegoEnString.Split("#");
+
+            string titulo = datosDelJuego[0];
+            string genero = datosDelJuego[1];
+            string sinopsis = datosDelJuego[2];
+
+            Juego juego = new Juego(titulo, genero, sinopsis, null);
+
+            return juego;
         }
     }
 }

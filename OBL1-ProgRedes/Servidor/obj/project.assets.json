@@ -2,21 +2,21 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "LogicaNegocio/1.0.0": {
+      "Dominio/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "compile": {
-          "bin/placeholder/LogicaNegocio.dll": {}
+          "bin/placeholder/Dominio.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LogicaNegocio.dll": {}
+          "bin/placeholder/Dominio.dll": {}
         }
       },
       "Protocolo/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "LogicaNegocio": "1.0.0"
+          "Dominio": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Protocolo.dll": {}
@@ -28,10 +28,10 @@
     }
   },
   "libraries": {
-    "LogicaNegocio/1.0.0": {
+    "Dominio/1.0.0": {
       "type": "project",
-      "path": "../Dominio/LogicaNegocio.csproj",
-      "msbuildProject": "../Dominio/LogicaNegocio.csproj"
+      "path": "../Dominio/Dominio.csproj",
+      "msbuildProject": "../Dominio/Dominio.csproj"
     },
     "Protocolo/1.0.0": {
       "type": "project",
@@ -41,7 +41,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "LogicaNegocio >= 1.0.0",
+      "Dominio >= 1.0.0",
       "Protocolo >= 1.0.0"
     ]
   },
@@ -72,8 +72,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj": {
-              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj"
+            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
             },
             "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
               "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj"

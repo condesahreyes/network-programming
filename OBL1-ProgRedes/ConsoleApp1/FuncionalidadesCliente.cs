@@ -40,6 +40,7 @@ namespace Cliente
             {
                 case 0:
                     Console.WriteLine("Gracias por utilizar nuestro sistema.");
+                    conexionCliente.DesconectarUsuario(usuario);
                     break;
                 case 1:
                     usuario = InicioSesion();
@@ -51,27 +52,32 @@ namespace Cliente
 
         public void MenuFuncionalidades(Usuario usuario)
         {
-            int opcion = ObtenerOpcionSeleccionada(mensajeMenuFuncionalidades, 0, 5);
-            switch (opcion)
+            int opcion = -1;
+            while (opcion != 0)
             {
-                case 0:
-                    conexionCliente.DesconectarUsuario(usuario);
-                    Console.WriteLine("Gracias por utilizar nuestro sistema.");
-                    break;
-                case 1:
+                opcion = ObtenerOpcionSeleccionada(mensajeMenuFuncionalidades, 0, 5);
+                switch (opcion)
+                {
+                    case 0:
+                        Console.WriteLine(usuario.NombreUsuario + " gracias por usar nuestro sistema.");
+                        conexionCliente.DesconectarUsuario(usuario);
+                        break;
+                    case 1:
 
-                    break;
-                case 2:
+                        break;
+                    case 2:
 
-                    break;
-                case 3:
-                    PublicarJuego();
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
+                        break;
+                    case 3:
+                        PublicarJuego();
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                }
             }
+
         }
 
         private Usuario InicioSesion()
@@ -80,7 +86,7 @@ namespace Cliente
 
             string nombreUsuario = usuario.NombreUsuario;
 
-            var encabezado = new Encabezado(nombreUsuario.Length, AccionesConstantes.Login);
+            Encabezado encabezado = new Encabezado(nombreUsuario.Length, AccionesConstantes.Login);
 
             conexionCliente.EnvioEncabezado(encabezado);
 
@@ -92,7 +98,20 @@ namespace Cliente
         private void PublicarJuego()
         {
             Juego unJuego = Juego.CrearJuego();
-            conexionCliente.MandarNuevoJuego(unJuego);
+
+            string juegoEnString = Mapper.JuegoAString(unJuego);
+
+            Encabezado encabezado = new Encabezado(juegoEnString.Length, AccionesConstantes.PublicarJuego);
+            
+            conexionCliente.EnvioEncabezado(encabezado);
+            conexionCliente.EnvioDeMensaje(juegoEnString);
+
+            string respuestaServidor = conexionCliente.EsperarPorRespuesta();
+
+            if (respuestaServidor == ConstantesDelProtocolo.MensajeOk)
+                Console.WriteLine("Su juego se ha dado de alta con exito");
+            else
+                Console.WriteLine("El juego ya existe en el sistema");
         }
 
         private int ObtenerOpcionSeleccionada(string mensajeMenu, int opcionMinima, int opcionMaxima)

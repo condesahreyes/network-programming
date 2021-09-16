@@ -1,4 +1,5 @@
 ﻿using LogicaNegocio;
+using Servidor.Exception;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -43,20 +44,15 @@ namespace Servidor.FuncionalidadesPorEntidad
             persistencia.juegos.Add(juego);
         }
 
-        public void AgregarJuego(Juego juego)
+        public bool AgregarJuego(Juego juego)
         {
-            bool esJuegoExistente = true;
+            bool esJuegoExistente = EsJuegoExistente(juego);
 
-            while (esJuegoExistente)
-            {
-                esJuegoExistente = EsJuegoExistente(juego);
-
-                if (esJuegoExistente)
-                    Console.WriteLine("El titulo " + juego.Titulo +
-                        " ya esta registrado en el sistema.");
-            }
-
-            persistencia.juegos.Add(juego);
+            if (esJuegoExistente)
+                return false;
+            else
+                persistencia.juegos.Add(juego);
+            return true;
         }
 
         public void VerCatalogoJuegos()

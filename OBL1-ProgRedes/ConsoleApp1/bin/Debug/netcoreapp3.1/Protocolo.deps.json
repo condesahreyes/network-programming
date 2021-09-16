@@ -8,15 +8,15 @@
     ".NETCoreApp,Version=v3.1": {
       "Protocolo/1.0.0": {
         "dependencies": {
-          "LogicaNegocio": "1.0.0"
+          "Dominio": "1.0.0"
         },
         "runtime": {
           "Protocolo.dll": {}
         }
       },
-      "LogicaNegocio/1.0.0": {
+      "Dominio/1.0.0": {
         "runtime": {
-          "LogicaNegocio.dll": {}
+          "Dominio.dll": {}
         }
       }
     }
@@ -27,7 +27,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "LogicaNegocio/1.0.0": {
+    "Dominio/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

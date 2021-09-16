@@ -1,9 +1,6 @@
 ﻿using LogicaNegocio;
 using Servidor.FuncionalidadesEntidades;
 using Servidor.FuncionalidadesPorEntidad;
-using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Servidor
 {
@@ -17,22 +14,15 @@ namespace Servidor
             funcionesUsuario = new FuncionalidadesUsuario();
             funcionesJuego = new FuncionalidadesJuego();
         }
+
         internal Usuario InicioSesionCliente(Usuario usuario)
         {
             return funcionesUsuario.ObtenerUsuario(usuario);
         }
 
-        public void CrearJuego(byte[] obj)
+        public bool CrearJuego(Juego juego)
         {
-            MemoryStream memStream = new MemoryStream();
-            BinaryFormatter binForm = new BinaryFormatter();
-            memStream.Write(obj, 0, obj.Length);
-            memStream.Seek(0, SeekOrigin.Begin);
-            Juego juego = (Juego)binForm.Deserialize(memStream);
-
-            funcionesJuego.AgregarJuego(juego);
-            Console.ReadLine(); // Borrar
+            return funcionesJuego.AgregarJuego(juego);
         }
-
     }
 }

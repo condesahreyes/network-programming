@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using System.Text;
 
 namespace Protocolo
@@ -22,12 +20,17 @@ namespace Protocolo
 
             while (recibidoTotal < largoMensaje)
             {
-                var recibido = socket.Receive(datos, recibidoTotal, 
+                var recibido = socket.Receive(datos, recibidoTotal,
                     largoMensaje - recibidoTotal, SocketFlags.None);
 
                 recibidoTotal += recibido;
+                
+                if (recibido == 0)
+                {
+                    throw new SocketException();
+                }
             }
-
+            //Manejar exception
             return datos;
         }
 
@@ -38,8 +41,14 @@ namespace Protocolo
             int largoMensaje = mensaje.Length;
             int enviados = 0;
 
-            while(enviados < largoMensaje)
-                enviados+= socket.Send(mensaje, enviados, largoMensaje-enviados, SocketFlags.None);
+            while (enviados < largoMensaje)
+                enviados += socket.Send(mensaje, enviados, largoMensaje - enviados, SocketFlags.None);
+        }
+
+        public void Desconectar()
+        {
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
         }
     }
 }

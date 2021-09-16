@@ -1,5 +1,6 @@
 ﻿using LogicaNegocio;
 using Protocolo;
+using Servidor.Exception;
 using System;
 using System.Net;
 using System.Net.Sockets;
@@ -44,9 +45,11 @@ namespace Servidor
 
         private void EscucharPorUsuario(Socket handler)
         {
-            Encabezado encabezado = TransferenciaDatos.RecibirEncabezado(transferencia);
+            while (true) {
+                Encabezado encabezado = TransferenciaDatos.RecibirEncabezado(transferencia);
 
-            EjecutarAccion(encabezado);
+                EjecutarAccion(encabezado);
+            }
         }
 
         private void EjecutarAccion(Encabezado encabezado)
@@ -59,6 +62,24 @@ namespace Servidor
                 case AccionesConstantes.Login:
                     usuario = TransferenciaDatos.RecibirUsuario(transferencia, largoMensajeARecibir);
                     funcionalidadesServidor.InicioSesionCliente(usuario);
+                    break;
+
+                case AccionesConstantes.PublicarJuego:
+                    Juego juego = TransferenciaDatos.PublicarJuego(transferencia, largoMensajeARecibir);
+                    try
+                    {
+                        bool creo = funcionalidadesServidor.CrearJuego(juego);
+
+                        if(creo)
+                            TransferenciaDatos.EnviarMensajeClienteOk(transferencia);
+                        else
+                            TransferenciaDatos.EnviarMensajeClienteError(transferencia);
+
+                    }
+                    catch (JuegoExistente){
+                        TransferenciaDatos.EnviarMensajeClienteError(transferencia);
+                    }
+
                     break;
             }
         }

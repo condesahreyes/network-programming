@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj",
-        "projectName": "LogicaNegocio",
+        "projectName": "Dominio",
         "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\LogicaNegocio.csproj",
         "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",

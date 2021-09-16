@@ -13,11 +13,11 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.runtimeconfig.dev.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.pdb
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\LogicaNegocio.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.dll
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\LogicaNegocio.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.csproj.CopyComplete
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.genruntimeconfig.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Dominio.pdb

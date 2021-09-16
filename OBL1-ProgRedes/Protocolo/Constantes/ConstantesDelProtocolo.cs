@@ -11,5 +11,8 @@ namespace Protocolo
         public static int largoEncabezado = largoComando + largoDato + 1;
         public static int largoHash = 32;
         public static int maximoTamañoDePaquete = 32768;
+
+        public const string MensajeOk = "Ok";
+        public const string MensajeEr = "FAIL";
     }
 }
