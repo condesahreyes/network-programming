@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Protocolo
+﻿namespace Protocolo
 {
-    public static class AccionesConstantes
+    public class Accion
     {
         public const string Salir = "A";
         public const string Desconectarse = "B";
@@ -14,5 +10,8 @@ namespace Protocolo
         public const string PublicarJuego = "F";
         public const string PublicarCalificacion = "G";
         public const string BuscarJuego = "H";
+        public const string PedirDetalleJuego = "I";
+        public const string EnviarDetalleJuego = "J";
+        public const string ListaJuegos = "K";
     }
 }

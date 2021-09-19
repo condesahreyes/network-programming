@@ -2,9 +2,9 @@
 using Protocolo;
 using Servidor.Exception;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 
 namespace Servidor
@@ -18,9 +18,8 @@ namespace Servidor
         Transferencia transferencia;
         Usuario usuario;
 
-        public SocketServidor(FuncionalidadesServidor servidor)
+        public SocketServidor()
         {
-            this.funcionalidadesServidor = servidor;
         }
 
         public string StartListening()
@@ -45,8 +44,9 @@ namespace Servidor
 
         private void EscucharPorUsuario(Socket handler)
         {
+            funcionalidadesServidor = new FuncionalidadesServidor(transferencia);
             while (true) {
-                Encabezado encabezado = TransferenciaDatos.RecibirEncabezado(transferencia);
+                Encabezado encabezado = ControladorDeTransferencia.RecibirEncabezado(transferencia);
 
                 EjecutarAccion(encabezado);
             }
@@ -59,27 +59,18 @@ namespace Servidor
             
             switch (accion)
             {
-                case AccionesConstantes.Login:
-                    usuario = TransferenciaDatos.RecibirUsuario(transferencia, largoMensajeARecibir);
-                    funcionalidadesServidor.InicioSesionCliente(usuario);
+                case Accion.Login:
+                    usuario = funcionalidadesServidor.InicioSesionCliente(usuario, largoMensajeARecibir);
                     break;
 
-                case AccionesConstantes.PublicarJuego:
-                    Juego juego = TransferenciaDatos.PublicarJuego(transferencia, largoMensajeARecibir);
-                    try
-                    {
-                        bool creo = funcionalidadesServidor.CrearJuego(juego);
-
-                        if(creo)
-                            TransferenciaDatos.EnviarMensajeClienteOk(transferencia);
-                        else
-                            TransferenciaDatos.EnviarMensajeClienteError(transferencia);
-
-                    }
-                    catch (JuegoExistente){
-                        TransferenciaDatos.EnviarMensajeClienteError(transferencia);
-                    }
-
+                case Accion.PublicarJuego:
+                    funcionalidadesServidor.CrearJuego(largoMensajeARecibir);
+                    break;
+                case Accion.ListaJuegos:
+                    funcionalidadesServidor.EnviarListaJuegos();
+                    break;
+                case Accion.PedirDetalleJuego:
+                    funcionalidadesServidor.EnviarDetalleDeUnJuego(largoMensajeARecibir);
                     break;
             }
         }

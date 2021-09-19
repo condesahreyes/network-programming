@@ -1,8 +1,9 @@
-﻿using System.Net.Sockets;
+﻿using System.Collections.Generic;
+using System.Net.Sockets;
+using Cliente.Constantes;
 using LogicaNegocio;
 using System.Net;
 using Protocolo;
-using System;
 
 namespace Cliente
 {
@@ -10,9 +11,9 @@ namespace Cliente
     {
         int port = 9000;
 
-        Socket sender;
-        IPEndPoint ipEndPoint;
         Transferencia transferencia;
+        IPEndPoint ipEndPoint;
+        Socket sender;
 
         public ConexionCliente()
         {
@@ -25,30 +26,62 @@ namespace Cliente
 
             // Conectarse desde un socket client
             sender.Connect(ipEndPoint);
-            Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
+            Mensaje.Conectado(sender.RemoteEndPoint.ToString());
         }
 
-        public  void EnvioEncabezado(Encabezado encabezado)
-        {
-            TransferenciaDatos.EnviarEncabezado(transferencia, encabezado);
-        }
-
-        public void EnvioDeMensaje(string mensaje)
-        {
-            TransferenciaDatos.EnviarDatos(transferencia, mensaje);
-        }
-
+        //Desconexión
         public void DesconectarUsuario(Usuario usuario)
         {
-            TransferenciaDatos.Desconectar(transferencia);
+            ControladorDeTransferencia.Desconectar(transferencia);
         }
 
-        internal string EsperarPorRespuesta()
+        //RespuestasServidor
+        public string EsperarPorRespuesta()
         {
-            string respuesta = TransferenciaDatos.RecibirMensajeGenerico(transferencia, ConstantesDelProtocolo.largoEncabezado);
+            string respuesta = ControladorDeTransferencia.RecibirMensajeGenerico
+                (transferencia, ConstantesDelProtocolo.largoEncabezado);
             string[] respuestas = respuesta.Split("#");
 
             return respuestas[0];
+        }
+
+        //Encabezados
+        public void EnvioEncabezado(int largoMensaje, string accion)
+        {
+            Encabezado encabezado = new Encabezado(largoMensaje, accion);
+            ControladorDeTransferencia.EnviarEncabezado(transferencia, encabezado);
+        }
+
+        public Encabezado RecibirEncabezado()
+        {
+            return ControladorDeTransferencia.RecibirEncabezado(transferencia);
+        }
+
+        //Mensajes
+        public void EnvioDeMensaje(string mensaje)
+        {
+            ControladorDeTransferencia.EnviarDatos(transferencia, mensaje);
+        }
+
+        public string RecibirMensaje(int largoMensaje)
+        {
+            return ControladorDeTransferencia.RecibirMensajeGenerico(transferencia, largoMensaje);
+        }
+
+        //Juegos
+        public Juego RecibirUnJuegoPorTitulo(string titulo)
+        {
+            return ControladorDeTransferencia.RecibirUnJuegoPorTitulo(transferencia, titulo);
+        }
+
+        public List<string> RecibirListaDeJuegos()
+        {
+            EnvioEncabezado(0, Accion.ListaJuegos);
+
+            string juegos = ControladorDeTransferencia.RecibirEncabezadoYMensaje
+                (transferencia, Accion.ListaJuegos);
+
+            return Mapper.StringAListaJuegosString(juegos);
         }
     }
 }

@@ -46,7 +46,7 @@ namespace LogicaNegocio
 
         public override string ToString()
         {
-            return "Titulo: " + Titulo + " Genero: " + Genero + " Sinopsis: " + Sinopsis;
+            return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " + Sinopsis;
         }
     }
 }

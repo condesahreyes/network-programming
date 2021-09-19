@@ -44,6 +44,11 @@ namespace Servidor.FuncionalidadesPorEntidad
             persistencia.juegos.Add(juego);
         }
 
+        internal List<Juego> ObtenerJuegos()
+        {
+            return persistencia.juegos;
+        }
+
         public bool AgregarJuego(Juego juego)
         {
             bool esJuegoExistente = EsJuegoExistente(juego);
@@ -81,6 +86,16 @@ namespace Servidor.FuncionalidadesPorEntidad
                     juegosPorgenero.Add(juego);
 
             return juegosPorgenero;
+        }
+
+        internal Juego ObtenerJuegoPorTitulo(string tituloJuego)
+        {
+            List<Juego> juegos = persistencia.juegos;
+            foreach (Juego juego in juegos)
+                if (juego.Titulo == tituloJuego)
+                    return juego;
+
+            return null;
         }
 
         public void BuscarJuegoPorCalificacion()

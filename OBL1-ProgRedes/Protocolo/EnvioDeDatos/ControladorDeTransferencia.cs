@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Protocolo
 {
-    public static class TransferenciaDatos
+    public class ControladorDeTransferencia
     {
 
         public static Encabezado RecibirEncabezado(Transferencia transferencia)
@@ -20,6 +20,15 @@ namespace Protocolo
             return encabezadoRecibido;
         }
 
+        public static void EnviarEncabezado(Transferencia transferencia, Encabezado encabezado)
+        {
+            string mensajeAEnviar = Mapper.EncabezadoAString(encabezado);
+
+            transferencia.EnvioDeDatos(mensajeAEnviar);
+        }
+
+
+
         public static Usuario RecibirUsuario(Transferencia transferencia, int largoMensaje)
         {
             string stringRecibido = RecibirMensajeGenerico(transferencia, largoMensaje);
@@ -29,6 +38,7 @@ namespace Protocolo
             return usuario;
         }
 
+
         public static string RecibirMensajeGenerico(Transferencia transferencia, int largoMensaje)
         {
             byte[] datos = transferencia.RecibirDatos(largoMensaje);
@@ -36,21 +46,10 @@ namespace Protocolo
             return Encoding.ASCII.GetString(datos, 0, largoMensaje);
         }
 
-        public static void EnviarEncabezado(Transferencia transferencia, Encabezado encabezado)
-        {
-            string mensajeAEnviar = Mapper.EncabezadoAString(encabezado);
-
-            transferencia.EnvioDeDatos(mensajeAEnviar);
-        }
 
         public static void EnviarDatos(Transferencia transferencia, string datos)
         {
             transferencia.EnvioDeDatos(datos);
-        }
-
-        public static void EnviarDatos()
-        {
-            throw new NotImplementedException();
         }
 
         public static void Desconectar(Transferencia transferencia)
@@ -83,6 +82,31 @@ namespace Protocolo
             string encabezadoEnString = Mapper.EncabezadoAString(encabezado);
 
             transferencia.EnvioDeDatos(encabezadoEnString);
+        }
+
+        public static Juego RecibirUnJuegoPorTitulo(Transferencia transferencia, string tituloJuego)
+        {
+            Encabezado encabezado = new Encabezado(tituloJuego.Length, Accion.PedirDetalleJuego);
+            EnviarEncabezado(transferencia, encabezado);
+            EnviarDatos(transferencia, tituloJuego);
+
+            string juego = RecibirEncabezadoYMensaje(transferencia, Accion.EnviarDetalleJuego);
+
+            return Mapper.StringAJuego(juego);
+        }
+
+        public static string RecibirEncabezadoYMensaje(Transferencia transferencia, string accionEsperada)
+        {
+            Encabezado encabezadoRecibido = RecibirEncabezado(transferencia);
+
+            string accion = encabezadoRecibido.accion;
+
+            if (accion != accionEsperada)
+                throw new Exception();
+
+            int largoMensaje = encabezadoRecibido.largoMensaje;
+
+            return RecibirMensajeGenerico(transferencia, largoMensaje);
         }
     }
 }

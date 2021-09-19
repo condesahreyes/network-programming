@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Protocolo
 {
-    public static class ConstantesDelProtocolo
+    public class ConstantesDelProtocolo
     {
         public static int largoComando = 1;
         public static int largoDato = 4;

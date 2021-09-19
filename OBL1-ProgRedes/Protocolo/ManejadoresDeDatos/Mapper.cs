@@ -1,4 +1,5 @@
-﻿using LogicaNegocio;
+﻿using System.Collections.Generic;
+using LogicaNegocio;
 using System;
 
 namespace Protocolo
@@ -7,6 +8,16 @@ namespace Protocolo
     {
 
         public static string EncabezadoAString(Encabezado encabezado)
+        {
+            string encabezadoString = encabezado.accion + "#" + encabezado.largoMensaje;
+
+            while (encabezadoString.Length < ConstantesDelProtocolo.largoEncabezado)
+                encabezadoString += "#";
+
+            return encabezadoString;
+        }
+
+        public static string RecibirAccionDeEncabezado(Encabezado encabezado)
         {
             string encabezadoString = encabezado.accion + "#" + encabezado.largoMensaje;
 
@@ -55,6 +66,27 @@ namespace Protocolo
             Juego juego = new Juego(titulo, genero, sinopsis, null);
 
             return juego;
+        }
+
+        public static string ListaDeJuegosAString(List<Juego> juegos)
+        {
+            string juegosString = "";
+
+            foreach (Juego juego in juegos)
+                juegosString += juego.Titulo + "#";
+
+            return juegosString;
+        }
+
+        public static List<string> StringAListaJuegosString(string juegosString)
+        {
+            List<string> juegos = new List<string>();
+            string[] cadaJuego = juegosString.Split("#");
+
+            for (int i = 0; i < cadaJuego.Length-1; i++)
+                juegos.Add(cadaJuego[i]);
+
+            return juegos;
         }
     }
 }

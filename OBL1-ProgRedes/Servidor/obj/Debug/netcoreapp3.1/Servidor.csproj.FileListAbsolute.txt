@@ -3,10 +3,6 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.AssemblyInfoInputs.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.AssemblyInfo.cs
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.csproj.CoreCompileInputs.cache
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.deps.json
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.runtimeconfig.json
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.runtimeconfig.dev.json
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Protocolo.exe
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.exe
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.deps.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Servidor.runtimeconfig.json
