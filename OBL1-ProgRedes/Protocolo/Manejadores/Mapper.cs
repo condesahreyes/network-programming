@@ -11,17 +11,7 @@ namespace Protocolo
         {
             string encabezadoString = encabezado.accion + "#" + encabezado.largoMensaje;
 
-            while (encabezadoString.Length < ConstantesDelProtocolo.largoEncabezado)
-                encabezadoString += "#";
-
-            return encabezadoString;
-        }
-
-        public static string RecibirAccionDeEncabezado(Encabezado encabezado)
-        {
-            string encabezadoString = encabezado.accion + "#" + encabezado.largoMensaje;
-
-            while (encabezadoString.Length < ConstantesDelProtocolo.largoEncabezado)
+            while (encabezadoString.Length < Constante.largoEncabezado)
                 encabezadoString += "#";
 
             return encabezadoString;
@@ -86,7 +76,8 @@ namespace Protocolo
 
         public static string CalificacionAString(Calificacion calificacion)
         {
-            string calificacionEnString = calificacion.TituloJuego + "#" + calificacion.Nota + "#" + calificacion.Comentario + "#" + calificacion.Usuario;
+            string calificacionEnString = calificacion.TituloJuego + "#" + calificacion.Nota + "#" 
+                + calificacion.Comentario + "#" + calificacion.Usuario;
 
             return calificacionEnString;
         }
@@ -103,7 +94,6 @@ namespace Protocolo
             Calificacion calificacion = new Calificacion(tituloJuego, nota, comentario, nombreUsuario);
 
             return calificacion;
-
         }
 
         public static string ListaDeJuegosAString(List<Juego> juegos)

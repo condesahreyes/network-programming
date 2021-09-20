@@ -7,7 +7,7 @@ using Protocolo;
 
 namespace Cliente
 {
-    public class ConexionCliente
+    public class Conexion
     {
         int port = 9000;
 
@@ -15,7 +15,7 @@ namespace Cliente
         IPEndPoint ipEndPoint;
         Socket sender;
 
-        public ConexionCliente()
+        public Conexion()
         {
             port = 9000;
 
@@ -29,56 +29,51 @@ namespace Cliente
             Mensaje.Conectado(sender.RemoteEndPoint.ToString());
         }
 
-        //Desconexión
         public void DesconectarUsuario(Usuario usuario)
         {
-            ControladorDeTransferencia.Desconectar(transferencia);
+            Controlador.Desconectar(transferencia);
         }
 
-        //RespuestasServidor
         public string EsperarPorRespuesta()
         {
-            string respuesta = ControladorDeTransferencia.RecibirMensajeGenerico
-                (transferencia, ConstantesDelProtocolo.largoEncabezado);
+            string respuesta = Controlador.RecibirMensajeGenerico
+                (transferencia, Constante.largoEncabezado);
             string[] respuestas = respuesta.Split("#");
 
             return respuestas[0];
         }
 
-        //Encabezados
         public void EnvioEncabezado(int largoMensaje, string accion)
         {
             Encabezado encabezado = new Encabezado(largoMensaje, accion);
-            ControladorDeTransferencia.EnviarEncabezado(transferencia, encabezado);
+            Controlador.EnviarEncabezado(transferencia, encabezado);
         }
 
         public Encabezado RecibirEncabezado()
         {
-            return ControladorDeTransferencia.RecibirEncabezado(transferencia);
+            return Controlador.RecibirEncabezado(transferencia);
         }
 
-        //Mensajes
         public void EnvioDeMensaje(string mensaje)
         {
-            ControladorDeTransferencia.EnviarDatos(transferencia, mensaje);
+            Controlador.EnviarDatos(transferencia, mensaje);
         }
 
         public string RecibirMensaje(int largoMensaje)
         {
-            return ControladorDeTransferencia.RecibirMensajeGenerico(transferencia, largoMensaje);
+            return Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
         }
 
-        //Juegos
         public Juego RecibirUnJuegoPorTitulo(string titulo)
         {
-            return ControladorDeTransferencia.RecibirUnJuegoPorTitulo(transferencia, titulo);
+            return Controlador.RecibirUnJuegoPorTitulo(transferencia, titulo);
         }
 
         public List<string> RecibirListaDeJuegos()
         {
             EnvioEncabezado(0, Accion.ListaJuegos);
 
-            string juegos = ControladorDeTransferencia.RecibirEncabezadoYMensaje
+            string juegos = Controlador.RecibirEncabezadoYMensaje
                 (transferencia, Accion.ListaJuegos);
 
             return Mapper.StringAListaJuegosString(juegos);

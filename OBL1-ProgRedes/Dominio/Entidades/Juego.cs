@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System;
 
 namespace LogicaNegocio
 {
@@ -29,32 +29,49 @@ namespace LogicaNegocio
 
         public static Juego CrearJuego()
         {
-            Console.WriteLine("Ingrese titulo del juego \n");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("********************* Alta de juego **********************");
+                               
+            MostrarMensaje("Ingrese titulo del juego:");
+            Console.ForegroundColor = ConsoleColor.White;
             string titulo = Console.ReadLine();
 
-            Console.WriteLine("Ingrese género");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            MostrarMensaje("Ingrese género:");
+
             string genero = Console.ReadLine();
 
-            Console.WriteLine("Ingrese sinopsis");
+            MostrarMensaje("Ingrese sinopsis:");
             string sinopsis = Console.ReadLine();
 
-            Console.WriteLine("Ingrese caratula");
+            MostrarMensaje("Ingrese caratula:");
+
             byte[] caratula; //Esperar respuesta de la profe
 
             return new Juego(titulo, genero, sinopsis, null);
+        }
+
+        private static void MostrarMensaje(string mensaje)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n" + mensaje);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public override string ToString()
         {
             string calificaciones = "";
             int enumerado = 0;
+
             foreach (Calificacion unaCalificacion in this.calificaciones)
             {
                 enumerado++;
                 calificaciones += enumerado + ". " + unaCalificacion.ToString() + "\n";
             }
 
-            return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " + Sinopsis + "\n" + "Calificaciones: " + "\n" + calificaciones;
+            return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " + 
+                Sinopsis + "\n" + "Calificaciones: " + "\n" + calificaciones;
         }
     }
 }

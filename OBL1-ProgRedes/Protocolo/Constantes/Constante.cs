@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Protocolo
+﻿namespace Protocolo
 {
-    public class ConstantesDelProtocolo
+    public class Constante
     {
         public static int largoComando = 1;
         public static int largoDato = 4;
@@ -13,6 +9,6 @@ namespace Protocolo
         public static int maximoTamañoDePaquete = 32768;
 
         public const string MensajeOk = "Ok";
-        public const string MensajeEr = "FAIL";
+        public const string MensajeError = "FAIL";
     }
 }

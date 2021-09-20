@@ -2,11 +2,11 @@
 {
     public class Cliente
     {
-        private static MenuCliente menu;
+        private static Menu menu;
 
         static void Main(string[] args)
         {
-            menu = new MenuCliente();
+            menu = new Menu();
 
             menu.MenuPrincipal();
         }

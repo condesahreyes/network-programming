@@ -1,7 +1,5 @@
-﻿using LogicaNegocio;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using LogicaNegocio;
 
 namespace Servidor
 {
@@ -17,6 +15,7 @@ namespace Servidor
             this.usuarios = new List<Usuario>();
             this.juegos = new List<Juego>();
         }
+
         public static Persistencia ObtenerPersistencia()
         {
             return _persistencia == null ? new Persistencia() : _persistencia;

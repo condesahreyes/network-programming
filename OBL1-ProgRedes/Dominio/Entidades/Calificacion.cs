@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace LogicaNegocio
 {
@@ -21,14 +20,45 @@ namespace LogicaNegocio
 
         public static Calificacion CrearCalificacion(string usuario, string tituloJuego)
         {
-            Console.WriteLine("Ingrese cantidad de estrellas");
-            int nota = Convert.ToInt32(Console.ReadLine());  
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("***************** Calificación: " + tituloJuego +" ******************");
 
-            Console.WriteLine("Ingrese un comentario");
+            int nota = ObtenerOpcion("Ingrese cantidad de estrellas:");
+
+            MostrarMensaje("Ingrese un comentario:");
             string comentario = Console.ReadLine();
 
-
             return new Calificacion(tituloJuego, nota, comentario, usuario);
+        }
+
+        public static int ObtenerOpcion(string mensaje)
+        {
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(mensaje);
+                Console.ForegroundColor = ConsoleColor.White;
+
+                var opcion = Console.ReadLine();
+                if (!Regex.IsMatch(opcion, "^[" + 1 + "-" + 5 + "]$"))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" \nIngrese una opción valida. Entre " + 1 + " y "
+                        + 5 +"\n");
+                }
+                else
+                {
+                    return Convert.ToInt32(opcion);
+                }
+            }
+        }
+
+        private static void MostrarMensaje(string mensaje)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n" + mensaje);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public override string ToString()

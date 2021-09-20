@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System;
 
 namespace LogicaNegocio
 {
@@ -16,7 +16,10 @@ namespace LogicaNegocio
 
         public static Usuario CrearUsuario()
         {
-            Console.WriteLine("Ingrese su nombre de usuario");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Ingrese su nombre de usuario:");
+            Console.ForegroundColor = ConsoleColor.White;
             string nombreUsuario = Console.ReadLine();
 
             return new Usuario(nombreUsuario);

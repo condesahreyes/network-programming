@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace Servidor
+﻿namespace Servidor
 {
     public class Servidor
     {
         static void Main(string[] args)
         {
-            SocketServidor server = new SocketServidor();
+            Conexion server = new Conexion();
             server.StartListening();
         }
     }

@@ -2,22 +2,23 @@
 using Cliente.Constantes;
 using LogicaNegocio;
 using Protocolo;
+using System;
 
 namespace Cliente
 {
-    public class FuncionalidadesCliente
+    public class Funcionalidad
     {
-        private static FuncionalidadesCliente _instancia;
-        private ConexionCliente conexionCliente;
+        private static Funcionalidad _instancia;
+        private Conexion conexionCliente;
 
-        public  FuncionalidadesCliente()
+        public  Funcionalidad()
         {
-            this.conexionCliente = new ConexionCliente();
+            this.conexionCliente = new Conexion();
         }
 
-        public static FuncionalidadesCliente ObtenerInstancia()
+        public static Funcionalidad ObtenerInstancia()
         {
-            return _instancia == null ? new FuncionalidadesCliente() : _instancia;
+            return _instancia == null ? new Funcionalidad() : _instancia;
         }
 
         public Usuario InicioSesion()
@@ -25,7 +26,7 @@ namespace Cliente
             Usuario usuario = Usuario.CrearUsuario();
             string nombreUsuario = usuario.NombreUsuario;
 
-            EnvioDeMensaje(nombreUsuario, Accion.Login);
+            EnvioYRespuesta(nombreUsuario, Accion.Login, Mensaje.InicioSesion, Mensaje.ErrorGenerico);
 
             return usuario;
         }
@@ -54,7 +55,7 @@ namespace Cliente
         private string SeleccionarUnTituloDeJuego(List<string> juegos)
         {
             Mensaje.MostrarJuegos(juegos);
-            int juegoSeleccionado = Metodos.ObtenerOpcion(Mensaje.seleccioneJuego, 0, juegos.Count - 1);
+            int juegoSeleccionado = Metodo.ObtenerOpcion(Mensaje.seleccioneJuego, 0, juegos.Count - 1);
 
             return juegos[juegoSeleccionado];
         }
@@ -65,17 +66,8 @@ namespace Cliente
 
             string juegoEnString = Mapper.JuegoAString(unJuego);
 
-            EnvioDeMensaje(juegoEnString, Accion.PublicarJuego);
-
-            string respuestaServidor = conexionCliente.EsperarPorRespuesta();
-
-            if(respuestaServidor == ConstantesDelProtocolo.MensajeOk)
-                Mensaje.JuegoCreado();
-            else
-                Mensaje.JuegoExistente();
+            EnvioYRespuesta(juegoEnString, Accion.PublicarJuego, Mensaje.JuegoCreado, Mensaje.JuegoExistente);
         }
-
-
 
         public void CalificarUnJuego(Usuario usuario)
         {
@@ -89,25 +81,26 @@ namespace Cliente
 
             string titulo = SeleccionarUnTituloDeJuego(juegos);
 
-
             Calificacion unaCalificacion = Calificacion.CrearCalificacion(usuario.NombreUsuario, titulo);
 
             string calificacionEnString = Mapper.CalificacionAString(unaCalificacion);
 
-            EnvioDeMensaje(calificacionEnString, Accion.PublicarCalificacion);
-
-            string respuestaServidor = conexionCliente.EsperarPorRespuesta();
-
-            if (respuestaServidor == ConstantesDelProtocolo.MensajeOk)
-                Mensaje.CalificacionCreada();
+            EnvioYRespuesta(calificacionEnString, Accion.PublicarCalificacion,
+                Mensaje.CalificacionCreada, Mensaje.ErrorGenerico);
         }
 
-
-        private void EnvioDeMensaje(string mensaje, string accion)
+        private void EnvioYRespuesta(string mensaje, string accion, Action RespuestaOk, Action RespuestaError)
         {
             conexionCliente.EnvioEncabezado(mensaje.Length, accion);
 
             conexionCliente.EnvioDeMensaje(mensaje);
+
+            string respuestaServidor = conexionCliente.EsperarPorRespuesta();
+
+            if (respuestaServidor == Constante.MensajeOk)
+                RespuestaOk();
+            else
+                RespuestaError();
         }
 
     }

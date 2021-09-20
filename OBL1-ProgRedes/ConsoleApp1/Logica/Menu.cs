@@ -3,20 +3,20 @@ using LogicaNegocio;
 
 namespace Cliente
 {
-    public class MenuCliente
+    public class Menu
     {
-        private FuncionalidadesCliente funcionalidadesCliente;
+        private Funcionalidad funcionalidadesCliente;
         private Usuario usuario;
 
-        public MenuCliente()
+        public Menu()
         {
-            this.funcionalidadesCliente = FuncionalidadesCliente.ObtenerInstancia();
+            this.funcionalidadesCliente = Funcionalidad.ObtenerInstancia();
             MenuPrincipal();
         }
 
         public void MenuPrincipal()
         {
-            int opcion = Metodos.ObtenerOpcion(Mensaje.menuPrincipal, 0, 1);
+            int opcion = Metodo.ObtenerOpcion(Mensaje.menuPrincipal, 0, 1);
 
             switch (opcion)
             {
@@ -37,7 +37,7 @@ namespace Cliente
             int opcion = -1;
             while (opcion != 0)
             {
-                opcion = Metodos.ObtenerOpcion(Mensaje.menuFuncionalidades, 0, 5);
+                opcion = Metodo.ObtenerOpcion(Mensaje.menuFuncionalidades, 0, 5);
                 switch (opcion)
                 {
                     case 0:

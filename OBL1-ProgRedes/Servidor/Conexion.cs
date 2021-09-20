@@ -1,26 +1,20 @@
-﻿using LogicaNegocio;
-using Protocolo;
-using Servidor.Exception;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using System.Threading;
+using LogicaNegocio;
+using System.Net;
+using Protocolo;
+using System;
 
 namespace Servidor
 {
-    public class SocketServidor
+    public class Conexion
     {
         private readonly int numeroPuerto = 9000;
         private readonly int cantConexionesEnEspera = 10;
-        private FuncionalidadesServidor funcionalidadesServidor;
+        private Funcionalidad funcionalidadesServidor;
         Socket handler;
-        Transferencia transferencia;
-        Usuario usuario;
 
-        public SocketServidor()
-        {
-        }
+        public Conexion() { }
 
         public string StartListening()
         {
@@ -36,7 +30,7 @@ namespace Servidor
             {
                 Console.WriteLine("Esperando por conexiones....");
                 handler = listener.Accept();
-                transferencia = new Transferencia(handler);
+
                 Thread threadProcessor = new Thread(() => EscucharPorUsuario(handler));
                 threadProcessor.Start();
             }
@@ -44,15 +38,19 @@ namespace Servidor
 
         private void EscucharPorUsuario(Socket handler)
         {
-            funcionalidadesServidor = new FuncionalidadesServidor(transferencia);
-            while (true) {
-                Encabezado encabezado = ControladorDeTransferencia.RecibirEncabezado(transferencia);
+            Transferencia transferencia = new Transferencia(handler);
+            Usuario usuario = null;
 
-                EjecutarAccion(encabezado);
+            funcionalidadesServidor = new Funcionalidad(transferencia);
+
+            while (true) {
+                Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
+
+                EjecutarAccion(encabezado, ref usuario);
             }
         }
 
-        private void EjecutarAccion(Encabezado encabezado)
+        private void EjecutarAccion(Encabezado encabezado, ref Usuario usuario)
         {
             string accion = encabezado.accion;
             int largoMensajeARecibir = encabezado.largoMensaje;

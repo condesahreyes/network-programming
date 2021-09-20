@@ -1,17 +1,15 @@
 ﻿using LogicaNegocio;
-using System;
-using System.Net.Sockets;
 using System.Text;
-using System.Threading;
+using System;
 
 namespace Protocolo
 {
-    public class ControladorDeTransferencia
+    public class Controlador
     {
 
         public static Encabezado RecibirEncabezado(Transferencia transferencia)
         {
-            int largoEncabezado = ConstantesDelProtocolo.largoEncabezado;
+            int largoEncabezado = Constante.largoEncabezado;
 
             string stringRecibido = RecibirMensajeGenerico(transferencia, largoEncabezado);
 
@@ -27,8 +25,6 @@ namespace Protocolo
             transferencia.EnvioDeDatos(mensajeAEnviar);
         }
 
-
-
         public static Usuario RecibirUsuario(Transferencia transferencia, int largoMensaje)
         {
             string stringRecibido = RecibirMensajeGenerico(transferencia, largoMensaje);
@@ -38,14 +34,12 @@ namespace Protocolo
             return usuario;
         }
 
-
         public static string RecibirMensajeGenerico(Transferencia transferencia, int largoMensaje)
         {
             byte[] datos = transferencia.RecibirDatos(largoMensaje);
 
             return Encoding.ASCII.GetString(datos, 0, largoMensaje);
         }
-
 
         public static void EnviarDatos(Transferencia transferencia, string datos)
         {
@@ -70,7 +64,7 @@ namespace Protocolo
 
         public static void EnviarMensajeClienteOk(Transferencia transferencia)
         {
-            Encabezado encabezado = new Encabezado(0, ConstantesDelProtocolo.MensajeOk);
+            Encabezado encabezado = new Encabezado(0, Constante.MensajeOk);
             string encabezadoEnString = Mapper.EncabezadoAString(encabezado);
 
             transferencia.EnvioDeDatos(encabezadoEnString);
@@ -78,7 +72,7 @@ namespace Protocolo
 
         public static void EnviarMensajeClienteError(Transferencia transferencia)
         {
-            Encabezado encabezado = new Encabezado(0, ConstantesDelProtocolo.MensajeEr);
+            Encabezado encabezado = new Encabezado(0, Constante.MensajeError);
             string encabezadoEnString = Mapper.EncabezadoAString(encabezado);
 
             transferencia.EnvioDeDatos(encabezadoEnString);

@@ -1,16 +1,14 @@
-﻿using LogicaNegocio;
-using Servidor.Exception;
+﻿using System.Collections.Generic;
+using LogicaNegocio;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Servidor.FuncionalidadesPorEntidad
 {
-    public class FuncionalidadesJuego
+    public class LogicaJuego
     {
         private Persistencia persistencia;
 
-        public FuncionalidadesJuego()
+        public LogicaJuego()
         {
             this.persistencia = Persistencia.ObtenerPersistencia();
         }

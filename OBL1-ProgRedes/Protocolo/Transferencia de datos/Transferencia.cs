@@ -30,7 +30,6 @@ namespace Protocolo
                     throw new SocketException();
                 }
             }
-            //Manejar exception
             return datos;
         }
 
