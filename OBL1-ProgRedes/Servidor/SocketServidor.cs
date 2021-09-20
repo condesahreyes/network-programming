@@ -72,6 +72,10 @@ namespace Servidor
                 case Accion.PedirDetalleJuego:
                     funcionalidadesServidor.EnviarDetalleDeUnJuego(largoMensajeARecibir);
                     break;
+                case Accion.PublicarCalificacion:
+                    funcionalidadesServidor.CrearCalificacion(largoMensajeARecibir);
+                    break;
+
             }
         }
     }

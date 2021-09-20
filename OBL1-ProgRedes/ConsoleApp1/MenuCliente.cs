@@ -54,6 +54,7 @@ namespace Cliente
 
                         break;
                     case 4:
+                        funcionalidadesCliente.CalificarUnJuego(this.usuario);
                         break;
                     case 5:
                         funcionalidadesCliente.DetalleDeUnJuego();

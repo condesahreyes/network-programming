@@ -108,5 +108,16 @@ namespace Protocolo
 
             return RecibirMensajeGenerico(transferencia, largoMensaje);
         }
+
+        public static Calificacion PublicarCalificacion(Transferencia transferencia, int largoMensaje)
+        {
+            byte[] datos = transferencia.RecibirDatos(largoMensaje);
+
+            string stringRecibido = Encoding.ASCII.GetString(datos, 0, largoMensaje);
+
+            Calificacion calificacion = Mapper.StringACalificacion(stringRecibido);
+
+            return calificacion;
+        }
     }
 }

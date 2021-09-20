@@ -46,7 +46,15 @@ namespace LogicaNegocio
 
         public override string ToString()
         {
-            return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " + Sinopsis;
+            string calificaciones = "";
+            int enumerado = 0;
+            foreach (Calificacion unaCalificacion in this.calificaciones)
+            {
+                enumerado++;
+                calificaciones += enumerado + ". " + unaCalificacion.ToString() + "\n";
+            }
+
+            return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " + Sinopsis + "\n" + "Calificaciones: " + "\n" + calificaciones;
         }
     }
 }

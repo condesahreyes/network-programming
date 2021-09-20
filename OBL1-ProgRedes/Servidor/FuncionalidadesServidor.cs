@@ -67,5 +67,15 @@ namespace Servidor
             ControladorDeTransferencia.EnviarDatos(transferencia, juegoEnString);
 
         }
+
+        public void CrearCalificacion(int largoMensajeARecibir)
+        {
+            Calificacion calificacion = ControladorDeTransferencia.PublicarCalificacion(transferencia, largoMensajeARecibir);
+
+            funcionesJuego.AgregarCalificacion(calificacion);
+
+            ControladorDeTransferencia.EnviarMensajeClienteOk(transferencia);
+
+        }
     }
 }

@@ -75,6 +75,34 @@ namespace Cliente
                 Mensaje.JuegoExistente();
         }
 
+
+
+        public void CalificarUnJuego(Usuario usuario)
+        {
+            List<string> juegos = conexionCliente.RecibirListaDeJuegos();
+
+            if (juegos.Count == 0)
+            {
+                Mensaje.NoExistenJuegos();
+                return;
+            }
+
+            string titulo = SeleccionarUnTituloDeJuego(juegos);
+
+
+            Calificacion unaCalificacion = Calificacion.CrearCalificacion(usuario.NombreUsuario, titulo);
+
+            string calificacionEnString = Mapper.CalificacionAString(unaCalificacion);
+
+            EnvioDeMensaje(calificacionEnString, Accion.PublicarCalificacion);
+
+            string respuestaServidor = conexionCliente.EsperarPorRespuesta();
+
+            if (respuestaServidor == ConstantesDelProtocolo.MensajeOk)
+                Mensaje.CalificacionCreada();
+        }
+
+
         private void EnvioDeMensaje(string mensaje, string accion)
         {
             conexionCliente.EnvioEncabezado(mensaje.Length, accion);

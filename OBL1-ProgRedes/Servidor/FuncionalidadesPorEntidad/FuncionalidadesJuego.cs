@@ -60,6 +60,14 @@ namespace Servidor.FuncionalidadesPorEntidad
             return true;
         }
 
+        public void AgregarCalificacion(Calificacion calificacion)
+        {
+            
+            Juego juego = BuscarJuegoPortTitulo(calificacion.TituloJuego);
+
+            juego.calificaciones.Add(calificacion);
+        }
+
         public void VerCatalogoJuegos()
         {
             List<Juego> juegos = persistencia.juegos;

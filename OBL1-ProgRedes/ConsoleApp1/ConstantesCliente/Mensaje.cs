@@ -39,6 +39,7 @@ namespace Cliente.Constantes
             Console.WriteLine("Su juego se ha dado de alta con exito");
         }
 
+
         public static void JuegoExistente()
         {
             Console.WriteLine("El juego ya existe en el sistema");
@@ -58,6 +59,11 @@ namespace Cliente.Constantes
         {
                 for (int i = 0; i < juegos.Count; i++)
                     Console.WriteLine(i + ". " + juegos[i]);
+        }
+
+        public static void CalificacionCreada()
+        {
+            Console.WriteLine("Su calificacion se a publicado con exito");
         }
     }
 }

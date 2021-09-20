@@ -50,7 +50,11 @@ namespace Protocolo
 
         public static string JuegoAString(Juego juego)
         {
-            string juegoEnString = juego.Titulo + "#" + juego.Genero + "#" + juego.Sinopsis;
+            string calificaciones = "";
+            foreach (Calificacion unaCalificacion in juego.calificaciones)
+                calificaciones += unaCalificacion.Comentario + "@" + unaCalificacion.Nota + "@" + unaCalificacion.Usuario + "/";
+
+            string juegoEnString = juego.Titulo + "#" + juego.Genero + "#" + juego.Sinopsis + "#" + calificaciones;
 
             return juegoEnString;
         }
@@ -62,10 +66,44 @@ namespace Protocolo
             string titulo = datosDelJuego[0];
             string genero = datosDelJuego[1];
             string sinopsis = datosDelJuego[2];
+            string caliicaciones = datosDelJuego[3];
+
+            string[] datosDeCalificacion = caliicaciones.Split("/");
 
             Juego juego = new Juego(titulo, genero, sinopsis, null);
 
+            if(datosDeCalificacion[0] != "")
+                for (int i=0; i < datosDeCalificacion.Length-1; i++)
+                {
+                    string[] detalleCalificacion = datosDeCalificacion[i].Split("@");
+                    string comentario = detalleCalificacion[0];
+                    int nota = Convert.ToInt32(detalleCalificacion[1]);
+                    juego.calificaciones.Add(new Calificacion(titulo, nota, comentario, detalleCalificacion[2]));
+                }
+
             return juego;
+        }
+
+        public static string CalificacionAString(Calificacion calificacion)
+        {
+            string calificacionEnString = calificacion.TituloJuego + "#" + calificacion.Nota + "#" + calificacion.Comentario + "#" + calificacion.Usuario;
+
+            return calificacionEnString;
+        }
+
+        public static Calificacion StringACalificacion(string calificacionEnString)
+        {
+            string[] datosDeCalificacion = calificacionEnString.Split("#");
+
+            string tituloJuego = datosDeCalificacion[0];
+            int nota = Convert.ToInt32(datosDeCalificacion[1]);
+            string comentario = datosDeCalificacion[2];
+            string nombreUsuario = datosDeCalificacion[3];
+
+            Calificacion calificacion = new Calificacion(tituloJuego, nota, comentario, nombreUsuario);
+
+            return calificacion;
+
         }
 
         public static string ListaDeJuegosAString(List<Juego> juegos)
