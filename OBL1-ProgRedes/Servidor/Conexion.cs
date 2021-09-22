@@ -4,11 +4,14 @@ using LogicaNegocio;
 using System.Net;
 using Protocolo;
 using System;
+using System.Collections.Generic;
 
 namespace Servidor
 {
     public class Conexion
     {
+        public static readonly List<Socket> ConnectedClients = new List<Socket>();
+        public static bool exit = false;
         private readonly int numeroPuerto = 9000;
         private readonly int cantConexionesEnEspera = 10;
         private Funcionalidad funcionalidadesServidor;
@@ -16,7 +19,7 @@ namespace Servidor
 
         public Conexion() { }
 
-        public string StartListening()
+        public void StartListening()
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, numeroPuerto);
 
@@ -26,27 +29,53 @@ namespace Servidor
             // escuchar por conexiones entrantes
             listener.Listen(cantConexionesEnEspera);
 
-            while (true)
-            {
-                Console.WriteLine("Esperando por conexiones....");
-                handler = listener.Accept();
+            Thread threadProcessor = new Thread(() => EscucharPorUsuario(listener));
+            threadProcessor.Start();
 
-                Thread threadProcessor = new Thread(() => EscucharPorUsuario(handler));
-                threadProcessor.Start();
+            Console.WriteLine("Bienvenido al server, presione enter para salir....");
+            Console.ReadLine();
+            exit = true;
+
+            listener.Close(0);
+
+
+            foreach (var socketClient in ConnectedClients)
+            {
+                    socketClient.Shutdown(SocketShutdown.Both);
+                    socketClient.Close(1); 
             }
         }
 
-        private void EscucharPorUsuario(Socket handler)
+        private void EscucharPorUsuario(Socket listener)
         {
-            Transferencia transferencia = new Transferencia(handler);
-            Usuario usuario = null;
+            try
+            {
+                while (!exit)
+                {
+                    Console.WriteLine("Esperando por conexiones....");
+                    handler = listener.Accept();
 
-            funcionalidadesServidor = new Funcionalidad(transferencia);
 
-            while (true) {
-                Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
+                    Transferencia transferencia = new Transferencia(handler);
+                    Usuario usuario = null;
 
-                EjecutarAccion(encabezado, ref usuario);
+                    funcionalidadesServidor = new Funcionalidad(transferencia);
+
+                    while (!exit)
+                    {
+                        Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
+
+
+                        EjecutarAccion(encabezado, ref usuario);
+                    }
+                }
+            }
+
+            catch (SocketException e)
+            {
+                Console.WriteLine("Se perdió la conexión con el servidor: " + e.Message);
+                Console.WriteLine("Presione enter para salir");
+                Console.ReadLine();
             }
         }
 

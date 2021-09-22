@@ -1,4 +1,7 @@
-﻿namespace Cliente
+﻿using System;
+using System.Net.Sockets;
+
+namespace Cliente
 {
     public class Cliente
     {
@@ -6,9 +9,18 @@
 
         static void Main(string[] args)
         {
-            menu = new Menu();
+            try
+            {
+                menu = new Menu();
+                menu.MenuPrincipal();
+            }
 
-            menu.MenuPrincipal();
+            catch (SocketException e)
+            {
+                Console.WriteLine("Se perdió la conexión con el servidor: " + e.Message);
+                Console.WriteLine("Presione enter para salir");
+                Console.ReadLine();
+            }
         }
     }
 }
