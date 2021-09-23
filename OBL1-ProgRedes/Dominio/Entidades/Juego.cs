@@ -52,7 +52,7 @@ namespace LogicaNegocio
             return new Juego(titulo, genero, sinopsis, null);
         }
 
-        private static void MostrarMensaje(string mensaje)
+        public static void MostrarMensaje(string mensaje)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n" + mensaje);
@@ -70,8 +70,12 @@ namespace LogicaNegocio
                 calificaciones += enumerado + ". " + unaCalificacion.ToString() + "\n";
             }
 
-            return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " + 
-                Sinopsis + "\n" + "Calificaciones: " + "\n" + calificaciones;
+            if(calificaciones != "")
+                return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " + 
+                    Sinopsis + "\n" + "Calificaciones: " + "\n" + calificaciones;
+            else
+                return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " +
+                    Sinopsis + "\n" + "Calificaciones: Aun no ha sido calificado";
         }
     }
 }

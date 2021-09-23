@@ -1,40 +1,7 @@
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.csproj.AssemblyReference.cache
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.GeneratedMSBuildEditorConfig.editorconfig
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.AssemblyInfoInputs.cache
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.AssemblyInfo.cs
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.csproj.CoreCompileInputs.cache
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.exe
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.deps.json
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.runtimeconfig.json
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.runtimeconfig.dev.json
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.dll
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.pdb
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Protocolo.dll
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Protocolo.pdb
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.csproj.CopyComplete
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.dll
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.pdb
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.genruntimeconfig.cache
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Dominio.dll
-C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Dominio.pdb
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.deps.json
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.runtimeconfig.json
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.runtimeconfig.dev.json
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.dll
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Cliente.pdb
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Dominio.dll
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Protocolo.dll
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Dominio.pdb
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcoreapp3.1/Protocolo.pdb
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.csproj.AssemblyReference.cache
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.GeneratedMSBuildEditorConfig.editorconfig
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.AssemblyInfoInputs.cache
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.AssemblyInfo.cs
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.csproj.CoreCompileInputs.cache
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.csproj.CopyComplete
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.dll
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.pdb
-/Users/jpercivale/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/obj/Debug/netcoreapp3.1/Cliente.genruntimeconfig.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csprojAssemblyReference.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.AssemblyInfo.cs
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csproj.CoreCompileInputs.cache
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.exe
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.deps.json
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.runtimeconfig.json
@@ -45,30 +12,7 @@ C:/Users/hreye/Desktop/Prog.-Redes/OBL1-ProgRedes/ConsoleApp1/bin/Debug/netcorea
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Protocolo.dll
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Dominio.pdb
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Protocolo.pdb
-\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csprojAssemblyReference.cache
-\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.AssemblyInfoInputs.cache
-\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.AssemblyInfo.cs
-\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csproj.CoreCompileInputs.cache
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csproj.CopyComplete
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.dll
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.pdb
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.genruntimeconfig.cache
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.exe
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.deps.json
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.runtimeconfig.json
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.runtimeconfig.dev.json
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.dll
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Cliente.pdb
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Dominio.dll
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Protocolo.dll
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Dominio.pdb
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\bin\Debug\netcoreapp3.1\Protocolo.pdb
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csproj.AssemblyReference.cache
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.AssemblyInfoInputs.cache
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.AssemblyInfo.cs
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csproj.CoreCompileInputs.cache
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.csproj.CopyComplete
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.dll
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.pdb
-C:\Users\hreye\Desktop\Nueva carpeta\Prog.-Redes\OBL1-ProgRedes\ConsoleApp1\obj\Debug\netcoreapp3.1\Cliente.genruntimeconfig.cache

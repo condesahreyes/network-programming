@@ -40,36 +40,45 @@ namespace Protocolo
 
         public static string JuegoAString(Juego juego)
         {
+            string juegoEnString = "";
             string calificaciones = "";
-            foreach (Calificacion unaCalificacion in juego.calificaciones)
-                calificaciones += unaCalificacion.Comentario + "@" + unaCalificacion.Nota + "@" + unaCalificacion.Usuario + "/";
+            if(juego != null)
+            {
+                foreach (Calificacion unaCalificacion in juego.calificaciones)
+                    calificaciones += unaCalificacion.Comentario + "@" + unaCalificacion.Nota + "@" + unaCalificacion.Usuario + "/";
 
-            string juegoEnString = juego.Titulo + "#" + juego.Genero + "#" + juego.Sinopsis + "#" + calificaciones;
+                    juegoEnString = juego.Titulo + "#" + juego.Genero + "#" + juego.Sinopsis + "#" + calificaciones;
+            }
 
             return juegoEnString;
         }
 
         public static Juego StringAJuego(string juegoEnString)
         {
-            string[] datosDelJuego = juegoEnString.Split("#");
+            Juego juego = null;
+            if (juegoEnString != "")
+            {
+                string[] datosDelJuego = juegoEnString.Split("#");
 
-            string titulo = datosDelJuego[0];
-            string genero = datosDelJuego[1];
-            string sinopsis = datosDelJuego[2];
-            string caliicaciones = datosDelJuego[3];
+                string titulo = datosDelJuego[0];
+                string genero = datosDelJuego[1];
+                string sinopsis = datosDelJuego[2];
+                string caliicaciones = datosDelJuego[3];
 
-            string[] datosDeCalificacion = caliicaciones.Split("/");
+                string[] datosDeCalificacion = caliicaciones.Split("/");
 
-            Juego juego = new Juego(titulo, genero, sinopsis, null);
+                juego = new Juego(titulo, genero, sinopsis, null);
 
-            if(datosDeCalificacion[0] != "")
-                for (int i=0; i < datosDeCalificacion.Length-1; i++)
-                {
-                    string[] detalleCalificacion = datosDeCalificacion[i].Split("@");
-                    string comentario = detalleCalificacion[0];
-                    int nota = Convert.ToInt32(detalleCalificacion[1]);
-                    juego.calificaciones.Add(new Calificacion(titulo, nota, comentario, detalleCalificacion[2]));
-                }
+                if (datosDeCalificacion[0] != "")
+                    for (int i = 0; i < datosDeCalificacion.Length - 1; i++)
+                    {
+                        string[] detalleCalificacion = datosDeCalificacion[i].Split("@");
+                        string comentario = detalleCalificacion[0];
+                        int nota = Convert.ToInt32(detalleCalificacion[1]);
+                        juego.calificaciones.Add(new Calificacion(titulo, nota, comentario, detalleCalificacion[2]));
+                    }
+
+            }
 
             return juego;
         }
@@ -113,6 +122,33 @@ namespace Protocolo
 
             for (int i = 0; i < cadaJuego.Length-1; i++)
                 juegos.Add(cadaJuego[i]);
+
+            return juegos;
+        }
+
+        public static string ListaJuegosAString(List<Juego> juegos)
+        {
+            string juegosString = "";
+
+            foreach(Juego juego in juegos)
+            { 
+                juegosString += JuegoAString(juego) +";";
+            }
+            return juegosString;
+        }
+        public static List<Juego> PasarStringAListaDeJuegos(string juegosString)
+        {
+            if(juegosString == "")
+            {
+                return null;
+            }
+            List<Juego> juegos = new List<Juego>();
+            string[] juego = juegosString.Split(";");
+
+            for(int i=0; i< juego.Length; i++)
+            {
+                juegos.Add(StringAJuego(juego[i]));
+            }
 
             return juegos;
         }

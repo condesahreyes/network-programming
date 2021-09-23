@@ -26,10 +26,10 @@ namespace Cliente
                     break;
                 case 1:
                     usuario = funcionalidadesCliente.InicioSesion();
+                    MenuFuncionalidades();
                     break;
             }
 
-            MenuFuncionalidades();
         }
 
         public void MenuFuncionalidades()
@@ -51,7 +51,7 @@ namespace Cliente
 
                         break;
                     case 3:
-
+                        funcionalidadesCliente.BuscarJuego();
                         break;
                     case 4:
                         funcionalidadesCliente.CalificarUnJuego(this.usuario);

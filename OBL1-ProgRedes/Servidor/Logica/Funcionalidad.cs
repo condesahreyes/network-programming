@@ -3,6 +3,7 @@ using Servidor.FuncionalidadesEntidades;
 using System.Collections.Generic;
 using LogicaNegocio;
 using Protocolo;
+using Encabezado = Protocolo.Encabezado;
 
 namespace Servidor
 {
@@ -61,6 +62,25 @@ namespace Servidor
             EnviarRespuesta(calificacion != null);
         }
 
+        public void BuscarJuegoPorTitulo(int largoMensajeARecibir)
+        {
+            string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensajeARecibir);
+            Juego juego = funcionesJuego.ObtenerJuegoPorTitulo(tituloJuego);
+            string juegoEnString = Mapper.JuegoAString(juego);
+
+            EnviarMensaje(juegoEnString, Accion.BuscarTitulo);
+        }
+
+        public void BuscarJuegoPorGenero(int largoMensajeARecibir)
+        {
+            string generoJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensajeARecibir);
+            List<Juego> juego = funcionesJuego.BuscarJuegoPorGenero(generoJuego);
+            string juegoEnString = Mapper.ListaJuegosAString(juego);
+
+            EnviarMensaje(juegoEnString, Accion.BuscarGenero);
+
+        }
+
         private void EnviarRespuesta(bool respuestaOk)
         {
             if (respuestaOk)
@@ -76,5 +96,6 @@ namespace Servidor
             Controlador.EnviarEncabezado(transferencia, encabezado);
             Controlador.EnviarDatos(transferencia, mensaje);
         }
+
     }
 }

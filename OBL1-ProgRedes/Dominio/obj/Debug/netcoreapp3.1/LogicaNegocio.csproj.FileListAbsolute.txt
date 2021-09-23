@@ -1,9 +1,0 @@
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\LogicaNegocio.deps.json
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\LogicaNegocio.dll
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\LogicaNegocio.pdb
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\LogicaNegocio.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\LogicaNegocio.AssemblyInfoInputs.cache
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\LogicaNegocio.AssemblyInfo.cs
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\LogicaNegocio.csproj.CoreCompileInputs.cache
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\LogicaNegocio.dll
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\LogicaNegocio.pdb

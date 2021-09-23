@@ -9,9 +9,13 @@
         public const string AdquirirJuego = "E";
         public const string PublicarJuego = "F";
         public const string PublicarCalificacion = "G";
-        public const string BuscarJuego = "H";
+        //public const string BuscarJuego = "H";
         public const string PedirDetalleJuego = "I";
         public const string EnviarDetalleJuego = "J";
         public const string ListaJuegos = "K";
+
+        public const string BuscarTitulo = "L";
+        public const string BuscarGenero = "M";
+        public const string BuscarCalificacion = "E";
     }
 }

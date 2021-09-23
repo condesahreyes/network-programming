@@ -4,6 +4,7 @@ using Cliente.Constantes;
 using LogicaNegocio;
 using System.Net;
 using Protocolo;
+using Encabezado = Protocolo.Encabezado;
 
 namespace Cliente
 {

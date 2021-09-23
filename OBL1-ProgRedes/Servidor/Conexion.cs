@@ -5,6 +5,7 @@ using System.Net;
 using Protocolo;
 using System;
 using System.Collections.Generic;
+using Encabezado = Protocolo.Encabezado;
 
 namespace Servidor
 {
@@ -26,13 +27,14 @@ namespace Servidor
             Socket listener = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
             listener.Bind(endPoint);
+
             // escuchar por conexiones entrantes
             listener.Listen(cantConexionesEnEspera);
 
             Thread threadProcessor = new Thread(() => EscucharPorUsuario(listener));
             threadProcessor.Start();
 
-            Console.WriteLine("Bienvenido al server, presione enter para salir....");
+            Console.WriteLine("Bienvenido al server, presione enter para terminar la conexion....");
             Console.ReadLine();
             exit = true;
 
@@ -48,6 +50,7 @@ namespace Servidor
 
         private void EscucharPorUsuario(Socket listener)
         {
+            Usuario usuario = null;
             try
             {
                 while (!exit)
@@ -55,27 +58,27 @@ namespace Servidor
                     Console.WriteLine("Esperando por conexiones....");
                     handler = listener.Accept();
 
-
                     Transferencia transferencia = new Transferencia(handler);
-                    Usuario usuario = null;
+                    ConnectedClients.Add(handler);
 
                     funcionalidadesServidor = new Funcionalidad(transferencia);
 
                     while (!exit)
                     {
                         Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
-
-
                         EjecutarAccion(encabezado, ref usuario);
                     }
                 }
             }
 
-            catch (SocketException e)
+            catch (SocketException)
             {
-                Console.WriteLine("Se perdió la conexión con el servidor: " + e.Message);
-                Console.WriteLine("Presione enter para salir");
-                Console.ReadLine();
+                if(usuario != null)
+                    Console.WriteLine("Conexion finalizada por usuario: " + usuario.NombreUsuario);
+                else
+                    Console.WriteLine("Conexion finalizada por una maquina sin usuario");
+
+                Console.WriteLine("Presione enter si desea finalizar la conexion del servidor....");
             }
         }
 
@@ -102,7 +105,15 @@ namespace Servidor
                 case Accion.PublicarCalificacion:
                     funcionalidadesServidor.CrearCalificacion(largoMensajeARecibir);
                     break;
-
+                case Accion.BuscarTitulo:
+                    funcionalidadesServidor.BuscarJuegoPorTitulo(largoMensajeARecibir);
+                    break;
+                case Accion.BuscarGenero:
+                    funcionalidadesServidor.BuscarJuegoPorGenero(largoMensajeARecibir);
+                    break;
+                    //case Accion.BuscarCalificacion:
+                    //    funcionalidadesServidor.BuscarJuegoPorCalificacion(largoMensajeARecibir);
+                    //    break;
             }
         }
     }

@@ -86,6 +86,10 @@ namespace Cliente.Constantes
 
         public static void MostrarJuegos(List<string> juegos)
         {
+            if(juegos.Count == 0) {
+                Console.WriteLine("No hay juegos registrados en el sistema");
+                return;
+            }
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("******************** Listado de juegos *********************\n");
@@ -101,6 +105,32 @@ namespace Cliente.Constantes
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Su calificacion se a publicado con exito \n");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void ConexionPerdida()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Se perdió la conexión con el servidor");
+            Console.WriteLine("Presione enter para salir");
+            Console.ReadLine();
+        }
+
+        public static void MostrarObjetoJuego(List<Juego> juegos)
+        {
+            if (juegos == null)
+            {
+                Console.WriteLine("No hay juegos registrados en el sistema");
+                return;
+            }
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("******************** Listado de juegos *********************\n");
+
+            for (int i = 0; i < juegos.Count; i++)
+                Console.WriteLine(i + ". " + juegos[i]);
+
             Console.ForegroundColor = ConsoleColor.White;
         }
 

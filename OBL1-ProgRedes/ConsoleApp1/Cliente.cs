@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cliente.Constantes;
+using System;
 using System.Net.Sockets;
 
 namespace Cliente
@@ -12,14 +13,11 @@ namespace Cliente
             try
             {
                 menu = new Menu();
-                menu.MenuPrincipal();
             }
 
-            catch (SocketException e)
+            catch (SocketException)
             {
-                Console.WriteLine("Se perdió la conexión con el servidor: " + e.Message);
-                Console.WriteLine("Presione enter para salir");
-                Console.ReadLine();
+                Mensaje.ConexionPerdida();
             }
         }
     }
