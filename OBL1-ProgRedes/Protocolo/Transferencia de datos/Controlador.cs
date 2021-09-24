@@ -1,12 +1,12 @@
 ﻿using LogicaNegocio;
 using System.Text;
 using System;
+using System.IO;
 
 namespace Protocolo
 {
     public class Controlador
     {
-
         public static Encabezado RecibirEncabezado(Transferencia transferencia)
         {
             int largoEncabezado = Constante.largoEncabezado;
@@ -112,6 +112,45 @@ namespace Protocolo
             Calificacion calificacion = Mapper.StringACalificacion(stringRecibido);
 
             return calificacion;
+        }
+
+        private void ReceiveFile(Transferencia transferencia, long fileSize, string fileName)
+        {
+            long fileParts = Constante.CalculateParts(fileSize);
+            long offset = 0;
+            long currentPart = 1;
+            while (fileSize > offset)
+            {
+                byte[] data;
+                if (currentPart != fileParts)
+                {
+                    data = transferencia.RecibirDatos(Constante.maximoTamañoDePaquete);
+                    offset += Constante.maximoTamañoDePaquete;
+                }
+                else
+                {
+                    int lastPartSize = (int)(fileSize - offset);
+                    data = transferencia.RecibirDatos(lastPartSize);
+                    offset += lastPartSize;
+                }
+                
+                WriteData(fileName, data);
+                currentPart++;
+            }
+        }
+
+        public void WriteData(string path, byte[] data)
+        {
+            if (File.Exists(path))
+            {
+                using FileStream fileStream = new FileStream(path, FileMode.Append);
+                fileStream.Write(data, 0, data.Length);
+            }
+            else
+            {
+                using FileStream fileStream = new FileStream(path, FileMode.Create);
+                fileStream.Write(data, 0, data.Length);
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using LogicaNegocio;
 using Protocolo;
 using Encabezado = Protocolo.Encabezado;
+using System;
 
 namespace Servidor
 {
@@ -81,6 +82,26 @@ namespace Servidor
 
         }
 
+        public void BuscarJuegoPorCalificacion(int largoMensajeARecibir)
+        {
+            string rankingString = Controlador.RecibirMensajeGenerico(transferencia, largoMensajeARecibir);
+
+            int ranking = Convert.ToInt32(rankingString);
+
+            List<Juego> juegos = funcionesJuego.BuscarJuegoPorCalificacion(ranking);
+
+            string juegosString = Mapper.ListaJuegosAString(juegos);
+
+            EnviarMensaje(juegosString, Accion.BuscarCalificacion);
+        }
+
+        internal void EliminarJuego(int largoMensaje)
+        {
+            string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            funcionesJuego.EliminarJuego(tituloJuego);
+            EnviarRespuesta(funcionesJuego.BuscarJuegoPortTitulo(tituloJuego) == null);
+        }
+
         private void EnviarRespuesta(bool respuestaOk)
         {
             if (respuestaOk)
@@ -97,5 +118,19 @@ namespace Servidor
             Controlador.EnviarDatos(transferencia, mensaje);
         }
 
+        public void ModificarJuego(int largoMensaje)
+        {
+            string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
+
+            string juegoEnString = Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
+
+            Juego juego = Mapper.StringAJuego(juegoEnString);
+
+            funcionesJuego.EliminarJuego(tituloJuego);
+            funcionesJuego.AgregarJuego(juego);
+
+            EnviarRespuesta(juego!=null);
+        }
     }
 }

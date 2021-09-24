@@ -60,10 +60,10 @@ namespace Servidor.FuncionalidadesPorEntidad
 
         public void AgregarCalificacion(Calificacion calificacion)
         {
-            
             Juego juego = BuscarJuegoPortTitulo(calificacion.TituloJuego);
-
             juego.calificaciones.Add(calificacion);
+
+            juego.Ranking = Math.Abs((juego.Ranking + calificacion.Nota) / juego.calificaciones.Count);
         }
 
         public void VerCatalogoJuegos()
@@ -79,6 +79,7 @@ namespace Servidor.FuncionalidadesPorEntidad
             foreach (var juego in juegos)
                 if (unTitulo == juego.Titulo)
                     return juego;
+
             return null;
         }
 
@@ -104,10 +105,26 @@ namespace Servidor.FuncionalidadesPorEntidad
             return null;
         }
 
-        public void BuscarJuegoPorCalificacion()
+        public List<Juego> BuscarJuegoPorCalificacion(int ranking)
         {
-            //Que carajos hacemos aca
-            throw new NotImplementedException();
+            List<Juego> juegos = new List<Juego>();
+
+            foreach (Juego juego in persistencia.juegos)
+                if (juego.Ranking == ranking)
+                    juegos.Add(juego);
+
+            return juegos;
+        }
+
+        internal void EliminarJuego(string tituloJuego)
+        {
+            foreach (Juego juego in persistencia.juegos)
+                if(juego.Titulo == tituloJuego)
+                {
+                    persistencia.juegos.Remove(juego);
+                    return;
+                }
+
         }
     }
 }

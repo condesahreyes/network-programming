@@ -10,7 +10,7 @@ namespace LogicaNegocio
         public string Titulo { get; set; }
         public string Genero { get; set; }
         public string Sinopsis { get; set; }
-
+        public int Ranking { get; set; }
         public Byte[] Caratula { get; set; }
 
         public Juego(string titulo, string genero, string sinopsis, byte[] caratula)
@@ -20,6 +20,7 @@ namespace LogicaNegocio
             this.calificaciones = new List<Calificacion>();
             this.Sinopsis = sinopsis;
             this.Caratula = caratula;
+            this.Ranking = 0;
         }
 
         public Juego()
@@ -33,6 +34,31 @@ namespace LogicaNegocio
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("********************* Alta de juego **********************");
                                
+            MostrarMensaje("Ingrese titulo del juego:");
+            Console.ForegroundColor = ConsoleColor.White;
+            string titulo = Console.ReadLine();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            MostrarMensaje("Ingrese género:");
+
+            string genero = Console.ReadLine();
+
+            MostrarMensaje("Ingrese sinopsis:");
+            string sinopsis = Console.ReadLine();
+
+            MostrarMensaje("Ingrese caratula:");
+
+            byte[] caratula;
+
+            return new Juego(titulo, genero, sinopsis, null);
+        }
+
+        public static Juego ModificarJuego()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("********************* Modificar juego **********************");
+
             MostrarMensaje("Ingrese titulo del juego:");
             Console.ForegroundColor = ConsoleColor.White;
             string titulo = Console.ReadLine();

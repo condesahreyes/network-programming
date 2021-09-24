@@ -92,7 +92,6 @@ namespace Servidor
                 case Accion.Login:
                     usuario = funcionalidadesServidor.InicioSesionCliente(usuario, largoMensajeARecibir);
                     break;
-
                 case Accion.PublicarJuego:
                     funcionalidadesServidor.CrearJuego(largoMensajeARecibir);
                     break;
@@ -111,9 +110,16 @@ namespace Servidor
                 case Accion.BuscarGenero:
                     funcionalidadesServidor.BuscarJuegoPorGenero(largoMensajeARecibir);
                     break;
-                    //case Accion.BuscarCalificacion:
-                    //    funcionalidadesServidor.BuscarJuegoPorCalificacion(largoMensajeARecibir);
-                    //    break;
+                case Accion.BuscarCalificacion:
+                    funcionalidadesServidor.BuscarJuegoPorCalificacion(largoMensajeARecibir);
+                    break;
+                case Accion.EliminarJuego:
+                    funcionalidadesServidor.EliminarJuego(largoMensajeARecibir);
+                    break;
+                case Accion.ModificarJuego:
+                    funcionalidadesServidor.ModificarJuego(largoMensajeARecibir);
+                    break;
+
             }
         }
     }

@@ -49,5 +49,7 @@ namespace Protocolo
             socket.Shutdown(SocketShutdown.Both);
             socket.Close();
         }
+
+
     }
 }

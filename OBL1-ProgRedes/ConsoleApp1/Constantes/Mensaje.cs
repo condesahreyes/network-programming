@@ -24,6 +24,10 @@ namespace Cliente.Constantes
 
         public static string seleccioneJuego = "\nSeleccione el juego que desea visualizar:";
 
+        public static string ranking = "Ingrese el ranking de califación por el que desea filtrar";
+
+        public static string bajaModificacion = "Seleccione la opción que desea realizar:\n0. Baja\n1.Modificacion";
+
         public static void ErrorGenerico()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -115,6 +119,34 @@ namespace Cliente.Constantes
             Console.WriteLine("Se perdió la conexión con el servidor");
             Console.WriteLine("Presione enter para salir");
             Console.ReadLine();
+        }
+
+        public static void JuegoEliminadoOk()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Se ha eliminado el juego correctamente.");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void JuegoEliminadoError()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Ocurrio un problema, no se pudo eliminar el juego.");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void JuegoModificadoOk()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Se ha modificado el juego correctamente.");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void JuegoModificadoError()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Error, el nuevo titulo ya existe en el sistema.");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public static void MostrarObjetoJuego(List<Juego> juegos)

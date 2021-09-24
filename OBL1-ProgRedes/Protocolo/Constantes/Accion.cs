@@ -16,6 +16,8 @@
 
         public const string BuscarTitulo = "L";
         public const string BuscarGenero = "M";
-        public const string BuscarCalificacion = "E";
+        public const string BuscarCalificacion = "ñ";
+        public const string EliminarJuego = "o";
+        public const string ModificarJuego = "p";
     }
 }

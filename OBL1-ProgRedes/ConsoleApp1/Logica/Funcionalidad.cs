@@ -61,6 +61,39 @@ namespace Cliente
             return juegos[juegoSeleccionado];
         }
 
+        public void BajaModificacion()
+        {
+            List<string> juegos = conexionCliente.RecibirListaDeJuegos();
+
+            if (juegos.Count == 0)
+            {
+                Mensaje.NoExistenJuegos();
+                return;
+            }
+
+            string titulo = SeleccionarUnTituloDeJuego(juegos);
+
+            int opcion = Metodo.ObtenerOpcion(Mensaje.bajaModificacion, 0, 1);
+
+            if (opcion == 0)
+                EnvioYRespuesta(titulo, Accion.EliminarJuego, Mensaje.JuegoEliminadoOk, 
+                    Mensaje.JuegoEliminadoError);
+            else if (opcion == 1)
+                ModificarUnJuego(titulo);
+        }
+
+        private void ModificarUnJuego(string titulo)
+        {
+            Juego juegoModificado = Juego.ModificarJuego();
+            string juegoEnString = Mapper.JuegoAString(juegoModificado);
+            
+            conexionCliente.EnvioEncabezado(titulo.Length, Accion.ModificarJuego);
+            conexionCliente.EnvioDeMensaje(titulo);
+
+            EnvioYRespuesta(juegoEnString, Accion.ModificarJuego, Mensaje.JuegoModificadoOk,
+                Mensaje.JuegoModificadoError);
+        }
+
         public void PublicarJuego()
         {
             Juego unJuego = Juego.CrearJuego();
@@ -114,26 +147,24 @@ namespace Cliente
 
             if (opcion == 0)
             {
-                Juego.MostrarMensaje("Ingrese el titulo por el que desea filtrar");
+                Juego.MostrarMensaje("Ingrese el Titulo por el que desea filtrar");
                 filtro = Console.ReadLine();
                 accion = Accion.BuscarTitulo;
             }
             else if (opcion == 1)
             {
-                Juego.MostrarMensaje("Ingrese el titulo por el que desea filtrar");
+                Juego.MostrarMensaje("Ingrese el Genero por el que desea filtrar");
                 filtro = Console.ReadLine();
-                accion = Accion.BuscarTitulo;
-            } 
+                accion = Accion.BuscarGenero;
+            }
             else  if (opcion == 2)
             {
-                Juego.MostrarMensaje("Ingrese el titulo por el que desea filtrar");
-                filtro = Console.ReadLine();
-                accion = Accion.BuscarTitulo;
+                filtro = Metodo.ObtenerOpcion(Mensaje.ranking, 1, 5).ToString();
+                accion = Accion.BuscarCalificacion;
             }
 
             List<Juego> juegos = BuscarJuegoPorFiltro(filtro, accion);
             Mensaje.MostrarObjetoJuego(juegos);
-
         }
 
         public List<Juego> BuscarJuegoPorFiltro(string filtro, string accion) 
