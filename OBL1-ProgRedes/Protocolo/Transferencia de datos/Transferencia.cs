@@ -37,6 +37,11 @@ namespace Protocolo
         {
             byte[] mensaje = Encoding.ASCII.GetBytes(datos);
 
+            EnvioDeDatosByte(mensaje);
+        }
+
+        public void EnvioDeDatosByte(byte[] mensaje)
+        {
             int largoMensaje = mensaje.Length;
             int enviados = 0;
 

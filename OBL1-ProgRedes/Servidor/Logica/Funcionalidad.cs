@@ -5,6 +5,8 @@ using LogicaNegocio;
 using Protocolo;
 using Encabezado = Protocolo.Encabezado;
 using System;
+using Protocolo.Transferencia_de_datos;
+using System.IO;
 
 namespace Servidor
 {
@@ -33,8 +35,12 @@ namespace Servidor
         public void CrearJuego(int largoMensajeARecibir)
         {
             Juego juego = Controlador.PublicarJuego(transferencia, largoMensajeARecibir);
-
             EnviarRespuesta(funcionesJuego.AgregarJuego(juego));
+            Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
+
+            string caratula = RecibirArchivos(encabezado.largoMensaje);
+            juego.Caratula = caratula;
+            
         }
 
         internal void EnviarListaJuegos()
@@ -52,6 +58,7 @@ namespace Servidor
             string juegoEnString = Mapper.JuegoAString(juego);
 
             EnviarMensaje(juegoEnString, Accion.EnviarDetalleJuego);
+            ControladorDeArchivos.EnviarArchivo(Directory.GetCurrentDirectory() + @"\" +juego.Caratula, transferencia);
         }
 
         public void CrearCalificacion(int largoMensajeARecibir)
@@ -132,5 +139,15 @@ namespace Servidor
 
             EnviarRespuesta(juego!=null);
         }
+
+        public string RecibirArchivos(int largoMensaje)
+        {
+            string nombreArchivo = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
+            //funcionesJuego.CambiarRutaDeLaCaratula(Directory.GetCurrentDirectory(), nombreArchivo);
+
+            return nombreArchivo;
+        }
+
     }
 }

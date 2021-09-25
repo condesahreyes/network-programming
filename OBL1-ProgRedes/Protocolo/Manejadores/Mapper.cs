@@ -47,7 +47,7 @@ namespace Protocolo
                 foreach (Calificacion unaCalificacion in juego.calificaciones)
                     calificaciones += unaCalificacion.Comentario + "@" + unaCalificacion.Nota + "@" + unaCalificacion.Usuario + "/";
 
-                    juegoEnString = juego.Titulo + "#" + juego.Genero + "#" + juego.Sinopsis + "#" + calificaciones;
+                    juegoEnString = juego.Titulo + "#" + juego.Genero + "#" + juego.Sinopsis + "#" +juego.Caratula + "#"+ calificaciones;
             }
 
             return juegoEnString;
@@ -63,11 +63,12 @@ namespace Protocolo
                 string titulo = datosDelJuego[0];
                 string genero = datosDelJuego[1];
                 string sinopsis = datosDelJuego[2];
-                string caliicaciones = datosDelJuego[3];
+                string caratula = datosDelJuego[3];
+                string caliicaciones = datosDelJuego[4];
 
                 string[] datosDeCalificacion = caliicaciones.Split("/");
 
-                juego = new Juego(titulo, genero, sinopsis, null);
+                juego = new Juego(titulo, genero, sinopsis, caratula);
 
                 if (datosDeCalificacion[0] != "")
                     for (int i = 0; i < datosDeCalificacion.Length - 1; i++)

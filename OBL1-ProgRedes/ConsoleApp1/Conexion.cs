@@ -5,6 +5,9 @@ using LogicaNegocio;
 using System.Net;
 using Protocolo;
 using Encabezado = Protocolo.Encabezado;
+using Protocolo.Transferencia_de_datos;
+using System.IO;
+using System;
 
 namespace Cliente
 {
@@ -67,7 +70,8 @@ namespace Cliente
 
         public Juego RecibirUnJuegoPorTitulo(string titulo)
         {
-            return Controlador.RecibirUnJuegoPorTitulo(transferencia, titulo);
+            Juego juego = Controlador.RecibirUnJuegoPorTitulo(transferencia, titulo);
+            return juego;
         }
 
         public List<string> RecibirListaDeJuegos()
@@ -78,6 +82,19 @@ namespace Cliente
                 (transferencia, Accion.ListaJuegos);
 
             return Mapper.StringAListaJuegosString(juegos);
+        }
+
+        public void EnvioDeArchivo(string archivo)
+        {
+            ControladorDeArchivos.EnviarArchivo(archivo, transferencia);
+        }
+
+        public string RecibirArchivos(int largoMensaje, string caratula)
+        {
+            string nombreArchivo = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
+
+            return nombreArchivo;
         }
     }
 }

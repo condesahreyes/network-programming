@@ -11,9 +11,9 @@ namespace LogicaNegocio
         public string Genero { get; set; }
         public string Sinopsis { get; set; }
         public int Ranking { get; set; }
-        public Byte[] Caratula { get; set; }
+        public string Caratula { get; set; }
 
-        public Juego(string titulo, string genero, string sinopsis, byte[] caratula)
+        public Juego(string titulo, string genero, string sinopsis, string caratula)
         {
             this.Titulo = titulo;
             this.Genero = genero;
@@ -48,9 +48,9 @@ namespace LogicaNegocio
 
             MostrarMensaje("Ingrese caratula:");
 
-            byte[] caratula;
+            string caratula = Console.ReadLine();
 
-            return new Juego(titulo, genero, sinopsis, null);
+            return new Juego(titulo, genero, sinopsis, caratula);
         }
 
         public static Juego ModificarJuego()

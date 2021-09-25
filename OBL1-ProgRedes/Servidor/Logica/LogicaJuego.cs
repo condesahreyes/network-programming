@@ -126,5 +126,13 @@ namespace Servidor.FuncionalidadesPorEntidad
                 }
 
         }
+
+        public void CambiarRutaDeLaCaratula(string direccionActual, string nombreArchivo)
+        {
+            Juego miJuego = null;
+            foreach (var juego in persistencia.juegos)
+                if (juego.Titulo == nombreArchivo)
+                    juego.Caratula = direccionActual + @"\" + nombreArchivo;
+        }
     }
 }

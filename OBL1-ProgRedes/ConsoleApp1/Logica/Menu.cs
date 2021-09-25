@@ -29,7 +29,6 @@ namespace Cliente
                     MenuFuncionalidades();
                     break;
             }
-
         }
 
         public void MenuFuncionalidades()
