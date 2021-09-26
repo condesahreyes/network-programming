@@ -1,12 +1,11 @@
 ﻿using Servidor.FuncionalidadesPorEntidad;
 using Servidor.FuncionalidadesEntidades;
+using Protocolo.Transferencia_de_datos;
 using System.Collections.Generic;
 using LogicaNegocio;
 using Protocolo;
-using Encabezado = Protocolo.Encabezado;
-using System;
-using Protocolo.Transferencia_de_datos;
 using System.IO;
+using System;
 
 namespace Servidor
 {
@@ -35,12 +34,11 @@ namespace Servidor
         public void CrearJuego(int largoMensajeARecibir)
         {
             Juego juego = Controlador.PublicarJuego(transferencia, largoMensajeARecibir);
-            EnviarRespuesta(funcionesJuego.AgregarJuego(juego));
-            Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
 
-            string caratula = RecibirArchivos(encabezado.largoMensaje);
+            string caratula = RecibirArchivos();
             juego.Caratula = caratula;
-            
+
+            EnviarRespuesta(funcionesJuego.AgregarJuego(juego));
         }
 
         internal void EnviarListaJuegos()
@@ -134,17 +132,21 @@ namespace Servidor
 
             Juego juego = Mapper.StringAJuego(juegoEnString);
 
+            string caratula = RecibirArchivos();
+            juego.Caratula = caratula;
+
             funcionesJuego.EliminarJuego(tituloJuego);
             funcionesJuego.AgregarJuego(juego);
 
             EnviarRespuesta(juego!=null);
         }
 
-        public string RecibirArchivos(int largoMensaje)
+        public string RecibirArchivos()
         {
-            string nombreArchivo = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
+
+            string nombreArchivo = Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
             ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
-            //funcionesJuego.CambiarRutaDeLaCaratula(Directory.GetCurrentDirectory(), nombreArchivo);
 
             return nombreArchivo;
         }

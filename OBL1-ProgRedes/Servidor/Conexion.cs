@@ -1,28 +1,42 @@
-﻿using System.Net.Sockets;
+﻿using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Net.Sockets;
 using System.Threading;
 using LogicaNegocio;
 using System.Net;
 using Protocolo;
+using System.IO;
 using System;
-using System.Collections.Generic;
-using Encabezado = Protocolo.Encabezado;
 
 namespace Servidor
 {
     public class Conexion
     {
-        public static readonly List<Socket> ConnectedClients = new List<Socket>();
-        public static bool exit = false;
-        private readonly int numeroPuerto = 9000;
-        private readonly int cantConexionesEnEspera = 10;
+        private List<Socket> ConnectedClients = new List<Socket>();
         private Funcionalidad funcionalidadesServidor;
-        Socket handler;
+        private Socket handler;
 
-        public Conexion() { }
+        private int cantConexionesEnEspera;
+        private int puerto;
+
+        private bool salir = false;
+
+        private string ipServidor;
+
+        public Conexion() 
+        {
+            IConfiguration configuracion = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("AppSettings.json", optional: false).Build();
+
+            puerto = int.Parse(configuracion["port"]);
+            cantConexionesEnEspera = int.Parse(configuracion["backLog"]);
+            ipServidor = configuracion["ip"];
+        }
 
         public void StartListening()
         {
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, numeroPuerto);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipServidor), puerto);
 
             Socket listener = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
@@ -36,10 +50,9 @@ namespace Servidor
 
             Console.WriteLine("Bienvenido al server, presione enter para terminar la conexion....");
             Console.ReadLine();
-            exit = true;
+            salir = true;
 
             listener.Close(0);
-
 
             foreach (var socketClient in ConnectedClients)
             {
@@ -53,7 +66,7 @@ namespace Servidor
             Usuario usuario = null;
             try
             {
-                while (!exit)
+                while (!salir)
                 {
                     Console.WriteLine("Esperando por conexiones....");
                     handler = listener.Accept();
@@ -63,7 +76,7 @@ namespace Servidor
 
                     funcionalidadesServidor = new Funcionalidad(transferencia);
 
-                    while (!exit)
+                    while (!salir)
                     {
                         Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
                         EjecutarAccion(encabezado, ref usuario);

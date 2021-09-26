@@ -1,35 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Configuration;
+using Protocolo.Transferencia_de_datos;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using Cliente.Constantes;
 using LogicaNegocio;
 using System.Net;
 using Protocolo;
-using Encabezado = Protocolo.Encabezado;
-using Protocolo.Transferencia_de_datos;
 using System.IO;
-using System;
 
 namespace Cliente
 {
     public class Conexion
     {
-        int port = 9000;
-
         Transferencia transferencia;
-        IPEndPoint ipEndPoint;
-        Socket sender;
 
         public Conexion()
         {
-            port = 9000;
+            IConfiguration configuracion = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("AppSettings.json", optional : false).Build();
 
-            ipEndPoint = new IPEndPoint(IPAddress.Loopback, port);
-            sender = new Socket(ipEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            int puertoCliente = int.Parse(configuracion["puertoCliente"]);
+            int puertoServidor = int.Parse(configuracion["puertoServidor"]);
+            string ipServidor = configuracion["ipServidor"];
+
+            IPEndPoint endPointCliente = new IPEndPoint(IPAddress.Loopback, puertoCliente);
+            IPEndPoint endPointServidor = new IPEndPoint(IPAddress.Parse(ipServidor), puertoServidor);
+
+            Socket sender = new Socket(endPointCliente.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+
+            sender.Bind(endPointCliente);
 
             transferencia = new Transferencia(sender);
 
             // Conectarse desde un socket client
-            sender.Connect(ipEndPoint);
+            sender.Connect(endPointServidor);
             Mensaje.Conectado(sender.RemoteEndPoint.ToString());
         }
 

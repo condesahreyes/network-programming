@@ -1,10 +1,8 @@
-﻿using Encabezado = Protocolo.Encabezado;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cliente.Constantes;
 using LogicaNegocio;
 using Protocolo;
 using System;
-using Protocolo.Transferencia_de_datos;
 
 namespace Cliente
 {
@@ -46,9 +44,9 @@ namespace Cliente
 
             string caratula = unJuego.Caratula;
 
-            EnvioYRespuesta(juegoEnString, Accion.PublicarJuego,
-                Mensaje.JuegoCreado, Mensaje.JuegoExistente);
+            EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.PublicarJuego);
             conexionCliente.EnvioDeArchivo(caratula);
+            RecibirRespuestas(Mensaje.JuegoCreado, Mensaje.JuegoExistente);
         }
 
         public void BuscarJuego()
@@ -170,10 +168,20 @@ namespace Cliente
         private void EnvioYRespuesta(string mensaje, string accion,
             Action RespuestaOk, Action RespuestaError)
         {
+            EnvioMensajeConPrevioEncabezado(mensaje, accion);
+
+            RecibirRespuestas(RespuestaOk, RespuestaError);
+        }
+
+        private void EnvioMensajeConPrevioEncabezado(string mensaje, string accion)
+        {
             conexionCliente.EnvioEncabezado(mensaje.Length, accion);
 
             conexionCliente.EnvioDeMensaje(mensaje);
+        }
 
+        private void RecibirRespuestas(Action RespuestaOk, Action RespuestaError)
+        {
             string respuestaServidor = conexionCliente.EsperarPorRespuesta();
 
             if (respuestaServidor == Constante.MensajeOk)
@@ -190,8 +198,11 @@ namespace Cliente
             conexionCliente.EnvioEncabezado(titulo.Length, Accion.ModificarJuego);
             conexionCliente.EnvioDeMensaje(titulo);
 
-            EnvioYRespuesta(juegoEnString, Accion.ModificarJuego, Mensaje.JuegoModificadoOk,
-                Mensaje.JuegoModificadoError);
+            EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.ModificarJuego);
+
+            conexionCliente.EnvioDeArchivo(juegoModificado.Caratula);
+
+            RecibirRespuestas(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError);
         }
 
     }

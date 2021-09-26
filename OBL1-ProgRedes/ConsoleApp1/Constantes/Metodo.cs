@@ -7,7 +7,6 @@ namespace Cliente.Constantes
     {
         public static int ObtenerOpcion(string mensaje, int opcionMinima, int opcionMaxima)
         {
-            
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -18,8 +17,9 @@ namespace Cliente.Constantes
 
                 if (!Regex.IsMatch(opcion, "^[" + opcionMinima + "-" + opcionMaxima + "]$"))
                 {
+                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(" \nIngrese una opción valida. Entre " + opcionMinima + " y "
+                    Console.WriteLine("Ingrese una opción valida. Entre " + opcionMinima + " y "
                         + opcionMaxima + "\n");
                 }
                 else

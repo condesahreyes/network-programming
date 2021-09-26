@@ -26,7 +26,7 @@ namespace Cliente.Constantes
 
         public static string ranking = "Ingrese el ranking de califación por el que desea filtrar";
 
-        public static string bajaModificacion = "Seleccione la opción que desea realizar:\n0. Baja\n1.Modificacion";
+        public static string bajaModificacion = "0. Baja\n1. Modificacion \n\nSeleccione la opción que desea realizar:";
 
         public static void ErrorGenerico()
         {
@@ -37,8 +37,8 @@ namespace Cliente.Constantes
 
         public static void Conectado(string conectadoA)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Socket conectado a " + conectadoA);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Socket conectado a " + conectadoA + "\n");
             Console.ForegroundColor = ConsoleColor.White;
         }
 
@@ -137,7 +137,8 @@ namespace Cliente.Constantes
 
         public static void JuegoModificadoOk()
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Se ha modificado el juego correctamente.");
             Console.ForegroundColor = ConsoleColor.White;
         }

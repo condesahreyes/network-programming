@@ -1,7 +1,6 @@
 ﻿using LogicaNegocio;
 using System.Text;
 using System;
-using Protocolo.Transferencia_de_datos;
 
 namespace Protocolo
 {

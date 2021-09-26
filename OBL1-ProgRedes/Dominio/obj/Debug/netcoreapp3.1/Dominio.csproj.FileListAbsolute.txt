@@ -16,3 +16,4 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.AssemblyReference.cache

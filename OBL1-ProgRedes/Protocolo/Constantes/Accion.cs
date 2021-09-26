@@ -2,23 +2,22 @@
 {
     public class Accion
     {
-        public const string Salir = "A";
-        public const string Desconectarse = "B";
-        public const string Login = "C";
-        public const string VerCatalogo = "D";
-        public const string AdquirirJuego = "E";
-        public const string PublicarJuego = "F";
-        public const string PublicarCalificacion = "G";
-        //public const string BuscarJuego = "H";
-        public const string PedirDetalleJuego = "I";
-        public const string EnviarDetalleJuego = "J";
-        public const string ListaJuegos = "K";
+        public const string Login = "A";
 
-        public const string BuscarTitulo = "L";
-        public const string BuscarGenero = "M";
-        public const string BuscarCalificacion = "Ñ";
-        public const string EliminarJuego = "O";
-        public const string ModificarJuego = "P";
-        public const string EnviarCaratula = "Q";
+        public const string PublicarJuego = "B";
+        public const string PublicarCalificacion = "C";
+
+        public const string PedirDetalleJuego = "D";
+        public const string ListaJuegos = "E";
+
+        public const string BuscarTitulo = "F";
+        public const string BuscarGenero = "G";
+        public const string BuscarCalificacion = "H";
+
+        public const string EliminarJuego = "I";
+        public const string ModificarJuego = "J";
+
+        public const string EnviarDetalleJuego = "K";
+        public const string EnviarCaratula = "L";
     }
 }

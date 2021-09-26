@@ -23,25 +23,6 @@ namespace Servidor.FuncionalidadesPorEntidad
             return false;
         }
 
-        public void PublicarJuego()
-        {
-            bool esJuegoExistente = true;
-
-            Juego juego = null;
-
-            while (esJuegoExistente)
-            {
-                juego = Juego.CrearJuego();
-                esJuegoExistente = EsJuegoExistente(juego);
-
-                if (esJuegoExistente)
-                    Console.WriteLine("El titulo " + juego.Titulo + 
-                        " ya esta registrado en el sistema.");
-            }
-
-            persistencia.juegos.Add(juego);
-        }
-
         internal List<Juego> ObtenerJuegos()
         {
             return persistencia.juegos;
@@ -124,15 +105,7 @@ namespace Servidor.FuncionalidadesPorEntidad
                     persistencia.juegos.Remove(juego);
                     return;
                 }
-
         }
 
-        public void CambiarRutaDeLaCaratula(string direccionActual, string nombreArchivo)
-        {
-            Juego miJuego = null;
-            foreach (var juego in persistencia.juegos)
-                if (juego.Titulo == nombreArchivo)
-                    juego.Caratula = direccionActual + @"\" + nombreArchivo;
-        }
     }
 }
