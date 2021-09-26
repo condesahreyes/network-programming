@@ -74,6 +74,9 @@ namespace Servidor
                     Transferencia transferencia = new Transferencia(handler);
                     ConnectedClients.Add(handler);
 
+                    Thread threadProcessor = new Thread(() => EscucharPorUsuario(listener));
+                    threadProcessor.Start();
+
                     funcionalidadesServidor = new Funcionalidad(transferencia);
 
                     while (!salir)
