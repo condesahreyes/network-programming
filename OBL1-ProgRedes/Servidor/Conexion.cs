@@ -71,7 +71,7 @@ namespace Servidor
                 {
                     Console.WriteLine("Esperando por conexiones....");
                     handler = listener.Accept();
-                    Thread pepito = new Thread(() => EjecutarAccion(ref usuario, handler));
+                    Thread pepito = new Thread(() => ConexionUsuario(usuario, handler));
                     pepito.Start();
                     ConnectedClients.Add(handler);
                 }
@@ -88,10 +88,24 @@ namespace Servidor
             }
         }
 
-        private void EjecutarAccion(ref Usuario usuario, Socket handler)
+        private void ConexionUsuario(Usuario usuario, Socket socket)
         {
             while (!salir)
             {
+                try
+                {
+                    EjecutarAccion(ref usuario, socket);
+                }
+                catch(Exception)
+                {
+                    return;
+                }
+            }
+
+        }
+
+        private void EjecutarAccion(ref Usuario usuario, Socket handler)
+        {
                 Encabezado encabezado = Controlador.RecibirEncabezado(new Transferencia(handler));
                 Transferencia transferencia = new Transferencia(handler);
 
@@ -133,7 +147,7 @@ namespace Servidor
                         funcionalidadesServidor.ModificarJuego(largoMensajeARecibir);
                         break;
                 }
-            }
         }
+
     }
 }

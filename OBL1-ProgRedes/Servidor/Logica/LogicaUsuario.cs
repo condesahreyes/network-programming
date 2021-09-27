@@ -20,12 +20,13 @@ namespace Servidor.FuncionalidadesEntidades
 
             if (noExisteUsuario)
             {
-                persistencia.usuarios.Add(usuario);
-                Console.WriteLine("El usuario " + usuario.NombreUsuario + " no existia en el sistema. \n" +
-                    "Lo hemos dado de alta.");
+                lock (persistencia)
+                {
+                    persistencia.usuarios.Add(usuario);
+                    Console.WriteLine("El usuario " + usuario.NombreUsuario + " no existia en el sistema. \n" +
+                        "Lo hemos dado de alta.");
+                }
             }
-            else
-                Console.WriteLine("Se ha iniciado sesión el usuario " + usuario.NombreUsuario);
 
             return DevolverUsuarioExistente(usuario);
         }
