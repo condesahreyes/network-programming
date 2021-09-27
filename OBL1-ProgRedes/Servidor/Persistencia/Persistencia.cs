@@ -18,7 +18,11 @@ namespace Servidor
 
         public static Persistencia ObtenerPersistencia()
         {
-            return _persistencia == null ? new Persistencia() : _persistencia;
+            if(_persistencia == null)
+            {
+                _persistencia = new Persistencia();
+            }
+            return _persistencia;
         }
     }
 }

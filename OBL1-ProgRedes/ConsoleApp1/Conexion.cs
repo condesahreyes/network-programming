@@ -23,8 +23,9 @@ namespace Cliente
             int puertoCliente = int.Parse(configuracion["puertoCliente"]);
             int puertoServidor = int.Parse(configuracion["puertoServidor"]);
             string ipServidor = configuracion["ipServidor"];
+            string ipCliente = configuracion["ipCliente"];
 
-            IPEndPoint endPointCliente = new IPEndPoint(IPAddress.Loopback, puertoCliente);
+            IPEndPoint endPointCliente = new IPEndPoint(IPAddress.Parse(ipCliente), puertoCliente);
             IPEndPoint endPointServidor = new IPEndPoint(IPAddress.Parse(ipServidor), puertoServidor);
 
             Socket sender = new Socket(endPointCliente.AddressFamily, SocketType.Stream, ProtocolType.Tcp);

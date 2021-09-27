@@ -23,3 +23,4 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.csproj.CopyComplete
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.pdb
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.GeneratedMSBuildEditorConfig.editorconfig

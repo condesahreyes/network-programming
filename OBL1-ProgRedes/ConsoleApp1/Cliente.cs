@@ -1,6 +1,7 @@
 ﻿using Cliente.Constantes;
 using System;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace Cliente
 {
@@ -13,6 +14,8 @@ namespace Cliente
             try
             {
                 menu = new Menu();
+                //var threadClient = new Thread(() => menu = new Menu());
+                //threadClient.Start();
             }
 
             catch (SocketException)

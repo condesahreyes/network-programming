@@ -45,3 +45,14 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.genruntimeconfig.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\AppSettings.json
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Servidor\obj\Debug\netcoreapp3.1\Servidor.GeneratedMSBuildEditorConfig.editorconfig
