@@ -5,7 +5,7 @@ namespace Protocolo
 {
     public class Transferencia
     {
-        private Socket socket;
+        public Socket socket;
 
         public Transferencia(Socket socket)
         {

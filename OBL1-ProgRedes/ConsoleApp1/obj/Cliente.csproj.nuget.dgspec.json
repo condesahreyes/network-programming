@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj": {}
+    "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj": {}
   },
   "projects": {
-    "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj": {
+    "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj",
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj",
         "projectName": "Cliente",
-        "projectPath": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj",
-        "packagesPath": "C:\\Users\\jpercivale\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\obj\\",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jpercivale\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,11 +28,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
-                "projectPath": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+              "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
               },
-              "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
-                "projectPath": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj"
+              "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj"
               }
             }
           }
@@ -66,32 +66,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.19, 3.1.19]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+    "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
-        "packagesPath": "C:\\Users\\jpercivale\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jpercivale\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -131,21 +125,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
+    "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
         "projectName": "Protocolo",
-        "projectPath": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
-        "packagesPath": "C:\\Users\\jpercivale\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\obj\\",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jpercivale\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -159,8 +153,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
-                "projectPath": "\\\\Mac\\Home\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+              "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\ultimooo\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
               }
             }
           }
@@ -189,7 +183,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

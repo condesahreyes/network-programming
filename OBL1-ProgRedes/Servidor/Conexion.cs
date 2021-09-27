@@ -32,6 +32,7 @@ namespace Servidor
             puerto = int.Parse(configuracion["port"]);
             cantConexionesEnEspera = int.Parse(configuracion["backLog"]);
             ipServidor = configuracion["ip"];
+            StartListening();
         }
 
         public void StartListening()
@@ -70,20 +71,9 @@ namespace Servidor
                 {
                     Console.WriteLine("Esperando por conexiones....");
                     handler = listener.Accept();
-
-                    Transferencia transferencia = new Transferencia(handler);
+                    Thread pepito = new Thread(() => EjecutarAccion(ref usuario, handler));
+                    pepito.Start();
                     ConnectedClients.Add(handler);
-
-                    Thread threadProcessor = new Thread(() => EscucharPorUsuario(listener));
-                    threadProcessor.Start();
-
-                    funcionalidadesServidor = new Funcionalidad(transferencia);
-
-                    while (!salir)
-                    {
-                        Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
-                        EjecutarAccion(encabezado, ref usuario);
-                    }
                 }
             }
 
@@ -98,43 +88,51 @@ namespace Servidor
             }
         }
 
-        private void EjecutarAccion(Encabezado encabezado, ref Usuario usuario)
+        private void EjecutarAccion(ref Usuario usuario, Socket handler)
         {
-            string accion = encabezado.accion;
-            int largoMensajeARecibir = encabezado.largoMensaje;
-            
-            switch (accion)
+            while (!salir)
             {
-                case Accion.Login:
-                    usuario = funcionalidadesServidor.InicioSesionCliente(usuario, largoMensajeARecibir);
-                    break;
-                case Accion.PublicarJuego:
-                    funcionalidadesServidor.CrearJuego(largoMensajeARecibir);
-                    break;
-                case Accion.ListaJuegos:
-                    funcionalidadesServidor.EnviarListaJuegos();
-                    break;
-                case Accion.PedirDetalleJuego:
-                    funcionalidadesServidor.EnviarDetalleDeUnJuego(largoMensajeARecibir);
-                    break;
-                case Accion.PublicarCalificacion:
-                    funcionalidadesServidor.CrearCalificacion(largoMensajeARecibir);
-                    break;
-                case Accion.BuscarTitulo:
-                    funcionalidadesServidor.BuscarJuegoPorTitulo(largoMensajeARecibir);
-                    break;
-                case Accion.BuscarGenero:
-                    funcionalidadesServidor.BuscarJuegoPorGenero(largoMensajeARecibir);
-                    break;
-                case Accion.BuscarCalificacion:
-                    funcionalidadesServidor.BuscarJuegoPorCalificacion(largoMensajeARecibir);
-                    break;
-                case Accion.EliminarJuego:
-                    funcionalidadesServidor.EliminarJuego(largoMensajeARecibir);
-                    break;
-                case Accion.ModificarJuego:
-                    funcionalidadesServidor.ModificarJuego(largoMensajeARecibir);
-                    break;
+                Encabezado encabezado = Controlador.RecibirEncabezado(new Transferencia(handler));
+                Transferencia transferencia = new Transferencia(handler);
+
+                funcionalidadesServidor = new Funcionalidad(transferencia);
+
+                string accion = encabezado.accion;
+                int largoMensajeARecibir = encabezado.largoMensaje;
+
+                switch (accion)
+                {
+                    case Accion.Login:
+                        usuario = funcionalidadesServidor.InicioSesionCliente(usuario, largoMensajeARecibir);
+                        break;
+                    case Accion.PublicarJuego:
+                        funcionalidadesServidor.CrearJuego(largoMensajeARecibir);
+                        break;
+                    case Accion.ListaJuegos:
+                        funcionalidadesServidor.EnviarListaJuegos();
+                        break;
+                    case Accion.PedirDetalleJuego:
+                        funcionalidadesServidor.EnviarDetalleDeUnJuego(largoMensajeARecibir);
+                        break;
+                    case Accion.PublicarCalificacion:
+                        funcionalidadesServidor.CrearCalificacion(largoMensajeARecibir);
+                        break;
+                    case Accion.BuscarTitulo:
+                        funcionalidadesServidor.BuscarJuegoPorTitulo(largoMensajeARecibir);
+                        break;
+                    case Accion.BuscarGenero:
+                        funcionalidadesServidor.BuscarJuegoPorGenero(largoMensajeARecibir);
+                        break;
+                    case Accion.BuscarCalificacion:
+                        funcionalidadesServidor.BuscarJuegoPorCalificacion(largoMensajeARecibir);
+                        break;
+                    case Accion.EliminarJuego:
+                        funcionalidadesServidor.EliminarJuego(largoMensajeARecibir);
+                        break;
+                    case Accion.ModificarJuego:
+                        funcionalidadesServidor.ModificarJuego(largoMensajeARecibir);
+                        break;
+                }
             }
         }
     }

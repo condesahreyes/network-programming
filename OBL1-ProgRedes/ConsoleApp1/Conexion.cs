@@ -18,7 +18,7 @@ namespace Cliente
         {
             IConfiguration configuracion = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("AppSettings.json", optional : false).Build();
+                .AddJsonFile("AppSettings.json", optional: false).Build();
 
             int puertoCliente = int.Parse(configuracion["puertoCliente"]);
             int puertoServidor = int.Parse(configuracion["puertoServidor"]);

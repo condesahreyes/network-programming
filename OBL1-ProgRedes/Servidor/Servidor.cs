@@ -5,7 +5,6 @@
         static void Main(string[] args)
         {
             Conexion server = new Conexion();
-            server.StartListening();
         }
     }
 }

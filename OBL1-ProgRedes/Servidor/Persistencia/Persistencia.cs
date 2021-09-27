@@ -22,6 +22,7 @@ namespace Servidor
             {
                 _persistencia = new Persistencia();
             }
+
             return _persistencia;
         }
     }
