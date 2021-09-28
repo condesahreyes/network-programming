@@ -69,9 +69,11 @@ namespace Cliente
             Controlador.EnviarDatos(transferencia, mensaje);
         }
 
-        public string RecibirMensaje(int largoMensaje)
+        public string RecibirMensaje()
         {
-            return Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            Encabezado encabezado = RecibirEncabezado();
+
+            return Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
         }
 
         public Juego RecibirUnJuegoPorTitulo(string titulo)
@@ -95,9 +97,11 @@ namespace Cliente
             ControladorDeArchivos.EnviarArchivo(archivo, transferencia);
         }
 
-        public string RecibirArchivos(int largoMensaje, string caratula)
+        public string RecibirArchivos(string caratula)
         {
-            string nombreArchivo = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            Encabezado encabezado = RecibirEncabezado();
+
+            string nombreArchivo = Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
             ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
 
             return nombreArchivo;

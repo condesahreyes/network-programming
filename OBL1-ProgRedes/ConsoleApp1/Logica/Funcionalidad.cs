@@ -51,21 +51,19 @@ namespace Cliente
 
         public void BuscarJuego()
         {
-            string opciones = "0. Buscar por titulo \n1. Buscar por genero \n2. Buscar por Calificacion";
-            Juego.MostrarMensaje("Seleccion por que desea buscar:");
-            int opcion = Metodo.ObtenerOpcion(opciones, 0, 2);
+            int opcion = Metodo.ObtenerOpcion(Mensaje.buscarJuegoPorFiltro, 0, 2);
             string filtro = "";
             string accion = "";
 
             if (opcion == 0)
             {
-                Juego.MostrarMensaje("Ingrese el Titulo por el que desea filtrar");
+                Mensaje.BuscarJuegoPorTitulo();
                 filtro = Console.ReadLine();
                 accion = Accion.BuscarTitulo;
             }
             else if (opcion == 1)
             {
-                Juego.MostrarMensaje("Ingrese el Genero por el que desea filtrar");
+                Mensaje.BuscarJuegoPorGenero();
                 filtro = Console.ReadLine();
                 accion = Accion.BuscarGenero;
             }
@@ -90,8 +88,8 @@ namespace Cliente
             }
 
             Juego juego = conexionCliente.RecibirUnJuegoPorTitulo(titulo);
-            Encabezado encabezado = conexionCliente.RecibirEncabezado();
-            conexionCliente.RecibirArchivos(encabezado.largoMensaje, juego.Caratula);
+            
+            conexionCliente.RecibirArchivos(juego.Caratula);
             Mensaje.MostrarJuego(juego);
         }
 
@@ -113,19 +111,17 @@ namespace Cliente
                 Mensaje.CalificacionCreada, Mensaje.ErrorGenerico);
         }
 
-        public List<Juego> BuscarJuegoPorFiltro(string filtro, string accion)
+        private List<Juego> BuscarJuegoPorFiltro(string filtro, string accion)
         {
             conexionCliente.EnvioEncabezado(filtro.Length, accion);
             conexionCliente.EnvioDeMensaje(filtro);
 
-            Encabezado encabezado = conexionCliente.RecibirEncabezado();
-
-            string mensaje = conexionCliente.RecibirMensaje(encabezado.largoMensaje);
+            string mensaje = conexionCliente.RecibirMensaje();
 
             return Mapper.PasarStringAListaDeJuegos(mensaje);
         }
 
-        public void BajaModificacion()
+        public void BajaModificacionJuego()
         {
             string titulo = DevolverTituloJuegoSeleccionado();
 
@@ -165,31 +161,6 @@ namespace Cliente
             return juegos[juegoSeleccionado];
         }
 
-        private void EnvioYRespuesta(string mensaje, string accion,
-            Action RespuestaOk, Action RespuestaError)
-        {
-            EnvioMensajeConPrevioEncabezado(mensaje, accion);
-
-            RecibirRespuestas(RespuestaOk, RespuestaError);
-        }
-
-        private void EnvioMensajeConPrevioEncabezado(string mensaje, string accion)
-        {
-            conexionCliente.EnvioEncabezado(mensaje.Length, accion);
-
-            conexionCliente.EnvioDeMensaje(mensaje);
-        }
-
-        private void RecibirRespuestas(Action RespuestaOk, Action RespuestaError)
-        {
-            string respuestaServidor = conexionCliente.EsperarPorRespuesta();
-
-            if (respuestaServidor == Constante.MensajeOk)
-                RespuestaOk();
-            else
-                RespuestaError();
-        }
-
         private void ModificarUnJuego(string titulo)
         {
             Juego juegoModificado = Juego.ModificarJuego();
@@ -203,6 +174,29 @@ namespace Cliente
             conexionCliente.EnvioDeArchivo(juegoModificado.Caratula);
 
             RecibirRespuestas(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError);
+        }
+
+        private void EnvioYRespuesta(string mensaje, string accion, Action Ok, Action Error)
+        {
+            EnvioMensajeConPrevioEncabezado(mensaje, accion);
+
+            RecibirRespuestas(Ok, Error);
+        }
+
+        private void EnvioMensajeConPrevioEncabezado(string mensaje, string accion)
+        {
+            conexionCliente.EnvioEncabezado(mensaje.Length, accion);
+            conexionCliente.EnvioDeMensaje(mensaje);
+        }
+
+        private void RecibirRespuestas(Action RespuestaOk, Action RespuestaError)
+        {
+            string respuestaServidor = conexionCliente.EsperarPorRespuesta();
+
+            if (respuestaServidor == Constante.MensajeOk)
+                RespuestaOk();
+            else
+                RespuestaError();
         }
 
     }

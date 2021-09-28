@@ -47,7 +47,7 @@ namespace Cliente
                         funcionalidadesCliente.PublicarJuego();
                         break;
                     case 2:
-                        funcionalidadesCliente.BajaModificacion();
+                        funcionalidadesCliente.BajaModificacionJuego();
                         break;
                     case 3:
                         funcionalidadesCliente.BuscarJuego();
