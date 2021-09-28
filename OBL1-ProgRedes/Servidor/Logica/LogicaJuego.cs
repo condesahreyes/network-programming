@@ -60,13 +60,53 @@ namespace Servidor.FuncionalidadesPorEntidad
 
         public void VerCatalogoJuegos()
         {
+            List<Juego> juegos = persistencia.juegos;
+
+            if (juegos.Count == 0)
+            {
+                Console.WriteLine("No se han ingresados juegos");
+                return;
+            }
+
             lock (persistencia)
             {
-                List<Juego> juegos = persistencia.juegos;
-                foreach (var juego in juegos)
+                    foreach (var juego in juegos)
                     Console.WriteLine(juego.ToString());
             }
         }
+
+        public bool AdquirirJuegoPorUsuario(string juego, Usuario usuario)
+        {
+            Juego unJuego = ObtenerJuegoPorTitulo(juego);
+            if (unJuego == null)
+                return false;
+            foreach (Usuario unUsuario in persistencia.usuarios)
+            {
+                if(unUsuario.NombreUsuario == usuario.NombreUsuario)
+                {
+                    unJuego.usuarios.Add(unUsuario);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public List<Juego> JuegoUsuarios(Usuario usuario)
+        {
+            List<Juego> juegosUsuario = new List<Juego>();
+            foreach (Juego juego in persistencia.juegos)
+            {
+                foreach (Usuario unUsuario in juego.usuarios)
+                {
+                    if(unUsuario.NombreUsuario == usuario.NombreUsuario)
+                    {
+                        juegosUsuario.Add(juego);
+                    }
+                }
+            }
+            return juegosUsuario;
+        }
+
         public Juego BuscarJuegoPortTitulo(string unTitulo)
         {
             lock (persistencia)
@@ -79,6 +119,7 @@ namespace Servidor.FuncionalidadesPorEntidad
                 return null;
             }
         }
+
         public List<Juego> BuscarJuegoPorGenero(string unGenero)
         {
             lock (persistencia)
@@ -136,6 +177,5 @@ namespace Servidor.FuncionalidadesPorEntidad
             }
 
         }
-
     }
 }

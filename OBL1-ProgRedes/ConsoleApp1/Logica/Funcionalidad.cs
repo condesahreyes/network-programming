@@ -18,7 +18,10 @@ namespace Cliente
 
         public static Funcionalidad ObtenerInstancia()
         {
-            return _instancia == null ? new Funcionalidad() : _instancia;
+            if (_instancia == null)
+                _instancia = new Funcionalidad();
+  
+            return _instancia;
         }
 
         public Usuario InicioSesion()
@@ -87,10 +90,17 @@ namespace Cliente
                 return;
             }
 
-            Juego juego = conexionCliente.RecibirUnJuegoPorTitulo(titulo);
-            
-            conexionCliente.RecibirArchivos(juego.Caratula);
-            Mensaje.MostrarJuego(juego);
+            try
+            {
+                Juego juego = conexionCliente.RecibirUnJuegoPorTitulo(titulo);
+
+                conexionCliente.RecibirArchivos(juego.Caratula);
+                Mensaje.MostrarJuego(juego);
+            }
+            catch(Exception)
+            {
+                Mensaje.JuegoEliminado();
+            }
         }
 
         public void CalificarUnJuego(Usuario usuario)
@@ -111,14 +121,17 @@ namespace Cliente
                 Mensaje.CalificacionCreada, Mensaje.ErrorGenerico);
         }
 
-        private List<Juego> BuscarJuegoPorFiltro(string filtro, string accion)
+        public void AdquirirJuego(Usuario usuario)
         {
-            conexionCliente.EnvioEncabezado(filtro.Length, accion);
-            conexionCliente.EnvioDeMensaje(filtro);
+           string tituloJuego = DevolverTituloJuegoSeleccionado();
+           EnvioYRespuesta(tituloJuego, Accion.AdquirirJuego, Mensaje.JuegoAdquirido, Mensaje.JuegoInexistente);
+        }
 
-            string mensaje = conexionCliente.RecibirMensaje();
-
-            return Mapper.PasarStringAListaDeJuegos(mensaje);
+        public void ListaJuegosAdquiridos(Usuario usuario)
+        {
+            conexionCliente.EnvioEncabezado(0, Accion.VerJuegosAdquiridos);
+            List<string> juegosAdquiridos = conexionCliente.RecibirListaDeJuegosAdquiridos();
+            Mensaje.MostrarJuegos(juegosAdquiridos);
         }
 
         public void BajaModificacionJuego()
@@ -140,6 +153,31 @@ namespace Cliente
                 ModificarUnJuego(titulo);
         }
 
+        private void ModificarUnJuego(string titulo)
+        {
+            Juego juegoModificado = Juego.ModificarJuego();
+            string juegoEnString = Mapper.JuegoAString(juegoModificado);
+
+            conexionCliente.EnvioEncabezado(titulo.Length, Accion.ModificarJuego);
+            conexionCliente.EnvioDeMensaje(titulo);
+
+            EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.ModificarJuego);
+
+            conexionCliente.EnvioDeArchivo(juegoModificado.Caratula);
+
+            RecibirRespuestas(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError);
+        }
+
+        private List<Juego> BuscarJuegoPorFiltro(string filtro, string accion)
+        {
+            conexionCliente.EnvioEncabezado(filtro.Length, accion);
+            conexionCliente.EnvioDeMensaje(filtro);
+
+            string mensaje = conexionCliente.RecibirMensaje();
+
+            return Mapper.PasarStringAListaDeJuegos(mensaje);
+        }
+
         private string DevolverTituloJuegoSeleccionado()
         {
             List<string> juegos = conexionCliente.RecibirListaDeJuegos();
@@ -159,21 +197,6 @@ namespace Cliente
             int juegoSeleccionado = Metodo.ObtenerOpcion(Mensaje.seleccioneJuego, 0, juegos.Count - 1);
 
             return juegos[juegoSeleccionado];
-        }
-
-        private void ModificarUnJuego(string titulo)
-        {
-            Juego juegoModificado = Juego.ModificarJuego();
-            string juegoEnString = Mapper.JuegoAString(juegoModificado);
-
-            conexionCliente.EnvioEncabezado(titulo.Length, Accion.ModificarJuego);
-            conexionCliente.EnvioDeMensaje(titulo);
-
-            EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.ModificarJuego);
-
-            conexionCliente.EnvioDeArchivo(juegoModificado.Caratula);
-
-            RecibirRespuestas(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError);
         }
 
         private void EnvioYRespuesta(string mensaje, string accion, Action Ok, Action Error)

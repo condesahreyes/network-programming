@@ -6,7 +6,6 @@ namespace Protocolo
 {
     public class Mapper
     {
-
         public static string EncabezadoAString(Encabezado encabezado)
         {
             string encabezadoString = encabezado.accion + "#" + encabezado.largoMensaje;
@@ -33,11 +32,6 @@ namespace Protocolo
             return new Usuario(nombreUsuario);
         }
 
-        public static string UsuarioAString(Usuario usuario)
-        {
-            return usuario.NombreUsuario;
-        }
-
         public static string JuegoAString(Juego juego)
         {
             string juegoEnString = "";
@@ -45,9 +39,11 @@ namespace Protocolo
             if(juego != null)
             {
                 foreach (Calificacion unaCalificacion in juego.calificaciones)
-                    calificaciones += unaCalificacion.Comentario + "@" + unaCalificacion.Nota + "@" + unaCalificacion.Usuario + "/";
+                    calificaciones += unaCalificacion.Comentario + "@" + unaCalificacion.Nota + 
+                        "@" + unaCalificacion.Usuario + "/";
 
-                    juegoEnString = juego.Titulo + "#" + juego.Genero + "#" + juego.Sinopsis + "#" +juego.Caratula + "#"+ calificaciones;
+                    juegoEnString = juego.Titulo + "#" + juego.Genero + "#" + juego.Sinopsis + 
+                        "#" + juego.Caratula + "#"+ calificaciones;
             }
 
             return juegoEnString;
@@ -137,6 +133,7 @@ namespace Protocolo
             }
             return juegosString;
         }
+
         public static List<Juego> PasarStringAListaDeJuegos(string juegosString)
         {
             if(juegosString == "")

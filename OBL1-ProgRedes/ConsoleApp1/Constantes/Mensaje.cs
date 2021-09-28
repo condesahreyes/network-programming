@@ -19,10 +19,12 @@ namespace Cliente.Constantes
             "\n2. Baja y modificación de juego" +
             "\n3. Buscar Juegos " +
             "\n4. Publicar una calificación del Juego" +
-            "\n5. Detalle de un Juego\n" +
+            "\n5. Detalle de un Juego" +
+            "\n6. Adquirir Juego" +
+            "\n7. Ver lista de Juegos adquiridos\n" +
             "\nSeleccione una opción:";
 
-        public static string seleccioneJuego = "\nSeleccione el juego que desea visualizar:";
+        public static string seleccioneJuego = "\nSeleccione un juego:";
 
         public static string ranking = "Ingrese el ranking de califación por el que desea filtrar";
 
@@ -75,6 +77,15 @@ namespace Cliente.Constantes
             MostrarMensajeGenerico("Ingrese el Titulo por el que desea filtrar");
         }
 
+        public static void JuegoInexistente()
+        {
+            MostrarMensajeGenerico("No se ha podido adquirir el juego");
+        }
+
+        public static void JuegoAdquirido()
+        {
+            MostrarMensajeGenerico("Juego adquirido con exito");
+        }
         public static void BuscarJuegoPorGenero()
         {
             MostrarMensajeGenerico("Ingrese el Genero por el que desea filtrar");
@@ -99,7 +110,10 @@ namespace Cliente.Constantes
         {
             MostrarMensajeError("Ocurrio un problema, no se pudo eliminar el juego.");
         }
-
+        public static void JuegoEliminado()
+        {
+            MostrarMensajeError("Ocurrio un problema, el juego ha sido eliminado anteriorimente. \n");
+        }
         public static void JuegoModificadoOk()
         {
             MostrarMensajeOk("Se ha modificado el juego correctamente.");

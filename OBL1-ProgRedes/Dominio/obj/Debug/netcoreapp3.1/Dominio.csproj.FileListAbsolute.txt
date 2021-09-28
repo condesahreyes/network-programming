@@ -1,7 +1,6 @@
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\Dominio.deps.json
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\Dominio.dll
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\Dominio.pdb
-\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.csprojAssemblyReference.cache
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfoInputs.cache
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfo.cs
 \\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.CoreCompileInputs.cache
@@ -27,3 +26,4 @@ C:\Users\hreye\Desktop\ultimooo\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\net
 C:\Users\hreye\Desktop\ultimooo\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.dll
 C:\Users\hreye\Desktop\ultimooo\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.AssemblyReference.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.csprojAssemblyReference.cache

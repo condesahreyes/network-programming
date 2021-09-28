@@ -12,12 +12,5 @@
 
         public const string MensajeOk = "Ok";
         public const string MensajeError = "FAIL";
-
-        public static long CalculateParts(long size)
-        {
-            long parts = size / maximoTamañoDePaquete;
-            return parts * maximoTamañoDePaquete == size ? parts : parts + 1;
-        }
-
     }
 }

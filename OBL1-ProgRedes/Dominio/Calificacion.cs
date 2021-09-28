@@ -32,7 +32,7 @@ namespace LogicaNegocio
             return new Calificacion(tituloJuego, nota, comentario, usuario);
         }
 
-        public static int ObtenerOpcion(string mensaje)
+        private static int ObtenerOpcion(string mensaje)
         {
             while (true)
             {

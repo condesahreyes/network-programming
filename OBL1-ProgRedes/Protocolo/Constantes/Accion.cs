@@ -19,5 +19,8 @@
 
         public const string EnviarDetalleJuego = "K";
         public const string EnviarCaratula = "L";
+
+        public const string AdquirirJuego = "M";
+        public const string VerJuegosAdquiridos = "N";
     }
 }

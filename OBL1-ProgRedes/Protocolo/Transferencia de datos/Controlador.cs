@@ -45,11 +45,6 @@ namespace Protocolo
             transferencia.EnvioDeDatos(datos);
         }
 
-        public static void Desconectar(Transferencia transferencia)
-        {
-            transferencia.Desconectar();
-        }
-
         public static Juego PublicarJuego(Transferencia transferencia, int largoMensaje)
         {
             byte[] datos = transferencia.RecibirDatos(largoMensaje);
@@ -82,15 +77,13 @@ namespace Protocolo
             Encabezado encabezado = new Encabezado(tituloJuego.Length, Accion.PedirDetalleJuego);
             EnviarEncabezado(transferencia, encabezado);
             EnviarDatos(transferencia, tituloJuego);
-
             string juego = RecibirEncabezadoYMensaje(transferencia, Accion.EnviarDetalleJuego);
-
-
             return Mapper.StringAJuego(juego);
         }
 
         public static string RecibirEncabezadoYMensaje(Transferencia transferencia, string accionEsperada)
         {
+
             Encabezado encabezadoRecibido = RecibirEncabezado(transferencia);
 
             string accion = encabezadoRecibido.accion;

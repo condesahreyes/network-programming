@@ -7,7 +7,7 @@ namespace LogicaNegocio
     public  class Juego
     {
         public List<Calificacion> calificaciones;
-
+        public List<Usuario> usuarios;
         public string Sinopsis { get; set; }
         public string Caratula { get; set; }
         public string Titulo { get; set; }
@@ -23,6 +23,7 @@ namespace LogicaNegocio
             this.Sinopsis = sinopsis;
             this.Caratula = caratula;
             this.Ranking = 0;
+            this.usuarios = new List<Usuario>();
         }
 
         public Juego()
@@ -69,7 +70,9 @@ namespace LogicaNegocio
             return new Juego(titulo, genero, sinopsis, caratula);
         }
 
-        public static string ObtenerCaratula()
+
+
+        private static string ObtenerCaratula()
         {
             while (true)
             {

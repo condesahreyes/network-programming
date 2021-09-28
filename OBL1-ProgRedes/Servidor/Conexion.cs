@@ -7,12 +7,14 @@ using System.Net;
 using Protocolo;
 using System.IO;
 using System;
+using Servidor.FuncionalidadesPorEntidad;
+using System.Text.RegularExpressions;
 
 namespace Servidor
 {
     public class Conexion
     {
-        private List<Socket> ConnectedClients = new List<Socket>();
+        private List<Socket> clientesConectados = new List<Socket>();
         private Funcionalidad funcionalidadesServidor;
         private Socket handler;
 
@@ -32,10 +34,10 @@ namespace Servidor
             puerto = int.Parse(configuracion["port"]);
             cantConexionesEnEspera = int.Parse(configuracion["backLog"]);
             ipServidor = configuracion["ip"];
-            StartListening();
+            Escuchar();
         }
 
-        public void StartListening()
+        public void Escuchar()
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipServidor), puerto);
 
@@ -43,22 +45,44 @@ namespace Servidor
 
             listener.Bind(endPoint);
 
-            // escuchar por conexiones entrantes
             listener.Listen(cantConexionesEnEspera);
 
-            Thread threadProcessor = new Thread(() => EscucharPorUsuario(listener));
-            threadProcessor.Start();
+            Thread hiloDeEscucha = new Thread(() => EscucharPorUsuario(listener));
+            hiloDeEscucha.Start();
 
-            Console.WriteLine("Bienvenido al server, presione enter para terminar la conexion....");
-            Console.ReadLine();
-            salir = true;
+            MenuServidor(listener);
+        }
 
-            listener.Close(0);
-
-            foreach (var socketClient in ConnectedClients)
+        private void MenuServidor(Socket listener)
+        {
+            LogicaJuego _logicaJuegos = new LogicaJuego();
+            
+            Console.WriteLine("Bienvenido al server \n0- Terminar la conexion. \n1- Ver catalogo de juegos");
+   
+            string accion = Console.ReadLine();
+            if (!Regex.IsMatch(accion, "^[" + 0 + "-" + 1 + "]$"))
             {
-                    socketClient.Shutdown(SocketShutdown.Both);
-                    socketClient.Close(1); 
+                Console.Clear();
+                Console.WriteLine("Ingrese una opcion valida entre 0 y 1");
+                MenuServidor(listener);
+            }
+            switch (accion)
+            {
+                case "0":
+                    salir = true;
+
+                    listener.Close(0);
+
+                    foreach (var socketCliente in clientesConectados)
+                    {
+                        socketCliente.Shutdown(SocketShutdown.Both);
+                        socketCliente.Close(1);
+                    }
+                    break;
+                case "1":
+                    _logicaJuegos.VerCatalogoJuegos();
+                    MenuServidor(listener);
+                    break;
             }
         }
 
@@ -69,11 +93,10 @@ namespace Servidor
             {
                 while (!salir)
                 {
-                    Console.WriteLine("Esperando por conexiones....");
                     handler = listener.Accept();
-                    Thread pepito = new Thread(() => ConexionUsuario(usuario, handler));
-                    pepito.Start();
-                    ConnectedClients.Add(handler);
+                    Thread hiloPorUsuario = new Thread(() => ConexionUsuario(usuario, handler));
+                    hiloPorUsuario.Start();
+                    clientesConectados.Add(handler);
                 }
             }
 
@@ -96,11 +119,11 @@ namespace Servidor
                 {
                     EjecutarAccion(ref usuario, socket);
                 }
-                catch(Exception)
+                catch (SocketException)
                 {
                     return;
                 }
-            }
+        }
 
         }
 
@@ -118,6 +141,12 @@ namespace Servidor
                 {
                     case Accion.Login:
                         usuario = funcionalidadesServidor.InicioSesionCliente(usuario, largoMensajeARecibir);
+                        break;
+                    case Accion.AdquirirJuego:
+                        funcionalidadesServidor.AdquirirJuego(largoMensajeARecibir, usuario);
+                        break;
+                    case Accion.VerJuegosAdquiridos:
+                        funcionalidadesServidor.VerJuegosAdquiridos(largoMensajeARecibir, usuario);
                         break;
                     case Accion.PublicarJuego:
                         funcionalidadesServidor.CrearJuego(largoMensajeARecibir);

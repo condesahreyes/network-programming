@@ -36,7 +36,7 @@ namespace Cliente
             int opcion = -1;
             while (opcion != 0)
             {
-                opcion = Metodo.ObtenerOpcion(Mensaje.menuFuncionalidades, 0, 5);
+                opcion = Metodo.ObtenerOpcion(Mensaje.menuFuncionalidades, 0, 7);
                 switch (opcion)
                 {
                     case 0:
@@ -57,6 +57,12 @@ namespace Cliente
                         break;
                     case 5:
                         funcionalidadesCliente.DetalleDeUnJuego();
+                        break;
+                    case 6:
+                        funcionalidadesCliente.AdquirirJuego(this.usuario);
+                        break;
+                    case 7:
+                        funcionalidadesCliente.ListaJuegosAdquiridos(this.usuario);
                         break;
                 }
             }

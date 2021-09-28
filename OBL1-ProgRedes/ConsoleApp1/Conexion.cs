@@ -34,14 +34,13 @@ namespace Cliente
 
             transferencia = new Transferencia(sender);
 
-            // Conectarse desde un socket client
             sender.Connect(endPointServidor);
             Mensaje.Conectado(sender.RemoteEndPoint.ToString());
         }
 
         public void DesconectarUsuario(Usuario usuario)
         {
-            Controlador.Desconectar(transferencia);
+            transferencia.Desconectar();
         }
 
         public string EsperarPorRespuesta()
@@ -78,14 +77,23 @@ namespace Cliente
 
         public Juego RecibirUnJuegoPorTitulo(string titulo)
         {
-            Juego juego = Controlador.RecibirUnJuegoPorTitulo(transferencia, titulo);
-            return juego;
+
+                return Controlador.RecibirUnJuegoPorTitulo(transferencia, titulo);
+        
         }
 
         public List<string> RecibirListaDeJuegos()
         {
             EnvioEncabezado(0, Accion.ListaJuegos);
 
+            string juegos = Controlador.RecibirEncabezadoYMensaje
+                (transferencia, Accion.ListaJuegos);
+
+            return Mapper.StringAListaJuegosString(juegos);
+        }
+
+        public List<string> RecibirListaDeJuegosAdquiridos()
+        {
             string juegos = Controlador.RecibirEncabezadoYMensaje
                 (transferencia, Accion.ListaJuegos);
 

@@ -49,15 +49,39 @@ namespace Servidor
             EnviarMensaje(juegosString, Accion.ListaJuegos);
         }
 
+        public void VerJuegosAdquiridos(int largoMensajeARecibir, Usuario usuario)
+        {
+            List<Juego> juegos = funcionesJuego.JuegoUsuarios(usuario);
+            string juegosString = Mapper.ListaDeJuegosAString(juegos);
+            EnviarMensaje(juegosString, Accion.VerJuegosAdquiridos);
+        }
+
+        public void AdquirirJuego(int largoMensajeARecibir, Usuario usuario)
+        {
+            string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensajeARecibir);
+
+            bool respuestaOk = funcionesJuego.AdquirirJuegoPorUsuario(tituloJuego, usuario);
+            EnviarRespuesta(respuestaOk);
+        }
+
         internal void EnviarDetalleDeUnJuego(int largoMensaje)
         {
-            string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            string  tituloJuego= Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
             Juego juego = funcionesJuego.ObtenerJuegoPorTitulo(tituloJuego);
-            string juegoEnString = Mapper.JuegoAString(juego);
+            if(juego != null)
+            {
+                string juegoEnString = Mapper.JuegoAString(juego);
 
-            EnviarMensaje(juegoEnString, Accion.EnviarDetalleJuego);
-            ControladorDeArchivos.EnviarArchivo(Directory.GetCurrentDirectory() + @"\" +juego.Caratula, transferencia);
+                EnviarMensaje(juegoEnString, Accion.EnviarDetalleJuego);
+                ControladorDeArchivos.EnviarArchivo(Directory.GetCurrentDirectory() + @"\" + juego.Caratula, transferencia);
+            }
+            else
+            {
+                EnviarRespuesta(false);
+            }
         }
+
+
 
         public void CrearCalificacion(int largoMensajeARecibir)
         {
@@ -84,7 +108,6 @@ namespace Servidor
             string juegoEnString = Mapper.ListaJuegosAString(juego);
 
             EnviarMensaje(juegoEnString, Accion.BuscarGenero);
-
         }
 
         public void BuscarJuegoPorCalificacion(int largoMensajeARecibir)
