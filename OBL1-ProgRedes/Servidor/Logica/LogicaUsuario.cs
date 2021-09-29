@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using LogicaNegocio;
-using System;
 
 namespace Servidor.FuncionalidadesEntidades
 {
@@ -23,8 +22,6 @@ namespace Servidor.FuncionalidadesEntidades
                 lock (persistencia)
                 {
                     persistencia.usuarios.Add(usuario);
-                    Console.WriteLine("El usuario " + usuario.NombreUsuario + " no existia en el sistema. \n" +
-                        "Lo hemos dado de alta.");
                 }
             }
 

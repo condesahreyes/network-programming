@@ -26,7 +26,7 @@ namespace Servidor.FuncionalidadesPorEntidad
             }
         }
 
-        internal List<Juego> ObtenerJuegos()
+        public List<Juego> ObtenerJuegos()
         {
             lock (persistencia)
             {
@@ -70,13 +70,15 @@ namespace Servidor.FuncionalidadesPorEntidad
 
             if (juegos.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("No se han ingresados juegos");
                 return;
             }
 
             lock (persistencia)
             {
-                    foreach (var juego in juegos)
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                foreach (var juego in juegos)
                     Console.WriteLine(juego.ToString());
             }
         }
@@ -142,7 +144,7 @@ namespace Servidor.FuncionalidadesPorEntidad
 
         }
 
-        internal Juego ObtenerJuegoPorTitulo(string tituloJuego)
+        public Juego ObtenerJuegoPorTitulo(string tituloJuego)
         {
             lock (persistencia)
             {
@@ -170,7 +172,7 @@ namespace Servidor.FuncionalidadesPorEntidad
             }
         }
 
-        internal bool EliminarJuego(string tituloJuego)
+        public bool EliminarJuego(string tituloJuego)
         {
             lock (persistencia)
             {

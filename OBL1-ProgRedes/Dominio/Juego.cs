@@ -70,8 +70,6 @@ namespace LogicaNegocio
             return new Juego(titulo, genero, sinopsis, caratula);
         }
 
-
-
         private static string ObtenerCaratula()
         {
             while (true)

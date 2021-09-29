@@ -22,7 +22,7 @@ namespace Servidor
             this.funcionesJuego = new LogicaJuego();
         }
 
-        internal Usuario InicioSesionCliente(Usuario usuario, int largoMensajeARecibir)
+        public Usuario InicioSesionCliente(Usuario usuario, int largoMensajeARecibir)
         {
             usuario = Controlador.RecibirUsuario(transferencia, largoMensajeARecibir);
 
@@ -41,7 +41,7 @@ namespace Servidor
             EnviarRespuesta(juego, funcionesJuego.AgregarJuego(juego));
         }
 
-        internal void EnviarListaJuegos()
+        public void EnviarListaJuegos()
         {
             List<Juego> juegos = funcionesJuego.ObtenerJuegos();
             string juegosString = Mapper.ListaDeJuegosAString(juegos);
@@ -64,7 +64,7 @@ namespace Servidor
             EnviarRespuesta(juegoAdquirido, juegoAdquirido!=null);
         }
 
-        internal void EnviarDetalleDeUnJuego(int largoMensaje)
+        public void EnviarDetalleDeUnJuego(int largoMensaje)
         {
             string  tituloJuego= Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
             Juego juego = funcionesJuego.ObtenerJuegoPorTitulo(tituloJuego);
@@ -122,29 +122,11 @@ namespace Servidor
             EnviarMensaje(rankingString, Accion.BuscarCalificacion);
         }
 
-        internal void EliminarJuego(int largoMensaje)
+        public void EliminarJuego(int largoMensaje)
         {
             string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
             funcionesJuego.EliminarJuego(tituloJuego);
             EnviarRespuesta(tituloJuego, funcionesJuego.BuscarJuegoPortTitulo(tituloJuego) == null);
-        }
-
-        private void EnviarRespuesta(object obj, bool ok)
-        {
-            if (obj == null && !ok)
-                Controlador.EnviarMensajeClienteObjetoEliminado(transferencia);
-            else if (ok)
-                Controlador.EnviarMensajeClienteOk(transferencia);
-            else
-                Controlador.EnviarMensajeClienteError(transferencia);
-        }
-
-        private void EnviarMensaje(string mensaje, string accion)
-        {
-            Encabezado encabezado = new Encabezado(mensaje.Length, accion);
-
-            Controlador.EnviarEncabezado(transferencia, encabezado);
-            Controlador.EnviarDatos(transferencia, mensaje);
         }
 
         public void ModificarJuego(int largoMensaje)
@@ -183,5 +165,22 @@ namespace Servidor
             return nombreArchivo;
         }
 
+        private void EnviarRespuesta(object obj, bool ok)
+        {
+            if (obj == null && !ok)
+                Controlador.EnviarMensajeClienteObjetoEliminado(transferencia);
+            else if (ok)
+                Controlador.EnviarMensajeClienteOk(transferencia);
+            else
+                Controlador.EnviarMensajeClienteError(transferencia);
+        }
+
+        private void EnviarMensaje(string mensaje, string accion)
+        {
+            Encabezado encabezado = new Encabezado(mensaje.Length, accion);
+
+            Controlador.EnviarEncabezado(transferencia, encabezado);
+            Controlador.EnviarDatos(transferencia, mensaje);
+        }
     }
 }

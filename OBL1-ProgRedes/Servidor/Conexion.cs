@@ -56,16 +56,21 @@ namespace Servidor
         private void MenuServidor(Socket listener)
         {
             LogicaJuego _logicaJuegos = new LogicaJuego();
-            
-            Console.WriteLine("Bienvenido al server \n0- Terminar la conexion. \n1- Ver catalogo de juegos");
-   
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("****************** Menú servidor ******************" +
+                "\n0. Terminar la conexion. \n1. Ver catalogo de juegos \n\nSeleccione una opción:");
+            Console.ForegroundColor = ConsoleColor.White;
+
             string accion = Console.ReadLine();
             if (!Regex.IsMatch(accion, "^[" + 0 + "-" + 1 + "]$"))
             {
                 Console.Clear();
-                Console.WriteLine("Ingrese una opcion valida entre 0 y 1");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ingrese una opcion valida entre 0 y 1\n");
                 MenuServidor(listener);
             }
+
             switch (accion)
             {
                 case "0":
@@ -80,6 +85,7 @@ namespace Servidor
                     }
                     break;
                 case "1":
+                    Console.Clear();
                     _logicaJuegos.VerCatalogoJuegos();
                     MenuServidor(listener);
                     break;
