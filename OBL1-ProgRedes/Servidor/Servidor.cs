@@ -2,7 +2,7 @@
 {
     public class Servidor
     {
-        static void Main(string[] args)
+        private void Main(string[] args)
         {
             Conexion server = new Conexion();
         }

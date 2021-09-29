@@ -5,12 +5,10 @@ namespace LogicaNegocio
 {
     public class Usuario
     {
-        List<Juego> juegos;
         public string NombreUsuario { get; set; }
 
         public Usuario(string nombreUsuario)
         {
-            this.juegos = new List<Juego>();
             this.NombreUsuario = nombreUsuario;
         }
 
