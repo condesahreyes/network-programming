@@ -34,6 +34,14 @@ namespace Cliente.Constantes
         public static string buscarJuegoPorFiltro = "0. Buscar por titulo \n1. Buscar por genero " +
             "\n2. Buscar por Calificacion\n\nSeleccione una opción:";
 
+        public static string noHayJuegosRegistrados = "No hay juegos registrados en el sistema\n";
+
+        public static string noHayJuegosAdquiridos = "No hay juegos adquiridos hasta el momento\n";
+
+        public static string listadoJuego = "******************** Listado de juegos *********************\n";
+
+        public static string listadoJuegoAdquiridos = "*************** Listado de juegos adquiridos ****************\n";
+
         public static void Conectado(string conectadoA)
         {
             MostrarMensajeOk("Socket conectado a " + conectadoA + "\n");
@@ -77,14 +85,14 @@ namespace Cliente.Constantes
             MostrarMensajeGenerico("Ingrese el Titulo por el que desea filtrar");
         }
 
-        public static void JuegoInexistente()
+        public static void ErrorAdquirirJuego()
         {
-            MostrarMensajeGenerico("No se ha podido adquirir el juego");
+            MostrarMensajeError("No se ha podido adquirir el juego, el mismo ha sido eliminado anteriormente");
         }
 
         public static void JuegoAdquirido()
         {
-            MostrarMensajeGenerico("Juego adquirido con exito");
+            MostrarMensajeOk("Juego adquirido con exito");
         }
         public static void BuscarJuegoPorGenero()
         {
@@ -129,15 +137,16 @@ namespace Cliente.Constantes
             MostrarMensajeOk("Su calificacion se a publicado con exito \n");
         }
 
-        public static void MostrarJuegos(List<string> juegos)
+        public static void MostrarJuegos(List<string> juegos, string mensajeError, string listado)
         {
             if(juegos.Count == 0) {
-                MostrarMensajeError("No hay juegos registrados en el sistema");
+                MostrarMensajeError(mensajeError);
                 return;
             }
+
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("******************** Listado de juegos *********************\n");
+            Console.WriteLine(listado);
 
             for (int i = 0; i < juegos.Count; i++)
                 Console.WriteLine(i + ". " + juegos[i]);

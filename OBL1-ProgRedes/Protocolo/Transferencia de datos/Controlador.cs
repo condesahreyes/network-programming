@@ -72,6 +72,14 @@ namespace Protocolo
             transferencia.EnvioDeDatos(encabezadoEnString);
         }
 
+        public static void EnviarMensajeClienteObjetoEliminado(Transferencia transferencia)
+        {
+            Encabezado encabezado = new Encabezado(0, Constante.MensajeObjetoEliminado);
+            string encabezadoEnString = Mapper.EncabezadoAString(encabezado);
+
+            transferencia.EnvioDeDatos(encabezadoEnString);
+        }
+
         public static Juego RecibirUnJuegoPorTitulo(Transferencia transferencia, string tituloJuego)
         {
             Encabezado encabezado = new Encabezado(tituloJuego.Length, Accion.PedirDetalleJuego);
@@ -106,6 +114,5 @@ namespace Protocolo
 
             return calificacion;
         }
-
     }
 }

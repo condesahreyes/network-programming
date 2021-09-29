@@ -26,7 +26,7 @@ namespace Servidor
         {
             usuario = Controlador.RecibirUsuario(transferencia, largoMensajeARecibir);
 
-            EnviarRespuesta(usuario != null);
+            EnviarRespuesta(usuario, usuario != null);
 
             return funcionesUsuario.ObtenerUsuario(usuario);
         }
@@ -38,7 +38,7 @@ namespace Servidor
             string caratula = RecibirArchivos();
             juego.Caratula = caratula;
 
-            EnviarRespuesta(funcionesJuego.AgregarJuego(juego));
+            EnviarRespuesta(juego, funcionesJuego.AgregarJuego(juego));
         }
 
         internal void EnviarListaJuegos()
@@ -60,8 +60,8 @@ namespace Servidor
         {
             string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensajeARecibir);
 
-            bool respuestaOk = funcionesJuego.AdquirirJuegoPorUsuario(tituloJuego, usuario);
-            EnviarRespuesta(respuestaOk);
+            Juego juegoAdquirido = funcionesJuego.AdquirirJuegoPorUsuario(tituloJuego, usuario);
+            EnviarRespuesta(juegoAdquirido, juegoAdquirido!=null);
         }
 
         internal void EnviarDetalleDeUnJuego(int largoMensaje)
@@ -73,23 +73,22 @@ namespace Servidor
                 string juegoEnString = Mapper.JuegoAString(juego);
 
                 EnviarMensaje(juegoEnString, Accion.EnviarDetalleJuego);
-                ControladorDeArchivos.EnviarArchivo(Directory.GetCurrentDirectory() + @"\" + juego.Caratula, transferencia);
+                ControladorDeArchivos.EnviarArchivo(Directory.GetCurrentDirectory() + @"\" + 
+                    juego.Caratula, transferencia);
             }
             else
             {
-                EnviarRespuesta(false);
+                EnviarRespuesta(juego, false);
             }
         }
-
-
 
         public void CrearCalificacion(int largoMensajeARecibir)
         {
             Calificacion calificacion = Controlador.PublicarCalificacion(transferencia, largoMensajeARecibir);
 
-            funcionesJuego.AgregarCalificacion(calificacion);
+            bool fueAgregado = funcionesJuego.AgregarCalificacion(calificacion);
 
-            EnviarRespuesta(calificacion != null);
+            EnviarRespuesta(null, fueAgregado);
         }
 
         public void BuscarJuegoPorTitulo(int largoMensajeARecibir)
@@ -120,19 +119,21 @@ namespace Servidor
 
             string juegosString = Mapper.ListaJuegosAString(juegos);
 
-            EnviarMensaje(juegosString, Accion.BuscarCalificacion);
+            EnviarMensaje(rankingString, Accion.BuscarCalificacion);
         }
 
         internal void EliminarJuego(int largoMensaje)
         {
             string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
             funcionesJuego.EliminarJuego(tituloJuego);
-            EnviarRespuesta(funcionesJuego.BuscarJuegoPortTitulo(tituloJuego) == null);
+            EnviarRespuesta(tituloJuego, funcionesJuego.BuscarJuegoPortTitulo(tituloJuego) == null);
         }
 
-        private void EnviarRespuesta(bool respuestaOk)
+        private void EnviarRespuesta(object obj, bool ok)
         {
-            if (respuestaOk)
+            if (obj == null && !ok)
+                Controlador.EnviarMensajeClienteObjetoEliminado(transferencia);
+            else if (ok)
                 Controlador.EnviarMensajeClienteOk(transferencia);
             else
                 Controlador.EnviarMensajeClienteError(transferencia);
@@ -158,10 +159,18 @@ namespace Servidor
             string caratula = RecibirArchivos();
             juego.Caratula = caratula;
 
-            funcionesJuego.EliminarJuego(tituloJuego);
-            funcionesJuego.AgregarJuego(juego);
+            bool fueEliminado = funcionesJuego.EliminarJuego(tituloJuego);
+            bool fueAgregadoElModificado = false;
 
-            EnviarRespuesta(juego!=null);
+            if (fueEliminado == false)
+            {
+                EnviarRespuesta(null, fueAgregadoElModificado);
+                return;
+            }
+
+            fueAgregadoElModificado = funcionesJuego.AgregarJuego(juego);
+
+            EnviarRespuesta(juego, fueAgregadoElModificado);
         }
 
         public string RecibirArchivos()

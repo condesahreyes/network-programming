@@ -29,7 +29,7 @@ namespace Cliente
             Usuario usuario = Usuario.CrearUsuario();
             string nombreUsuario = usuario.NombreUsuario;
 
-            EnvioYRespuesta(nombreUsuario, Accion.Login, Mensaje.InicioSesion, Mensaje.ErrorGenerico);
+            EnvioYRespuesta(nombreUsuario, Accion.Login, Mensaje.InicioSesion, Mensaje.ErrorGenerico, Mensaje.ErrorGenerico);
 
             return usuario;
         }
@@ -49,7 +49,7 @@ namespace Cliente
 
             EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.PublicarJuego);
             conexionCliente.EnvioDeArchivo(caratula);
-            RecibirRespuestas(Mensaje.JuegoCreado, Mensaje.JuegoExistente);
+            RecibirRespuestas(Mensaje.JuegoCreado, Mensaje.JuegoExistente, Mensaje.JuegoEliminado);
         }
 
         public void BuscarJuego()
@@ -89,7 +89,6 @@ namespace Cliente
                 Mensaje.NoExistenJuegos();
                 return;
             }
-
             try
             {
                 Juego juego = conexionCliente.RecibirUnJuegoPorTitulo(titulo);
@@ -118,20 +117,20 @@ namespace Cliente
             string calificacionEnString = Mapper.CalificacionAString(unaCalificacion);
 
             EnvioYRespuesta(calificacionEnString, Accion.PublicarCalificacion,
-                Mensaje.CalificacionCreada, Mensaje.ErrorGenerico);
+                Mensaje.CalificacionCreada, Mensaje.ErrorGenerico, Mensaje.JuegoEliminado);
         }
 
         public void AdquirirJuego(Usuario usuario)
         {
            string tituloJuego = DevolverTituloJuegoSeleccionado();
-           EnvioYRespuesta(tituloJuego, Accion.AdquirirJuego, Mensaje.JuegoAdquirido, Mensaje.JuegoInexistente);
+           EnvioYRespuesta(tituloJuego, Accion.AdquirirJuego, Mensaje.JuegoAdquirido, Mensaje.ErrorAdquirirJuego, Mensaje.JuegoEliminado);
         }
 
         public void ListaJuegosAdquiridos(Usuario usuario)
         {
             conexionCliente.EnvioEncabezado(0, Accion.VerJuegosAdquiridos);
             List<string> juegosAdquiridos = conexionCliente.RecibirListaDeJuegosAdquiridos();
-            Mensaje.MostrarJuegos(juegosAdquiridos);
+            Mensaje.MostrarJuegos(juegosAdquiridos, Mensaje.noHayJuegosRegistrados, Mensaje.listadoJuegoAdquiridos);
         }
 
         public void BajaModificacionJuego()
@@ -148,7 +147,7 @@ namespace Cliente
 
             if (opcion == 0)
                 EnvioYRespuesta(titulo, Accion.EliminarJuego, Mensaje.JuegoEliminadoOk, 
-                    Mensaje.JuegoEliminadoError);
+                    Mensaje.JuegoEliminadoError, Mensaje.JuegoEliminado);
             else if (opcion == 1)
                 ModificarUnJuego(titulo);
         }
@@ -165,7 +164,7 @@ namespace Cliente
 
             conexionCliente.EnvioDeArchivo(juegoModificado.Caratula);
 
-            RecibirRespuestas(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError);
+            RecibirRespuestas(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError, Mensaje.JuegoEliminado);
         }
 
         private List<Juego> BuscarJuegoPorFiltro(string filtro, string accion)
@@ -193,17 +192,17 @@ namespace Cliente
 
         private string SeleccionarUnTituloDeJuego(List<string> juegos)
         {
-            Mensaje.MostrarJuegos(juegos);
+            Mensaje.MostrarJuegos(juegos, Mensaje.noHayJuegosRegistrados, Mensaje.listadoJuego);
             int juegoSeleccionado = Metodo.ObtenerOpcion(Mensaje.seleccioneJuego, 0, juegos.Count - 1);
 
             return juegos[juegoSeleccionado];
         }
 
-        private void EnvioYRespuesta(string mensaje, string accion, Action Ok, Action Error)
+        private void EnvioYRespuesta(string mensaje, string accion, Action Ok, Action Error, Action Eliminado)
         {
             EnvioMensajeConPrevioEncabezado(mensaje, accion);
 
-            RecibirRespuestas(Ok, Error);
+            RecibirRespuestas(Ok, Error, Eliminado);
         }
 
         private void EnvioMensajeConPrevioEncabezado(string mensaje, string accion)
@@ -212,14 +211,16 @@ namespace Cliente
             conexionCliente.EnvioDeMensaje(mensaje);
         }
 
-        private void RecibirRespuestas(Action RespuestaOk, Action RespuestaError)
+        private void RecibirRespuestas(Action RespuestaOk, Action RespuestaError, Action Eliminado)
         {
             string respuestaServidor = conexionCliente.EsperarPorRespuesta();
 
             if (respuestaServidor == Constante.MensajeOk)
                 RespuestaOk();
-            else
+            else if (respuestaServidor == Constante.MensajeError)
                 RespuestaError();
+            else if (respuestaServidor == Constante.MensajeObjetoEliminado)
+                Eliminado();
         }
 
     }

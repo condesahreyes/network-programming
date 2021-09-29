@@ -47,15 +47,21 @@ namespace Servidor.FuncionalidadesPorEntidad
             }
         }
 
-        public void AgregarCalificacion(Calificacion calificacion)
+        public bool AgregarCalificacion(Calificacion calificacion)
         {
+            Juego juego = BuscarJuegoPortTitulo(calificacion.TituloJuego);
+
+            if (juego == null)
+                return false;
+
             lock (persistencia)
             {
-                Juego juego = BuscarJuegoPortTitulo(calificacion.TituloJuego);
                 juego.calificaciones.Add(calificacion);
 
                 juego.Ranking = Math.Abs((juego.Ranking + calificacion.Nota) / juego.calificaciones.Count);
             }
+
+            return true;
         }
 
         public void VerCatalogoJuegos()
@@ -75,20 +81,20 @@ namespace Servidor.FuncionalidadesPorEntidad
             }
         }
 
-        public bool AdquirirJuegoPorUsuario(string juego, Usuario usuario)
+        public Juego AdquirirJuegoPorUsuario(string juego, Usuario usuario)
         {
             Juego unJuego = ObtenerJuegoPorTitulo(juego);
             if (unJuego == null)
-                return false;
+                return unJuego;
             foreach (Usuario unUsuario in persistencia.usuarios)
             {
                 if(unUsuario.NombreUsuario == usuario.NombreUsuario)
                 {
                     unJuego.usuarios.Add(unUsuario);
-                    return true;
+                    return unJuego;
                 }
             }
-            return false;
+            return unJuego;
         }
 
         public List<Juego> JuegoUsuarios(Usuario usuario)
@@ -164,7 +170,7 @@ namespace Servidor.FuncionalidadesPorEntidad
             }
         }
 
-        internal void EliminarJuego(string tituloJuego)
+        internal bool EliminarJuego(string tituloJuego)
         {
             lock (persistencia)
             {
@@ -172,10 +178,10 @@ namespace Servidor.FuncionalidadesPorEntidad
                     if (juego.Titulo == tituloJuego)
                     {
                         persistencia.juegos.Remove(juego);
-                        return;
+                        return true;
                     }
             }
-
+            return false;
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Servidor.FuncionalidadesPorEntidad;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading;
@@ -7,8 +9,6 @@ using System.Net;
 using Protocolo;
 using System.IO;
 using System;
-using Servidor.FuncionalidadesPorEntidad;
-using System.Text.RegularExpressions;
 
 namespace Servidor
 {
@@ -99,7 +99,6 @@ namespace Servidor
                     clientesConectados.Add(handler);
                 }
             }
-
             catch (SocketException)
             {
                 if(usuario != null)
@@ -123,7 +122,7 @@ namespace Servidor
                 {
                     return;
                 }
-        }
+            }
 
         }
 

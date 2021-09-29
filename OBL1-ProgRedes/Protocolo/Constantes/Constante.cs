@@ -12,5 +12,6 @@
 
         public const string MensajeOk = "Ok";
         public const string MensajeError = "FAIL";
+        public const string MensajeObjetoEliminado = "Elim";
     }
 }

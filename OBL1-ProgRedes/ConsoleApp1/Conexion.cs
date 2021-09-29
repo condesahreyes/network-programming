@@ -95,7 +95,7 @@ namespace Cliente
         public List<string> RecibirListaDeJuegosAdquiridos()
         {
             string juegos = Controlador.RecibirEncabezadoYMensaje
-                (transferencia, Accion.ListaJuegos);
+                (transferencia, Accion.VerJuegosAdquiridos);
 
             return Mapper.StringAListaJuegosString(juegos);
         }
