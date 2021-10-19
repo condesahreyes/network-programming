@@ -6,7 +6,7 @@ namespace Protocolo.Transferencia_de_datos
 {
     public class ControladorDeArchivos
     {
-        public static void EnviarArchivo(string ruta, Transferencia transferencia)
+        public static  void EnviarArchivo(string ruta, Transferencia transferencia)
         {
             var informacionArchivo = new FileInfo(ruta);
 
@@ -19,16 +19,25 @@ namespace Protocolo.Transferencia_de_datos
 
             transferencia.EnvioDeDatos(nombreArchivo);
 
-            long tamañoArchivo = informacionArchivo.Length;
-            string tamañoArchivoString = informacionArchivo.Length.ToString();
-            int largoArchivoEnInt = tamañoArchivoString.Length;
+            try
+            {
+                long tamañoArchivo = informacionArchivo.Length;
+                string tamañoArchivoString = informacionArchivo.Length.ToString();
+                int largoArchivoEnInt = tamañoArchivoString.Length;
 
-            Encabezado encabezadoArchivo = new Encabezado(largoArchivoEnInt, Accion.EnviarCaratula);
-            Controlador.EnviarEncabezado(transferencia, encabezadoArchivo);
+                Encabezado encabezadoArchivo = new Encabezado(largoArchivoEnInt, Accion.EnviarCaratula);
+                Controlador.EnviarEncabezado(transferencia, encabezadoArchivo);
 
-            transferencia.EnvioDeDatos(tamañoArchivoString);
+                transferencia.EnvioDeDatos(tamañoArchivoString);
 
-            EnviarArchivoPorPartes(transferencia, tamañoArchivo, ruta);
+                EnviarArchivoPorPartes(transferencia, tamañoArchivo, ruta);
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                Encabezado encabezadoArchivo = new Encabezado(0, Accion.EliminarJuego);
+                Controlador.EnviarEncabezado(transferencia, encabezadoArchivo);
+                return;
+            }
         }
 
         private static void EnviarArchivoPorPartes(Transferencia transferencia, long largoArchivo, string ruta)

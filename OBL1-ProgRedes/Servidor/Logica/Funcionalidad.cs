@@ -119,7 +119,7 @@ namespace Servidor
 
             string juegosString = Mapper.ListaJuegosAString(juegos);
 
-            EnviarMensaje(rankingString, Accion.BuscarCalificacion);
+            EnviarMensaje(juegosString, Accion.BuscarCalificacion);
         }
 
         public void EliminarJuego(int largoMensaje)

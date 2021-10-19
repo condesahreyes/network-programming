@@ -109,6 +109,9 @@ namespace Cliente
         {
             Encabezado encabezado = RecibirEncabezado();
 
+            if (encabezado.accion == Accion.EliminarJuego)
+                return "";
+
             string nombreArchivo = Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
             ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
 

@@ -15,6 +15,7 @@ namespace LogicaNegocio
         public string Genero { get; set; }
 
         public int Ranking { get; set; }
+        public int Notas { get; set; }
 
         public Juego(string titulo, string genero, string sinopsis, string caratula)
         {
@@ -25,6 +26,7 @@ namespace LogicaNegocio
             this.Sinopsis = sinopsis;
             this.Caratula = caratula;
             this.Ranking = 0;
+            this.Notas = 0;
         }
 
         public Juego()
