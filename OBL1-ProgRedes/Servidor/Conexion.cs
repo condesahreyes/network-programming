@@ -2,6 +2,7 @@
 using Servidor.FuncionalidadesPorEntidad;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Threading;
 using LogicaNegocio;
@@ -14,9 +15,11 @@ namespace Servidor
 {
     public class Conexion
     {
-        private List<Socket> clientesConectados = new List<Socket>();
+        List<TcpClient> clientesConectados = new List<TcpClient>();
+        //private List<Socket> clientesConectados = new List<Socket>();
         private Funcionalidad funcionalidadesServidor;
-        private Socket handler;
+        //private Socket handler;
+        private TcpClient handler;
 
         private int cantConexionesEnEspera;
         private int puerto;
@@ -34,26 +37,29 @@ namespace Servidor
             puerto = int.Parse(configuracion["port"]);
             cantConexionesEnEspera = int.Parse(configuracion["backLog"]);
             ipServidor = configuracion["ip"];
-            Escuchar();
+            //Escuchar(); //Esto esta bien? ver prox comentario 
         }
 
-        public void Escuchar()
+        public async Task Escuchar() //Esto deberia ser async?????
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipServidor), puerto);
 
-            Socket listener = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            TcpListener listener = new TcpListener(endPoint);
 
-            listener.Bind(endPoint);
+            //listener.Bind(endPoint);
 
-            listener.Listen(cantConexionesEnEspera);
+            //Se cambia Listen por Start debido al cambio de socket -> TcpListener
+            listener.Start(cantConexionesEnEspera);
 
-            Thread hiloDeEscucha = new Thread(() => EscucharPorUsuario(listener));
+
+            Thread hiloDeEscucha = new Thread(async () => await EscucharPorUsuario(listener));
             hiloDeEscucha.Start();
 
             MenuServidor(listener);
         }
+        
 
-        private void MenuServidor(Socket listener)
+        private void MenuServidor(TcpListener listener)
         {
             LogicaJuego _logicaJuegos = new LogicaJuego();
 
@@ -76,12 +82,17 @@ namespace Servidor
                 case "0":
                     salir = true;
 
-                    listener.Close(0);
+                    //listener.Close(0);
+                    listener.Stop(); // esto esta bien????
 
                     foreach (var socketCliente in clientesConectados)
                     {
-                        socketCliente.Shutdown(SocketShutdown.Both);
-                        socketCliente.Close(1);
+                        //Arreglar esto para tcpClient
+                        //socketCliente.EndConnect();
+                        socketCliente.GetStream().Close(); //Ta bien delia?
+                        socketCliente.Close();//Ta bien delia?
+                        //socketCliente.Shutdown(SocketShutdown.Both); //Entiendo esto se va
+                        //socketCliente.Close(1); // Entiendo esto se va
                     }
                     break;
                 case "1":
@@ -89,40 +100,44 @@ namespace Servidor
                     _logicaJuegos.VerCatalogoJuegos();
                     MenuServidor(listener);
                     break;
+                
             }
+
         }
 
-        private void EscucharPorUsuario(Socket listener)
+        private async Task EscucharPorUsuario(TcpListener listener)
         {
-            Usuario usuario = null;
             try
             {
                 while (!salir)
                 {
-                    handler = listener.Accept();
-                    Thread hiloPorUsuario = new Thread(() => ConexionUsuario(usuario, handler));
+                    handler = await listener.AcceptTcpClientAsync();
+                    Thread hiloPorUsuario = new Thread(async () => await ConexionUsuario(handler));
                     hiloPorUsuario.Start();
                     clientesConectados.Add(handler);
                 }
             }
             catch (SocketException)
             {
+                /*
                 if(usuario != null)
                     Console.WriteLine("Conexion finalizada por usuario: " + usuario.NombreUsuario);
                 else
                     Console.WriteLine("Conexion finalizada por una maquina sin usuario");
-
+                */
                 Console.WriteLine("Presione enter si desea finalizar la conexion del servidor....");
             }
         }
 
-        private void ConexionUsuario(Usuario usuario, Socket socket)
+        private async Task ConexionUsuario(TcpClient socket)
         {
+            Usuario usuario = null;
+
             while (!salir)
             {
                 try
                 {
-                    EjecutarAccion(ref usuario, socket);
+                    usuario = await EjecutarAccion(usuario, socket);
                 }
                 catch (SocketException)
                 {
@@ -132,9 +147,9 @@ namespace Servidor
 
         }
 
-        private void EjecutarAccion(ref Usuario usuario, Socket handler)
+        private async Task<Usuario> EjecutarAccion(Usuario usuario, TcpClient handler)
         {
-                Encabezado encabezado = Controlador.RecibirEncabezado(new Transferencia(handler));
+                Encabezado encabezado = await Controlador.RecibirEncabezado(new Transferencia(handler));
                 Transferencia transferencia = new Transferencia(handler);
 
                 funcionalidadesServidor = new Funcionalidad(transferencia);
@@ -145,42 +160,43 @@ namespace Servidor
                 switch (accion)
                 {
                     case Accion.Login:
-                        usuario = funcionalidadesServidor.InicioSesionCliente(usuario, largoMensajeARecibir);
+                        return await funcionalidadesServidor.InicioSesionCliente(usuario, largoMensajeARecibir);
                         break;
                     case Accion.AdquirirJuego:
-                        funcionalidadesServidor.AdquirirJuego(largoMensajeARecibir, usuario);
+                        await funcionalidadesServidor.AdquirirJuego(largoMensajeARecibir, usuario);
                         break;
                     case Accion.VerJuegosAdquiridos:
-                        funcionalidadesServidor.VerJuegosAdquiridos(largoMensajeARecibir, usuario);
+                        await funcionalidadesServidor.VerJuegosAdquiridos(largoMensajeARecibir, usuario);
                         break;
                     case Accion.PublicarJuego:
-                        funcionalidadesServidor.CrearJuego(largoMensajeARecibir);
+                        await funcionalidadesServidor.CrearJuego(largoMensajeARecibir);
                         break;
                     case Accion.ListaJuegos:
-                        funcionalidadesServidor.EnviarListaJuegos();
+                        await funcionalidadesServidor.EnviarListaJuegos();
                         break;
                     case Accion.PedirDetalleJuego:
-                        funcionalidadesServidor.EnviarDetalleDeUnJuego(largoMensajeARecibir);
+                        await funcionalidadesServidor.EnviarDetalleDeUnJuego(largoMensajeARecibir);
                         break;
                     case Accion.PublicarCalificacion:
-                        funcionalidadesServidor.CrearCalificacion(largoMensajeARecibir);
+                        await funcionalidadesServidor.CrearCalificacion(largoMensajeARecibir);
                         break;
                     case Accion.BuscarTitulo:
-                        funcionalidadesServidor.BuscarJuegoPorTitulo(largoMensajeARecibir);
+                        await funcionalidadesServidor.BuscarJuegoPorTitulo(largoMensajeARecibir);
                         break;
                     case Accion.BuscarGenero:
-                        funcionalidadesServidor.BuscarJuegoPorGenero(largoMensajeARecibir);
+                        await funcionalidadesServidor.BuscarJuegoPorGenero(largoMensajeARecibir);
                         break;
                     case Accion.BuscarCalificacion:
-                        funcionalidadesServidor.BuscarJuegoPorCalificacion(largoMensajeARecibir);
+                        await funcionalidadesServidor.BuscarJuegoPorCalificacion(largoMensajeARecibir);
                         break;
                     case Accion.EliminarJuego:
-                        funcionalidadesServidor.EliminarJuego(largoMensajeARecibir);
+                        await funcionalidadesServidor.EliminarJuego(largoMensajeARecibir);
                         break;
                     case Accion.ModificarJuego:
-                        funcionalidadesServidor.ModificarJuego(largoMensajeARecibir);
+                        await funcionalidadesServidor.ModificarJuego(largoMensajeARecibir);
                         break;
                 }
+            return usuario;
         }
 
     }

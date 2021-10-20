@@ -1,5 +1,6 @@
 ﻿using Cliente.Constantes;
 using LogicaNegocio;
+using System.Threading.Tasks;
 
 namespace Cliente
 {
@@ -11,10 +12,9 @@ namespace Cliente
         public Menu()
         {
             this.funcionalidadesCliente = Funcionalidad.ObtenerInstancia();
-            MenuPrincipal();
         }
 
-        public void MenuPrincipal()
+        public async Task MenuPrincipal()
         {
             int opcion = Metodo.ObtenerOpcion(Mensaje.menuPrincipal, 0, 1);
 
@@ -25,13 +25,13 @@ namespace Cliente
                     funcionalidadesCliente.DesconectarUsuario(usuario);
                     break;
                 case 1:
-                    usuario = funcionalidadesCliente.InicioSesion();
-                    MenuFuncionalidades();
+                    usuario = await funcionalidadesCliente.InicioSesion();
+                    await MenuFuncionalidades();
                     break;
             }
         }
 
-        public void MenuFuncionalidades()
+        public async Task MenuFuncionalidades()
         {
             int opcion = -1;
             while (opcion != 0)
@@ -44,25 +44,25 @@ namespace Cliente
                         funcionalidadesCliente.DesconectarUsuario(this.usuario);
                         break;
                     case 1:
-                        funcionalidadesCliente.PublicarJuego();
+                        await funcionalidadesCliente.PublicarJuego();
                         break;
                     case 2:
-                        funcionalidadesCliente.BajaModificacionJuego();
+                        await funcionalidadesCliente.BajaModificacionJuego();
                         break;
                     case 3:
-                        funcionalidadesCliente.BuscarJuego();
+                        await funcionalidadesCliente.BuscarJuego();
                         break;
                     case 4:
-                        funcionalidadesCliente.CalificarUnJuego(this.usuario);
+                        await funcionalidadesCliente.CalificarUnJuego(this.usuario);
                         break;
                     case 5:
-                        funcionalidadesCliente.DetalleDeUnJuego();
+                        await funcionalidadesCliente.DetalleDeUnJuego();
                         break;
                     case 6:
-                        funcionalidadesCliente.AdquirirJuego(this.usuario);
+                        await funcionalidadesCliente.AdquirirJuego(this.usuario);
                         break;
                     case 7:
-                        funcionalidadesCliente.ListaJuegosAdquiridos(this.usuario);
+                        await funcionalidadesCliente.ListaJuegosAdquiridos(this.usuario);
                         break;
                 }
             }

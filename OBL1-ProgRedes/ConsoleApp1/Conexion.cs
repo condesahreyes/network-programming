@@ -7,6 +7,7 @@ using LogicaNegocio;
 using System.Net;
 using Protocolo;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Cliente
 {
@@ -28,14 +29,15 @@ namespace Cliente
             IPEndPoint endPointCliente = new IPEndPoint(IPAddress.Parse(ipCliente), puertoCliente);
             IPEndPoint endPointServidor = new IPEndPoint(IPAddress.Parse(ipServidor), puertoServidor);
 
-            Socket sender = new Socket(endPointCliente.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            TcpClient sender = new TcpClient(endPointCliente);
 
-            sender.Bind(endPointCliente);
+            //sender.Bind(endPointCliente);
 
-            transferencia = new Transferencia(sender);
+            
 
             sender.Connect(endPointServidor);
-            Mensaje.Conectado(sender.RemoteEndPoint.ToString());
+            Mensaje.Conectado(sender.ToString());
+            transferencia = new Transferencia(sender);
         }
 
         public void DesconectarUsuario(Usuario usuario)
@@ -43,77 +45,75 @@ namespace Cliente
             transferencia.Desconectar();
         }
 
-        public string EsperarPorRespuesta()
+        public async Task<string> EsperarPorRespuesta()
         {
-            string respuesta = Controlador.RecibirMensajeGenerico
+            string respuesta = await Controlador.RecibirMensajeGenerico
                 (transferencia, Constante.largoEncabezado);
             string[] respuestas = respuesta.Split("#");
 
             return respuestas[0];
         }
 
-        public void EnvioEncabezado(int largoMensaje, string accion)
+        public async Task EnvioEncabezado(int largoMensaje, string accion)
         {
             Encabezado encabezado = new Encabezado(largoMensaje, accion);
-            Controlador.EnviarEncabezado(transferencia, encabezado);
+            await Controlador.EnviarEncabezado(transferencia, encabezado);
         }
 
-        public Encabezado RecibirEncabezado()
+        public async Task<Encabezado> RecibirEncabezado()
         {
-            return Controlador.RecibirEncabezado(transferencia);
+            return await Controlador.RecibirEncabezado(transferencia);
         }
 
-        public void EnvioDeMensaje(string mensaje)
+        public async Task EnvioDeMensaje(string mensaje)
         {
-            Controlador.EnviarDatos(transferencia, mensaje);
+            await Controlador.EnviarDatos(transferencia, mensaje);
         }
 
-        public string RecibirMensaje()
+        public async Task<string> RecibirMensaje()
         {
-            Encabezado encabezado = RecibirEncabezado();
+            Encabezado encabezado = await RecibirEncabezado();
 
-            return Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
+            return await Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
         }
 
-        public Juego RecibirUnJuegoPorTitulo(string titulo)
+        public async Task<Juego> RecibirUnJuegoPorTitulo(string titulo)
         {
-
-                return Controlador.RecibirUnJuegoPorTitulo(transferencia, titulo);
-        
+            return await Controlador.RecibirUnJuegoPorTitulo(transferencia, titulo);
         }
 
-        public List<string> RecibirListaDeJuegos()
+        public async Task<List<string>> RecibirListaDeJuegos()
         {
-            EnvioEncabezado(0, Accion.ListaJuegos);
+            await EnvioEncabezado(0, Accion.ListaJuegos);
 
-            string juegos = Controlador.RecibirEncabezadoYMensaje
+            string juegos = await Controlador.RecibirEncabezadoYMensaje
                 (transferencia, Accion.ListaJuegos);
 
             return Mapper.StringAListaJuegosString(juegos);
         }
 
-        public List<string> RecibirListaDeJuegosAdquiridos()
+        public async Task<List<string>> RecibirListaDeJuegosAdquiridos()
         {
-            string juegos = Controlador.RecibirEncabezadoYMensaje
+            string juegos = await Controlador.RecibirEncabezadoYMensaje
                 (transferencia, Accion.VerJuegosAdquiridos);
 
             return Mapper.StringAListaJuegosString(juegos);
         }
 
-        public void EnvioDeArchivo(string archivo)
+        public async Task EnvioDeArchivo(string archivo)
         {
-            ControladorDeArchivos.EnviarArchivo(archivo, transferencia);
+            await ControladorDeArchivos.EnviarArchivo(archivo, transferencia);
         }
 
-        public string RecibirArchivos(string caratula)
+        public async Task<string> RecibirArchivos(string caratula)
         {
-            Encabezado encabezado = RecibirEncabezado();
+            Encabezado encabezado = await RecibirEncabezado();
 
             if (encabezado.accion == Accion.EliminarJuego)
                 return "";
 
-            string nombreArchivo = Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
-            ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
+            string nombreArchivo = await Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
+            await ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
 
             return nombreArchivo;
         }

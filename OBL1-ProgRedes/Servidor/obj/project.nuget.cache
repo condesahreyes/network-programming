@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cN+QBpfFlUq2fI1yJNKrjMlGVAG+6EvMQnEqmQsBRMk2Ked2gOQE1u6g5QyC0A28Hf+KHcVlsiCWIewSOMGZMA==",
+  "dgSpecHash": "1RuaJJ+NB0/EIftjQMPe2QqGF8odJ01BLV2pPn2RPnKja6IIaWBILPILivw/PSe35lFnZLUFHRWIGtEQCeJI7Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hreye\\Desktop\\Obligatorio I - Reyes Percivale\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\respaldo\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hreye\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",

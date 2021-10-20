@@ -1,12 +1,13 @@
 ﻿using System.Text;
 using System.IO;
 using System;
+using System.Threading.Tasks;
 
 namespace Protocolo.Transferencia_de_datos
 {
     public class ControladorDeArchivos
     {
-        public static  void EnviarArchivo(string ruta, Transferencia transferencia)
+        public static async Task EnviarArchivo(string ruta, Transferencia transferencia)
         {
             var informacionArchivo = new FileInfo(ruta);
 
@@ -15,9 +16,9 @@ namespace Protocolo.Transferencia_de_datos
 
             Encabezado encabezado = new Encabezado(largoMensaje, Accion.EnviarCaratula);
 
-            Controlador.EnviarEncabezado(transferencia, encabezado);
+            await Controlador.EnviarEncabezado(transferencia, encabezado);
 
-            transferencia.EnvioDeDatos(nombreArchivo);
+            await transferencia.EnvioDeDatos(nombreArchivo);
 
             try
             {
@@ -26,21 +27,21 @@ namespace Protocolo.Transferencia_de_datos
                 int largoArchivoEnInt = tamañoArchivoString.Length;
 
                 Encabezado encabezadoArchivo = new Encabezado(largoArchivoEnInt, Accion.EnviarCaratula);
-                Controlador.EnviarEncabezado(transferencia, encabezadoArchivo);
+                await Controlador.EnviarEncabezado(transferencia, encabezadoArchivo);
 
-                transferencia.EnvioDeDatos(tamañoArchivoString);
+                await transferencia.EnvioDeDatos(tamañoArchivoString);
 
-                EnviarArchivoPorPartes(transferencia, tamañoArchivo, ruta);
+                await EnviarArchivoPorPartes(transferencia, tamañoArchivo, ruta);
             }
             catch (System.IO.FileNotFoundException)
             {
                 Encabezado encabezadoArchivo = new Encabezado(0, Accion.EliminarJuego);
-                Controlador.EnviarEncabezado(transferencia, encabezadoArchivo);
+                await Controlador.EnviarEncabezado(transferencia, encabezadoArchivo);
                 return;
             }
         }
 
-        private static void EnviarArchivoPorPartes(Transferencia transferencia, long largoArchivo, string ruta)
+        private static async Task EnviarArchivoPorPartes(Transferencia transferencia, long largoArchivo, string ruta)
         {
             long partesAEnviar = CalcularPartesAEnviar(largoArchivo);
             long posicionALeer = 0;
@@ -51,36 +52,36 @@ namespace Protocolo.Transferencia_de_datos
                 byte[] dato;
                 if (parteActual != partesAEnviar)
                 {
-                    dato = LecturaDeArchivo.LeerArchivo(ruta, Constante.maximoTamañoDePaquete, posicionALeer);
+                    dato = await LecturaDeArchivo.LeerArchivo(ruta, Constante.maximoTamañoDePaquete, posicionALeer);
                     posicionALeer += Constante.maximoTamañoDePaquete;
                 }
                 else
                 {
                     int lastPartSize = (int)(largoArchivo - posicionALeer);
-                    dato = LecturaDeArchivo.LeerArchivo(ruta, lastPartSize, posicionALeer);
+                    dato = await LecturaDeArchivo.LeerArchivo(ruta, lastPartSize, posicionALeer);
                     posicionALeer += lastPartSize;
                 }
 
-                transferencia.EnvioDeDatosByte(dato);
+                await transferencia.EnvioDeDatosByte(dato);
                 parteActual++;
             }
         }
 
-        public static void RecibirArchivos(Transferencia transferencia, string nombreArchivo)
+        public static async Task RecibirArchivos(Transferencia transferencia, string nombreArchivo)
         {
-            Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
+            Encabezado encabezado = await Controlador.RecibirEncabezado(transferencia);
 
             int tamañoDelArchivo = encabezado.largoMensaje;
 
-            byte[] largoTamañoDeArchivo = transferencia.RecibirDatos(tamañoDelArchivo);
+            byte[] largoTamañoDeArchivo = await transferencia .RecibirDatos(tamañoDelArchivo);
             string largoArchivoASrting = Encoding.ASCII.GetString(largoTamañoDeArchivo, 0, tamañoDelArchivo);
 
             long largoArchivo = Convert.ToInt64(largoArchivoASrting);
 
-            RecbirArchivo(transferencia, largoArchivo, nombreArchivo);
+            await RecbirArchivo(transferencia, largoArchivo, nombreArchivo);
         }
 
-        private static void RecbirArchivo(Transferencia transferencia, long tamañoArchivo, string nombreArchivo)
+        private static async Task RecbirArchivo(Transferencia transferencia, long tamañoArchivo, string nombreArchivo)
         {
             long partesArchivos = CalcularPartesAEnviar(tamañoArchivo);
             long datosLeidos = 0;
@@ -91,13 +92,13 @@ namespace Protocolo.Transferencia_de_datos
                 byte[] dato;
                 if (parteActual != partesArchivos)
                 {
-                    dato = transferencia.RecibirDatos(Constante.maximoTamañoDePaquete);
+                    dato = await transferencia.RecibirDatos(Constante.maximoTamañoDePaquete);
                     datosLeidos += Constante.maximoTamañoDePaquete;
                 }
                 else
                 {
                     int largoUltimaParte = (int)(tamañoArchivo - datosLeidos);
-                    dato = transferencia.RecibirDatos(largoUltimaParte);
+                    dato = await transferencia.RecibirDatos(largoUltimaParte);
                     datosLeidos += largoUltimaParte;
                 }
                 LecturaDeArchivo.EscribirArchivo(nombreArchivo, dato);

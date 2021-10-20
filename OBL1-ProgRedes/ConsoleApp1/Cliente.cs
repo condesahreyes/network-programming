@@ -1,18 +1,20 @@
 ﻿using Cliente.Constantes;
+using System;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace Cliente
 {
     public class Cliente
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             try
             {
                 Menu menu = new Menu();
+                await menu.MenuPrincipal();
             }
-
-            catch (SocketException)
+            catch (Exception)
             {
                 Mensaje.ConexionPerdida();
             }
