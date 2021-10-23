@@ -10,6 +10,7 @@ using System.Net;
 using Protocolo;
 using System.IO;
 using System;
+using Servidor.FuncionalidadesEntidades;
 
 namespace Servidor
 {
@@ -18,6 +19,7 @@ namespace Servidor
         List<TcpClient> clientesConectados = new List<TcpClient>();
         //private List<Socket> clientesConectados = new List<Socket>();
         private Funcionalidad funcionalidadesServidor;
+        private LogicaUsuario logicaUsuario;
         //private Socket handler;
         private TcpClient handler;
 
@@ -37,6 +39,8 @@ namespace Servidor
             puerto = int.Parse(configuracion["port"]);
             cantConexionesEnEspera = int.Parse(configuracion["backLog"]);
             ipServidor = configuracion["ip"];
+            logicaUsuario = new LogicaUsuario();
+
             //Escuchar(); //Esto esta bien? ver prox comentario 
         }
 
@@ -52,10 +56,11 @@ namespace Servidor
             listener.Start(cantConexionesEnEspera);
 
 
-            Thread hiloDeEscucha = new Thread(async () => await EscucharPorUsuario(listener));
+            Task hiloDeEscucha = new Task(async () => await EscucharPorUsuario(listener));
             hiloDeEscucha.Start();
 
             MenuServidor(listener);
+
         }
         
 
@@ -65,11 +70,11 @@ namespace Servidor
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("****************** Menú servidor ******************" +
-                "\n0. Terminar la conexion. \n1. Ver catalogo de juegos \n\nSeleccione una opción:");
+                "\n0. Terminar la conexion. \n1. Ver catalogo de juegos \n2. Crear usuario \n3. Ver lista usuarios \n4. Modificar usuario \n4. Dar de baja un usuario \n\nSeleccione una opción:");
             Console.ForegroundColor = ConsoleColor.White;
 
             string accion = Console.ReadLine();
-            if (!Regex.IsMatch(accion, "^[" + 0 + "-" + 1 + "]$"))
+            if (!Regex.IsMatch(accion, "^[" + 0 + "-" + 5 + "]$"))
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -100,7 +105,46 @@ namespace Servidor
                     _logicaJuegos.VerCatalogoJuegos();
                     MenuServidor(listener);
                     break;
-                
+                case "2":
+                    Console.Clear();
+                    logicaUsuario.ObtenerUsuario(Usuario.CrearUsuario());
+                    MenuServidor(listener);
+                    break;
+                case "3":
+                    Console.Clear();
+                    logicaUsuario.VerListaUsuario();
+                    MenuServidor(listener);
+                    break;
+                case "4":
+                    Console.Clear();
+                    string nombreUsuario = Usuario.CrearUsuario().NombreUsuario;
+                    Console.WriteLine("Ingrese un nuevo nombre");
+                    string nuevoNombreUsuario = Console.ReadLine();
+                    bool seModifico = logicaUsuario.ModificarUsuario(nombreUsuario, nuevoNombreUsuario);
+                    if (!seModifico)
+                    {
+                        Console.WriteLine("Usuario invalido");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Usuario Modificado");
+                    }
+                    MenuServidor(listener);
+                    break;
+                case "5":
+                    Console.Clear();
+                    bool seElimino = logicaUsuario.EliminarUsuario(Usuario.CrearUsuario().NombreUsuario);
+                    if (!seElimino)
+                    {
+                        Console.WriteLine("Usuario invalido");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Usuario Eliminado");
+                    }
+                    MenuServidor(listener);
+                    break;
+
             }
 
         }
@@ -112,7 +156,7 @@ namespace Servidor
                 while (!salir)
                 {
                     handler = await listener.AcceptTcpClientAsync();
-                    Thread hiloPorUsuario = new Thread(async () => await ConexionUsuario(handler));
+                    Task hiloPorUsuario = new Task(async () => await ConexionUsuario(handler));
                     hiloPorUsuario.Start();
                     clientesConectados.Add(handler);
                 }

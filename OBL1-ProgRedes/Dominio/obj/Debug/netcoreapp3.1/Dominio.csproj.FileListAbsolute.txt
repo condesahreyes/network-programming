@@ -1,0 +1,10 @@
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\Dominio.deps.json
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\Dominio.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\Dominio.pdb
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.csprojAssemblyReference.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.GeneratedMSBuildEditorConfig.editorconfig
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfo.cs
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.CoreCompileInputs.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.pdb

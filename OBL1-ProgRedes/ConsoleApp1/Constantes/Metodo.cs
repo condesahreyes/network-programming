@@ -7,13 +7,16 @@ namespace Cliente.Constantes
     {
         public static int ObtenerOpcion(string mensaje, int opcionMinima, int opcionMaxima)
         {
-            while (true)
+            int opcionInt = 0;
+            var opcion = "";
+            bool opcionObtenida = false;
+            while (!opcionObtenida)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(mensaje);
                 Console.ForegroundColor = ConsoleColor.White;
 
-                var opcion = Console.ReadLine();
+                opcion = Console.ReadLine();
 
                 if (!Regex.IsMatch(opcion, "^[" + opcionMinima + "-" + opcionMaxima + "]$"))
                 {
@@ -25,10 +28,12 @@ namespace Cliente.Constantes
                 else
                 {
                     Console.Clear();
-                    return Convert.ToInt32(opcion);
+                    opcionInt  = Convert.ToInt32(opcion);
+                    opcionObtenida = true;
                 }
             }
-            
+            return opcionInt;
+
         }
 
     }

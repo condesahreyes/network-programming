@@ -1,0 +1,13 @@
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Protocolo.deps.json
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Protocolo.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Protocolo.pdb
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Dominio.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Debug\netcoreapp3.1\Dominio.pdb
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.csprojAssemblyReference.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.GeneratedMSBuildEditorConfig.editorconfig
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.AssemblyInfo.cs
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.csproj.CoreCompileInputs.cache
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.csproj.CopyComplete
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.dll
+\\Mac\Home\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Debug\netcoreapp3.1\Protocolo.pdb

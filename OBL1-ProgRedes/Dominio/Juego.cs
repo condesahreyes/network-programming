@@ -75,11 +75,15 @@ namespace LogicaNegocio
 
         private static string ObtenerCaratula()
         {
-            while (true)
+            string caratula = "";
+            bool caratulaObtenida = false;
+            while (!caratulaObtenida)
             {
-                string caratula = Console.ReadLine();
+                caratula = Console.ReadLine();
                 if (File.Exists(caratula))
-                    return caratula;
+                {
+                    caratulaObtenida = true;
+                }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -88,8 +92,8 @@ namespace LogicaNegocio
                     Console.WriteLine("\nIngrese caratula: ");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-
             }
+            return caratula;
         }
 
         public static void MostrarMensaje(string mensaje)
