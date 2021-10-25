@@ -4,10 +4,9 @@ namespace Servidor
 {
     public class Servidor
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             Conexion server = new Conexion();
-            await Task.Run(() =>  server.Escuchar());
         }
     }
 }

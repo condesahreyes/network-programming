@@ -16,7 +16,7 @@ namespace Protocolo.Transferencia_de_datos
 
             Encabezado encabezado = new Encabezado(largoMensaje, Accion.EnviarCaratula);
 
-            await Controlador.EnviarEncabezado(transferencia, encabezado);
+            await Controlador.EnviarEncabezadoAsync(transferencia, encabezado);
 
             await transferencia.EnvioDeDatosAsync(nombreArchivo);
 
@@ -27,7 +27,7 @@ namespace Protocolo.Transferencia_de_datos
                 int largoArchivoEnInt = tamañoArchivoString.Length;
 
                 Encabezado encabezadoArchivo = new Encabezado(largoArchivoEnInt, Accion.EnviarCaratula);
-                await Controlador.EnviarEncabezado(transferencia, encabezadoArchivo);
+                await Controlador.EnviarEncabezadoAsync(transferencia, encabezadoArchivo);
 
                 await transferencia.EnvioDeDatosAsync(tamañoArchivoString);
 
@@ -36,7 +36,7 @@ namespace Protocolo.Transferencia_de_datos
             catch (System.IO.FileNotFoundException)
             {
                 Encabezado encabezadoArchivo = new Encabezado(0, Accion.EliminarJuego);
-                await Controlador.EnviarEncabezado(transferencia, encabezadoArchivo);
+                await Controlador.EnviarEncabezadoAsync(transferencia, encabezadoArchivo);
                 return;
             }
         }
@@ -69,7 +69,7 @@ namespace Protocolo.Transferencia_de_datos
 
         public static async Task RecibirArchivosAsync(Transferencia transferencia, string nombreArchivo)
         {
-            Encabezado encabezado = await Controlador.RecibirEncabezado(transferencia);
+            Encabezado encabezado = await Controlador.RecibirEncabezadoAsync(transferencia);
 
             int tamañoDelArchivo = encabezado.largoMensaje;
 

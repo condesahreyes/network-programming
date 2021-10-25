@@ -39,9 +39,10 @@ namespace Servidor
             cantConexionesEnEspera = int.Parse(configuracion["backLog"]);
             ipServidor = configuracion["ip"];
             logicaUsuario = new LogicaUsuario();
+            Escuchar();
         }
 
-        public async Task Escuchar()
+        public void Escuchar()
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipServidor), puerto);
 
@@ -175,7 +176,7 @@ namespace Servidor
 
         private async Task<Usuario> EjecutarAccion(Usuario usuario, TcpClient handler)
         {
-                Encabezado encabezado = await Controlador.RecibirEncabezado(new Transferencia(handler));
+                Encabezado encabezado = await Controlador.RecibirEncabezadoAsync(new Transferencia(handler));
                 Transferencia transferencia = new Transferencia(handler);
 
                 funcionalidadesServidor = new Funcionalidad(transferencia);

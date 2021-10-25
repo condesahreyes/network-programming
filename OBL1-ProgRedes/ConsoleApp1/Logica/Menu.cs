@@ -9,13 +9,11 @@ namespace Cliente
         private Funcionalidad funcionalidadesCliente;
         private Usuario usuario;
 
-        public Menu()
-        {
-            this.funcionalidadesCliente = Funcionalidad.ObtenerInstancia();
-        }
+        public Menu() { }
 
         public async Task MenuPrincipal()
         {
+            this.funcionalidadesCliente = await Funcionalidad.ObtenerInstancia();
             int opcion = Metodo.ObtenerOpcion(Mensaje.menuPrincipal, 0, 1);
 
             switch (opcion)

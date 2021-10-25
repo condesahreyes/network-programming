@@ -10,17 +10,25 @@ namespace Cliente
     public class Funcionalidad
     {
         private static Funcionalidad _instancia;
-        private Conexion conexionCliente;
+        private static Conexion conexionCliente;
 
         public  Funcionalidad()
         {
-            this.conexionCliente = new Conexion();
         }
 
-        public static Funcionalidad ObtenerInstancia()
+        public static async Task InstanciarConexion()
+        {
+            conexionCliente = new Conexion();
+            await conexionCliente.InstanciarTransferencia();
+        }
+
+        public static async Task<Funcionalidad> ObtenerInstancia()
         {
             if (_instancia == null)
+            {
                 _instancia = new Funcionalidad();
+                await InstanciarConexion();
+            }
   
             return _instancia;
         }

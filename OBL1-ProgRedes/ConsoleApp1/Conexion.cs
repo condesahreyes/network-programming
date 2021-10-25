@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Protocolo.Transferencia_de_datos;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Net.Sockets;
-using Cliente.Constantes;
 using LogicaNegocio;
 using System.Net;
 using Protocolo;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace Cliente
 {
@@ -15,7 +14,9 @@ namespace Cliente
     {
         Transferencia transferencia;
 
-        public Conexion()
+        public Conexion() { }
+
+        public async Task InstanciarTransferencia()
         {
             IConfiguration configuracion = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -27,13 +28,13 @@ namespace Cliente
             string ipCliente = configuracion["ipCliente"];
 
             IPEndPoint endPointCliente = new IPEndPoint(IPAddress.Parse(ipCliente), puertoCliente);
-            IPEndPoint endPointServidor = new IPEndPoint(IPAddress.Parse(ipServidor), puertoServidor);
 
             TcpClient sender = new TcpClient(endPointCliente);
 
-            sender.Connect(endPointServidor);
+            await sender.ConnectAsync(ipServidor, puertoServidor);
             transferencia = new Transferencia(sender);
         }
+
 
         public void DesconectarUsuario(Usuario usuario)
         {
@@ -42,7 +43,7 @@ namespace Cliente
 
         public async Task<string> EsperarPorRespuesta()
         {
-            string respuesta = await Controlador.RecibirMensajeGenerico
+            string respuesta = await Controlador.RecibirMensajeGenericoAsync
                 (transferencia, Constante.largoEncabezado);
             string[] respuestas = respuesta.Split("#");
 
@@ -52,12 +53,12 @@ namespace Cliente
         public async Task EnvioEncabezado(int largoMensaje, string accion)
         {
             Encabezado encabezado = new Encabezado(largoMensaje, accion);
-            await Controlador.EnviarEncabezado(transferencia, encabezado);
+            await Controlador.EnviarEncabezadoAsync(transferencia, encabezado);
         }
 
         public async Task<Encabezado> RecibirEncabezado()
         {
-            return await Controlador.RecibirEncabezado(transferencia);
+            return await Controlador.RecibirEncabezadoAsync(transferencia);
         }
 
         public async Task EnvioDeMensaje(string mensaje)
@@ -69,19 +70,19 @@ namespace Cliente
         {
             Encabezado encabezado = await RecibirEncabezado();
 
-            return await Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
+            return await Controlador.RecibirMensajeGenericoAsync(transferencia, encabezado.largoMensaje);
         }
 
         public async Task<Juego> RecibirUnJuegoPorTitulo(string titulo)
         {
-            return await Controlador.RecibirUnJuegoPorTitulo(transferencia, titulo);
+            return await Controlador.RecibirUnJuegoPorTituloAsync(transferencia, titulo);
         }
 
         public async Task<List<string>> RecibirListaDeJuegos()
         {
             await EnvioEncabezado(0, Accion.ListaJuegos);
 
-            string juegos = await Controlador.RecibirEncabezadoYMensaje
+            string juegos = await Controlador.RecibirEncabezadoYMensajeAsync
                 (transferencia, Accion.ListaJuegos);
 
             return Mapper.StringAListaJuegosString(juegos);
@@ -89,7 +90,7 @@ namespace Cliente
 
         public async Task<List<string>> RecibirListaDeJuegosAdquiridos()
         {
-            string juegos = await Controlador.RecibirEncabezadoYMensaje
+            string juegos = await Controlador.RecibirEncabezadoYMensajeAsync
                 (transferencia, Accion.VerJuegosAdquiridos);
 
             return Mapper.StringAListaJuegosString(juegos);
@@ -107,7 +108,7 @@ namespace Cliente
             if (encabezado.accion == Accion.EliminarJuego)
                 return "";
 
-            string nombreArchivo = await Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
+            string nombreArchivo = await Controlador.RecibirMensajeGenericoAsync(transferencia, encabezado.largoMensaje);
             await ControladorDeArchivos.RecibirArchivosAsync(transferencia, nombreArchivo);
 
             return nombreArchivo;

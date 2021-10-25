@@ -48,7 +48,7 @@ namespace Protocolo
         {
             int largoMensaje = mensaje.Length;
             int enviados = 0;
-           await networkStream.WriteAsync(mensaje, enviados, largoMensaje - enviados);
+            await networkStream.WriteAsync(mensaje, enviados, largoMensaje - enviados);
         }
 
         public void Desconectar()
