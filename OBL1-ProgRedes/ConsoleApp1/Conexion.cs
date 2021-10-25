@@ -31,12 +31,7 @@ namespace Cliente
 
             TcpClient sender = new TcpClient(endPointCliente);
 
-            //sender.Bind(endPointCliente);
-
-            
-
             sender.Connect(endPointServidor);
-            Mensaje.Conectado(sender.ToString());
             transferencia = new Transferencia(sender);
         }
 
@@ -102,7 +97,7 @@ namespace Cliente
 
         public async Task EnvioDeArchivo(string archivo)
         {
-            await ControladorDeArchivos.EnviarArchivo(archivo, transferencia);
+            await ControladorDeArchivos.EnviarArchivoAsync(archivo, transferencia);
         }
 
         public async Task<string> RecibirArchivos(string caratula)
@@ -113,7 +108,7 @@ namespace Cliente
                 return "";
 
             string nombreArchivo = await Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
-            await ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
+            await ControladorDeArchivos.RecibirArchivosAsync(transferencia, nombreArchivo);
 
             return nombreArchivo;
         }

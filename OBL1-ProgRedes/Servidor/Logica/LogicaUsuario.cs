@@ -14,6 +14,26 @@ namespace Servidor.FuncionalidadesEntidades
             this.persistencia = Persistencia.ObtenerPersistencia();
         }
 
+        public void ActualizarAUsuarioInactivo(string nombreUsuario)
+        {
+            lock (persistencia)
+            {
+                foreach (Usuario usuario in persistencia.usuarios)
+                    if (usuario.NombreUsuario == nombreUsuario)
+                        usuario.UsuarioActivo = false;
+            }
+        }
+
+        public void ActualizarAUsuarioActivo(string nombreUsuario)
+        {
+            lock (persistencia)
+            {
+                foreach (Usuario usuario in persistencia.usuarios)
+                    if (usuario.NombreUsuario == nombreUsuario)
+                        usuario.UsuarioActivo = true;
+            }
+        }
+
         public Usuario ObtenerUsuario(Usuario usuario)
         {
             bool noExisteUsuario = NoEsUsuarioExistente(usuario);
@@ -34,10 +54,15 @@ namespace Servidor.FuncionalidadesEntidades
             lock (persistencia.juegos)
             {
                 foreach (Usuario unUsuario in persistencia.usuarios)
-                    if (unUsuario.NombreUsuario == nombreUsuario)
+                    if (unUsuario.NombreUsuario == nombreUsuario && unUsuario.UsuarioActivo == false)
                     {
                         persistencia.usuarios.Remove(unUsuario);
                         return true;
+                    }
+                    else if(unUsuario.NombreUsuario == nombreUsuario && unUsuario.UsuarioActivo == true)
+                    {
+                        Console.WriteLine("Error el usuario no se puede eliminar dado que es un usuario activo");
+                        return false;
                     }
             }
             return false;
@@ -48,10 +73,15 @@ namespace Servidor.FuncionalidadesEntidades
             lock (persistencia.juegos)
             {
                 foreach (Usuario unUsuario in persistencia.usuarios)
-                    if (unUsuario.NombreUsuario == nombreUsuario)
+                    if (unUsuario.NombreUsuario == nombreUsuario && unUsuario.UsuarioActivo == false)
                     {
                         unUsuario.NombreUsuario = nuevoNombreUsuario;
                         return true;
+                    }
+                    else if (unUsuario.NombreUsuario == nombreUsuario && unUsuario.UsuarioActivo == true)
+                    {
+                        Console.WriteLine("Error el usuario no se puede modificar dado que es un usuario activo");
+                        return false;
                     }
             }
             return false;

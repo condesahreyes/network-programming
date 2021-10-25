@@ -1,12 +1,12 @@
-﻿using System.IO;
+﻿using System.Threading.Tasks;
+using System.IO;
 using System;
-using System.Threading.Tasks;
 
 namespace Protocolo.Transferencia_de_datos
 {
     public class LecturaDeArchivo
     {
-        public static async Task<byte[]> LeerArchivo(string path, int largo, long posicion)
+        public static async Task<byte[]> LeerArchivoAsync(string path, int largo, long posicion)
         {
             byte[] respuesta = new byte[largo];
             using FileStream fileStream = new FileStream(path, FileMode.Open) { Position = posicion };
@@ -25,7 +25,7 @@ namespace Protocolo.Transferencia_de_datos
             return respuesta;
         }
 
-        public static async Task EscribirArchivo(string path, byte[] datos)
+        public static async Task EscribirArchivoAsync(string path, byte[] datos)
         {
             if (File.Exists(path))
             {

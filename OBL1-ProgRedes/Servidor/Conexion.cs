@@ -1,26 +1,25 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Servidor.FuncionalidadesPorEntidad;
+using Servidor.FuncionalidadesEntidades;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net.Sockets;
-using System.Threading;
 using LogicaNegocio;
 using System.Net;
 using Protocolo;
 using System.IO;
 using System;
-using Servidor.FuncionalidadesEntidades;
 
 namespace Servidor
 {
     public class Conexion
     {
         List<TcpClient> clientesConectados = new List<TcpClient>();
-        //private List<Socket> clientesConectados = new List<Socket>();
+
         private Funcionalidad funcionalidadesServidor;
         private LogicaUsuario logicaUsuario;
-        //private Socket handler;
+
         private TcpClient handler;
 
         private int cantConexionesEnEspera;
@@ -40,29 +39,21 @@ namespace Servidor
             cantConexionesEnEspera = int.Parse(configuracion["backLog"]);
             ipServidor = configuracion["ip"];
             logicaUsuario = new LogicaUsuario();
-
-            //Escuchar(); //Esto esta bien? ver prox comentario 
         }
 
-        public async Task Escuchar() //Esto deberia ser async?????
+        public async Task Escuchar()
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipServidor), puerto);
 
             TcpListener listener = new TcpListener(endPoint);
 
-            //listener.Bind(endPoint);
-
-            //Se cambia Listen por Start debido al cambio de socket -> TcpListener
             listener.Start(cantConexionesEnEspera);
-
 
             Task hiloDeEscucha = new Task(async () => await EscucharPorUsuario(listener));
             hiloDeEscucha.Start();
 
             MenuServidor(listener);
-
         }
-        
 
         private void MenuServidor(TcpListener listener)
         {
@@ -70,7 +61,8 @@ namespace Servidor
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("****************** Menú servidor ******************" +
-                "\n0. Terminar la conexion. \n1. Ver catalogo de juegos \n2. Crear usuario \n3. Ver lista usuarios \n4. Modificar usuario \n4. Dar de baja un usuario \n\nSeleccione una opción:");
+                "\n0. Terminar la conexion. \n1. Ver catalogo de juegos \n2. Crear usuario " +
+                "\n3. Ver lista usuarios \n4. Modificar usuario \n5. Dar de baja un usuario \n\nSeleccione una opción:");
             Console.ForegroundColor = ConsoleColor.White;
 
             string accion = Console.ReadLine();
@@ -87,17 +79,12 @@ namespace Servidor
                 case "0":
                     salir = true;
 
-                    //listener.Close(0);
-                    listener.Stop(); // esto esta bien????
+                    listener.Stop(); 
 
                     foreach (var socketCliente in clientesConectados)
                     {
-                        //Arreglar esto para tcpClient
-                        //socketCliente.EndConnect();
-                        socketCliente.GetStream().Close(); //Ta bien delia?
-                        socketCliente.Close();//Ta bien delia?
-                        //socketCliente.Shutdown(SocketShutdown.Both); //Entiendo esto se va
-                        //socketCliente.Close(1); // Entiendo esto se va
+                        socketCliente.GetStream().Close(); 
+                        socketCliente.Close();
                     }
                     break;
                 case "1":
@@ -144,9 +131,7 @@ namespace Servidor
                     }
                     MenuServidor(listener);
                     break;
-
             }
-
         }
 
         private async Task EscucharPorUsuario(TcpListener listener)
@@ -163,12 +148,8 @@ namespace Servidor
             }
             catch (SocketException)
             {
-                /*
-                if(usuario != null)
-                    Console.WriteLine("Conexion finalizada por usuario: " + usuario.NombreUsuario);
-                else
-                    Console.WriteLine("Conexion finalizada por una maquina sin usuario");
-                */
+                Console.WriteLine("Conexion finalizada por una maquina sin usuario");
+
                 Console.WriteLine("Presione enter si desea finalizar la conexion del servidor....");
             }
         }
@@ -176,6 +157,7 @@ namespace Servidor
         private async Task ConexionUsuario(TcpClient socket)
         {
             Usuario usuario = null;
+            LogicaUsuario logicaUsuario = new LogicaUsuario();
 
             while (!salir)
             {
@@ -185,10 +167,10 @@ namespace Servidor
                 }
                 catch (SocketException)
                 {
+                    logicaUsuario.ActualizarAUsuarioInactivo(usuario.NombreUsuario);
                     return;
                 }
             }
-
         }
 
         private async Task<Usuario> EjecutarAccion(Usuario usuario, TcpClient handler)
@@ -205,7 +187,6 @@ namespace Servidor
                 {
                     case Accion.Login:
                         return await funcionalidadesServidor.InicioSesionCliente(usuario, largoMensajeARecibir);
-                        break;
                     case Accion.AdquirirJuego:
                         await funcionalidadesServidor.AdquirirJuego(largoMensajeARecibir, usuario);
                         break;

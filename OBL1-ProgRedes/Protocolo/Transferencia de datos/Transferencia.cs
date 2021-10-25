@@ -1,6 +1,7 @@
-﻿using System.Net.Sockets;
+﻿using System.Threading.Tasks;
+using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Protocolo
 {
@@ -15,7 +16,7 @@ namespace Protocolo
             this.networkStream = socket.GetStream();
         }
 
-        public async Task<byte[]> RecibirDatos(int largoMensaje)
+        public async Task<byte[]> RecibirDatosAsync(int largoMensaje)
         {
             int recibidoTotal = 0;
 
@@ -36,27 +37,23 @@ namespace Protocolo
             return datos;
         }
 
-        public async Task EnvioDeDatos(string datos)
+        public async Task EnvioDeDatosAsync(string datos)
         {
             byte[] mensaje = Encoding.ASCII.GetBytes(datos);
 
-            await EnvioDeDatosByte(mensaje);
+            await EnvioDeDatosByteAsync(mensaje);
         }
 
-        public async Task EnvioDeDatosByte(byte[] mensaje)
+        public async Task EnvioDeDatosByteAsync(byte[] mensaje)
         {
             int largoMensaje = mensaje.Length;
             int enviados = 0;
-
-            /*while (enviados < largoMensaje)
-                enviados +=*/ 
-            await networkStream.WriteAsync(mensaje, enviados, largoMensaje - enviados);
+           await networkStream.WriteAsync(mensaje, enviados, largoMensaje - enviados);
         }
 
         public void Desconectar()
         {
-            //socket.Shutdown(SocketShutdown.Both); //Pasar esto al metodo async
-            networkStream.Close(); //Preguntar a delia
+            networkStream.Close(); 
             socket.Close();
         }
     }

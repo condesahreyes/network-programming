@@ -29,14 +29,18 @@ namespace Servidor
 
             await EnviarRespuesta(usuario, usuario != null);
 
-            return funcionesUsuario.ObtenerUsuario(usuario);
+            Usuario usuarioCreado = funcionesUsuario.ObtenerUsuario(usuario);
+
+            funcionesUsuario.ActualizarAUsuarioActivo(usuario.NombreUsuario);
+
+            return usuarioCreado;
         }
 
         public async Task CrearJuego(int largoMensajeARecibir)
         {
             Juego juego = await Controlador.PublicarJuego(transferencia, largoMensajeARecibir);
 
-            string caratula = await RecibirArchivos(); //Ver si hay que cambiarlo
+            string caratula = await RecibirArchivos();
             juego.Caratula = caratula;
 
             await EnviarRespuesta(juego, funcionesJuego.AgregarJuego(juego));
@@ -74,7 +78,7 @@ namespace Servidor
                 string juegoEnString = Mapper.JuegoAString(juego);
 
                 await EnviarMensaje(juegoEnString, Accion.EnviarDetalleJuego);
-                await ControladorDeArchivos.EnviarArchivo(Directory.GetCurrentDirectory() + @"\" + 
+                await ControladorDeArchivos.EnviarArchivoAsync(Directory.GetCurrentDirectory() + @"\" + 
                     juego.Caratula, transferencia);
             }
             else
@@ -161,7 +165,7 @@ namespace Servidor
             Encabezado encabezado = await Controlador.RecibirEncabezado(transferencia);
 
             string nombreArchivo = await Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
-            await ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
+            await ControladorDeArchivos.RecibirArchivosAsync(transferencia, nombreArchivo);
 
             return nombreArchivo;
         }

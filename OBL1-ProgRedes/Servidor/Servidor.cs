@@ -7,7 +7,7 @@ namespace Servidor
         static async Task Main(string[] args)
         {
             Conexion server = new Conexion();
-            await server.Escuchar();
+            await Task.Run(() =>  server.Escuchar());
         }
     }
 }

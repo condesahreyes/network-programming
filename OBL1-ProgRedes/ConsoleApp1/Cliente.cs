@@ -12,7 +12,7 @@ namespace Cliente
             try
             {
                 Menu menu = new Menu();
-                await menu.MenuPrincipal();
+                await Task.Run(() => menu.MenuPrincipal());
             }
             catch (Exception)
             {
