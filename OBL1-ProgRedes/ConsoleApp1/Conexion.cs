@@ -35,7 +35,6 @@ namespace Cliente
             transferencia = new Transferencia(sender);
         }
 
-
         public void DesconectarUsuario(Usuario usuario)
         {
             transferencia.Desconectar();

@@ -92,7 +92,6 @@ namespace Protocolo
 
         public static async Task<string> RecibirEncabezadoYMensajeAsync(Transferencia transferencia, string accionEsperada)
         {
-
             Encabezado encabezadoRecibido = await RecibirEncabezadoAsync(transferencia);
 
             string accion = encabezadoRecibido.accion;

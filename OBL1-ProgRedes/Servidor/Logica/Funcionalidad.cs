@@ -23,7 +23,7 @@ namespace Servidor
             this.funcionesJuego = new LogicaJuego();
         }
 
-        public async  Task<Usuario> InicioSesionCliente(Usuario usuario, int largoMensajeARecibir)
+        public async Task<Usuario> InicioSesionCliente(Usuario usuario, int largoMensajeARecibir)
         {
             usuario = await Controlador.RecibirUsuarioAsync(transferencia, largoMensajeARecibir);
 

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Cliente.Constantes;
 using LogicaNegocio;
 using Protocolo;
 using System;
-using System.Threading.Tasks;
 
 namespace Cliente
 {
@@ -12,9 +12,7 @@ namespace Cliente
         private static Funcionalidad _instancia;
         private static Conexion conexionCliente;
 
-        public  Funcionalidad()
-        {
-        }
+        public  Funcionalidad() { }
 
         public static async Task InstanciarConexion()
         {
@@ -38,7 +36,8 @@ namespace Cliente
             Usuario usuario = Usuario.CrearUsuario();
             string nombreUsuario = usuario.NombreUsuario;
 
-            await EnvioYRespuesta(nombreUsuario, Accion.Login, Mensaje.InicioSesion, Mensaje.ErrorGenerico, Mensaje.ErrorGenerico);
+            await EnvioYRespuesta(nombreUsuario, Accion.Login, Mensaje.InicioSesion, 
+                Mensaje.ErrorGenerico, Mensaje.ErrorGenerico);
 
             return usuario;
         }
