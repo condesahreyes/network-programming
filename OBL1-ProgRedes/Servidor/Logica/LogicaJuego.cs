@@ -67,7 +67,12 @@ namespace Servidor.FuncionalidadesPorEntidad
 
         public void VerCatalogoJuegos()
         {
-            List<Juego> juegos = persistencia.juegos;
+            List<Juego> juegos;
+
+            lock (persistencia.juegos)
+            {
+                juegos = persistencia.juegos;
+            }
 
             if (juegos.Count == 0)
             {
@@ -76,12 +81,9 @@ namespace Servidor.FuncionalidadesPorEntidad
                 return;
             }
 
-            lock (persistencia.juegos)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                foreach (var juego in juegos)
-                    Console.WriteLine(juego.ToString());
-            }
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            foreach (var juego in juegos)
+                Console.WriteLine(juego.ToString());
         }
 
         public Juego AdquirirJuegoPorUsuario(string juego, Usuario usuario)

@@ -6,6 +6,7 @@ using LogicaNegocio;
 using Protocolo;
 using System.IO;
 using System;
+using System.Threading.Tasks;
 
 namespace Servidor
 {
@@ -22,96 +23,100 @@ namespace Servidor
             this.funcionesJuego = new LogicaJuego();
         }
 
-        public Usuario InicioSesionCliente(Usuario usuario, int largoMensajeARecibir)
+        public async Task<Usuario> InicioSesionCliente(Usuario usuario, int largoMensajeARecibir)
         {
-            usuario = Controlador.RecibirUsuario(transferencia, largoMensajeARecibir);
+            usuario = await Controlador.RecibirUsuarioAsync(transferencia, largoMensajeARecibir);
 
-            EnviarRespuesta(usuario, usuario != null);
+            await EnviarRespuesta(usuario, usuario != null);
 
-            return funcionesUsuario.ObtenerUsuario(usuario);
+            Usuario usuarioCreado = funcionesUsuario.ObtenerUsuario(usuario);
+
+            funcionesUsuario.ActualizarAUsuarioActivo(usuario.NombreUsuario);
+
+            return usuarioCreado;
         }
 
-        public void CrearJuego(int largoMensajeARecibir)
+        public async Task CrearJuego(int largoMensajeARecibir)
         {
-            Juego juego = Controlador.PublicarJuego(transferencia, largoMensajeARecibir);
+            Juego juego = await Controlador.PublicarJuegoAsync(transferencia, largoMensajeARecibir);
 
-            string caratula = RecibirArchivos();
+            string caratula = await RecibirArchivos();
             juego.Caratula = caratula;
 
-            EnviarRespuesta(juego, funcionesJuego.AgregarJuego(juego));
+            await EnviarRespuesta(juego, funcionesJuego.AgregarJuego(juego));
         }
 
-        public void EnviarListaJuegos()
+        public async Task EnviarListaJuegos()
         {
-            List<Juego> juegos = funcionesJuego.ObtenerJuegos();
-            string juegosString = Mapper.ListaDeJuegosAString(juegos);
+            List<Juego> juegos =  funcionesJuego.ObtenerJuegos();
+            string juegosString =  Mapper.ListaDeJuegosAString(juegos);
 
-            EnviarMensaje(juegosString, Accion.ListaJuegos);
+            await EnviarMensaje(juegosString, Accion.ListaJuegos);
         }
 
-        public void VerJuegosAdquiridos(int largoMensajeARecibir, Usuario usuario)
+        public async Task VerJuegosAdquiridos(int largoMensajeARecibir, Usuario usuario)
         {
             List<Juego> juegos = funcionesJuego.JuegoUsuarios(usuario);
-            string juegosString = Mapper.ListaDeJuegosAString(juegos);
-            EnviarMensaje(juegosString, Accion.VerJuegosAdquiridos);
+            string juegosString =  Mapper.ListaDeJuegosAString(juegos);
+            await EnviarMensaje(juegosString, Accion.VerJuegosAdquiridos);
         }
 
-        public void AdquirirJuego(int largoMensajeARecibir, Usuario usuario)
+        public async Task AdquirirJuego(int largoMensajeARecibir, Usuario usuario)
         {
-            string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensajeARecibir);
+            string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
 
             Juego juegoAdquirido = funcionesJuego.AdquirirJuegoPorUsuario(tituloJuego, usuario);
-            EnviarRespuesta(juegoAdquirido, juegoAdquirido!=null);
+            await EnviarRespuesta(juegoAdquirido, juegoAdquirido!=null);
         }
 
-        public void EnviarDetalleDeUnJuego(int largoMensaje)
+        public async Task EnviarDetalleDeUnJuego(int largoMensaje)
         {
-            string  tituloJuego= Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            string  tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensaje);
             Juego juego = funcionesJuego.ObtenerJuegoPorTitulo(tituloJuego);
             if(juego != null)
             {
                 string juegoEnString = Mapper.JuegoAString(juego);
 
-                EnviarMensaje(juegoEnString, Accion.EnviarDetalleJuego);
-                ControladorDeArchivos.EnviarArchivo(Directory.GetCurrentDirectory() + @"\" + 
+                await EnviarMensaje(juegoEnString, Accion.EnviarDetalleJuego);
+                await ControladorDeArchivos.EnviarArchivoAsync(Directory.GetCurrentDirectory() + @"\" + 
                     juego.Caratula, transferencia);
             }
             else
             {
-                EnviarRespuesta(juego, false);
+                await EnviarRespuesta(juego, false);
             }
         }
 
-        public void CrearCalificacion(int largoMensajeARecibir)
+        public async Task CrearCalificacion(int largoMensajeARecibir)
         {
-            Calificacion calificacion = Controlador.PublicarCalificacion(transferencia, largoMensajeARecibir);
+            Calificacion calificacion = await Controlador.PublicarCalificacionAsync(transferencia, largoMensajeARecibir);
 
-            bool fueAgregado = funcionesJuego.AgregarCalificacion(calificacion);
+            bool fueAgregado =  funcionesJuego.AgregarCalificacion(calificacion);
 
-            EnviarRespuesta(null, fueAgregado);
+            await EnviarRespuesta(null, fueAgregado);
         }
 
-        public void BuscarJuegoPorTitulo(int largoMensajeARecibir)
+        public async Task BuscarJuegoPorTitulo(int largoMensajeARecibir)
         {
-            string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensajeARecibir);
+            string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
             Juego juego = funcionesJuego.ObtenerJuegoPorTitulo(tituloJuego);
-            string juegoEnString = Mapper.JuegoAString(juego);
+            string juegoEnString =  Mapper.JuegoAString(juego);
 
-            EnviarMensaje(juegoEnString, Accion.BuscarTitulo);
+            await EnviarMensaje(juegoEnString, Accion.BuscarTitulo);
         }
 
-        public void BuscarJuegoPorGenero(int largoMensajeARecibir)
+        public async Task BuscarJuegoPorGenero(int largoMensajeARecibir)
         {
-            string generoJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensajeARecibir);
-            List<Juego> juego = funcionesJuego.BuscarJuegoPorGenero(generoJuego);
+            string generoJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
+            List<Juego> juego =  funcionesJuego.BuscarJuegoPorGenero(generoJuego);
             string juegoEnString = Mapper.ListaJuegosAString(juego);
 
-            EnviarMensaje(juegoEnString, Accion.BuscarGenero);
+            await EnviarMensaje(juegoEnString, Accion.BuscarGenero);
         }
 
-        public void BuscarJuegoPorCalificacion(int largoMensajeARecibir)
+        public async Task BuscarJuegoPorCalificacion(int largoMensajeARecibir)
         {
-            string rankingString = Controlador.RecibirMensajeGenerico(transferencia, largoMensajeARecibir);
+            string rankingString = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
 
             int ranking = Convert.ToInt32(rankingString);
 
@@ -119,26 +124,26 @@ namespace Servidor
 
             string juegosString = Mapper.ListaJuegosAString(juegos);
 
-            EnviarMensaje(juegosString, Accion.BuscarCalificacion);
+            await EnviarMensaje(juegosString, Accion.BuscarCalificacion);
         }
 
-        public void EliminarJuego(int largoMensaje)
+        public async Task EliminarJuego(int largoMensaje)
         {
-            string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
+            string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensaje);
             funcionesJuego.EliminarJuego(tituloJuego);
-            EnviarRespuesta(tituloJuego, funcionesJuego.BuscarJuegoPortTitulo(tituloJuego) == null);
+            await EnviarRespuesta(tituloJuego, funcionesJuego.BuscarJuegoPortTitulo(tituloJuego) == null);
         }
 
-        public void ModificarJuego(int largoMensaje)
+        public async Task ModificarJuego(int largoMensaje)
         {
-            string tituloJuego = Controlador.RecibirMensajeGenerico(transferencia, largoMensaje);
-            Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
+            string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensaje);
+            Encabezado encabezado = await Controlador.RecibirEncabezadoAsync(transferencia);
 
-            string juegoEnString = Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
+            string juegoEnString = await Controlador.RecibirMensajeGenericoAsync(transferencia, encabezado.largoMensaje);
 
             Juego juego = Mapper.StringAJuego(juegoEnString);
 
-            string caratula = RecibirArchivos();
+            string caratula = await RecibirArchivos();
             juego.Caratula = caratula;
 
             bool fueEliminado = funcionesJuego.EliminarJuego(tituloJuego);
@@ -146,41 +151,41 @@ namespace Servidor
 
             if (fueEliminado == false)
             {
-                EnviarRespuesta(null, fueAgregadoElModificado);
+                await EnviarRespuesta(null, fueAgregadoElModificado);
                 return;
             }
 
             fueAgregadoElModificado = funcionesJuego.AgregarJuego(juego);
 
-            EnviarRespuesta(juego, fueAgregadoElModificado);
+            await EnviarRespuesta(juego, fueAgregadoElModificado);
         }
 
-        public string RecibirArchivos()
+        public async Task<string> RecibirArchivos()
         {
-            Encabezado encabezado = Controlador.RecibirEncabezado(transferencia);
+            Encabezado encabezado = await Controlador.RecibirEncabezadoAsync(transferencia);
 
-            string nombreArchivo = Controlador.RecibirMensajeGenerico(transferencia, encabezado.largoMensaje);
-            ControladorDeArchivos.RecibirArchivos(transferencia, nombreArchivo);
+            string nombreArchivo = await Controlador.RecibirMensajeGenericoAsync(transferencia, encabezado.largoMensaje);
+            await ControladorDeArchivos.RecibirArchivosAsync(transferencia, nombreArchivo);
 
             return nombreArchivo;
         }
 
-        private void EnviarRespuesta(object obj, bool ok)
+        private async Task EnviarRespuesta(object obj, bool ok)
         {
             if (obj == null && !ok)
-                Controlador.EnviarMensajeClienteObjetoEliminado(transferencia);
+                await Controlador.EnviarMensajeClienteObjetoEliminadoAsync(transferencia);
             else if (ok)
-                Controlador.EnviarMensajeClienteOk(transferencia);
+                await Controlador.EnviarMensajeClienteOkAsync(transferencia);
             else
-                Controlador.EnviarMensajeClienteError(transferencia);
+                await Controlador.EnviarMensajeClienteErrorAsync(transferencia);
         }
 
-        private void EnviarMensaje(string mensaje, string accion)
+        private async Task EnviarMensaje(string mensaje, string accion)
         {
             Encabezado encabezado = new Encabezado(mensaje.Length, accion);
 
-            Controlador.EnviarEncabezado(transferencia, encabezado);
-            Controlador.EnviarDatos(transferencia, mensaje);
+            await Controlador.EnviarEncabezadoAsync(transferencia, encabezado);
+            await Controlador.EnviarDatos(transferencia, mensaje);
         }
     }
 }

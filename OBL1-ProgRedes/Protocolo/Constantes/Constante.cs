@@ -6,6 +6,7 @@
         public static int largoDato = 4;
         public static int largoEncabezado = largoComando + largoDato + 1;
         public static int maximoTamañoDePaquete = 32768;
+        public static int maximoTamañoDeEnvio = 32768;
 
         public const int LargoNombreArchivo = 4;
         public const int LargoArchivo = 8;

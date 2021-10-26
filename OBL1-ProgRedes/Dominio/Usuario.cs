@@ -6,10 +6,12 @@ namespace LogicaNegocio
     public class Usuario
     {
         public string NombreUsuario { get; set; }
+        public bool UsuarioActivo{ get; set; }
 
         public Usuario(string nombreUsuario)
         {
             this.NombreUsuario = nombreUsuario;
+            this.UsuarioActivo = false;
         }
 
         public static Usuario CrearUsuario()

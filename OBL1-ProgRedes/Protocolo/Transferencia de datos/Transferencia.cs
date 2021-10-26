@@ -1,18 +1,22 @@
-﻿using System.Net.Sockets;
+﻿using System.Threading.Tasks;
+using System.Net.Sockets;
 using System.Text;
+using System;
 
 namespace Protocolo
 {
     public class Transferencia
     {
-        public Socket socket;
+        public TcpClient socket;
+        private NetworkStream networkStream ;
 
-        public Transferencia(Socket socket)
+        public Transferencia(TcpClient socket)
         {
             this.socket = socket;
+            this.networkStream = socket.GetStream();
         }
 
-        public byte[] RecibirDatos(int largoMensaje)
+        public async Task<byte[]> RecibirDatosAsync(int largoMensaje)
         {
             int recibidoTotal = 0;
 
@@ -20,8 +24,8 @@ namespace Protocolo
 
             while (recibidoTotal < largoMensaje)
             {
-                var recibido = socket.Receive(datos, recibidoTotal,
-                    largoMensaje - recibidoTotal, SocketFlags.None);
+                var recibido =  await networkStream.ReadAsync(datos, recibidoTotal,
+                    largoMensaje - recibidoTotal);
 
                 recibidoTotal += recibido;
                 
@@ -33,28 +37,24 @@ namespace Protocolo
             return datos;
         }
 
-        public void EnvioDeDatos(string datos)
+        public async Task EnvioDeDatosAsync(string datos)
         {
             byte[] mensaje = Encoding.ASCII.GetBytes(datos);
 
-            EnvioDeDatosByte(mensaje);
+            await EnvioDeDatosByteAsync(mensaje);
         }
 
-        public void EnvioDeDatosByte(byte[] mensaje)
+        public async Task EnvioDeDatosByteAsync(byte[] mensaje)
         {
             int largoMensaje = mensaje.Length;
             int enviados = 0;
-
-            while (enviados < largoMensaje)
-                enviados += socket.Send(mensaje, enviados, largoMensaje - enviados, SocketFlags.None);
+            await networkStream.WriteAsync(mensaje, enviados, largoMensaje - enviados);
         }
 
         public void Desconectar()
         {
-            socket.Shutdown(SocketShutdown.Both);
+            networkStream.Close(); 
             socket.Close();
         }
-
-
     }
 }

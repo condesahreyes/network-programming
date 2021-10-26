@@ -1,53 +1,54 @@
 ﻿using LogicaNegocio;
 using System.Text;
 using System;
+using System.Threading.Tasks;
 
 namespace Protocolo
 {
     public class Controlador
     {
-        public static Encabezado RecibirEncabezado(Transferencia transferencia)
+        public static async Task<Encabezado> RecibirEncabezadoAsync(Transferencia transferencia)
         {
             int largoEncabezado = Constante.largoEncabezado;
 
-            string stringRecibido = RecibirMensajeGenerico(transferencia, largoEncabezado);
+            string stringRecibido = await RecibirMensajeGenericoAsync(transferencia, largoEncabezado);
 
             Encabezado encabezadoRecibido = Mapper.StringAEncabezado(stringRecibido);
 
             return encabezadoRecibido;
         }
 
-        public static void EnviarEncabezado(Transferencia transferencia, Encabezado encabezado)
+        public static async Task EnviarEncabezadoAsync(Transferencia transferencia, Encabezado encabezado)
         {
             string mensajeAEnviar = Mapper.EncabezadoAString(encabezado);
 
-            transferencia.EnvioDeDatos(mensajeAEnviar);
+            await transferencia.EnvioDeDatosAsync(mensajeAEnviar);
         }
 
-        public static Usuario RecibirUsuario(Transferencia transferencia, int largoMensaje)
+        public static async Task<Usuario> RecibirUsuarioAsync(Transferencia transferencia, int largoMensaje)
         {
-            string stringRecibido = RecibirMensajeGenerico(transferencia, largoMensaje);
+            string stringRecibido = await RecibirMensajeGenericoAsync(transferencia, largoMensaje);
 
             Usuario usuario = Mapper.StringAUsuario(stringRecibido);
 
             return usuario;
         }
 
-        public static string RecibirMensajeGenerico(Transferencia transferencia, int largoMensaje)
+        public static async Task<string> RecibirMensajeGenericoAsync(Transferencia transferencia, int largoMensaje)
         {
-            byte[] datos = transferencia.RecibirDatos(largoMensaje);
+            byte[] datos = await transferencia.RecibirDatosAsync(largoMensaje);
 
             return Encoding.ASCII.GetString(datos, 0, largoMensaje);
         }
 
-        public static void EnviarDatos(Transferencia transferencia, string datos)
+        public static async Task EnviarDatos(Transferencia transferencia, string datos)
         {
-            transferencia.EnvioDeDatos(datos);
+            await transferencia.EnvioDeDatosAsync(datos);
         }
 
-        public static Juego PublicarJuego(Transferencia transferencia, int largoMensaje)
+        public static async Task<Juego> PublicarJuegoAsync(Transferencia transferencia, int largoMensaje)
         {
-            byte[] datos = transferencia.RecibirDatos(largoMensaje);
+            byte[] datos = await transferencia.RecibirDatosAsync(largoMensaje);
 
             string stringRecibido = Encoding.ASCII.GetString(datos, 0, largoMensaje);
 
@@ -56,43 +57,42 @@ namespace Protocolo
             return juego;
         }
 
-        public static void EnviarMensajeClienteOk(Transferencia transferencia)
+        public static async Task EnviarMensajeClienteOkAsync(Transferencia transferencia)
         {
             Encabezado encabezado = new Encabezado(0, Constante.MensajeOk);
             string encabezadoEnString = Mapper.EncabezadoAString(encabezado);
 
-            transferencia.EnvioDeDatos(encabezadoEnString);
+            await transferencia.EnvioDeDatosAsync(encabezadoEnString);
         }
 
-        public static void EnviarMensajeClienteError(Transferencia transferencia)
+        public static async Task EnviarMensajeClienteErrorAsync(Transferencia transferencia)
         {
             Encabezado encabezado = new Encabezado(0, Constante.MensajeError);
             string encabezadoEnString = Mapper.EncabezadoAString(encabezado);
 
-            transferencia.EnvioDeDatos(encabezadoEnString);
+            await transferencia.EnvioDeDatosAsync(encabezadoEnString);
         }
 
-        public static void EnviarMensajeClienteObjetoEliminado(Transferencia transferencia)
+        public static async Task EnviarMensajeClienteObjetoEliminadoAsync(Transferencia transferencia)
         {
             Encabezado encabezado = new Encabezado(0, Constante.MensajeObjetoEliminado);
             string encabezadoEnString = Mapper.EncabezadoAString(encabezado);
 
-            transferencia.EnvioDeDatos(encabezadoEnString);
+            await transferencia.EnvioDeDatosAsync(encabezadoEnString);
         }
 
-        public static Juego RecibirUnJuegoPorTitulo(Transferencia transferencia, string tituloJuego)
+        public static async Task<Juego> RecibirUnJuegoPorTituloAsync(Transferencia transferencia, string tituloJuego)
         {
             Encabezado encabezado = new Encabezado(tituloJuego.Length, Accion.PedirDetalleJuego);
-            EnviarEncabezado(transferencia, encabezado);
-            EnviarDatos(transferencia, tituloJuego);
-            string juego = RecibirEncabezadoYMensaje(transferencia, Accion.EnviarDetalleJuego);
+            await EnviarEncabezadoAsync(transferencia, encabezado);
+            await EnviarDatos (transferencia, tituloJuego);
+            string juego = await RecibirEncabezadoYMensajeAsync(transferencia, Accion.EnviarDetalleJuego);
             return Mapper.StringAJuego(juego);
         }
 
-        public static string RecibirEncabezadoYMensaje(Transferencia transferencia, string accionEsperada)
+        public static async Task<string> RecibirEncabezadoYMensajeAsync(Transferencia transferencia, string accionEsperada)
         {
-
-            Encabezado encabezadoRecibido = RecibirEncabezado(transferencia);
+            Encabezado encabezadoRecibido = await RecibirEncabezadoAsync(transferencia);
 
             string accion = encabezadoRecibido.accion;
 
@@ -101,12 +101,12 @@ namespace Protocolo
 
             int largoMensaje = encabezadoRecibido.largoMensaje;
 
-            return RecibirMensajeGenerico(transferencia, largoMensaje);
+            return await RecibirMensajeGenericoAsync(transferencia, largoMensaje);
         }
 
-        public static Calificacion PublicarCalificacion(Transferencia transferencia, int largoMensaje)
+        public static async Task<Calificacion> PublicarCalificacionAsync(Transferencia transferencia, int largoMensaje)
         {
-            byte[] datos = transferencia.RecibirDatos(largoMensaje);
+            byte[] datos = await transferencia.RecibirDatosAsync(largoMensaje);
 
             string stringRecibido = Encoding.ASCII.GetString(datos, 0, largoMensaje);
 

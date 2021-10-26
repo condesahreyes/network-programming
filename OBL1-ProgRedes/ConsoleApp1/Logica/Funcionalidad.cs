@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Cliente.Constantes;
 using LogicaNegocio;
 using Protocolo;
@@ -9,27 +10,34 @@ namespace Cliente
     public class Funcionalidad
     {
         private static Funcionalidad _instancia;
-        private Conexion conexionCliente;
+        private static Conexion conexionCliente;
 
-        public  Funcionalidad()
+        public  Funcionalidad() { }
+
+        public static async Task InstanciarConexion()
         {
-            this.conexionCliente = new Conexion();
+            conexionCliente = new Conexion();
+            await conexionCliente.InstanciarTransferencia();
         }
 
-        public static Funcionalidad ObtenerInstancia()
+        public static async Task<Funcionalidad> ObtenerInstancia()
         {
             if (_instancia == null)
+            {
                 _instancia = new Funcionalidad();
+                await InstanciarConexion();
+            }
   
             return _instancia;
         }
 
-        public Usuario InicioSesion()
+        public async Task<Usuario> InicioSesion()
         {
             Usuario usuario = Usuario.CrearUsuario();
             string nombreUsuario = usuario.NombreUsuario;
 
-            EnvioYRespuesta(nombreUsuario, Accion.Login, Mensaje.InicioSesion, Mensaje.ErrorGenerico, Mensaje.ErrorGenerico);
+            await EnvioYRespuesta(nombreUsuario, Accion.Login, Mensaje.InicioSesion, 
+                Mensaje.ErrorGenerico, Mensaje.ErrorGenerico);
 
             return usuario;
         }
@@ -39,7 +47,7 @@ namespace Cliente
             conexionCliente.DesconectarUsuario(usuario);
         }
 
-        public void PublicarJuego()
+        public async Task PublicarJuego()
         {
             Juego unJuego = Juego.CrearJuego();
 
@@ -47,12 +55,12 @@ namespace Cliente
 
             string caratula = unJuego.Caratula;
 
-            EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.PublicarJuego);
-            conexionCliente.EnvioDeArchivo(caratula);
-            RecibirRespuestas(Mensaje.JuegoCreado, Mensaje.JuegoExistente, Mensaje.JuegoEliminado);
+            await EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.PublicarJuego);
+            await conexionCliente.EnvioDeArchivo(caratula);
+            await RecibirRespuestas(Mensaje.JuegoCreado, Mensaje.JuegoExistente, Mensaje.JuegoEliminado);
         }
 
-        public void BuscarJuego()
+        public async Task BuscarJuego()
         {
             int opcion = Metodo.ObtenerOpcion(Mensaje.buscarJuegoPorFiltro, 0, 2);
             string filtro = "";
@@ -76,13 +84,13 @@ namespace Cliente
                 accion = Accion.BuscarCalificacion;
             }
 
-            List<Juego> juegos = BuscarJuegoPorFiltro(filtro, accion);
+            List<Juego> juegos = await BuscarJuegoPorFiltro(filtro, accion);
             Mensaje.MostrarObjetoJuego(juegos);
         }
 
-        public void DetalleDeUnJuego()
+        public async Task DetalleDeUnJuego()
         {
-            string titulo = DevolverTituloJuegoSeleccionado();
+            string titulo = await DevolverTituloJuegoSeleccionado();
 
             if (titulo == "")
             {
@@ -91,9 +99,9 @@ namespace Cliente
             }
             try
             {
-                Juego juego = conexionCliente.RecibirUnJuegoPorTitulo(titulo);
+                Juego juego = await conexionCliente.RecibirUnJuegoPorTitulo(titulo);
 
-                conexionCliente.RecibirArchivos(juego.Caratula);
+                await conexionCliente.RecibirArchivos(juego.Caratula);
                 Mensaje.MostrarJuego(juego);
             }
             catch(Exception)
@@ -102,9 +110,9 @@ namespace Cliente
             }
         }
 
-        public void CalificarUnJuego(Usuario usuario)
+        public async Task CalificarUnJuego(Usuario usuario)
         {
-            string titulo = DevolverTituloJuegoSeleccionado();
+            string titulo = await DevolverTituloJuegoSeleccionado();
 
             if (titulo == "")
             {
@@ -116,26 +124,26 @@ namespace Cliente
 
             string calificacionEnString = Mapper.CalificacionAString(unaCalificacion);
 
-            EnvioYRespuesta(calificacionEnString, Accion.PublicarCalificacion,
+            await EnvioYRespuesta(calificacionEnString, Accion.PublicarCalificacion,
                 Mensaje.CalificacionCreada, Mensaje.ErrorGenerico, Mensaje.JuegoEliminado);
         }
 
-        public void AdquirirJuego(Usuario usuario)
+        public async Task AdquirirJuego(Usuario usuario)
         {
-           string tituloJuego = DevolverTituloJuegoSeleccionado();
-           EnvioYRespuesta(tituloJuego, Accion.AdquirirJuego, Mensaje.JuegoAdquirido, Mensaje.ErrorAdquirirJuego, Mensaje.JuegoEliminado);
+           string tituloJuego = await DevolverTituloJuegoSeleccionado();
+           await EnvioYRespuesta(tituloJuego, Accion.AdquirirJuego, Mensaje.JuegoAdquirido, Mensaje.ErrorAdquirirJuego, Mensaje.JuegoEliminado);
         }
 
-        public void ListaJuegosAdquiridos(Usuario usuario)
+        public async Task ListaJuegosAdquiridos(Usuario usuario)
         {
-            conexionCliente.EnvioEncabezado(0, Accion.VerJuegosAdquiridos);
-            List<string> juegosAdquiridos = conexionCliente.RecibirListaDeJuegosAdquiridos();
+            await conexionCliente.EnvioEncabezado(0, Accion.VerJuegosAdquiridos);
+            List<string> juegosAdquiridos = await conexionCliente.RecibirListaDeJuegosAdquiridos();
             Mensaje.MostrarJuegos(juegosAdquiridos, Mensaje.noHayJuegosRegistrados, Mensaje.listadoJuegoAdquiridos);
         }
 
-        public void BajaModificacionJuego()
+        public async Task BajaModificacionJuego()
         {
-            string titulo = DevolverTituloJuegoSeleccionado();
+            string titulo = await DevolverTituloJuegoSeleccionado();
 
             if (titulo == "")
             {
@@ -146,40 +154,40 @@ namespace Cliente
             int opcion = Metodo.ObtenerOpcion(Mensaje.bajaModificacion, 0, 1);
 
             if (opcion == 0)
-                EnvioYRespuesta(titulo, Accion.EliminarJuego, Mensaje.JuegoEliminadoOk, 
+                await EnvioYRespuesta(titulo, Accion.EliminarJuego, Mensaje.JuegoEliminadoOk, 
                     Mensaje.JuegoEliminadoError, Mensaje.JuegoEliminado);
             else if (opcion == 1)
-                ModificarUnJuego(titulo);
+                await ModificarUnJuego(titulo);
         }
 
-        private void ModificarUnJuego(string titulo)
+        private async Task ModificarUnJuego(string titulo)
         {
             Juego juegoModificado = Juego.ModificarJuego();
             string juegoEnString = Mapper.JuegoAString(juegoModificado);
 
-            conexionCliente.EnvioEncabezado(titulo.Length, Accion.ModificarJuego);
-            conexionCliente.EnvioDeMensaje(titulo);
+            await conexionCliente.EnvioEncabezado(titulo.Length, Accion.ModificarJuego);
+            await conexionCliente.EnvioDeMensaje(titulo);
 
-            EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.ModificarJuego);
+            await EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.ModificarJuego);
 
-            conexionCliente.EnvioDeArchivo(juegoModificado.Caratula);
+            await conexionCliente.EnvioDeArchivo(juegoModificado.Caratula);
 
-            RecibirRespuestas(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError, Mensaje.JuegoEliminado);
+            await RecibirRespuestas(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError, Mensaje.JuegoEliminado);
         }
 
-        private List<Juego> BuscarJuegoPorFiltro(string filtro, string accion)
+        private async Task<List<Juego>> BuscarJuegoPorFiltro(string filtro, string accion)
         {
-            conexionCliente.EnvioEncabezado(filtro.Length, accion);
-            conexionCliente.EnvioDeMensaje(filtro);
+            await conexionCliente.EnvioEncabezado(filtro.Length, accion);
+            await conexionCliente.EnvioDeMensaje(filtro);
 
-            string mensaje = conexionCliente.RecibirMensaje();
+            string mensaje = await conexionCliente.RecibirMensaje();
 
             return Mapper.PasarStringAListaDeJuegos(mensaje);
         }
 
-        private string DevolverTituloJuegoSeleccionado()
+        private async Task<string> DevolverTituloJuegoSeleccionado()
         {
-            List<string> juegos = conexionCliente.RecibirListaDeJuegos();
+            List<string> juegos = await conexionCliente.RecibirListaDeJuegos();
 
             if (juegos.Count == 0)
             {
@@ -198,22 +206,22 @@ namespace Cliente
             return juegos[juegoSeleccionado];
         }
 
-        private void EnvioYRespuesta(string mensaje, string accion, Action Ok, Action Error, Action Eliminado)
+        private async Task EnvioYRespuesta(string mensaje, string accion, Action Ok, Action Error, Action Eliminado)
         {
-            EnvioMensajeConPrevioEncabezado(mensaje, accion);
+            await EnvioMensajeConPrevioEncabezado(mensaje, accion);
 
-            RecibirRespuestas(Ok, Error, Eliminado);
+            await RecibirRespuestas(Ok, Error, Eliminado);
         }
 
-        private void EnvioMensajeConPrevioEncabezado(string mensaje, string accion)
+        private async Task EnvioMensajeConPrevioEncabezado(string mensaje, string accion)
         {
-            conexionCliente.EnvioEncabezado(mensaje.Length, accion);
-            conexionCliente.EnvioDeMensaje(mensaje);
+            await conexionCliente.EnvioEncabezado(mensaje.Length, accion);
+            await conexionCliente.EnvioDeMensaje(mensaje);
         }
 
-        private void RecibirRespuestas(Action RespuestaOk, Action RespuestaError, Action Eliminado)
+        private async Task RecibirRespuestas(Action RespuestaOk, Action RespuestaError, Action Eliminado)
         {
-            string respuestaServidor = conexionCliente.EsperarPorRespuesta();
+            string respuestaServidor = await conexionCliente.EsperarPorRespuesta();
 
             if (respuestaServidor == Constante.MensajeOk)
                 RespuestaOk();

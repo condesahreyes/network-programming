@@ -34,13 +34,16 @@ namespace LogicaNegocio
 
         private static int ObtenerOpcion(string mensaje)
         {
-            while (true)
+            int opcionInt = 0;
+            var opcion = "";
+            var opcionObtenida = false;
+            while (!opcionObtenida)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(mensaje);
                 Console.ForegroundColor = ConsoleColor.White;
 
-                var opcion = Console.ReadLine();
+                opcion = Console.ReadLine();
                 if (!Regex.IsMatch(opcion, "^[" + 1 + "-" + 5 + "]$"))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -49,9 +52,12 @@ namespace LogicaNegocio
                 }
                 else
                 {
-                    return Convert.ToInt32(opcion);
+                    opcionInt = Convert.ToInt32(opcion);
+                    opcionObtenida = true;
+
                 }
             }
+            return opcionInt;
         }
 
         private static void MostrarMensaje(string mensaje)
