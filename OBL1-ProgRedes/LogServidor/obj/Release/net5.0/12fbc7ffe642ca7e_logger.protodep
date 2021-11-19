@@ -1,2 +1,0 @@
-obj\Release\net5.0\Protos/Logger.cs \
-obj\Release\net5.0\Protos/LoggerGrpc.cs: Protos/logger.proto

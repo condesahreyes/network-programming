@@ -1,26 +1,26 @@
-﻿using Servidor.FuncionalidadesPorEntidad;
-using Servidor.FuncionalidadesEntidades;
-using Protocolo.Transferencia_de_datos;
+﻿using Protocolo.Transferencia_de_datos;
 using System.Collections.Generic;
 using LogicaNegocio;
 using Protocolo;
 using System.IO;
 using System;
 using System.Threading.Tasks;
+using IServices;
+using Servicios;
 
 namespace Servidor
 {
     public class Funcionalidad
     {
-        LogicaUsuario funcionesUsuario;
-        LogicaJuego funcionesJuego;
+        private IUsuarioService usuarioService;
+        private IJuegoService juegoService;
         Transferencia transferencia;
 
         public Funcionalidad(Transferencia transferencia)
         {
             this.transferencia = transferencia;
-            this.funcionesUsuario = new LogicaUsuario();
-            this.funcionesJuego = new LogicaJuego();
+            this.usuarioService = new UsuarioService();
+            this.juegoService = new JuegoService();
         }
 
         public async Task<Usuario> InicioSesionCliente(Usuario usuario, int largoMensajeARecibir)
@@ -29,9 +29,9 @@ namespace Servidor
 
             await EnviarRespuesta(usuario, usuario != null);
 
-            Usuario usuarioCreado = funcionesUsuario.ObtenerUsuario(usuario);
+            Usuario usuarioCreado = await usuarioService.ObtenerUsuario(usuario);
 
-            funcionesUsuario.ActualizarAUsuarioActivo(usuario.NombreUsuario);
+            usuarioService.ActualizarAUsuarioActivo(usuario.NombreUsuario);
 
             return usuarioCreado;
         }
@@ -43,12 +43,12 @@ namespace Servidor
             string caratula = await RecibirArchivos();
             juego.Caratula = caratula;
 
-            await EnviarRespuesta(juego, funcionesJuego.AgregarJuego(juego));
+            await EnviarRespuesta(juego, juegoService.AgregarJuego(juego));
         }
 
         public async Task EnviarListaJuegos()
         {
-            List<Juego> juegos =  funcionesJuego.ObtenerJuegos();
+            List<Juego> juegos = juegoService.ObtenerJuegos();
             string juegosString =  Mapper.ListaDeJuegosAString(juegos);
 
             await EnviarMensaje(juegosString, Accion.ListaJuegos);
@@ -56,7 +56,7 @@ namespace Servidor
 
         public async Task VerJuegosAdquiridos(int largoMensajeARecibir, Usuario usuario)
         {
-            List<Juego> juegos = funcionesJuego.JuegoUsuarios(usuario);
+            List<Juego> juegos = juegoService.JuegoUsuarios(usuario);
             string juegosString =  Mapper.ListaDeJuegosAString(juegos);
             await EnviarMensaje(juegosString, Accion.VerJuegosAdquiridos);
         }
@@ -65,14 +65,14 @@ namespace Servidor
         {
             string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
 
-            Juego juegoAdquirido = funcionesJuego.AdquirirJuegoPorUsuario(tituloJuego, usuario);
+            Juego juegoAdquirido = juegoService.AdquirirJuegoPorUsuario(tituloJuego, usuario);
             await EnviarRespuesta(juegoAdquirido, juegoAdquirido!=null);
         }
 
         public async Task EnviarDetalleDeUnJuego(int largoMensaje)
         {
             string  tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensaje);
-            Juego juego = funcionesJuego.ObtenerJuegoPorTitulo(tituloJuego);
+            Juego juego = juegoService.ObtenerJuegoPorTitulo(tituloJuego);
             if(juego != null)
             {
                 string juegoEnString = Mapper.JuegoAString(juego);
@@ -91,7 +91,7 @@ namespace Servidor
         {
             Calificacion calificacion = await Controlador.PublicarCalificacionAsync(transferencia, largoMensajeARecibir);
 
-            bool fueAgregado =  funcionesJuego.AgregarCalificacion(calificacion);
+            bool fueAgregado = juegoService.AgregarCalificacion(calificacion);
 
             await EnviarRespuesta(null, fueAgregado);
         }
@@ -99,7 +99,7 @@ namespace Servidor
         public async Task BuscarJuegoPorTitulo(int largoMensajeARecibir)
         {
             string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
-            Juego juego = funcionesJuego.ObtenerJuegoPorTitulo(tituloJuego);
+            Juego juego = juegoService.ObtenerJuegoPorTitulo(tituloJuego);
             string juegoEnString =  Mapper.JuegoAString(juego);
 
             await EnviarMensaje(juegoEnString, Accion.BuscarTitulo);
@@ -108,7 +108,7 @@ namespace Servidor
         public async Task BuscarJuegoPorGenero(int largoMensajeARecibir)
         {
             string generoJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
-            List<Juego> juego =  funcionesJuego.BuscarJuegoPorGenero(generoJuego);
+            List<Juego> juego = juegoService.BuscarJuegoPorGenero(generoJuego);
             string juegoEnString = Mapper.ListaJuegosAString(juego);
 
             await EnviarMensaje(juegoEnString, Accion.BuscarGenero);
@@ -120,7 +120,7 @@ namespace Servidor
 
             int ranking = Convert.ToInt32(rankingString);
 
-            List<Juego> juegos = funcionesJuego.BuscarJuegoPorCalificacion(ranking);
+            List<Juego> juegos = juegoService.BuscarJuegoPorCalificacion(ranking);
 
             string juegosString = Mapper.ListaJuegosAString(juegos);
 
@@ -130,8 +130,8 @@ namespace Servidor
         public async Task EliminarJuego(int largoMensaje)
         {
             string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensaje);
-            funcionesJuego.EliminarJuego(tituloJuego);
-            await EnviarRespuesta(tituloJuego, funcionesJuego.BuscarJuegoPortTitulo(tituloJuego) == null);
+            juegoService.EliminarJuego(tituloJuego);
+            await EnviarRespuesta(tituloJuego, juegoService.BuscarJuegoPortTitulo(tituloJuego) == null);
         }
 
         public async Task ModificarJuego(int largoMensaje)
@@ -146,7 +146,7 @@ namespace Servidor
             string caratula = await RecibirArchivos();
             juego.Caratula = caratula;
 
-            bool fueEliminado = funcionesJuego.EliminarJuego(tituloJuego);
+            bool fueEliminado = juegoService.EliminarJuego(tituloJuego);
             bool fueAgregadoElModificado = false;
 
             if (fueEliminado == false)
@@ -155,7 +155,7 @@ namespace Servidor
                 return;
             }
 
-            fueAgregadoElModificado = funcionesJuego.AgregarJuego(juego);
+            fueAgregadoElModificado = juegoService.AgregarJuego(juego);
 
             await EnviarRespuesta(juego, fueAgregadoElModificado);
         }
@@ -187,5 +187,6 @@ namespace Servidor
             await Controlador.EnviarEncabezadoAsync(transferencia, encabezado);
             await Controlador.EnviarDatos(transferencia, mensaje);
         }
+        
     }
 }

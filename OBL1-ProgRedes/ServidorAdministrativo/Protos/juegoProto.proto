@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "ServidorAdministrativo.Protos";
+
+package juegoProtoService;
+
+service ServicioJuego {
+
+}

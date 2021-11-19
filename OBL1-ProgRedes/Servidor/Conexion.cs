@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Servidor.FuncionalidadesPorEntidad;
-using Servidor.FuncionalidadesEntidades;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,6 +8,8 @@ using System.Net;
 using Protocolo;
 using System.IO;
 using System;
+using IServices;
+using Servicios;
 
 namespace Servidor
 {
@@ -18,7 +18,9 @@ namespace Servidor
         List<TcpClient> clientesConectados = new List<TcpClient>();
 
         private Funcionalidad funcionalidadesServidor;
-        private LogicaUsuario logicaUsuario;
+        //private LogicaUsuario logicaUsuario;
+        private IUsuarioService usuarioService = new UsuarioService();
+        private IJuegoService juegoService = new JuegoService();
 
         private TcpClient handler;
 
@@ -38,10 +40,10 @@ namespace Servidor
             puerto = int.Parse(configuracion["port"]);
             cantConexionesEnEspera = int.Parse(configuracion["backLog"]);
             ipServidor = configuracion["ip"];
-            logicaUsuario = new LogicaUsuario();
+            this.usuarioService = new UsuarioService();
             Escuchar();
         }
-
+        
         public void Escuchar()
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipServidor), puerto);
@@ -56,9 +58,8 @@ namespace Servidor
             MenuServidor(listener);
         }
 
-        private void MenuServidor(TcpListener listener)
+        private async Task MenuServidor(TcpListener listener)
         {
-            LogicaJuego _logicaJuegos = new LogicaJuego();
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("****************** Menú servidor ******************" +
@@ -90,17 +91,17 @@ namespace Servidor
                     break;
                 case "1":
                     Console.Clear();
-                    _logicaJuegos.VerCatalogoJuegos();
+                    juegoService.VerCatalogoJuegos();
                     MenuServidor(listener);
                     break;
                 case "2":
                     Console.Clear();
-                    logicaUsuario.ObtenerUsuario(Usuario.CrearUsuario());
+                    usuarioService.ObtenerUsuario(Usuario.CrearUsuario());
                     MenuServidor(listener);
                     break;
                 case "3":
                     Console.Clear();
-                    logicaUsuario.VerListaUsuario();
+                    usuarioService.VerListaUsuario();
                     MenuServidor(listener);
                     break;
                 case "4":
@@ -108,8 +109,8 @@ namespace Servidor
                     string nombreUsuario = Usuario.CrearUsuario().NombreUsuario;
                     Console.WriteLine("Ingrese un nuevo nombre");
                     string nuevoNombreUsuario = Console.ReadLine();
-                    bool seModifico = logicaUsuario.ModificarUsuario(nombreUsuario, nuevoNombreUsuario);
-                    if (!seModifico)
+                    Task<bool> seModifico = usuarioService.ModificarUsuario(nombreUsuario, nuevoNombreUsuario);
+                    if (!seModifico.Result)
                     {
                         Console.WriteLine("Usuario invalido");
                     }
@@ -121,8 +122,8 @@ namespace Servidor
                     break;
                 case "5":
                     Console.Clear();
-                    bool seElimino = logicaUsuario.EliminarUsuario(Usuario.CrearUsuario().NombreUsuario);
-                    if (!seElimino)
+                    Task<bool> seElimino = usuarioService.EliminarUsuario(Usuario.CrearUsuario().NombreUsuario); //esto deberia ser await 
+                    if (!seElimino.Result)
                     {
                         Console.WriteLine("Usuario invalido");
                     }
@@ -158,7 +159,6 @@ namespace Servidor
         private async Task ConexionUsuario(TcpClient socket)
         {
             Usuario usuario = null;
-            LogicaUsuario logicaUsuario = new LogicaUsuario();
 
             while (!salir)
             {
@@ -168,7 +168,7 @@ namespace Servidor
                 }
                 catch (SocketException)
                 {
-                    logicaUsuario.ActualizarAUsuarioInactivo(usuario.NombreUsuario);
+                    usuarioService.ActualizarAUsuarioInactivo(usuario.NombreUsuario);
                     return;
                 }
             }
@@ -224,6 +224,6 @@ namespace Servidor
                 }
             return usuario;
         }
-
+        
     }
 }

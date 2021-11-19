@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj": {}
+    "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj": {
+    "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj",
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj",
         "projectName": "LoggServidor",
-        "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj",
         "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\obj\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",

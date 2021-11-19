@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "ServidorAdministrativo";
+
+package userProtoService;
+
+service ServicioUsuario {
+	rpc AltaUsuario (UsuarioProto) returns (RespuestaProto);
+	rpc ObtenerUsuarios(MensajeVacio) returns (UsuariosProto);
+}
+
+message MensajeVacio { }
+
+message UsuariosProto{
+	repeated UsuarioProto usuario = 1;
+}
+
+message UsuarioProto {
+  string nombre = 1;
+}
+
+message RespuestaProto {
+  string estado = 1;
+}
