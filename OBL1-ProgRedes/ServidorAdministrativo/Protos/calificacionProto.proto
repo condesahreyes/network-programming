@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "ServidorAdministrativo.Protos";
+
+service ServicioJuego {
+	rpc AgregarCalificacion(CalificacionProto)returns(bool);
+}
+
+message MensajeVacio { }
+
+message CalificacionesProto{
+	repeated JuegoProto calificacion = 1;
+}
+
+message CalificacionProto {
+  int nota = 1;
+}
+
+message bool{
+	bool respuesta = 1;
+}

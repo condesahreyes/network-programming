@@ -5,5 +5,27 @@ option csharp_namespace = "ServidorAdministrativo.Protos";
 package juegoProtoService;
 
 service ServicioJuego {
-
+	rpc ObtenerJuegos(MensajeVacio) returns (JuegosProto);
+	rpc EsJuegoExistente(JuegoProto) returns(bool);
+	rpc BuscarJuegoPortTitulo(Mensaje) returns(JuegoProto);
 }
+
+message MensajeVacio { }
+
+message JuegosProto{
+	repeated JuegoProto juego = 1;
+}
+
+message JuegoProto {
+  string titulo = 1;
+ 
+}
+
+message bool{
+	bool respuesta = 1;
+}
+
+message Mensaje{ 
+	string mensaje = 1;
+}
+

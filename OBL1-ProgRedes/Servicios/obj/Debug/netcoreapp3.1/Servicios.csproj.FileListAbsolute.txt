@@ -21,3 +21,8 @@ C:\Users\hreye\Desktop\version estable\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\
 C:\Users\hreye\Desktop\version estable\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.csproj.CopyComplete
 C:\Users\hreye\Desktop\version estable\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.dll
 C:\Users\hreye\Desktop\version estable\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.pdb
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.csprojAssemblyReference.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.AssemblyInfoInputs.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.AssemblyInfo.cs
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.csproj.CoreCompileInputs.cache
