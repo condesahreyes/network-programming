@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace IServices
 {
@@ -9,13 +10,11 @@ namespace IServices
     {
             bool EsJuegoExistente(Juego unJuego);
 
-            List<Juego> ObtenerJuegos();
+            Task<List<Juego>> ObtenerJuegos();
 
-            bool AgregarJuego(Juego juego);
+            Task<bool> AgregarJuego(Juego juego);
 
             bool AgregarCalificacion(Calificacion calificacion);
-
-            void VerCatalogoJuegos();
 
             Juego AdquirirJuegoPorUsuario(string juego, Usuario usuario);
 

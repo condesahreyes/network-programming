@@ -1,0 +1,408 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
+        "projectName": "Dominio",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
+        "projectName": "IServices",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
+        "projectName": "Protocolo",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj",
+        "projectName": "Servicios",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+              },
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj"
+              },
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.13.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.32.0, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.32.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj",
+        "projectName": "ServidorAdministrativo",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.32.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
+        "projectName": "Servidor",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+              },
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj"
+              },
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj"
+              },
+              "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.42.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

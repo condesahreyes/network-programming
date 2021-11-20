@@ -1,8 +1,8 @@
-﻿using Grpc.Core;
-using LogicaNegocio;
-using ServidorAdministrativo.Protos;
+﻿using ServidorAdministrativo.Protos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LogicaNegocio;
+using Grpc.Core;
 
 namespace ServidorAdministrativo.Services
 {
@@ -14,7 +14,7 @@ namespace ServidorAdministrativo.Services
             this.persistencia = Persistencia.ObtenerPersistencia();
         }
         
-        public override async Task<BoolProto> AgregarCalificacion(CalificacionProto calificacion, ServerCallContext context)
+        public override async Task<ProtoBool> AgregarCalificacion(CalificacionProto calificacion, ServerCallContext context)
         {
             foreach (Juego juego in this.persistencia.juegos)
             {
@@ -29,15 +29,14 @@ namespace ServidorAdministrativo.Services
                     };
 
                     juego.calificaciones.Add(nuevaCalificacion);
-                    return await Task.FromResult(new BoolProto { BoolProto_ = true });
+                    return await Task.FromResult(new ProtoBool { BoolProto = true });
                 }
             }
 
-            return await Task.FromResult(new BoolProto { BoolProto_ = false });
-
+            return await Task.FromResult(new ProtoBool { BoolProto = false });
         }
 
-        public override async Task<BoolProto> EliminarJuego(Mensaje titulo, ServerCallContext context)
+        public override async Task<ProtoBool> EliminarJuego(Mensaje titulo, ServerCallContext context)
         {
             bool retorno = false;
             JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
@@ -49,7 +48,7 @@ namespace ServidorAdministrativo.Services
                     retorno = true;
                 }
 
-            return await Task.FromResult(new BoolProto() { BoolProto_ = retorno });
+            return await Task.FromResult(new ProtoBool() { BoolProto = retorno });
         }
 
         public override async Task<JuegosProto> BuscarJuegoPorCalificacion(MensajeInt ranking, ServerCallContext context)
@@ -132,32 +131,28 @@ namespace ServidorAdministrativo.Services
                     juegoARetornar = juego;
                 }
             }
+
             return await Task.FromResult(juegoARetornar);
         }
 
-        public override async Task<BoolProto> EsJuegoExistente(JuegoProto unJuego, ServerCallContext context)
+        public override async Task<ProtoBool> EsJuegoExistente(JuegoProto unJuego, ServerCallContext context)
         {
             bool juegoExistente = this.persistencia.juegos.Exists(x => x.Titulo.Equals(unJuego.Titulo));
-            return await Task.FromResult(new BoolProto() { BoolProto_ = juegoExistente });
+            return await Task.FromResult(new ProtoBool() { BoolProto = juegoExistente });
         } 
-
         
-        public override async Task<BoolProto> AgregarJuegos(JuegoProto unJuego, ServerCallContext context)
+        public override async Task<ProtoBool> AgregarJuegos(JuegoProto unJuego, ServerCallContext context)
         {
             JuegoProto juegoNuevo = new JuegoProto();
-            bool agregaJuego = false;
-            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
+            bool existeJuego = ExisteJuego(unJuego.Titulo);
 
-            foreach(JuegoProto juegoP in juegosProto.Juego)
-            {
-                if(juegoP != unJuego)
-                {
-                    agregaJuego = true;
-                    juegoNuevo = unJuego;
-                }
-            }
+            if(existeJuego)
+                return await Task.FromResult(new ProtoBool() { BoolProto = false });
 
-            return await Task.FromResult(new BoolProto() { BoolProto_ = agregaJuego });
+            Juego nuevoJuego = MapperProtoJuego(unJuego);
+            this.persistencia.juegos.Add(nuevoJuego);
+
+            return await Task.FromResult(new ProtoBool() { BoolProto = true });
         }
 
         public override async Task<JuegosProto> ObtenerJuegos(Protos.MensajeVacio request, ServerCallContext context)
@@ -178,5 +173,63 @@ namespace ServidorAdministrativo.Services
         {
             return this.persistencia.usuarios.Find(x => x.NombreUsuario == nombreUsuario);
         }
+
+        private bool ExisteJuego(string tituloJuego)
+        {
+            return this.persistencia.juegos.Exists(x => x.Titulo.Equals(tituloJuego));
+        }
+
+        private Juego MapperProtoJuego(JuegoProto unJuego)
+        {
+            return new Juego
+            {
+                Sinopsis = unJuego.Sinposis,
+                Caratula = unJuego.Caratula,
+                Genero = unJuego.Genero,
+                Notas = unJuego.Notas,
+                Ranking = unJuego.Ranking,
+                Titulo = unJuego.Titulo,
+                usuarios = MapearProtoUsuarios(unJuego),
+                calificaciones = MapearProtoCalificaciones(unJuego)
+            };
+        }
+
+        private List<Usuario> MapearProtoUsuarios(JuegoProto proto)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            List<UsuarioProto> usuariosProto = new List<UsuarioProto>();
+
+            foreach (var usu in proto.Usuarios)
+                usuarios.Add(MapearProtoUsuario(usu));
+
+            return usuarios;
+        }
+
+        private static Usuario MapearProtoUsuario(Protos.UsuarioProto proto)
+        {
+            return new Usuario(proto.Nombre);
+        }
+
+        private List<Calificacion> MapearProtoCalificaciones(JuegoProto proto)
+        {
+            List<Calificacion> calificaciones = new List<Calificacion>();
+
+            foreach (var usu in proto.Calificaciones.Calificaciones)
+                calificaciones.Add(MapearProtoCalificaciones(usu));
+
+            return calificaciones;
+        }
+
+        private static Calificacion MapearProtoCalificaciones(CalificacionProto proto)
+        {
+            return new Calificacion
+            {
+                Comentario = proto.Comentario,
+                Nota = proto.Nota,
+                TituloJuego = proto.TituloJuegoo,
+                Usuario = proto.Usuario
+            };
+        }
+
     }
 }

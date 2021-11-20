@@ -3,18 +3,18 @@ using LogicaNegocio;
 using System;
 using IServices;
 using Grpc.Net.Client;
-using ServidorAdministrativo;
 using ServidorAdministrativo.Protos;
+using System.Threading.Tasks;
 
 namespace Servicios
 {
     public class JuegoService: IJuegoService
     {
-
-
+        GrpcChannel canal = GrpcChannel.ForAddress("https://localhost:5001");
+        ServicioJuego.ServicioJuegoClient juegoProtoService;
         public JuegoService()
         {
-           // this.persistencia = Persistencia.ObtenerPersistencia();
+            this.juegoProtoService = new ServicioJuego.ServicioJuegoClient(canal);
         }
 
         public bool EsJuegoExistente(Juego unJuego)
@@ -31,29 +31,17 @@ namespace Servicios
             return false;
         }
 
-        public List<Juego> ObtenerJuegos()
+        public async Task<List<Juego>> ObtenerJuegos()
         {
-            /*
-            lock (persistencia.juegos)
-            {
-                return persistencia.juegos;
-            }*/
-            return null;
+            JuegosProto juegosProto = await juegoProtoService.ObtenerJuegosAsync(new MensajeVacio() { });
+            return await (MapearJuegosProto(juegosProto));
         }
 
-        public bool AgregarJuego(Juego juego)
-        {/*
-            lock (persistencia.juegos) {
-                bool esJuegoExistente = EsJuegoExistente(juego);
+        public async Task<bool> AgregarJuego(Juego juego)
+        {
+            ProtoBool agregado =  await juegoProtoService.AgregarJuegosAsync(MapperJuegoProto(juego));
 
-                if (esJuegoExistente)
-                    return false;
-                else
-                    persistencia.juegos.Add(juego);
-                return true;
-            }
-            */
-            return false;
+            return await Task.FromResult(agregado.BoolProto);
         }
 
         public bool AgregarCalificacion(Calificacion calificacion)
@@ -74,28 +62,6 @@ namespace Servicios
             return true;
             */
             return false;
-        }
-
-        public void VerCatalogoJuegos()
-        {/*
-            List<Juego> juegos;
-
-            lock (persistencia.juegos)
-            {
-                juegos = persistencia.juegos;
-            }
-
-            if (juegos.Count == 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("No se han ingresados juegos");
-                return;
-            }
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            foreach (var juego in juegos)
-                Console.WriteLine(juego.ToString());
-            */
         }
 
         public Juego AdquirirJuegoPorUsuario(string juego, Usuario usuario)
@@ -223,5 +189,105 @@ namespace Servicios
             */
             return false;
         }
+
+        private Task<List<Juego>> MapearJuegosProto(JuegosProto juegos)
+        {
+            List<Juego> listaJuegos = new List<Juego>();
+
+            foreach (var unJuego in juegos.Juego)
+            {
+                listaJuegos.Add(MapperProtoJuego(unJuego));
+            }
+
+            return Task.FromResult(listaJuegos);
+        }
+
+        private JuegoProto MapperJuegoProto(Juego juego)
+        {
+            return new JuegoProto()
+            {
+                Titulo = juego.Titulo,
+                Sinposis = juego.Sinopsis,
+                Genero = juego.Genero,
+                Notas = juego.Notas,
+                Caratula = juego.Caratula,
+                Ranking = juego.Ranking,
+                Calificaciones = MapperCalificacionesProto(juego.calificaciones)
+            };
+        }
+
+        private CalificacionesProto MapperCalificacionesProto(List<Calificacion> calificaciones)
+        {
+            CalificacionesProto calificacionesProto = new CalificacionesProto();
+            foreach (Calificacion calificacion in calificaciones)
+            {
+                CalificacionProto miCalificacion = new CalificacionProto()
+                {
+                    Comentario = calificacion.Comentario,
+                    Nota = calificacion.Nota,
+                    TituloJuegoo = calificacion.TituloJuego,
+                    Usuario = calificacion.Usuario
+                };
+
+                calificacionesProto.Calificaciones.Add(miCalificacion);
+            }
+
+            return calificacionesProto;
+        }
+
+        private Juego MapperProtoJuego(JuegoProto unJuego)
+        {
+            return new Juego
+            {
+                Sinopsis = unJuego.Sinposis,
+                Caratula = unJuego.Caratula,
+                Genero = unJuego.Genero,
+                Notas = unJuego.Notas,
+                Ranking = unJuego.Ranking,
+                Titulo = unJuego.Titulo,
+                usuarios = MapearProtoUsuarios(unJuego),
+                calificaciones = MapearProtoCalificaciones(unJuego)
+            };
+        }
+
+        private List<Usuario> MapearProtoUsuarios(JuegoProto proto)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            List<UsuarioProto> usuariosProto = new List<UsuarioProto>();
+
+            if(proto.Usuarios != null)
+            foreach (var usu in proto.Usuarios)
+                usuarios.Add(MapearProtoUsuario(usu));
+
+            return usuarios;
+        }
+
+        private static Usuario MapearProtoUsuario(UsuarioProto proto)
+        {
+            return new Usuario(proto.Nombre);
+        }
+
+        private List<Calificacion> MapearProtoCalificaciones(JuegoProto proto)
+        {
+            List<Calificacion> calificaciones = new List<Calificacion>();
+
+            if(proto.Calificaciones != null)
+            foreach (var usu in proto.Calificaciones.Calificaciones)
+                calificaciones.Add(MapearProtoCalificaciones(usu));
+
+            return calificaciones;
+        }
+
+        private static Calificacion MapearProtoCalificaciones(CalificacionProto proto)
+        {
+            return new Calificacion
+            {
+                Comentario = proto.Comentario,
+                Nota = proto.Nota,
+                TituloJuego = proto.TituloJuegoo,
+                Usuario = proto.Usuario
+            };
+        }
+
     }
 }

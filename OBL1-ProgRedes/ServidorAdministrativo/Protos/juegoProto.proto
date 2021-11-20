@@ -5,17 +5,17 @@ option csharp_namespace = "ServidorAdministrativo.Protos";
 package juegoProtoService;
 
 service ServicioJuego {
-	rpc AgregarJuegos(JuegoProto) returns (BoolProto);
+	rpc AgregarJuegos(JuegoProto) returns (ProtoBool);
 	rpc ObtenerJuegos(MensajeVacio) returns (JuegosProto);
-	rpc EsJuegoExistente(JuegoProto) returns(BoolProto);
+	rpc EsJuegoExistente(JuegoProto) returns(ProtoBool);
 	rpc BuscarJuegoPortTitulo(Mensaje) returns(JuegoProto);
 	rpc JuegoUsuarios(UsuarioProto) returns(JuegosProto);
 	rpc BuscarJuegoPorGenero(GeneroProto) returns(JuegoProto);
 	rpc VerCatalogo(MensajeVacio) returns(MensajeVacio);
 	rpc AdquirirJuegoPorUsuario(JuegoPorUsuarioProto) returns(JuegoProto);
 	rpc BuscarJuegoPorCalificacion(MensajeInt) returns(JuegosProto);
-	rpc EliminarJuego(Mensaje) returns(BoolProto);
-	rpc AgregarCalificacion(CalificacionProto) returns(BoolProto);
+	rpc EliminarJuego(Mensaje) returns(ProtoBool);
+	rpc AgregarCalificacion(CalificacionProto) returns(ProtoBool);
 }
 
 message MensajeVacio { }
@@ -32,11 +32,15 @@ message JuegoProto {
   string Caratula = 5;
   string Genero = 6;
  repeated UsuarioProto usuarios = 7;
- repeated CalificacionProto calificaciones = 8;
+ CalificacionesProto calificaciones = 8;
 }
 
-message BoolProto{
+message ProtoBool{
 	bool boolProto = 1;
+}
+
+message CalificacionesProto{
+	repeated CalificacionProto calificaciones = 8;
 }
 
 message CalificacionProto{

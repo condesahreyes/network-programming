@@ -91,7 +91,7 @@ namespace Servidor
                     break;
                 case "1":
                     Console.Clear();
-                    juegoService.VerCatalogoJuegos();
+                    await funcionalidadesServidor.VerCatalogoJuegos();
                     await MenuServidor(listener);
                     break;
                 case "2":

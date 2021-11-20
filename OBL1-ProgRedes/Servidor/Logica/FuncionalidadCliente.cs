@@ -43,12 +43,12 @@ namespace Servidor
             string caratula = await RecibirArchivos();
             juego.Caratula = caratula;
 
-            await EnviarRespuesta(juego, juegoService.AgregarJuego(juego));
+            await EnviarRespuesta(juego, await juegoService.AgregarJuego(juego));
         }
 
         public async Task EnviarListaJuegos()
         {
-            List<Juego> juegos = juegoService.ObtenerJuegos();
+            List<Juego> juegos = await juegoService.ObtenerJuegos();
             string juegosString =  Mapper.ListaDeJuegosAString(juegos);
 
             await EnviarMensaje(juegosString, Accion.ListaJuegos);
@@ -155,7 +155,7 @@ namespace Servidor
                 return;
             }
 
-            fueAgregadoElModificado = juegoService.AgregarJuego(juego);
+            fueAgregadoElModificado = await juegoService.AgregarJuego(juego);
 
             await EnviarRespuesta(juego, fueAgregadoElModificado);
         }

@@ -32,6 +32,7 @@ namespace ServidorAdministrativo
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<UsuarioProtoService>();
+                endpoints.MapGrpcService<JuegoProtoService>();
 
                 endpoints.MapGet("/", async context =>
                 {

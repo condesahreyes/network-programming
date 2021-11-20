@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="..\ServidorAdministrativo\Protos\juegoProto.proto" GrpcServices="Client">
+      <Link>Protos\juegoProto.proto</Link>
+    </Protobuf>
     <Protobuf Include="..\ServidorAdministrativo\Protos\userProto.proto" GrpcServices="Client">
       <Link>Protos\userProto.proto</Link>
     </Protobuf>
