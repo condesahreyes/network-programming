@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Tm6PuFvxUVE3kJP8/74sBtiYGE6BYlxcIOGM1Cc9jNn8dFgujkMQl0u2oioHgo5LuFKRcDxuzgTwPuk5zqSKag==",
+  "dgSpecHash": "0umVEGW3jhb63aSGFZiZWlCaqR3ooDtf327XhPavbngAiwwGzkrGlkNIBvQPS0H383bJL6HDoB8J3+Isu89QDQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj",
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\juliiii\\Prog.-Redes\\OBL1-ProgRedes\\LoggServidor\\LoggServidor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hreye\\.nuget\\packages\\google.protobuf\\3.13.0\\google.protobuf.3.13.0.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\grpc.aspnetcore\\2.32.0\\grpc.aspnetcore.2.32.0.nupkg.sha512",

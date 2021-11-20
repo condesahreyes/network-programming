@@ -2,6 +2,7 @@
 using IServices;
 using LogicaNegocio;
 using ServidorAdministrativo;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Servicios
@@ -18,48 +19,48 @@ namespace Servicios
 
         public async Task<Usuario> ObtenerUsuario(Usuario usuario)
         {
-            UsuariosProto usuarios = await userProtoService.ObtenerUsuariosAsync(new MensajeVacio());
+            List<Usuario> usuariosDominio = await ObtenerUsuarios();
+
+            Usuario miUsuario = usuariosDominio.Find(x => x.NombreUsuario == usuario.NombreUsuario);
+            
+            if (miUsuario != null)
+                return miUsuario;
 
             UsuarioProto usuarioRequest = new UsuarioProto { Nombre = usuario.NombreUsuario };
             await userProtoService.AltaUsuarioAsync(usuarioRequest);
 
             return usuario;
         }
-       
+
+
         public async Task ActualizarAUsuarioInactivo(string nombreUsuario)
         {
-            /*lock (persistencia)
-            {
-                foreach (Usuario usuario in persistencia.usuarios)
-                    if (usuario.NombreUsuario == nombreUsuario)
-                        usuario.UsuarioActivo = false;
-            }*/
+            UsuariosProto usuariosProto = await userProtoService.ObtenerUsuariosAsync(new MensajeVacio());
+            List<Usuario> usuarios = await ObtenerUsuarios();
+
+            foreach (Usuario usuario in usuarios)
+                if (usuario.NombreUsuario == nombreUsuario)
+                    usuario.UsuarioActivo = false;
+        }
+
+        public async Task<List<Usuario>> ObtenerUsuarios()
+        {
+            UsuariosProto usuariosProto = await userProtoService.ObtenerUsuariosAsync(new MensajeVacio());
+
+            List<Usuario> usuariosDominio = MapearProtoUsuarios(usuariosProto);
+
+            return usuariosDominio;
         }
 
         public async Task ActualizarAUsuarioActivo(string nombreUsuario)
         {
-            /*lock (persistencia)
-            {
-                foreach (Usuario usuario in persistencia.usuarios)
+            List<Usuario> usuarios = await ObtenerUsuarios();
+
+                foreach (Usuario usuario in usuarios)
                     if (usuario.NombreUsuario == nombreUsuario)
                         usuario.UsuarioActivo = true;
-            }*/
+
         }
-        /*
-        public Usuario ObtenerUsuario(Usuario usuario)
-        {
-            bool noExisteUsuario = NoEsUsuarioExistente(usuario);
-
-            if (noExisteUsuario)
-            {
-                lock (persistencia)
-                {
-                    persistencia.usuarios.Add(usuario);
-                }
-            }
-
-            return DevolverUsuarioExistente(usuario);
-        }*/
 
         public async Task<bool> EliminarUsuario(string nombreUsuario)
         {/*
@@ -102,46 +103,54 @@ namespace Servicios
             return false;
         }
 
-        public async Task VerListaUsuario()
-        {/*
-            List<Usuario> usuarios;
-            lock (persistencia.usuarios)
-            {
-                usuarios = persistencia.usuarios;
-            }
 
-            if (usuarios.Count == 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("No se han ingresados usuarios");
-                return;
-            }
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            foreach (var usuario in usuarios)
-                Console.WriteLine(usuario.NombreUsuario) ;   */
-        }
 
         private async Task<bool> NoEsUsuarioExistente(Usuario unUsuario)
-        {/*
-            List<Usuario> misUsuarios = persistencia.usuarios;
+        {
+            List<Usuario> misUsuarios = await ObtenerUsuarios();
+
             foreach (var usuario in misUsuarios)
                 if (unUsuario.NombreUsuario == usuario.NombreUsuario)
                     return false;
 
-            return true;*/
-            return false;
+            return true;
         }
 
         private async Task<Usuario> DevolverUsuarioExistente(Usuario unUsuario)
-        {/*
-            List<Usuario> misUsuarios = persistencia.usuarios;
+        {
+            List<Usuario> misUsuarios = await ObtenerUsuarios();
             foreach (var usuario in misUsuarios)
                 if (unUsuario.NombreUsuario == usuario.NombreUsuario)
                     return usuario;
 
-            return null;*/
             return null;
+        }
+
+        private static Usuario MapearProtoUsuario(UsuarioProto proto)
+        {
+            return new Usuario(proto.Nombre);
+        }
+
+        private List<Usuario> MapearProtoUsuarios(UsuariosProto proto)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            List<UsuarioProto> usuariosProto = new List<UsuarioProto>();
+
+            foreach (var usu in proto.Usuario)
+                usuarios.Add(MapearProtoUsuario(usu));
+
+            return usuarios;
+        }
+
+        private UsuariosProto MapearUsuariosProto(List<Usuario> misUsuarios)
+        {
+            List<Usuario> usuariosDominio = misUsuarios;
+
+            UsuariosProto usuarios = new UsuariosProto();
+
+            usuariosDominio.ForEach(x => usuarios.Usuario.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
+
+            return usuarios;
         }
     }
 }

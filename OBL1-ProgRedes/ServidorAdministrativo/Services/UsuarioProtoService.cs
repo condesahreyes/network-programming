@@ -26,14 +26,11 @@ namespace ServidorAdministrativo.Services
 
         public override async Task<UsuariosProto> ObtenerUsuarios(MensajeVacio request, ServerCallContext context)
         {
-            List<UsuarioProto> usuariosProto = new List<UsuarioProto>();
             List<Usuario> usuariosDominio = this.persistencia.usuarios;
 
             UsuariosProto usuarios = new UsuariosProto();
 
-            usuariosDominio.ForEach(x => usuariosProto.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
-
-            usuarios.Usuario.AddRange(usuariosProto);
+            usuariosDominio.ForEach(x => usuarios.Usuario.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
 
             return await Task.FromResult(usuarios);
         }

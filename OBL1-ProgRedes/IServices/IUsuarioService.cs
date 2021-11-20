@@ -1,4 +1,5 @@
 ﻿using LogicaNegocio;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace IServices
@@ -15,6 +16,6 @@ namespace IServices
 
         Task<bool> ModificarUsuario(string nombreUsuario, string nuevoNombreUsuario);
 
-        Task VerListaUsuario();
+        Task<List<Usuario>> ObtenerUsuarios();
     }
 }

@@ -41,10 +41,10 @@ namespace Servidor
             cantConexionesEnEspera = int.Parse(configuracion["backLog"]);
             ipServidor = configuracion["ip"];
             this.usuarioService = new UsuarioService();
-            Escuchar();
+
         }
         
-        public void Escuchar()
+        public async Task Escuchar()
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipServidor), puerto);
 
@@ -55,7 +55,7 @@ namespace Servidor
             Task hiloDeEscucha = new Task(async () => await EscucharPorUsuario(listener));
             hiloDeEscucha.Start();
 
-            MenuServidor(listener);
+            await MenuServidor(listener);
         }
 
         private async Task MenuServidor(TcpListener listener)
@@ -73,7 +73,7 @@ namespace Servidor
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Ingrese una opcion valida entre 0 y 1\n");
-                MenuServidor(listener);
+                await MenuServidor(listener);
             }
 
             switch (accion)
@@ -92,17 +92,17 @@ namespace Servidor
                 case "1":
                     Console.Clear();
                     juegoService.VerCatalogoJuegos();
-                    MenuServidor(listener);
+                    await MenuServidor(listener);
                     break;
                 case "2":
                     Console.Clear();
-                    usuarioService.ObtenerUsuario(Usuario.CrearUsuario());
-                    MenuServidor(listener);
+                    await usuarioService.ObtenerUsuario(Usuario.CrearUsuario());
+                    await MenuServidor (listener);
                     break;
                 case "3":
                     Console.Clear();
-                    usuarioService.VerListaUsuario();
-                    MenuServidor(listener);
+                    await funcionalidadesServidor.VerListaUsuario();
+                    await MenuServidor(listener);
                     break;
                 case "4":
                     Console.Clear();
@@ -118,7 +118,7 @@ namespace Servidor
                     {
                         Console.WriteLine("Usuario Modificado");
                     }
-                    MenuServidor(listener);
+                    await MenuServidor(listener);
                     break;
                 case "5":
                     Console.Clear();
@@ -131,7 +131,7 @@ namespace Servidor
                     {
                         Console.WriteLine("Usuario Eliminado");
                     }
-                    MenuServidor(listener);
+                    await MenuServidor(listener);
                     break;
             }
         }
@@ -168,7 +168,7 @@ namespace Servidor
                 }
                 catch (SocketException)
                 {
-                    usuarioService.ActualizarAUsuarioInactivo(usuario.NombreUsuario);
+                    await usuarioService.ActualizarAUsuarioInactivo(usuario.NombreUsuario);
                     return;
                 }
             }

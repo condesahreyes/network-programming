@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Servicios.Mappers
 {
-    public static class MapperUsuario
+    public class MapperUsuario
     {
         public static Usuario MapearProtoUsuario(UsuarioProto proto)
         {
@@ -18,6 +18,17 @@ namespace Servicios.Mappers
 
             foreach (var usu in proto.Usuario)
                 usuarios.Add(MapperUsuario.MapearProtoUsuario(usu));
+
+            return usuarios;
+        }
+
+        public static UsuariosProto MapearUsuariosProto(List<Usuario> misUsuarios)
+        {
+            List<Usuario> usuariosDominio = misUsuarios;
+
+            UsuariosProto usuarios = new UsuariosProto();
+
+            usuariosDominio.ForEach(x => usuarios.Usuario.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
 
             return usuarios;
         }

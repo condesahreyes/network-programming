@@ -187,6 +187,23 @@ namespace Servidor
             await Controlador.EnviarEncabezadoAsync(transferencia, encabezado);
             await Controlador.EnviarDatos(transferencia, mensaje);
         }
-        
+
+
+        public async Task VerListaUsuario()
+        {
+            List<Usuario> usuarios = await usuarioService.ObtenerUsuarios();
+
+            if (usuarios.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("No se han ingresados usuarios");
+                return;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            foreach (var usuario in usuarios)
+                Console.WriteLine(usuario.NombreUsuario) ;   
+        }
+
     }
 }
