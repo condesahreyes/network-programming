@@ -16,6 +16,84 @@ namespace ServidorAdministrativo.Services
             this.persistencia = Persistencia.ObtenerPersistencia();
         }
 
+        public override async Task<bool> AgregarCalificacion(CalificacionProto calificacion, ServerCallContext context)
+        {
+            bool retorno = true; 
+            JuegoProto juegoProto = BuscarJuegoPortTitulo(juego);
+            JuegosProto juegosProto = ObtenerJuegos();
+
+            if (juegoProto == null)
+                retorno =  false;
+
+            juegoProto.calificaciones.Add(calificacion);
+
+            juegoProto.Notas += calificacion.Nota;
+            juegoProto.Ranking = Math.Abs((juegoProto.Notas) / juegoProto.calificaciones.Count);
+
+            return await Task.FromResult(retorno);
+        }
+
+        public override async Task<bool> EliminarJuego(Mensaje titulo, ServerCallContext context)
+        {
+            bool retorno = false;
+            JuegosProto juegosProto = ObtenerJuegos();
+
+            foreach (JuegoProto juego in juegosProto)
+                if (juego.Titulo == titulo)
+                {
+                    juegosProto.Remove(juego);
+                    retorno = true;
+                }
+            return await Task.FromResult(retorno);
+        }
+        public override async Task<JuegosProto> BuscarJuegoPorCalificacion(MensajeInt ranking, ServerCallContext context)
+        {
+            JuegosProto juegosProto = ObtenerJuegos();
+            JuegosProto juegosARetornar = new JuegosProto();
+
+            foreach (JuegoProto j in juegosProto.Juego)
+            {
+                if (j.Ranking == ranking)
+                {
+                    juegosARetornar.Add(j);
+                }
+            }
+            return await Task.FromResult(juegosARetornar);
+        }
+
+        public override async Task<JuegoProto> AdquirirJuegoPorUsuario(Mensaje juego, UsuarioProto usuario, ServerCallContext context)
+        {
+            JuegoProto juegoProto = BuscarJuegoPortTitulo(juego);
+
+            UsuarioProto usuarioProto = ObtenerUsuario(usuario.Nombre);
+            if(usuarioProto != null && juegoProto != null)
+            {
+                juegoProto.users.Add(usuarioProto);
+            }
+
+            return await Task.FromResult(juegoProto);
+        }
+
+        private Usuario ObtenerUsuario(string nombreUsuario)
+        {
+            return this.persistencia.usuarios.Find(x => x.NombreUsuario == nombreUsuario);
+        }
+
+        public override async Task<JuegoProto> BuscarJuegoPorGenero(Mensaje genero, ServerCallContext context)
+        {
+            JuegosProto juegosProto = ObtenerJuegos();
+            JuegoProto juegoARetornar = new JuegoProto();
+
+            foreach (JuegoProto j in juegosProto.Juego)
+            {
+                if (j.Genero == genero)
+                {
+                    juegoARetornar = j;
+                }
+            }
+            return await Task.FromResult(juegoARetornar);
+        }
+
         public override async Task<JuegosProto> JuegoUsuarios(UsuarioProto usuario, ServerCallContext context)
         {
             JuegosProto juegosProto = ObtenerJuegos();
@@ -25,7 +103,7 @@ namespace ServidorAdministrativo.Services
             {
                 foreach(UsuarioProto usuario in JuegoProto.usuarios)
                 {
-                    if(u.Nombre = usuario.Nombre)
+                    if(usuario.Nombre = usuario.Nombre)
                     {
                         juegosARetornar.Add(juego);
                     }

@@ -1,18 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "qJN8aAXj+NHEjAuEr6qRLHeDeVeV7wYZ93cVNi97dyl3mYqzJZwEdGAuqn4NyRVFkpjuwZHMNkce+THljAyMZA==",
+  "dgSpecHash": "95CppKWiJiDDatP44BS8CveX2F6yEIspsRXPkXXt8Sv1ipqBFji4Zzc2sGK3lF9YN93tmyOXRyLy/8FYW3ounw==",
   "success": true,
   "projectFilePath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jpercivale\\.nuget\\packages\\google.protobuf\\3.13.0\\google.protobuf.3.13.0.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.aspnetcore\\2.32.0\\grpc.aspnetcore.2.32.0.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.aspnetcore.server\\2.32.0\\grpc.aspnetcore.server.2.32.0.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.aspnetcore.server.clientfactory\\2.32.0\\grpc.aspnetcore.server.clientfactory.2.32.0.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.core.api\\2.32.0\\grpc.core.api.2.32.0.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.net.client\\2.32.0\\grpc.net.client.2.32.0.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.net.clientfactory\\2.32.0\\grpc.net.clientfactory.2.32.0.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.net.common\\2.32.0\\grpc.net.common.2.32.0.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.tools\\2.32.0\\grpc.tools.2.32.0.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\google.protobuf\\3.18.0\\google.protobuf.3.18.0.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.aspnetcore\\2.40.0\\grpc.aspnetcore.2.40.0.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.aspnetcore.server\\2.40.0\\grpc.aspnetcore.server.2.40.0.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.aspnetcore.server.clientfactory\\2.40.0\\grpc.aspnetcore.server.clientfactory.2.40.0.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.core.api\\2.40.0\\grpc.core.api.2.40.0.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.net.client\\2.40.0\\grpc.net.client.2.40.0.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.net.clientfactory\\2.40.0\\grpc.net.clientfactory.2.40.0.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.net.common\\2.40.0\\grpc.net.common.2.40.0.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.tools\\2.40.0\\grpc.tools.2.40.0.nupkg.sha512",
     "C:\\Users\\jpercivale\\.nuget\\packages\\microsoft.extensions.configuration\\3.0.3\\microsoft.extensions.configuration.3.0.3.nupkg.sha512",
     "C:\\Users\\jpercivale\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.0.3\\microsoft.extensions.configuration.abstractions.3.0.3.nupkg.sha512",
     "C:\\Users\\jpercivale\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.0.3\\microsoft.extensions.configuration.binder.3.0.3.nupkg.sha512",
@@ -25,7 +25,8 @@
     "C:\\Users\\jpercivale\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.3\\microsoft.extensions.primitives.3.0.3.nupkg.sha512",
     "C:\\Users\\jpercivale\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.5.1\\system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512",
     "C:\\Users\\jpercivale\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
+    "C:\\Users\\jpercivale\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\jpercivale\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.19\\microsoft.netcore.app.host.win-x64.3.1.19.nupkg.sha512"
   ],
   "logs": []
 }
