@@ -16,7 +16,6 @@ C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Release\net
 C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Release\netcoreapp3.1\Protocolo.pdb
 C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Release\netcoreapp3.1\Dominio.dll
 C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\bin\Release\netcoreapp3.1\Dominio.pdb
-C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Release\netcoreapp3.1\Protocolo.csprojAssemblyReference.cache
 C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Release\netcoreapp3.1\Protocolo.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Release\netcoreapp3.1\Protocolo.AssemblyInfoInputs.cache
 C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Protocolo\obj\Release\netcoreapp3.1\Protocolo.AssemblyInfo.cs

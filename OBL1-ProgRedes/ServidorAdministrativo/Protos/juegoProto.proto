@@ -6,9 +6,10 @@ package juegoProtoService;
 
 service ServicioJuego {
 	rpc ObtenerJuegos(MensajeVacio) returns (JuegosProto);
-	rpc EsJuegoExistente(JuegoProto) returns(bool);
+	rpc EsJuegoExistente(JuegoProto) returns(BoolProto);
 	rpc BuscarJuegoPortTitulo(Mensaje) returns(JuegoProto);
 	rpc JuegoUsuarios(UsuarioProto) returns(JuegosProto);
+	rpc BuscarJuegoPorGenero(GeneroProto);
 }
 
 message MensajeVacio { }
@@ -27,8 +28,8 @@ message JuegoProto {
  repeated UsuarioProto usuarios = 7;
 }
 
-message bool{
-	bool respuesta = 1;
+message BoolProto{
+	bool boolProto = 1;
 }
 
 message Mensaje{ 
@@ -39,3 +40,7 @@ message UsuarioProto{
 	string nombre =1;
 }
 
+
+message GeneroProto{
+	string genero = 1;
+}
