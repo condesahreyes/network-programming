@@ -1,7 +1,7 @@
-﻿using Grpc.Core;
-using LogicaNegocio;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using LogicaNegocio;
+using Grpc.Core;
 
 namespace ServidorAdministrativo.Services
 {
@@ -34,5 +34,49 @@ namespace ServidorAdministrativo.Services
 
             return await Task.FromResult(usuarios);
         }
+
+        public override async Task<MensajeVacio> ActualizarAUsuarioActivo(UsuarioProto request, ServerCallContext context)
+        {
+            List<Usuario> misUsuarios = this.persistencia.usuarios;
+            foreach (var usuario in misUsuarios)
+                if (request.Nombre == usuario.NombreUsuario)
+                {
+                    usuario.UsuarioActivo = true;
+                    return await Task.FromResult(new MensajeVacio() { });
+                }
+
+            return await Task.FromResult(new MensajeVacio() { });
+        }
+
+        public override async Task<MensajeVacio> ActualizarAUsuarioInactivo(UsuarioProto request, ServerCallContext context)
+        {
+            List<Usuario> misUsuarios = this.persistencia.usuarios;
+            foreach (var usuario in misUsuarios)
+                if (request.Nombre == usuario.NombreUsuario)
+                {
+                    usuario.UsuarioActivo = false;
+                    return await Task.FromResult(new MensajeVacio() { });
+                }
+
+            return await Task.FromResult(new MensajeVacio() { });
+        }
+
+        public override async Task<BoolProto> EliminarUsuario(UsuarioProto request, ServerCallContext context)
+        {
+            List<Usuario> misUsuarios = this.persistencia.usuarios;
+            foreach (var usuario in misUsuarios)
+                if (request.Nombre == usuario.NombreUsuario && usuario.UsuarioActivo==false)
+                {
+                    this.persistencia.usuarios.Remove(usuario);
+                    return await Task.FromResult(new BoolProto() { Estado=true });
+                }
+
+            return await Task.FromResult(new BoolProto() { Estado = false });
+        }
+
+        //public override async Task<MensajeVacio> ModificarUsuario(UsuarioModificacionProto request, ServerCallContext context)
+        //{
+        //    return base.ModificarUsuario(request, context);
+        //}
     }
 }

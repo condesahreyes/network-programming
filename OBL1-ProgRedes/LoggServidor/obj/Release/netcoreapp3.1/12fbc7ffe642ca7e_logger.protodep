@@ -1,2 +1,0 @@
-obj\Release\netcoreapp3.1\Protos/Logger.cs \
-obj\Release\netcoreapp3.1\Protos/LoggerGrpc.cs: Protos/logger.proto

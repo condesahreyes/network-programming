@@ -31,7 +31,7 @@ namespace Servidor
 
             Usuario usuarioCreado = await usuarioService.ObtenerUsuario(usuario);
 
-            usuarioService.ActualizarAUsuarioActivo(usuario.NombreUsuario);
+            await usuarioService.ActualizarAUsuarioActivo(usuario.NombreUsuario);
 
             return usuarioCreado;
         }
@@ -187,7 +187,6 @@ namespace Servidor
             await Controlador.EnviarEncabezadoAsync(transferencia, encabezado);
             await Controlador.EnviarDatos(transferencia, mensaje);
         }
-
 
         public async Task VerListaUsuario()
         {
