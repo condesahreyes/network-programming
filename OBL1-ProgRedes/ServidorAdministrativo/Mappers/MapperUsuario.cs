@@ -1,8 +1,7 @@
 ﻿using LogicaNegocio;
-using ServidorAdministrativo;
 using System.Collections.Generic;
 
-namespace Servicios.Mappers
+namespace ServidorAdministrativo.Mappers
 {
     public class MapperUsuario
     {

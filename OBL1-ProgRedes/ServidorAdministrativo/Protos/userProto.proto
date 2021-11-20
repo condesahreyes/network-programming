@@ -7,6 +7,10 @@ package userProtoService;
 service ServicioUsuario {
 	rpc AltaUsuario (UsuarioProto) returns (RespuestaProto);
 	rpc ObtenerUsuarios(MensajeVacio) returns (UsuariosProto);
+	rpc ActualizarAUsuarioActivo(UsuarioProto) returns (MensajeVacio);
+	rpc ActualizarAUsuarioInactivo(UsuarioProto) returns (MensajeVacio);
+	rpc EliminarUsuario(UsuarioProto) returns (BoolProto);
+	rpc ModificarUsuario(UsuarioModificacionProto) returns(MensajeVacio);
 }
 
 message MensajeVacio { }
@@ -21,4 +25,13 @@ message UsuarioProto {
 
 message RespuestaProto {
   string estado = 1;
+}
+
+message BoolProto {
+  bool estado = 1;
+}
+
+message UsuarioModificacionProto{
+	string nombre = 1;
+	string nombreModificado = 2;
 }

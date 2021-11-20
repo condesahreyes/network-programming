@@ -1,7 +1,7 @@
-﻿using Grpc.Core;
-using LogicaNegocio;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using LogicaNegocio;
+using Grpc.Core;
 
 namespace ServidorAdministrativo.Services
 {
@@ -26,16 +26,65 @@ namespace ServidorAdministrativo.Services
 
         public override async Task<UsuariosProto> ObtenerUsuarios(MensajeVacio request, ServerCallContext context)
         {
-            List<UsuarioProto> usuariosProto = new List<UsuarioProto>();
             List<Usuario> usuariosDominio = this.persistencia.usuarios;
 
             UsuariosProto usuarios = new UsuariosProto();
 
-            usuariosDominio.ForEach(x => usuariosProto.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
-
-            usuarios.Usuario.AddRange(usuariosProto);
+            usuariosDominio.ForEach(x => usuarios.Usuario.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
 
             return await Task.FromResult(usuarios);
+        }
+
+        public override async Task<MensajeVacio> ActualizarAUsuarioActivo(UsuarioProto request, ServerCallContext context)
+        {
+            List<Usuario> misUsuarios = this.persistencia.usuarios;
+            foreach (var usuario in misUsuarios)
+                if (request.Nombre == usuario.NombreUsuario)
+                {
+                    usuario.UsuarioActivo = true;
+                    return await Task.FromResult(new MensajeVacio() { });
+                }
+
+            return await Task.FromResult(new MensajeVacio() { });
+        }
+
+        public override async Task<MensajeVacio> ActualizarAUsuarioInactivo(UsuarioProto request, ServerCallContext context)
+        {
+            List<Usuario> misUsuarios = this.persistencia.usuarios;
+            foreach (var usuario in misUsuarios)
+                if (request.Nombre == usuario.NombreUsuario)
+                {
+                    usuario.UsuarioActivo = false;
+                    return await Task.FromResult(new MensajeVacio() { });
+                }
+
+            return await Task.FromResult(new MensajeVacio() { });
+        }
+
+        public override async Task<BoolProto> EliminarUsuario(UsuarioProto request, ServerCallContext context)
+        {
+            List<Usuario> misUsuarios = this.persistencia.usuarios;
+            foreach (var usuario in misUsuarios)
+                if (request.Nombre == usuario.NombreUsuario && usuario.UsuarioActivo==false)
+                {
+                    this.persistencia.usuarios.Remove(usuario);
+                    return await Task.FromResult(new BoolProto() { Estado=true });
+                }
+
+            return await Task.FromResult(new BoolProto() { Estado = false });
+        }
+
+        public override async Task<MensajeVacio> ModificarUsuario(UsuarioModificacionProto request, ServerCallContext context)
+        {
+            List<Usuario> misUsuarios = this.persistencia.usuarios;
+            foreach (var usuario in misUsuarios)
+                if (request.Nombre == usuario.NombreUsuario)
+                {
+                    usuario.NombreUsuario = request.NombreModificado;
+                    return await Task.FromResult(new MensajeVacio() { });
+                }
+
+            return await Task.FromResult(new MensajeVacio() { });
         }
     }
 }
