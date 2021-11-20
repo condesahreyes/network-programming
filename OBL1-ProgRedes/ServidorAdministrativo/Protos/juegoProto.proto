@@ -11,10 +11,10 @@ service ServicioJuego {
 	rpc JuegoUsuarios(UsuarioProto) returns(JuegosProto);
 	rpc BuscarJuegoPorGenero(GeneroProto) returns(JuegoProto);
 	rpc VerCatalogo(MensajeVacio) returns(MensajeVacio);
-	rpc AdquirirJuegoPorUsuario(Mensaje, UsuarioProto) returns(JuegoProto);
+	rpc AdquirirJuegoPorUsuario(JuegoPorUsuarioProto) returns(JuegoProto);
 	rpc BuscarJuegoPorCalificacion(MensajeInt) returns(JuegosProto);
-	rpc EliminarJuego(Mensaje) returns(bool);
-	rpc AgregarCalificacion(CalificacionProto) returns(bool):
+	rpc EliminarJuego(Mensaje) returns(BoolProto);
+	rpc AgregarCalificacion(CalificacionProto) returns(BoolProto);
 }
 
 message MensajeVacio { }
@@ -23,12 +23,11 @@ message JuegosProto{
 	repeated JuegoProto juego = 1;
 }
 
-
 message CalificacionProto{
 	int nota =1;
 	string comentario =2;
 	string usuario =3;
-	stirng tituloJuego = 4;
+	stirng tituloJuegoo = 4;
 }
 
 message JuegoProto {
@@ -39,7 +38,7 @@ message JuegoProto {
   int ranking = 5;
   int notas = 6;
  repeated UsuarioProto usuarios = 7;
- repeated CalificacionProto calificaciones = 7;
+ repeated CalificacionProto calificaciones = 8;
 }
 
 message BoolProto{
@@ -54,11 +53,14 @@ message MensajeInt{
 	int mensaje = 1;
 }
 
+message JuegoPorUsuarioProto{
+	string tituloJuego = 1;
+	string nombreUsuario=2;
+}
 
 message UsuarioProto{
 	string nombre =1;
 }
-
 
 message GeneroProto{
 	string genero = 1;

@@ -1,2 +1,2 @@
-C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.csprojAssemblyReference.cache
-C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hreye\Desktop\juliHaceLaTarea\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.csproj.AssemblyReference.cache
+C:\Users\hreye\Desktop\juliHaceLaTarea\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.GeneratedMSBuildEditorConfig.editorconfig

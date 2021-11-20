@@ -1,6 +1,5 @@
 ﻿using Grpc.Core;
 using LogicaNegocio;
-using ServidorAdministrativo.Protos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

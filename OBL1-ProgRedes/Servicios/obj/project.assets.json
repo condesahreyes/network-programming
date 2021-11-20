@@ -15,12 +15,12 @@
           "lib/netstandard2.0/Google.Protobuf.dll": {}
         }
       },
-      "Grpc.AspNetCore/2.40.0": {
+      "Grpc.AspNetCore/2.32.0": {
         "type": "package",
         "dependencies": {
-          "Google.Protobuf": "3.18.0",
-          "Grpc.AspNetCore.Server.ClientFactory": "2.40.0",
-          "Grpc.Tools": "2.40.0"
+          "Google.Protobuf": "3.13.0",
+          "Grpc.AspNetCore.Server.ClientFactory": "2.32.0",
+          "Grpc.Tools": "2.32.0"
         },
         "compile": {
           "lib/netcoreapp3.0/_._": {}
@@ -29,10 +29,10 @@
           "lib/netcoreapp3.0/_._": {}
         }
       },
-      "Grpc.AspNetCore.Server/2.40.0": {
+      "Grpc.AspNetCore.Server/2.32.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Net.Common": "2.40.0"
+          "Grpc.Net.Common": "2.32.0"
         },
         "compile": {
           "lib/netcoreapp3.0/Grpc.AspNetCore.Server.dll": {}
@@ -44,11 +44,11 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Grpc.AspNetCore.Server.ClientFactory/2.40.0": {
+      "Grpc.AspNetCore.Server.ClientFactory/2.32.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.AspNetCore.Server": "2.40.0",
-          "Grpc.Net.ClientFactory": "2.40.0"
+          "Grpc.AspNetCore.Server": "2.32.0",
+          "Grpc.Net.ClientFactory": "2.32.0"
         },
         "compile": {
           "lib/netcoreapp3.0/Grpc.AspNetCore.Server.ClientFactory.dll": {}
@@ -60,7 +60,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Grpc.Core.Api/2.40.0": {
+      "Grpc.Core.Api/2.32.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
@@ -99,10 +99,10 @@
           "lib/netstandard2.1/Grpc.Net.ClientFactory.dll": {}
         }
       },
-      "Grpc.Net.Common/2.40.0": {
+      "Grpc.Net.Common/2.32.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Core.Api": "2.40.0"
+          "Grpc.Core.Api": "2.32.0"
         },
         "compile": {
           "lib/netstandard2.1/Grpc.Net.Common.dll": {}
@@ -290,7 +290,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Dominio": "1.0.0",
-          "Grpc.AspNetCore": "2.40.0"
+          "Grpc.AspNetCore": "2.32.0"
         },
         "compile": {
           "bin/placeholder/ServidorAdministrativo.dll": {}
@@ -325,71 +325,64 @@
         "lib/netstandard2.0/Google.Protobuf.xml"
       ]
     },
-    "Grpc.AspNetCore/2.40.0": {
-      "sha512": "UdyFzZZbzugtoGfjGAY9bVq/1l7m3SvGGXd5VCqw7xr4QA4BVEozr1Vr6FFxUOPVvg91g5dwssbsM/Xl1MpecQ==",
+    "Grpc.AspNetCore/2.32.0": {
+      "sha512": "zagGlzqaSBTNYXOruEDjL/ka39EI6wB+4PFIwyipnAroBKZ10FNm8QNRGZhFJNGjJmfPTFbOP/NAkN/BAcOYjg==",
       "type": "package",
-      "path": "grpc.aspnetcore/2.40.0",
+      "path": "grpc.aspnetcore/2.32.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "grpc.aspnetcore.2.40.0.nupkg.sha512",
+        "grpc.aspnetcore.2.32.0.nupkg.sha512",
         "grpc.aspnetcore.nuspec",
         "lib/net5.0/_._",
-        "lib/net6.0/_._",
         "lib/netcoreapp3.0/_._",
         "packageIcon.png"
       ]
     },
-    "Grpc.AspNetCore.Server/2.40.0": {
-      "sha512": "cBSpT42syKkVnTBEehk+Sc2dX5sDO2lP+5o4ylFnup+JHPntbewTx5QHHizWPRTKTwWDe4EXR4rR1ilgf6eTnQ==",
+    "Grpc.AspNetCore.Server/2.32.0": {
+      "sha512": "MqACagn1vkqVMdSqlPlVRWvKVtoNJIMETaKrJQN0nH3dpgKHiBxOw4IQGmBZV84+M05kaVFL+BambRCYUJ3Pug==",
       "type": "package",
-      "path": "grpc.aspnetcore.server/2.40.0",
+      "path": "grpc.aspnetcore.server/2.32.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "grpc.aspnetcore.server.2.40.0.nupkg.sha512",
+        "grpc.aspnetcore.server.2.32.0.nupkg.sha512",
         "grpc.aspnetcore.server.nuspec",
         "lib/net5.0/Grpc.AspNetCore.Server.dll",
         "lib/net5.0/Grpc.AspNetCore.Server.pdb",
         "lib/net5.0/Grpc.AspNetCore.Server.xml",
-        "lib/net6.0/Grpc.AspNetCore.Server.dll",
-        "lib/net6.0/Grpc.AspNetCore.Server.pdb",
-        "lib/net6.0/Grpc.AspNetCore.Server.xml",
         "lib/netcoreapp3.0/Grpc.AspNetCore.Server.dll",
         "lib/netcoreapp3.0/Grpc.AspNetCore.Server.pdb",
         "lib/netcoreapp3.0/Grpc.AspNetCore.Server.xml",
         "packageIcon.png"
       ]
     },
-    "Grpc.AspNetCore.Server.ClientFactory/2.40.0": {
-      "sha512": "U+Cp5Mt7/xjFRIJhChjLXn0oUDisaBg3XzFkAUZE32dAa/dQN2gs9Qd9Gl51deStbci3J+W7CcfHgZ0y2Fwblw==",
+    "Grpc.AspNetCore.Server.ClientFactory/2.32.0": {
+      "sha512": "blc2JYWdXY88nMHqu9ctm50Gfp9o50rw5zK+CwqbPA/BXiAisW3Pylnp9CanK9f/vOLESI5yhmK+eI67nD64pQ==",
       "type": "package",
-      "path": "grpc.aspnetcore.server.clientfactory/2.40.0",
+      "path": "grpc.aspnetcore.server.clientfactory/2.32.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "grpc.aspnetcore.server.clientfactory.2.40.0.nupkg.sha512",
+        "grpc.aspnetcore.server.clientfactory.2.32.0.nupkg.sha512",
         "grpc.aspnetcore.server.clientfactory.nuspec",
         "lib/net5.0/Grpc.AspNetCore.Server.ClientFactory.dll",
         "lib/net5.0/Grpc.AspNetCore.Server.ClientFactory.pdb",
         "lib/net5.0/Grpc.AspNetCore.Server.ClientFactory.xml",
-        "lib/net6.0/Grpc.AspNetCore.Server.ClientFactory.dll",
-        "lib/net6.0/Grpc.AspNetCore.Server.ClientFactory.pdb",
-        "lib/net6.0/Grpc.AspNetCore.Server.ClientFactory.xml",
         "lib/netcoreapp3.0/Grpc.AspNetCore.Server.ClientFactory.dll",
         "lib/netcoreapp3.0/Grpc.AspNetCore.Server.ClientFactory.pdb",
         "lib/netcoreapp3.0/Grpc.AspNetCore.Server.ClientFactory.xml",
         "packageIcon.png"
       ]
     },
-    "Grpc.Core.Api/2.40.0": {
-      "sha512": "Ig3ioHBMDl8jZzPRU+t8GPpgDBYkjwupHzSVswwrsUVZdO5SThmYY4fHftNC1rMCjsjVvUMQ/o1NCf1CT4Y+rA==",
+    "Grpc.Core.Api/2.32.0": {
+      "sha512": "t9H6P/oYA4ZQI4fWq4eEwq2GmMNqmOSRfz5+YIat7pQuFmz1hRC2Vq/fL9ZVV1mjd5kHqBlhupMdlsBOsaxeEw==",
       "type": "package",
-      "path": "grpc.core.api/2.40.0",
+      "path": "grpc.core.api/2.32.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "grpc.core.api.2.40.0.nupkg.sha512",
+        "grpc.core.api.2.32.0.nupkg.sha512",
         "grpc.core.api.nuspec",
         "lib/net45/Grpc.Core.Api.dll",
         "lib/net45/Grpc.Core.Api.pdb",
@@ -438,24 +431,18 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Net.Common/2.40.0": {
-      "sha512": "nj5XotYmzAT4UlGyOK6xWacPp2nODupQvlbeA2qqu9F47BIr+vze6+psJ9gSgED2HeTVBXuc+vdKrUXzk0ErMQ==",
+    "Grpc.Net.Common/2.32.0": {
+      "sha512": "vDsgy6fs+DlsylppjK9FBGTMMUe8vfAmaURV7ZTurM27itr8qBwymgqmwnVB2hcP1q35NqKx2NvPGe5S2IEnDw==",
       "type": "package",
-      "path": "grpc.net.common/2.40.0",
+      "path": "grpc.net.common/2.32.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "grpc.net.common.2.40.0.nupkg.sha512",
+        "grpc.net.common.2.32.0.nupkg.sha512",
         "grpc.net.common.nuspec",
         "lib/net5.0/Grpc.Net.Common.dll",
         "lib/net5.0/Grpc.Net.Common.pdb",
         "lib/net5.0/Grpc.Net.Common.xml",
-        "lib/net6.0/Grpc.Net.Common.dll",
-        "lib/net6.0/Grpc.Net.Common.pdb",
-        "lib/net6.0/Grpc.Net.Common.xml",
-        "lib/netstandard2.0/Grpc.Net.Common.dll",
-        "lib/netstandard2.0/Grpc.Net.Common.pdb",
-        "lib/netstandard2.0/Grpc.Net.Common.xml",
         "lib/netstandard2.1/Grpc.Net.Common.dll",
         "lib/netstandard2.1/Grpc.Net.Common.pdb",
         "lib/netstandard2.1/Grpc.Net.Common.xml",
@@ -766,19 +753,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jpercivale\\.nuget\\packages\\": {}
+    "C:\\Users\\hreye\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj",
+      "projectUniqueName": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj",
       "projectName": "Servicios",
-      "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj",
-      "packagesPath": "C:\\Users\\jpercivale\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\obj\\",
+      "projectPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj",
+      "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jpercivale\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -792,14 +779,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+            "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
             },
-            "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj": {
-              "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj"
+            "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj"
             },
-            "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj": {
-              "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj"
+            "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj"
             }
           }
         }
@@ -844,37 +831,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: Google.Protobuf from 3.18.0 to 3.13.0. Reference the package directly from the project to select a different version. \r\n Servicios -> ServidorAdministrativo -> Grpc.AspNetCore 2.40.0 -> Google.Protobuf (>= 3.18.0) \r\n Servicios -> Google.Protobuf (>= 3.13.0)",
-      "libraryId": "Google.Protobuf",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: Grpc.Tools from 2.40.0 to 2.32.0. Reference the package directly from the project to select a different version. \r\n Servicios -> ServidorAdministrativo -> Grpc.AspNetCore 2.40.0 -> Grpc.Tools (>= 2.40.0) \r\n Servicios -> Grpc.Tools (>= 2.32.0)",
-      "libraryId": "Grpc.Tools",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: Grpc.Net.ClientFactory from 2.40.0 to 2.32.0. Reference the package directly from the project to select a different version. \r\n Servicios -> ServidorAdministrativo -> Grpc.AspNetCore 2.40.0 -> Grpc.AspNetCore.Server.ClientFactory 2.40.0 -> Grpc.Net.ClientFactory (>= 2.40.0) \r\n Servicios -> Grpc.Net.ClientFactory (>= 2.32.0)",
-      "libraryId": "Grpc.Net.ClientFactory",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }
