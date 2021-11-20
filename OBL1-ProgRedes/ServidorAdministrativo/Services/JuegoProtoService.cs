@@ -1,8 +1,7 @@
 ﻿using Grpc.Core;
 using LogicaNegocio;
-using System;
+using ServidorAdministrativo.Protos;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ServidorAdministrativo.Services
@@ -14,130 +13,140 @@ namespace ServidorAdministrativo.Services
         {
             this.persistencia = Persistencia.ObtenerPersistencia();
         }
-
-        public override async Task<bool> AgregarCalificacion(CalificacionProto calificacion, ServerCallContext context)
+        
+        public override async Task<BoolProto> AgregarCalificacion(CalificacionProto calificacion, ServerCallContext context)
         {
-            bool retorno = true; 
-            JuegoProto juegoProto = BuscarJuegoPortTitulo(juego);
-            JuegosProto juegosProto = ObtenerJuegos();
+            foreach (Juego juego in this.persistencia.juegos)
+            {
+                if (juego.Titulo == calificacion.TituloJuegoo)
+                {
+                    Calificacion nuevaCalificacion = new Calificacion
+                    {
+                        Comentario = calificacion.Comentario,
+                        Nota = calificacion.Nota,
+                        TituloJuego = calificacion.TituloJuegoo,
+                        Usuario = calificacion.Usuario
+                    };
 
-            if (juegoProto == null)
-                retorno =  false;
+                    juego.calificaciones.Add(nuevaCalificacion);
+                    return await Task.FromResult(new BoolProto { BoolProto_ = true });
+                }
+            }
 
-            juegoProto.calificaciones.Add(calificacion);
+            return await Task.FromResult(new BoolProto { BoolProto_ = false });
 
-            juegoProto.Notas += calificacion.Nota;
-            juegoProto.Ranking = Math.Abs((juegoProto.Notas) / juegoProto.calificaciones.Count);
-
-            return await Task.FromResult(retorno);
         }
 
-        public override async Task<bool> EliminarJuego(Mensaje titulo, ServerCallContext context)
+        public override async Task<BoolProto> EliminarJuego(Mensaje titulo, ServerCallContext context)
         {
             bool retorno = false;
-            JuegosProto juegosProto = ObtenerJuegos();
+            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
 
-            foreach (JuegoProto juego in juegosProto)
-                if (juego.Titulo == titulo)
+            foreach (JuegoProto juego in juegosProto.Juego)
+                if (juego.Titulo == titulo.Mensaje_)
                 {
-                    juegosProto.Remove(juego);
+                    juegosProto.Juego.Remove(juego);
                     retorno = true;
                 }
-            return await Task.FromResult(retorno);
+
+            return await Task.FromResult(new BoolProto() { BoolProto_ = retorno });
         }
+
         public override async Task<JuegosProto> BuscarJuegoPorCalificacion(MensajeInt ranking, ServerCallContext context)
         {
-            JuegosProto juegosProto = ObtenerJuegos();
+            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
             JuegosProto juegosARetornar = new JuegosProto();
 
-            foreach (JuegoProto j in juegosProto.Juego)
+            foreach (JuegoProto juego in juegosProto.Juego)
             {
-                if (j.Ranking == ranking)
+                if (juego.Ranking == ranking.Mensaje)
                 {
-                    juegosARetornar.Add(j);
+                    juegosARetornar.Juego.Add(juego);
                 }
             }
             return await Task.FromResult(juegosARetornar);
         }
 
-        public override async Task<JuegoProto> AdquirirJuegoPorUsuario(Mensaje juego, UsuarioProto usuario, ServerCallContext context)
+        public override async Task<JuegoProto> AdquirirJuegoPorUsuario(JuegoPorUsuarioProto juegoUsuario, ServerCallContext context)
         {
-            JuegoProto juegoProto = BuscarJuegoPortTitulo(juego);
+            Usuario usuario = ObtenerUsuario(juegoUsuario.NombreUsuario);
+            JuegoProto juegoProto = await BuscarJuegoPortTitulo(new Mensaje() { Mensaje_ = juegoUsuario.TituloJuego }, context);
 
-            UsuarioProto usuarioProto = ObtenerUsuario(usuario.Nombre);
-            if(usuarioProto != null && juegoProto != null)
+            if (usuario == null || juegoProto == null)
+                return null;
+            
+            foreach (Juego juego in this.persistencia.juegos)
             {
-                juegoProto.users.Add(usuarioProto);
+                if(juego.Titulo == juegoUsuario.TituloJuego)
+                {
+                    juego.usuarios.Add(usuario);
+                    return await Task.FromResult(juegoProto);
+                }   
             }
 
             return await Task.FromResult(juegoProto);
         }
 
-        private Usuario ObtenerUsuario(string nombreUsuario)
+        public override async Task<JuegoProto> BuscarJuegoPorGenero(GeneroProto genero, ServerCallContext context)
         {
-            return this.persistencia.usuarios.Find(x => x.NombreUsuario == nombreUsuario);
-        }
-
-        public override async Task<JuegoProto> BuscarJuegoPorGenero(Mensaje genero, ServerCallContext context)
-        {
-            JuegosProto juegosProto = ObtenerJuegos();
+            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
             JuegoProto juegoARetornar = new JuegoProto();
 
-            foreach (JuegoProto j in juegosProto.Juego)
+            foreach (JuegoProto juego in juegosProto.Juego)
             {
-                if (j.Genero == genero)
+                if (juego.Genero == genero.Genero)
                 {
-                    juegoARetornar = j;
+                    juegoARetornar = juego;
                 }
             }
             return await Task.FromResult(juegoARetornar);
         }
 
-        public override async Task<JuegosProto> JuegoUsuarios(UsuarioProto usuario, ServerCallContext context)
+        public override async Task<JuegosProto> JuegoUsuarios(Protos.UsuarioProto usuario, ServerCallContext context)
         {
-            JuegosProto juegosProto = ObtenerJuegos();
+            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
             JuegosProto juegosARetornar = new JuegosProto();
 
-           foreach(JuegoProto juego in juegosProto.juego)
-            {
-                foreach(UsuarioProto usuario in JuegoProto.usuarios)
+           foreach(JuegoProto juego in juegosProto.Juego)
+           {
+                foreach(Protos.UsuarioProto unUsuario in juego.Usuarios)
                 {
-                    if(usuario.Nombre = usuario.Nombre)
+                    if(unUsuario.Nombre == usuario.Nombre)
                     {
-                        juegosARetornar.Add(juego);
+                        juegosARetornar.Juego.Add(juego);
                     }
                 }
             }
-           return await Task.FromResult(juegosARetornar);
 
+           return await Task.FromResult(juegosARetornar);
         }
 
         public override async Task<JuegoProto> BuscarJuegoPortTitulo(Mensaje titulo, ServerCallContext context)
         {
-            JuegosProto juegosProto = ObtenerJuegos();
+            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
             JuegoProto juegoARetornar = new JuegoProto();
 
-            foreach(JuegoProto j in juegosProto.Juego)
+            foreach(JuegoProto juego in juegosProto.Juego)
             {
-                if(j.Titulo == titulo) {
-                    juegoARetornar = j;
+                if(juego.Titulo == titulo.Mensaje_) {
+                    juegoARetornar = juego;
                 }
             }
             return await Task.FromResult(juegoARetornar);
         }
 
-        public override async Task<bool> EsJuegoExistente(JuegoProto unJuego, ServerCallContext context)
+        public override async Task<BoolProto> EsJuegoExistente(JuegoProto unJuego, ServerCallContext context)
         {
             bool juegoExistente = this.persistencia.juegos.Exists(x => x.Titulo.Equals(unJuego.Titulo));
-            return await Task.FromResult(juegoExistente);
-
+            return await Task.FromResult(new BoolProto() { BoolProto_ = juegoExistente });
         } 
 
-        public override async Task<bool> AgregarJuegos(JuegoProto unJuego, ServerCallContext context)
+        
+        public override async Task<BoolProto> AgregarJuegos(JuegoProto unJuego, ServerCallContext context)
         {
             JuegoProto juegoNuevo = new JuegoProto();
             bool agregaJuego = false;
-            JuegosProto juegosProto = ObtenerJuegos();
+            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
 
             foreach(JuegoProto juegoP in juegosProto.Juego)
             {
@@ -147,10 +156,11 @@ namespace ServidorAdministrativo.Services
                     juegoNuevo = unJuego;
                 }
             }
-            return await Task.FromResult(agregaJuego);
+
+            return await Task.FromResult(new BoolProto() { BoolProto_ = agregaJuego });
         }
 
-        public override async Task<JuegosProto> ObtenerJuegos(MensajeVacio request, ServerCallContext context)
+        public override async Task<JuegosProto> ObtenerJuegos(Protos.MensajeVacio request, ServerCallContext context)
         {
             List<JuegoProto> juegosProto = new List<JuegoProto>();
             List<Juego> juegosDominio = this.persistencia.juegos;
@@ -162,6 +172,11 @@ namespace ServidorAdministrativo.Services
             juegos.Juego.AddRange(juegosProto);
 
             return await Task.FromResult(juegos);
+        }
+
+        private Usuario ObtenerUsuario(string nombreUsuario)
+        {
+            return this.persistencia.usuarios.Find(x => x.NombreUsuario == nombreUsuario);
         }
     }
 }

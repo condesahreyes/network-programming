@@ -7,7 +7,7 @@ namespace LogicaNegocio
     {
         public int Nota { get; set; }
         public string Comentario { get; set; }
-        public string Usuario { get; }
+        public string Usuario { get; set; }
         public string TituloJuego { get; set; }
 
         public Calificacion(string tituloJuego, int nota, string comentario, string usuario)
@@ -16,6 +16,9 @@ namespace LogicaNegocio
             this.Comentario = comentario;
             this.Nota = nota;
             this.Usuario = usuario;
+        }
+        public Calificacion()
+        {
         }
 
         public static Calificacion CrearCalificacion(string usuario, string tituloJuego)

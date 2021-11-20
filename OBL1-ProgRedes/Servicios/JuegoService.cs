@@ -2,12 +2,15 @@
 using LogicaNegocio;
 using System;
 using IServices;
+using Grpc.Net.Client;
+using ServidorAdministrativo;
+using ServidorAdministrativo.Protos;
 
 namespace Servicios
 {
     public class JuegoService: IJuegoService
     {
-       // private Persistencia persistencia;
+
 
         public JuegoService()
         {

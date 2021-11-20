@@ -5,6 +5,7 @@ option csharp_namespace = "ServidorAdministrativo.Protos";
 package juegoProtoService;
 
 service ServicioJuego {
+	rpc AgregarJuegos(JuegoProto) returns (BoolProto);
 	rpc ObtenerJuegos(MensajeVacio) returns (JuegosProto);
 	rpc EsJuegoExistente(JuegoProto) returns(BoolProto);
 	rpc BuscarJuegoPortTitulo(Mensaje) returns(JuegoProto);
@@ -23,20 +24,13 @@ message JuegosProto{
 	repeated JuegoProto juego = 1;
 }
 
-message CalificacionProto{
-	int nota =1;
-	string comentario =2;
-	string usuario =3;
-	stirng tituloJuegoo = 4;
-}
-
 message JuegoProto {
-  string titulo = 1;
-  string sinposis = 2;
-  string Caratula = 3;
-  string Genero = 4;
-  int ranking = 5;
-  int notas = 6;
+  int32 ranking = 1;
+  int32 notas = 2;  
+  string titulo = 3;
+  string sinposis = 4;
+  string Caratula = 5;
+  string Genero = 6;
  repeated UsuarioProto usuarios = 7;
  repeated CalificacionProto calificaciones = 8;
 }
@@ -45,12 +39,19 @@ message BoolProto{
 	bool boolProto = 1;
 }
 
+message CalificacionProto{
+	string comentario = 1;
+	string usuario = 2;
+	string tituloJuegoo = 3;
+	int32 nota = 4;
+}
+
 message Mensaje{ 
 	string mensaje = 1;
 }
 
 message MensajeInt{ 
-	int mensaje = 1;
+	int32 mensaje = 1;
 }
 
 message JuegoPorUsuarioProto{
