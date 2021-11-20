@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GaiuLxVjqnMoLjr+CDNTznqkr4srNUcFBWnqjRaO/4vgOiBAdYdw3Fx3W0h/4HQB1H/Va6GHZFdIJi7a5zROLA==",
+  "dgSpecHash": "MvDXBk10l97tOZsyqZ66HJRhALJQ8/hUcA+4cSee9u/QUmjeABfmOveqeNNkBvwWfJquGw/nUppecGPKn9QdJQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj",
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hreye\\.nuget\\packages\\google.protobuf\\3.13.0\\google.protobuf.3.13.0.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\grpc.aspnetcore\\2.32.0\\grpc.aspnetcore.2.32.0.nupkg.sha512",

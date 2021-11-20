@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {}
+    "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+    "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
         "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,14 +58,14 @@
         }
       }
     },
-    "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
+    "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
         "projectName": "Protocolo",
-        "projectPath": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj",
         "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\obj\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -82,8 +82,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\hreye\\Desktop\\version estable\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+              "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\juliHaceLaTarea\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
               }
             }
           }
