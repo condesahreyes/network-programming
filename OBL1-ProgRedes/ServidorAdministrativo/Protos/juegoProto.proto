@@ -8,6 +8,7 @@ service ServicioJuego {
 	rpc ObtenerJuegos(MensajeVacio) returns (JuegosProto);
 	rpc EsJuegoExistente(JuegoProto) returns(bool);
 	rpc BuscarJuegoPortTitulo(Mensaje) returns(JuegoProto);
+	rpc JuegoUsuarios(UsuarioProto) returns(JuegosProto);
 }
 
 message MensajeVacio { }
@@ -18,7 +19,12 @@ message JuegosProto{
 
 message JuegoProto {
   string titulo = 1;
- 
+  string sinposis = 2;
+  string Caratula = 3;
+  string Genero = 4;
+  int ranking = 5;
+  int notas = 6;
+ repeated UsuarioProto usuarios = 7;
 }
 
 message bool{
@@ -27,5 +33,9 @@ message bool{
 
 message Mensaje{ 
 	string mensaje = 1;
+}
+
+message UsuarioProto{
+	string nombre =1;
 }
 

@@ -16,6 +16,25 @@ namespace ServidorAdministrativo.Services
             this.persistencia = Persistencia.ObtenerPersistencia();
         }
 
+        public override async Task<JuegosProto> JuegoUsuarios(UsuarioProto usuario, ServerCallContext context)
+        {
+            JuegosProto juegosProto = ObtenerJuegos();
+            JuegosProto juegosARetornar = new JuegosProto();
+
+           foreach(JuegoProto juego in juegosProto.juego)
+            {
+                foreach(UsuarioProto usuario in JuegoProto.usuarios)
+                {
+                    if(u.Nombre = usuario.Nombre)
+                    {
+                        juegosARetornar.Add(juego);
+                    }
+                }
+            }
+           return await Task.FromResult(juegosARetornar);
+
+        }
+
         public override async Task<JuegoProto> BuscarJuegoPortTitulo(Mensaje titulo, ServerCallContext context)
         {
             JuegosProto juegosProto = ObtenerJuegos();
