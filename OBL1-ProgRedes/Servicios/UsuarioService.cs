@@ -64,11 +64,14 @@ namespace Servicios
         public async Task<bool> ModificarUsuario(string nombreUsuario, string nuevoNombreUsuario)
         {
             List<Usuario> usuarios = await ObtenerUsuarios();
+            UsuarioModificacionProto modificacionProto = new UsuarioModificacionProto();
+            modificacionProto.Nombre = nombreUsuario;
+            modificacionProto.NombreModificado = nuevoNombreUsuario;
 
             foreach (Usuario unUsuario in usuarios)
                 if (unUsuario.NombreUsuario == nombreUsuario && unUsuario.UsuarioActivo == false)
                 {
-                    unUsuario.NombreUsuario = nuevoNombreUsuario;
+                    await userProtoService.ModificarUsuarioAsync(modificacionProto);
                     return true;
                 }
                 else if (unUsuario.NombreUsuario == nombreUsuario && unUsuario.UsuarioActivo == true)

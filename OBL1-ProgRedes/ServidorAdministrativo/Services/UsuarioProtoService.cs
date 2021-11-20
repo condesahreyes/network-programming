@@ -74,9 +74,17 @@ namespace ServidorAdministrativo.Services
             return await Task.FromResult(new BoolProto() { Estado = false });
         }
 
-        //public override async Task<MensajeVacio> ModificarUsuario(UsuarioModificacionProto request, ServerCallContext context)
-        //{
-        //    return base.ModificarUsuario(request, context);
-        //}
+        public override async Task<MensajeVacio> ModificarUsuario(UsuarioModificacionProto request, ServerCallContext context)
+        {
+            List<Usuario> misUsuarios = this.persistencia.usuarios;
+            foreach (var usuario in misUsuarios)
+                if (request.Nombre == usuario.NombreUsuario)
+                {
+                    usuario.NombreUsuario = request.NombreModificado;
+                    return await Task.FromResult(new MensajeVacio() { });
+                }
+
+            return await Task.FromResult(new MensajeVacio() { });
+        }
     }
 }

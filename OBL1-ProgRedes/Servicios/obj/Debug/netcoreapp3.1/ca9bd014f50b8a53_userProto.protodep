@@ -1,0 +1,2 @@
+obj\Debug\netcoreapp3.1/UserProto.cs \
+obj\Debug\netcoreapp3.1/UserProtoGrpc.cs: ../ServidorAdministrativo/Protos/userProto.proto

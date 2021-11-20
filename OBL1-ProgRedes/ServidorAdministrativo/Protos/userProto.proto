@@ -33,5 +33,5 @@ message BoolProto {
 
 message UsuarioModificacionProto{
 	string nombre = 1;
-	string nombreModificado = 1;
+	string nombreModificado = 2;
 }
