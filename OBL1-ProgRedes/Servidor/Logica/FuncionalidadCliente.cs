@@ -56,7 +56,7 @@ namespace Servidor
 
         public async Task VerJuegosAdquiridos(int largoMensajeARecibir, Usuario usuario)
         {
-            List<Juego> juegos = juegoService.JuegoUsuarios(usuario);
+            List<Juego> juegos = await juegoService.JuegoUsuarios(usuario);
             string juegosString =  Mapper.ListaDeJuegosAString(juegos);
             await EnviarMensaje(juegosString, Accion.VerJuegosAdquiridos);
         }
@@ -65,14 +65,14 @@ namespace Servidor
         {
             string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
 
-            Juego juegoAdquirido = juegoService.AdquirirJuegoPorUsuario(tituloJuego, usuario);
+            Juego juegoAdquirido = await juegoService.AdquirirJuegoPorUsuario(tituloJuego, usuario);
             await EnviarRespuesta(juegoAdquirido, juegoAdquirido!=null);
         }
 
         public async Task EnviarDetalleDeUnJuego(int largoMensaje)
         {
             string  tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensaje);
-            Juego juego = juegoService.ObtenerJuegoPorTitulo(tituloJuego);
+            Juego juego = await juegoService.ObtenerJuegoPorTitulo(tituloJuego);
             if(juego != null)
             {
                 string juegoEnString = Mapper.JuegoAString(juego);
@@ -91,7 +91,7 @@ namespace Servidor
         {
             Calificacion calificacion = await Controlador.PublicarCalificacionAsync(transferencia, largoMensajeARecibir);
 
-            bool fueAgregado = juegoService.AgregarCalificacion(calificacion);
+            bool fueAgregado =  await juegoService.AgregarCalificacion(calificacion);
 
             await EnviarRespuesta(null, fueAgregado);
         }
@@ -99,7 +99,7 @@ namespace Servidor
         public async Task BuscarJuegoPorTitulo(int largoMensajeARecibir)
         {
             string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
-            Juego juego = juegoService.ObtenerJuegoPorTitulo(tituloJuego);
+            Juego juego = await  juegoService.ObtenerJuegoPorTitulo(tituloJuego);
             string juegoEnString =  Mapper.JuegoAString(juego);
 
             await EnviarMensaje(juegoEnString, Accion.BuscarTitulo);
@@ -108,7 +108,7 @@ namespace Servidor
         public async Task BuscarJuegoPorGenero(int largoMensajeARecibir)
         {
             string generoJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
-            List<Juego> juego = juegoService.BuscarJuegoPorGenero(generoJuego);
+            List<Juego> juego = await juegoService .BuscarJuegoPorGenero(generoJuego);
             string juegoEnString = Mapper.ListaJuegosAString(juego);
 
             await EnviarMensaje(juegoEnString, Accion.BuscarGenero);
@@ -120,7 +120,7 @@ namespace Servidor
 
             int ranking = Convert.ToInt32(rankingString);
 
-            List<Juego> juegos = juegoService.BuscarJuegoPorCalificacion(ranking);
+            List<Juego> juegos = await  juegoService.BuscarJuegoPorCalificacion(ranking);
 
             string juegosString = Mapper.ListaJuegosAString(juegos);
 
@@ -146,7 +146,7 @@ namespace Servidor
             string caratula = await RecibirArchivos();
             juego.Caratula = caratula;
 
-            bool fueEliminado = juegoService.EliminarJuego(tituloJuego);
+            bool fueEliminado = await  juegoService.EliminarJuego(tituloJuego);
             bool fueAgregadoElModificado = false;
 
             if (fueEliminado == false)
