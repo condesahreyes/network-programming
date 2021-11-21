@@ -28,6 +28,6 @@ namespace IServices
 
             List<Juego> BuscarJuegoPorCalificacion(int ranking);
 
-            bool EliminarJuego(string tituloJuego);
+            Task<bool> EliminarJuego(string tituloJuego);
 }
 }

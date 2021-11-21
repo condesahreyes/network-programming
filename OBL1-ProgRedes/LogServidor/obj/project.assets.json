@@ -114,11 +114,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hreye\\Desktop\\webApiAdmin\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
+      "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
       "projectName": "LogServidor",
-      "projectPath": "C:\\Users\\hreye\\Desktop\\webApiAdmin\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
+      "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
       "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hreye\\Desktop\\webApiAdmin\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\obj\\",
+      "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hreye\\AppData\\Roaming\\NuGet\\NuGet.Config",

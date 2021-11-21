@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/Tfa7ldf0mI6ftbhqO+UAxZilO9jkO33X45n46XxOeqw3WXnj2JMsvZE3ClbZ6DFWnQKlkAeRu+Ys3ZoGg0rOg==",
+  "dgSpecHash": "PFNwRSJ2uPlOnFjQw9lyRh988YbIdZG9B6DFO8IWfyZXi/uUIdVXU1E3PZpMg7o+UMs7Q5gUXQW7aKQgFAPv8g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hreye\\Desktop\\webApiAdmin\\Prog.-Redes\\OBL1-ProgRedes\\WebApiAdministrativa\\WebApiAdministrativa.csproj",
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\WebApiAdministrativa\\WebApiAdministrativa.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hreye\\.nuget\\packages\\google.protobuf\\3.13.0\\google.protobuf.3.13.0.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\grpc.aspnetcore\\2.32.0\\grpc.aspnetcore.2.32.0.nupkg.sha512",

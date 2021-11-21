@@ -22,6 +22,7 @@ namespace WebApiAdministrativa
             services.AddControllers();
 
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IJuegoService, JuegoService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
