@@ -7,14 +7,17 @@ namespace ServidorAdministrativo.Services
 {
     public class UsuarioProtoService : ServicioUsuario.ServicioUsuarioBase
     {
+        LogServices logServices;
         Persistencia persistencia;
-        public UsuarioProtoService()
+        public UsuarioProtoService(LogServices logServices)
         {
+            this.logServices = logServices;
             this.persistencia = Persistencia.ObtenerPersistencia();
         }
 
         public override async Task<RespuestaProto> AltaUsuario(UsuarioProto request, ServerCallContext context)
         {
+            this.logServices.SendMessages("usuario " + request.Nombre + "dado de alta");
             Usuario usuario = new Usuario(request.Nombre);
             this.persistencia.usuarios.Add(usuario);
 

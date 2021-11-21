@@ -17,6 +17,7 @@ namespace ServidorAdministrativo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+            services.AddSingleton<LogServices, LogServices>();
         }
 
         

@@ -21,3 +21,26 @@ C:\Users\hreye\Desktop\la version estable de julietaaaaaaaaaa\Prog.-Redes\OBL1-P
 C:\Users\hreye\Desktop\la version estable de julietaaaaaaaaaa\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.csproj.CopyComplete
 C:\Users\hreye\Desktop\la version estable de julietaaaaaaaaaa\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.dll
 C:\Users\hreye\Desktop\la version estable de julietaaaaaaaaaa\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.pdb
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\ServidorAdministrativo.deps.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\ServidorAdministrativo.runtimeconfig.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\ServidorAdministrativo.runtimeconfig.dev.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\ServidorAdministrativo.exe
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Servicios.deps.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Servicios.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Servicios.pdb
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\IServices.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\ServidorAdministrativo.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\IServices.pdb
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\ServidorAdministrativo.pdb
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.csprojAssemblyReference.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.AssemblyInfoInputs.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.AssemblyInfo.cs
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.csproj.CoreCompileInputs.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.csproj.CopyComplete
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.pdb
