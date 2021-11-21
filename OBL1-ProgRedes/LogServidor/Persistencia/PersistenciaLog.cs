@@ -1,16 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LogServidor.Persistencia
 {
     public class PersistenciaLog
     {
         private static PersistenciaLog persistencia;
-        private List<LogModelo> logsModel;
-        private List<string> log;
+        private List<string> logs;
 
         public PersistenciaLog() {
-            this.logsModel = new List<LogModelo>();
-            this.log = new List<string>();
+            this.logs = new List<string>();
         }
 
         public static PersistenciaLog ObtenerPersistencia()
@@ -25,28 +24,36 @@ namespace LogServidor.Persistencia
 
         public void AgregarLog(string log)
         {
-            this.log.Add(log);
-        }
-
-        public void AgregarLogAux(string nombreUsuario, string nombreJuego, string log)
-        {
-            this.logsModel.Add(new LogModelo(nombreUsuario, nombreJuego, log));
+            this.logs.Add(log);
         }
 
         public List<string> ObtenerLogs(string fecha, string usuario, string juego)
         {
+            if (fecha == null && usuario == null && juego == null)
+                return this.logs;
+
+            if(usuario!= null)
+                usuario = usuario.ToLower();
+
+            if(juego!=null)
+                juego = juego.ToLower();
+
             List<string> logsFiltrados = new List<string>();
+            
 
-            if (fecha == "" && usuario == "" && juego == "") {
-                this.logsModel.ForEach(x => logsFiltrados.Add(x.Log));
-                return logsFiltrados;
+            foreach (string log  in this.logs)
+            {
+                string logLower = log.ToLower();
+                bool filtrarPorUsuario = usuario == null && log.Split(" ")[0].Equals("usuario") && usuario!="" && logLower.Contains(usuario);
+                bool filtrarPorJuego = juego != null && log.Split(" ")[0].Equals("juego") && juego!="" && logLower.Contains(juego);
+                bool filtrarPorFecha = fecha != "" && fecha != null && logLower.Contains(fecha);
+
+                if (filtrarPorUsuario || filtrarPorJuego || filtrarPorFecha)
+                    logsFiltrados.Add(log);
             }
-
-            foreach (LogModelo log  in this.logsModel)
-                if(log.Fecha == fecha || log.NombreUsuario == usuario || log.NombreJuego == juego)
-                    logsFiltrados.Add(log.Log);
 
             return logsFiltrados;
         }
+
     }
 }

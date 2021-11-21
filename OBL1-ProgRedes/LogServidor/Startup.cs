@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using LogServidor.Persistencia;
 using RabbitMQ.Client;
+using LogServidor.Controllers;
 
 namespace LogServidor
 {

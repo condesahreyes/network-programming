@@ -26,7 +26,7 @@ namespace ServidorAdministrativo.Services
 
         public void SendMessages(string log)
         {
-            string logAEnviar = DateTime.Now.ToString("dd-MM-yyyy") + "/" + log;
+            string logAEnviar = log + " " + DateTime.Now.ToString("dd-MM-yyyy");
 
             PublishMessage(logAEnviar, this._canal);
         }
