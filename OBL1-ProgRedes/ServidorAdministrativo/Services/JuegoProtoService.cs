@@ -16,123 +16,98 @@ namespace ServidorAdministrativo.Services
         
         public override async Task<ProtoBool> AgregarCalificacion(CalificacionProto calificacion, ServerCallContext context)
         {
-            foreach (Juego juego in this.persistencia.juegos)
-            {
-                if (juego.Titulo == calificacion.TituloJuegoo)
-                {
-                    Calificacion nuevaCalificacion = new Calificacion
-                    {
-                        Comentario = calificacion.Comentario,
-                        Nota = calificacion.Nota,
-                        TituloJuego = calificacion.TituloJuegoo,
-                        Usuario = calificacion.Usuario
-                    };
+            Calificacion calificacionNueva = MapearProtoCalificaciones(calificacion);
+            Juego juego = JuegoPorTitulo(calificacion.TituloJuegoo);
 
-                    juego.calificaciones.Add(nuevaCalificacion);
-                    return await Task.FromResult(new ProtoBool { BoolProto = true });
-                }
-            }
+            if(juego == null)
+                return await Task.FromResult(new ProtoBool() { BoolProto = false });
 
-            return await Task.FromResult(new ProtoBool { BoolProto = false });
+            juego.calificaciones.Add(calificacionNueva);
+
+            return await Task.FromResult(new ProtoBool() { BoolProto = true });
         }
 
-        public override async Task<ProtoBool> EliminarJuego(Mensaje titulo, ServerCallContext context)
+        public override async Task<ProtoBool> EliminarJuego(Mensaje nombreJuego, ServerCallContext context)
         {
-            bool retorno = false;
-            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
-
-            foreach (JuegoProto juego in juegosProto.Juego)
-                if (juego.Titulo == titulo.Mensaje_)
+            List<Juego> juegos = this.persistencia.juegos;
+            foreach (var juego in juegos)
+                if (nombreJuego.Mensaje_ == juego.Titulo)
                 {
-                    juegosProto.Juego.Remove(juego);
-                    retorno = true;
+                    this.persistencia.juegos.Remove(juego);
+                    return await Task.FromResult(new ProtoBool() { BoolProto = true });
                 }
 
-            return await Task.FromResult(new ProtoBool() { BoolProto = retorno });
+            return await Task.FromResult(new ProtoBool() { BoolProto = false });
         }
 
         public override async Task<JuegosProto> BuscarJuegoPorCalificacion(MensajeInt ranking, ServerCallContext context)
         {
-            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
-            JuegosProto juegosARetornar = new JuegosProto();
-
-            foreach (JuegoProto juego in juegosProto.Juego)
-            {
-                if (juego.Ranking == ranking.Mensaje)
+            List<Juego> juegos = this.persistencia.juegos;
+            JuegosProto juegosRetorno = new JuegosProto();
+            foreach (var juego in juegos)
+                if (ranking.Mensaje == juego.Ranking)
                 {
-                    juegosARetornar.Juego.Add(juego);
+                    juegosRetorno.Juego.Add(MapperJuegoProto(juego));
                 }
-            }
-            return await Task.FromResult(juegosARetornar);
+            return await Task.FromResult(juegosRetorno);
         }
 
         public override async Task<JuegoProto> AdquirirJuegoPorUsuario(JuegoPorUsuarioProto juegoUsuario, ServerCallContext context)
         {
             Usuario usuario = ObtenerUsuario(juegoUsuario.NombreUsuario);
-            JuegoProto juegoProto = await BuscarJuegoPortTitulo(new Mensaje() { Mensaje_ = juegoUsuario.TituloJuego }, context);
+            Juego juego = JuegoPorTitulo(juegoUsuario.TituloJuego);
+            List<Usuario> usuariosJuego = new List<Usuario>();  
 
-            if (usuario == null || juegoProto == null)
+            if (usuario == null || juego == null)
                 return null;
-            
-            foreach (Juego juego in this.persistencia.juegos)
-            {
-                if(juego.Titulo == juegoUsuario.TituloJuego)
-                {
-                    juego.usuarios.Add(usuario);
-                    return await Task.FromResult(juegoProto);
-                }   
-            }
 
-            return await Task.FromResult(juegoProto);
+            if(juego.usuarios == null)
+            {
+                usuariosJuego.Add(usuario);
+                juego.usuarios = usuariosJuego;
+            }
+            else
+            {
+                juego.usuarios.Add(usuario);
+            }   
+
+            return await Task.FromResult(MapperJuegoProto(juego));
         }
 
-        public override async Task<JuegoProto> BuscarJuegoPorGenero(GeneroProto genero, ServerCallContext context)
+        public override async Task<JuegosProto> BuscarJuegoPorGenero(Mensaje genero, ServerCallContext context)
         {
-            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
-            JuegoProto juegoARetornar = new JuegoProto();
-
-            foreach (JuegoProto juego in juegosProto.Juego)
-            {
-                if (juego.Genero == genero.Genero)
+            List<Juego> juegos = this.persistencia.juegos;
+            JuegosProto juegosRetorno = new JuegosProto();
+            foreach (var juego in juegos)
+                if (genero.Mensaje_ == juego.Genero)
                 {
-                    juegoARetornar = juego;
+                    juegosRetorno.Juego.Add(MapperJuegoProto(juego));
                 }
-            }
-            return await Task.FromResult(juegoARetornar);
+            return await Task.FromResult(juegosRetorno);
         }
 
-        public override async Task<JuegosProto> JuegoUsuarios(Protos.UsuarioProto usuario, ServerCallContext context)
+        public override async Task<JuegosProto> JuegoUsuarios(Protos.ProtoUsuario usuario, ServerCallContext context)
         {
-            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
-            JuegosProto juegosARetornar = new JuegosProto();
+            List<Juego> juegos = JuegosUsuarios(MapearProtoUsuario(usuario));
+            JuegosProto juegosProto = new JuegosProto();
 
-           foreach(JuegoProto juego in juegosProto.Juego)
-           {
-                foreach(Protos.UsuarioProto unUsuario in juego.Usuarios)
-                {
-                    if(unUsuario.Nombre == usuario.Nombre)
-                    {
-                        juegosARetornar.Juego.Add(juego);
-                    }
-                }
+            foreach(var juego  in juegos)
+            {
+                juegosProto.Juego.Add(MapperJuegoProto(juego));
             }
-
-           return await Task.FromResult(juegosARetornar);
+            return await Task.FromResult(juegosProto);
         }
 
         public override async Task<JuegoProto> BuscarJuegoPortTitulo(Mensaje titulo, ServerCallContext context)
         {
-            JuegosProto juegosProto = await ObtenerJuegos(new Protos.MensajeVacio() { }, context);
-            JuegoProto juegoARetornar = new JuegoProto();
-
-            foreach(JuegoProto juego in juegosProto.Juego)
-            {
-                if(juego.Titulo == titulo.Mensaje_) {
-                    juegoARetornar = juego;
+            List<Juego> juegos = this.persistencia.juegos;
+            JuegoProto juegoRetorno = new JuegoProto();
+            foreach (var juego in juegos)
+                if (titulo.Mensaje_ == juego.Titulo)
+                {
+                    juegoRetorno = MapperJuegoProto(juego);
                 }
-            }
-
-            return await Task.FromResult(juegoARetornar);
+            return await Task.FromResult(juegoRetorno);
         }
 
         public override async Task<ProtoBool> EsJuegoExistente(JuegoProto unJuego, ServerCallContext context)
@@ -162,7 +137,7 @@ namespace ServidorAdministrativo.Services
 
             JuegosProto juegos = new JuegosProto();
 
-            juegosDominio.ForEach(x => juegosProto.Add(new JuegoProto { Titulo = x.Titulo }));
+            juegosDominio.ForEach(x => juegosProto.Add(MapperJuegoProto(x)));
 
             juegos.Juego.AddRange(juegosProto);
 
@@ -179,6 +154,29 @@ namespace ServidorAdministrativo.Services
             return this.persistencia.juegos.Exists(x => x.Titulo.Equals(tituloJuego));
         }
 
+        private List<Juego> JuegosUsuarios(Usuario usuario)
+        {
+
+            List<Juego> retorno = new List<Juego>();
+            foreach(var juego in persistencia.juegos)
+            {
+              foreach(var usu in juego.usuarios)
+                {
+                    if(usu.NombreUsuario == usuario.NombreUsuario)
+                    {
+                        retorno.Add(juego);
+                    }
+                }
+            }
+            return retorno;   
+        }
+
+        private Juego JuegoPorTitulo(string tituloJuego)
+        {
+            return this.persistencia.juegos.Find(x => x.Titulo.Equals(tituloJuego));
+        }
+
+
         private Juego MapperProtoJuego(JuegoProto unJuego)
         {
             return new Juego
@@ -194,18 +192,77 @@ namespace ServidorAdministrativo.Services
             };
         }
 
+        private JuegoProto MapperJuegoProto(Juego juego)
+        {
+            return new JuegoProto()
+            {
+                Titulo = juego.Titulo,
+                Sinposis = juego.Sinopsis,
+                Genero = juego.Genero,
+                Notas = juego.Notas,
+                Caratula = juego.Caratula,
+                Ranking = juego.Ranking,
+                Usuarios = MapperUsuariosProto(juego.usuarios),
+                Calificaciones = MapperCalificacionesProto(juego.calificaciones)
+            };
+        }
+
+        private ProtoUsuarios MapperUsuariosProto(List<Usuario> usuarios)
+        {
+            if (usuarios == null)
+                return null;
+
+            ProtoUsuarios usuariosProto = new ProtoUsuarios();
+            foreach (Usuario usuario in usuarios)
+            {
+                ProtoUsuario usuarioProto = new ProtoUsuario()
+                {
+                  Nombre = usuario.NombreUsuario
+                };
+
+                usuariosProto.Usuarios.Add(usuarioProto);
+            }
+
+            return usuariosProto;
+        }
+
+        private CalificacionesProto MapperCalificacionesProto(List<Calificacion> calificaciones)
+        {
+            CalificacionesProto calificacionesProto = new CalificacionesProto();
+            foreach (Calificacion calificacion in calificaciones)
+            {
+                CalificacionProto miCalificacion = new CalificacionProto()
+                {
+                    Comentario = calificacion.Comentario,
+                    Nota = calificacion.Nota,
+                    TituloJuegoo = calificacion.TituloJuego,
+                    Usuario = calificacion.Usuario
+                };
+
+                calificacionesProto.Calificaciones.Add(miCalificacion);
+            }
+
+            return calificacionesProto;
+        }
+
+
         private List<Usuario> MapearProtoUsuarios(JuegoProto proto)
         {
             List<Usuario> usuarios = new List<Usuario>();
             List<UsuarioProto> usuariosProto = new List<UsuarioProto>();
 
-            foreach (var usu in proto.Usuarios)
+            if (proto.Usuarios == null)
+                return null;
+
+            foreach (var usu in proto.Usuarios.Usuarios)
                 usuarios.Add(MapearProtoUsuario(usu));
 
             return usuarios;
         }
 
-        private static Usuario MapearProtoUsuario(Protos.UsuarioProto proto)
+    
+
+        private static Usuario MapearProtoUsuario(Protos.ProtoUsuario proto)
         {
             return new Usuario(proto.Nombre);
         }

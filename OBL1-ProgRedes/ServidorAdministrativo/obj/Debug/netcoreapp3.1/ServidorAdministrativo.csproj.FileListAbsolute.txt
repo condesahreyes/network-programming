@@ -29,3 +29,34 @@ C:\Users\hreye\Desktop\la version estable de julietaaaaaaaaaa\Prog.-Redes\OBL1-P
 C:\Users\hreye\Desktop\la version estable de julietaaaaaaaaaa\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.dll
 C:\Users\hreye\Desktop\la version estable de julietaaaaaaaaaa\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.pdb
 C:\Users\hreye\Desktop\la version estable de julietaaaaaaaaaa\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.genruntimeconfig.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.csprojAssemblyReference.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.AssemblyInfoInputs.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.AssemblyInfo.cs
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.csproj.CoreCompileInputs.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\ServidorAdministrativo.exe
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\ServidorAdministrativo.deps.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\ServidorAdministrativo.runtimeconfig.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\ServidorAdministrativo.runtimeconfig.dev.json
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\ServidorAdministrativo.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\ServidorAdministrativo.pdb
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Grpc.AspNetCore.Server.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Grpc.AspNetCore.Server.ClientFactory.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Grpc.Core.Api.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Grpc.Net.Client.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Grpc.Net.ClientFactory.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Grpc.Net.Common.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\staticwebassets\ServidorAdministrativo.StaticWebAssets.Manifest.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\staticwebassets\ServidorAdministrativo.StaticWebAssets.xml
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\scopedcss\bundle\ServidorAdministrativo.styles.css
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.RazorTargetAssemblyInfo.cache
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.csproj.CopyComplete
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.dll
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.pdb
+C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.genruntimeconfig.cache

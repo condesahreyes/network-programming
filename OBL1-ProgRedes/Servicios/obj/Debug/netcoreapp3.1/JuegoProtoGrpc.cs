@@ -47,8 +47,7 @@ namespace ServidorAdministrativo.Protos {
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.MensajeVacio> __Marshaller_juegoProtoService_MensajeVacio = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.MensajeVacio.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.JuegosProto> __Marshaller_juegoProtoService_JuegosProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.JuegosProto.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.Mensaje> __Marshaller_juegoProtoService_Mensaje = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.Mensaje.Parser));
-    static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.UsuarioProto> __Marshaller_juegoProtoService_UsuarioProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.UsuarioProto.Parser));
-    static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.GeneroProto> __Marshaller_juegoProtoService_GeneroProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.GeneroProto.Parser));
+    static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.ProtoUsuario> __Marshaller_juegoProtoService_ProtoUsuario = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.ProtoUsuario.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto> __Marshaller_juegoProtoService_JuegoPorUsuarioProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.MensajeInt> __Marshaller_juegoProtoService_MensajeInt = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.MensajeInt.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.CalificacionProto> __Marshaller_juegoProtoService_CalificacionProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.CalificacionProto.Parser));
@@ -81,19 +80,19 @@ namespace ServidorAdministrativo.Protos {
         __Marshaller_juegoProtoService_Mensaje,
         __Marshaller_juegoProtoService_JuegoProto);
 
-    static readonly grpc::Method<global::ServidorAdministrativo.Protos.UsuarioProto, global::ServidorAdministrativo.Protos.JuegosProto> __Method_JuegoUsuarios = new grpc::Method<global::ServidorAdministrativo.Protos.UsuarioProto, global::ServidorAdministrativo.Protos.JuegosProto>(
+    static readonly grpc::Method<global::ServidorAdministrativo.Protos.ProtoUsuario, global::ServidorAdministrativo.Protos.JuegosProto> __Method_JuegoUsuarios = new grpc::Method<global::ServidorAdministrativo.Protos.ProtoUsuario, global::ServidorAdministrativo.Protos.JuegosProto>(
         grpc::MethodType.Unary,
         __ServiceName,
         "JuegoUsuarios",
-        __Marshaller_juegoProtoService_UsuarioProto,
+        __Marshaller_juegoProtoService_ProtoUsuario,
         __Marshaller_juegoProtoService_JuegosProto);
 
-    static readonly grpc::Method<global::ServidorAdministrativo.Protos.GeneroProto, global::ServidorAdministrativo.Protos.JuegoProto> __Method_BuscarJuegoPorGenero = new grpc::Method<global::ServidorAdministrativo.Protos.GeneroProto, global::ServidorAdministrativo.Protos.JuegoProto>(
+    static readonly grpc::Method<global::ServidorAdministrativo.Protos.Mensaje, global::ServidorAdministrativo.Protos.JuegosProto> __Method_BuscarJuegoPorGenero = new grpc::Method<global::ServidorAdministrativo.Protos.Mensaje, global::ServidorAdministrativo.Protos.JuegosProto>(
         grpc::MethodType.Unary,
         __ServiceName,
         "BuscarJuegoPorGenero",
-        __Marshaller_juegoProtoService_GeneroProto,
-        __Marshaller_juegoProtoService_JuegoProto);
+        __Marshaller_juegoProtoService_Mensaje,
+        __Marshaller_juegoProtoService_JuegosProto);
 
     static readonly grpc::Method<global::ServidorAdministrativo.Protos.MensajeVacio, global::ServidorAdministrativo.Protos.MensajeVacio> __Method_VerCatalogo = new grpc::Method<global::ServidorAdministrativo.Protos.MensajeVacio, global::ServidorAdministrativo.Protos.MensajeVacio>(
         grpc::MethodType.Unary,
@@ -223,35 +222,35 @@ namespace ServidorAdministrativo.Protos {
       {
         return CallInvoker.AsyncUnaryCall(__Method_BuscarJuegoPortTitulo, null, options, request);
       }
-      public virtual global::ServidorAdministrativo.Protos.JuegosProto JuegoUsuarios(global::ServidorAdministrativo.Protos.UsuarioProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::ServidorAdministrativo.Protos.JuegosProto JuegoUsuarios(global::ServidorAdministrativo.Protos.ProtoUsuario request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return JuegoUsuarios(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::ServidorAdministrativo.Protos.JuegosProto JuegoUsuarios(global::ServidorAdministrativo.Protos.UsuarioProto request, grpc::CallOptions options)
+      public virtual global::ServidorAdministrativo.Protos.JuegosProto JuegoUsuarios(global::ServidorAdministrativo.Protos.ProtoUsuario request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_JuegoUsuarios, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegosProto> JuegoUsuariosAsync(global::ServidorAdministrativo.Protos.UsuarioProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegosProto> JuegoUsuariosAsync(global::ServidorAdministrativo.Protos.ProtoUsuario request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return JuegoUsuariosAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegosProto> JuegoUsuariosAsync(global::ServidorAdministrativo.Protos.UsuarioProto request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegosProto> JuegoUsuariosAsync(global::ServidorAdministrativo.Protos.ProtoUsuario request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_JuegoUsuarios, null, options, request);
       }
-      public virtual global::ServidorAdministrativo.Protos.JuegoProto BuscarJuegoPorGenero(global::ServidorAdministrativo.Protos.GeneroProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::ServidorAdministrativo.Protos.JuegosProto BuscarJuegoPorGenero(global::ServidorAdministrativo.Protos.Mensaje request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return BuscarJuegoPorGenero(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::ServidorAdministrativo.Protos.JuegoProto BuscarJuegoPorGenero(global::ServidorAdministrativo.Protos.GeneroProto request, grpc::CallOptions options)
+      public virtual global::ServidorAdministrativo.Protos.JuegosProto BuscarJuegoPorGenero(global::ServidorAdministrativo.Protos.Mensaje request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_BuscarJuegoPorGenero, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegoProto> BuscarJuegoPorGeneroAsync(global::ServidorAdministrativo.Protos.GeneroProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegosProto> BuscarJuegoPorGeneroAsync(global::ServidorAdministrativo.Protos.Mensaje request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return BuscarJuegoPorGeneroAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegoProto> BuscarJuegoPorGeneroAsync(global::ServidorAdministrativo.Protos.GeneroProto request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegosProto> BuscarJuegoPorGeneroAsync(global::ServidorAdministrativo.Protos.Mensaje request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_BuscarJuegoPorGenero, null, options, request);
       }

@@ -26,57 +26,60 @@ namespace ServidorAdministrativo.Protos {
           string.Concat(
             "ChBqdWVnb1Byb3RvLnByb3RvEhFqdWVnb1Byb3RvU2VydmljZSIOCgxNZW5z",
             "YWplVmFjaW8iOwoLSnVlZ29zUHJvdG8SLAoFanVlZ28YASADKAsyHS5qdWVn",
-            "b1Byb3RvU2VydmljZS5KdWVnb1Byb3RvIuMBCgpKdWVnb1Byb3RvEg8KB3Jh",
+            "b1Byb3RvU2VydmljZS5KdWVnb1Byb3RvIuQBCgpKdWVnb1Byb3RvEg8KB3Jh",
             "bmtpbmcYASABKAUSDQoFbm90YXMYAiABKAUSDgoGdGl0dWxvGAMgASgJEhAK",
             "CHNpbnBvc2lzGAQgASgJEhAKCENhcmF0dWxhGAUgASgJEg4KBkdlbmVybxgG",
-            "IAEoCRIxCgh1c3VhcmlvcxgHIAMoCzIfLmp1ZWdvUHJvdG9TZXJ2aWNlLlVz",
-            "dWFyaW9Qcm90bxI+Cg5jYWxpZmljYWNpb25lcxgIIAEoCzImLmp1ZWdvUHJv",
-            "dG9TZXJ2aWNlLkNhbGlmaWNhY2lvbmVzUHJvdG8iHgoJUHJvdG9Cb29sEhEK",
-            "CWJvb2xQcm90bxgBIAEoCCJTChNDYWxpZmljYWNpb25lc1Byb3RvEjwKDmNh",
-            "bGlmaWNhY2lvbmVzGAggAygLMiQuanVlZ29Qcm90b1NlcnZpY2UuQ2FsaWZp",
-            "Y2FjaW9uUHJvdG8iXAoRQ2FsaWZpY2FjaW9uUHJvdG8SEgoKY29tZW50YXJp",
-            "bxgBIAEoCRIPCgd1c3VhcmlvGAIgASgJEhQKDHRpdHVsb0p1ZWdvbxgDIAEo",
-            "CRIMCgRub3RhGAQgASgFIhoKB01lbnNhamUSDwoHbWVuc2FqZRgBIAEoCSId",
-            "CgpNZW5zYWplSW50Eg8KB21lbnNhamUYASABKAUiQgoUSnVlZ29Qb3JVc3Vh",
-            "cmlvUHJvdG8SEwoLdGl0dWxvSnVlZ28YASABKAkSFQoNbm9tYnJlVXN1YXJp",
-            "bxgCIAEoCSIeCgxVc3VhcmlvUHJvdG8SDgoGbm9tYnJlGAEgASgJIh0KC0dl",
-            "bmVyb1Byb3RvEg4KBmdlbmVybxgBIAEoCTK0BwoNU2VydmljaW9KdWVnbxJM",
-            "Cg1BZ3JlZ2FySnVlZ29zEh0uanVlZ29Qcm90b1NlcnZpY2UuSnVlZ29Qcm90",
-            "bxocLmp1ZWdvUHJvdG9TZXJ2aWNlLlByb3RvQm9vbBJQCg1PYnRlbmVySnVl",
-            "Z29zEh8uanVlZ29Qcm90b1NlcnZpY2UuTWVuc2FqZVZhY2lvGh4uanVlZ29Q",
-            "cm90b1NlcnZpY2UuSnVlZ29zUHJvdG8STwoQRXNKdWVnb0V4aXN0ZW50ZRId",
-            "Lmp1ZWdvUHJvdG9TZXJ2aWNlLkp1ZWdvUHJvdG8aHC5qdWVnb1Byb3RvU2Vy",
-            "dmljZS5Qcm90b0Jvb2wSUgoVQnVzY2FySnVlZ29Qb3J0VGl0dWxvEhouanVl",
-            "Z29Qcm90b1NlcnZpY2UuTWVuc2FqZRodLmp1ZWdvUHJvdG9TZXJ2aWNlLkp1",
-            "ZWdvUHJvdG8SUAoNSnVlZ29Vc3VhcmlvcxIfLmp1ZWdvUHJvdG9TZXJ2aWNl",
-            "LlVzdWFyaW9Qcm90bxoeLmp1ZWdvUHJvdG9TZXJ2aWNlLkp1ZWdvc1Byb3Rv",
-            "ElUKFEJ1c2Nhckp1ZWdvUG9yR2VuZXJvEh4uanVlZ29Qcm90b1NlcnZpY2Uu",
-            "R2VuZXJvUHJvdG8aHS5qdWVnb1Byb3RvU2VydmljZS5KdWVnb1Byb3RvEk8K",
-            "C1ZlckNhdGFsb2dvEh8uanVlZ29Qcm90b1NlcnZpY2UuTWVuc2FqZVZhY2lv",
-            "Gh8uanVlZ29Qcm90b1NlcnZpY2UuTWVuc2FqZVZhY2lvEmEKF0FkcXVpcmly",
-            "SnVlZ29Qb3JVc3VhcmlvEicuanVlZ29Qcm90b1NlcnZpY2UuSnVlZ29Qb3JV",
-            "c3VhcmlvUHJvdG8aHS5qdWVnb1Byb3RvU2VydmljZS5KdWVnb1Byb3RvElsK",
-            "GkJ1c2Nhckp1ZWdvUG9yQ2FsaWZpY2FjaW9uEh0uanVlZ29Qcm90b1NlcnZp",
-            "Y2UuTWVuc2FqZUludBoeLmp1ZWdvUHJvdG9TZXJ2aWNlLkp1ZWdvc1Byb3Rv",
-            "EkkKDUVsaW1pbmFySnVlZ28SGi5qdWVnb1Byb3RvU2VydmljZS5NZW5zYWpl",
-            "GhwuanVlZ29Qcm90b1NlcnZpY2UuUHJvdG9Cb29sElkKE0FncmVnYXJDYWxp",
-            "ZmljYWNpb24SJC5qdWVnb1Byb3RvU2VydmljZS5DYWxpZmljYWNpb25Qcm90",
-            "bxocLmp1ZWdvUHJvdG9TZXJ2aWNlLlByb3RvQm9vbEIgqgIdU2Vydmlkb3JB",
-            "ZG1pbmlzdHJhdGl2by5Qcm90b3NiBnByb3RvMw=="));
+            "IAEoCRIyCgh1c3VhcmlvcxgHIAEoCzIgLmp1ZWdvUHJvdG9TZXJ2aWNlLlBy",
+            "b3RvVXN1YXJpb3MSPgoOY2FsaWZpY2FjaW9uZXMYCCABKAsyJi5qdWVnb1By",
+            "b3RvU2VydmljZS5DYWxpZmljYWNpb25lc1Byb3RvIkIKDVByb3RvVXN1YXJp",
+            "b3MSMQoIdXN1YXJpb3MYASADKAsyHy5qdWVnb1Byb3RvU2VydmljZS5Qcm90",
+            "b1VzdWFyaW8iHgoJUHJvdG9Cb29sEhEKCWJvb2xQcm90bxgBIAEoCCJTChND",
+            "YWxpZmljYWNpb25lc1Byb3RvEjwKDmNhbGlmaWNhY2lvbmVzGAggAygLMiQu",
+            "anVlZ29Qcm90b1NlcnZpY2UuQ2FsaWZpY2FjaW9uUHJvdG8iXAoRQ2FsaWZp",
+            "Y2FjaW9uUHJvdG8SEgoKY29tZW50YXJpbxgBIAEoCRIPCgd1c3VhcmlvGAIg",
+            "ASgJEhQKDHRpdHVsb0p1ZWdvbxgDIAEoCRIMCgRub3RhGAQgASgFIhoKB01l",
+            "bnNhamUSDwoHbWVuc2FqZRgBIAEoCSIdCgpNZW5zYWplSW50Eg8KB21lbnNh",
+            "amUYASABKAUiQgoUSnVlZ29Qb3JVc3VhcmlvUHJvdG8SEwoLdGl0dWxvSnVl",
+            "Z28YASABKAkSFQoNbm9tYnJlVXN1YXJpbxgCIAEoCSIeCgxQcm90b1VzdWFy",
+            "aW8SDgoGbm9tYnJlGAEgASgJIiIKC0dlbmVyb1Byb3RvEhMKC2dlbmVyb1By",
+            "b3RvGAEgASgJMrEHCg1TZXJ2aWNpb0p1ZWdvEkwKDUFncmVnYXJKdWVnb3MS",
+            "HS5qdWVnb1Byb3RvU2VydmljZS5KdWVnb1Byb3RvGhwuanVlZ29Qcm90b1Nl",
+            "cnZpY2UuUHJvdG9Cb29sElAKDU9idGVuZXJKdWVnb3MSHy5qdWVnb1Byb3Rv",
+            "U2VydmljZS5NZW5zYWplVmFjaW8aHi5qdWVnb1Byb3RvU2VydmljZS5KdWVn",
+            "b3NQcm90bxJPChBFc0p1ZWdvRXhpc3RlbnRlEh0uanVlZ29Qcm90b1NlcnZp",
+            "Y2UuSnVlZ29Qcm90bxocLmp1ZWdvUHJvdG9TZXJ2aWNlLlByb3RvQm9vbBJS",
+            "ChVCdXNjYXJKdWVnb1BvcnRUaXR1bG8SGi5qdWVnb1Byb3RvU2VydmljZS5N",
+            "ZW5zYWplGh0uanVlZ29Qcm90b1NlcnZpY2UuSnVlZ29Qcm90bxJQCg1KdWVn",
+            "b1VzdWFyaW9zEh8uanVlZ29Qcm90b1NlcnZpY2UuUHJvdG9Vc3VhcmlvGh4u",
+            "anVlZ29Qcm90b1NlcnZpY2UuSnVlZ29zUHJvdG8SUgoUQnVzY2FySnVlZ29Q",
+            "b3JHZW5lcm8SGi5qdWVnb1Byb3RvU2VydmljZS5NZW5zYWplGh4uanVlZ29Q",
+            "cm90b1NlcnZpY2UuSnVlZ29zUHJvdG8STwoLVmVyQ2F0YWxvZ28SHy5qdWVn",
+            "b1Byb3RvU2VydmljZS5NZW5zYWplVmFjaW8aHy5qdWVnb1Byb3RvU2Vydmlj",
+            "ZS5NZW5zYWplVmFjaW8SYQoXQWRxdWlyaXJKdWVnb1BvclVzdWFyaW8SJy5q",
+            "dWVnb1Byb3RvU2VydmljZS5KdWVnb1BvclVzdWFyaW9Qcm90bxodLmp1ZWdv",
+            "UHJvdG9TZXJ2aWNlLkp1ZWdvUHJvdG8SWwoaQnVzY2FySnVlZ29Qb3JDYWxp",
+            "ZmljYWNpb24SHS5qdWVnb1Byb3RvU2VydmljZS5NZW5zYWplSW50Gh4uanVl",
+            "Z29Qcm90b1NlcnZpY2UuSnVlZ29zUHJvdG8SSQoNRWxpbWluYXJKdWVnbxIa",
+            "Lmp1ZWdvUHJvdG9TZXJ2aWNlLk1lbnNhamUaHC5qdWVnb1Byb3RvU2Vydmlj",
+            "ZS5Qcm90b0Jvb2wSWQoTQWdyZWdhckNhbGlmaWNhY2lvbhIkLmp1ZWdvUHJv",
+            "dG9TZXJ2aWNlLkNhbGlmaWNhY2lvblByb3RvGhwuanVlZ29Qcm90b1NlcnZp",
+            "Y2UuUHJvdG9Cb29sQiCqAh1TZXJ2aWRvckFkbWluaXN0cmF0aXZvLlByb3Rv",
+            "c2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.MensajeVacio), global::ServidorAdministrativo.Protos.MensajeVacio.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.JuegosProto), global::ServidorAdministrativo.Protos.JuegosProto.Parser, new[]{ "Juego" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.JuegoProto), global::ServidorAdministrativo.Protos.JuegoProto.Parser, new[]{ "Ranking", "Notas", "Titulo", "Sinposis", "Caratula", "Genero", "Usuarios", "Calificaciones" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.ProtoUsuarios), global::ServidorAdministrativo.Protos.ProtoUsuarios.Parser, new[]{ "Usuarios" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.ProtoBool), global::ServidorAdministrativo.Protos.ProtoBool.Parser, new[]{ "BoolProto" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.CalificacionesProto), global::ServidorAdministrativo.Protos.CalificacionesProto.Parser, new[]{ "Calificaciones" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.CalificacionProto), global::ServidorAdministrativo.Protos.CalificacionProto.Parser, new[]{ "Comentario", "Usuario", "TituloJuegoo", "Nota" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.Mensaje), global::ServidorAdministrativo.Protos.Mensaje.Parser, new[]{ "Mensaje_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.MensajeInt), global::ServidorAdministrativo.Protos.MensajeInt.Parser, new[]{ "Mensaje" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto), global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto.Parser, new[]{ "TituloJuego", "NombreUsuario" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.UsuarioProto), global::ServidorAdministrativo.Protos.UsuarioProto.Parser, new[]{ "Nombre" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.GeneroProto), global::ServidorAdministrativo.Protos.GeneroProto.Parser, new[]{ "Genero" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.ProtoUsuario), global::ServidorAdministrativo.Protos.ProtoUsuario.Parser, new[]{ "Nombre" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ServidorAdministrativo.Protos.GeneroProto), global::ServidorAdministrativo.Protos.GeneroProto.Parser, new[]{ "GeneroProto_" }, null, null, null, null)
           }));
     }
     #endregion
@@ -415,7 +418,7 @@ namespace ServidorAdministrativo.Protos {
       sinposis_ = other.sinposis_;
       caratula_ = other.caratula_;
       genero_ = other.genero_;
-      usuarios_ = other.usuarios_.Clone();
+      usuarios_ = other.usuarios_ != null ? other.usuarios_.Clone() : null;
       calificaciones_ = other.calificaciones_ != null ? other.calificaciones_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -493,12 +496,13 @@ namespace ServidorAdministrativo.Protos {
 
     /// <summary>Field number for the "usuarios" field.</summary>
     public const int UsuariosFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::ServidorAdministrativo.Protos.UsuarioProto> _repeated_usuarios_codec
-        = pb::FieldCodec.ForMessage(58, global::ServidorAdministrativo.Protos.UsuarioProto.Parser);
-    private readonly pbc::RepeatedField<global::ServidorAdministrativo.Protos.UsuarioProto> usuarios_ = new pbc::RepeatedField<global::ServidorAdministrativo.Protos.UsuarioProto>();
+    private global::ServidorAdministrativo.Protos.ProtoUsuarios usuarios_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ServidorAdministrativo.Protos.UsuarioProto> Usuarios {
+    public global::ServidorAdministrativo.Protos.ProtoUsuarios Usuarios {
       get { return usuarios_; }
+      set {
+        usuarios_ = value;
+      }
     }
 
     /// <summary>Field number for the "calificaciones" field.</summary>
@@ -531,7 +535,7 @@ namespace ServidorAdministrativo.Protos {
       if (Sinposis != other.Sinposis) return false;
       if (Caratula != other.Caratula) return false;
       if (Genero != other.Genero) return false;
-      if(!usuarios_.Equals(other.usuarios_)) return false;
+      if (!object.Equals(Usuarios, other.Usuarios)) return false;
       if (!object.Equals(Calificaciones, other.Calificaciones)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -545,7 +549,7 @@ namespace ServidorAdministrativo.Protos {
       if (Sinposis.Length != 0) hash ^= Sinposis.GetHashCode();
       if (Caratula.Length != 0) hash ^= Caratula.GetHashCode();
       if (Genero.Length != 0) hash ^= Genero.GetHashCode();
-      hash ^= usuarios_.GetHashCode();
+      if (usuarios_ != null) hash ^= Usuarios.GetHashCode();
       if (calificaciones_ != null) hash ^= Calificaciones.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -587,7 +591,10 @@ namespace ServidorAdministrativo.Protos {
         output.WriteRawTag(50);
         output.WriteString(Genero);
       }
-      usuarios_.WriteTo(output, _repeated_usuarios_codec);
+      if (usuarios_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Usuarios);
+      }
       if (calificaciones_ != null) {
         output.WriteRawTag(66);
         output.WriteMessage(Calificaciones);
@@ -625,7 +632,10 @@ namespace ServidorAdministrativo.Protos {
         output.WriteRawTag(50);
         output.WriteString(Genero);
       }
-      usuarios_.WriteTo(ref output, _repeated_usuarios_codec);
+      if (usuarios_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Usuarios);
+      }
       if (calificaciones_ != null) {
         output.WriteRawTag(66);
         output.WriteMessage(Calificaciones);
@@ -657,7 +667,9 @@ namespace ServidorAdministrativo.Protos {
       if (Genero.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Genero);
       }
-      size += usuarios_.CalculateSize(_repeated_usuarios_codec);
+      if (usuarios_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Usuarios);
+      }
       if (calificaciones_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Calificaciones);
       }
@@ -690,7 +702,12 @@ namespace ServidorAdministrativo.Protos {
       if (other.Genero.Length != 0) {
         Genero = other.Genero;
       }
-      usuarios_.Add(other.usuarios_);
+      if (other.usuarios_ != null) {
+        if (usuarios_ == null) {
+          Usuarios = new global::ServidorAdministrativo.Protos.ProtoUsuarios();
+        }
+        Usuarios.MergeFrom(other.Usuarios);
+      }
       if (other.calificaciones_ != null) {
         if (calificaciones_ == null) {
           Calificaciones = new global::ServidorAdministrativo.Protos.CalificacionesProto();
@@ -736,7 +753,10 @@ namespace ServidorAdministrativo.Protos {
             break;
           }
           case 58: {
-            usuarios_.AddEntriesFrom(input, _repeated_usuarios_codec);
+            if (usuarios_ == null) {
+              Usuarios = new global::ServidorAdministrativo.Protos.ProtoUsuarios();
+            }
+            input.ReadMessage(Usuarios);
             break;
           }
           case 66: {
@@ -785,7 +805,10 @@ namespace ServidorAdministrativo.Protos {
             break;
           }
           case 58: {
-            usuarios_.AddEntriesFrom(ref input, _repeated_usuarios_codec);
+            if (usuarios_ == null) {
+              Usuarios = new global::ServidorAdministrativo.Protos.ProtoUsuarios();
+            }
+            input.ReadMessage(Usuarios);
             break;
           }
           case 66: {
@@ -793,6 +816,167 @@ namespace ServidorAdministrativo.Protos {
               Calificaciones = new global::ServidorAdministrativo.Protos.CalificacionesProto();
             }
             input.ReadMessage(Calificaciones);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class ProtoUsuarios : pb::IMessage<ProtoUsuarios>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ProtoUsuarios> _parser = new pb::MessageParser<ProtoUsuarios>(() => new ProtoUsuarios());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ProtoUsuarios> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ProtoUsuarios() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ProtoUsuarios(ProtoUsuarios other) : this() {
+      usuarios_ = other.usuarios_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ProtoUsuarios Clone() {
+      return new ProtoUsuarios(this);
+    }
+
+    /// <summary>Field number for the "usuarios" field.</summary>
+    public const int UsuariosFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::ServidorAdministrativo.Protos.ProtoUsuario> _repeated_usuarios_codec
+        = pb::FieldCodec.ForMessage(10, global::ServidorAdministrativo.Protos.ProtoUsuario.Parser);
+    private readonly pbc::RepeatedField<global::ServidorAdministrativo.Protos.ProtoUsuario> usuarios_ = new pbc::RepeatedField<global::ServidorAdministrativo.Protos.ProtoUsuario>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::ServidorAdministrativo.Protos.ProtoUsuario> Usuarios {
+      get { return usuarios_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ProtoUsuarios);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ProtoUsuarios other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!usuarios_.Equals(other.usuarios_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= usuarios_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      usuarios_.WriteTo(output, _repeated_usuarios_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      usuarios_.WriteTo(ref output, _repeated_usuarios_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += usuarios_.CalculateSize(_repeated_usuarios_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ProtoUsuarios other) {
+      if (other == null) {
+        return;
+      }
+      usuarios_.Add(other.usuarios_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            usuarios_.AddEntriesFrom(input, _repeated_usuarios_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            usuarios_.AddEntriesFrom(ref input, _repeated_usuarios_codec);
             break;
           }
         }
@@ -814,7 +998,7 @@ namespace ServidorAdministrativo.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -986,7 +1170,7 @@ namespace ServidorAdministrativo.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1147,7 +1331,7 @@ namespace ServidorAdministrativo.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1427,7 +1611,7 @@ namespace ServidorAdministrativo.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[6]; }
+      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1599,7 +1783,7 @@ namespace ServidorAdministrativo.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[7]; }
+      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1771,7 +1955,7 @@ namespace ServidorAdministrativo.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[8]; }
+      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1967,19 +2151,19 @@ namespace ServidorAdministrativo.Protos {
 
   }
 
-  public sealed partial class UsuarioProto : pb::IMessage<UsuarioProto>
+  public sealed partial class ProtoUsuario : pb::IMessage<ProtoUsuario>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<UsuarioProto> _parser = new pb::MessageParser<UsuarioProto>(() => new UsuarioProto());
+    private static readonly pb::MessageParser<ProtoUsuario> _parser = new pb::MessageParser<ProtoUsuario>(() => new ProtoUsuario());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UsuarioProto> Parser { get { return _parser; } }
+    public static pb::MessageParser<ProtoUsuario> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[9]; }
+      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1988,21 +2172,21 @@ namespace ServidorAdministrativo.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UsuarioProto() {
+    public ProtoUsuario() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UsuarioProto(UsuarioProto other) : this() {
+    public ProtoUsuario(ProtoUsuario other) : this() {
       nombre_ = other.nombre_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UsuarioProto Clone() {
-      return new UsuarioProto(this);
+    public ProtoUsuario Clone() {
+      return new ProtoUsuario(this);
     }
 
     /// <summary>Field number for the "nombre" field.</summary>
@@ -2018,11 +2202,11 @@ namespace ServidorAdministrativo.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as UsuarioProto);
+      return Equals(other as ProtoUsuario);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UsuarioProto other) {
+    public bool Equals(ProtoUsuario other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -2089,7 +2273,7 @@ namespace ServidorAdministrativo.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UsuarioProto other) {
+    public void MergeFrom(ProtoUsuario other) {
       if (other == null) {
         return;
       }
@@ -2151,7 +2335,7 @@ namespace ServidorAdministrativo.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[10]; }
+      get { return global::ServidorAdministrativo.Protos.JuegoProtoReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2168,7 +2352,7 @@ namespace ServidorAdministrativo.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public GeneroProto(GeneroProto other) : this() {
-      genero_ = other.genero_;
+      generoProto_ = other.generoProto_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2177,14 +2361,14 @@ namespace ServidorAdministrativo.Protos {
       return new GeneroProto(this);
     }
 
-    /// <summary>Field number for the "genero" field.</summary>
-    public const int GeneroFieldNumber = 1;
-    private string genero_ = "";
+    /// <summary>Field number for the "generoProto" field.</summary>
+    public const int GeneroProto_FieldNumber = 1;
+    private string generoProto_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Genero {
-      get { return genero_; }
+    public string GeneroProto_ {
+      get { return generoProto_; }
       set {
-        genero_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        generoProto_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -2201,14 +2385,14 @@ namespace ServidorAdministrativo.Protos {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Genero != other.Genero) return false;
+      if (GeneroProto_ != other.GeneroProto_) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Genero.Length != 0) hash ^= Genero.GetHashCode();
+      if (GeneroProto_.Length != 0) hash ^= GeneroProto_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2225,9 +2409,9 @@ namespace ServidorAdministrativo.Protos {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Genero.Length != 0) {
+      if (GeneroProto_.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Genero);
+        output.WriteString(GeneroProto_);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2238,9 +2422,9 @@ namespace ServidorAdministrativo.Protos {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Genero.Length != 0) {
+      if (GeneroProto_.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Genero);
+        output.WriteString(GeneroProto_);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2251,8 +2435,8 @@ namespace ServidorAdministrativo.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Genero.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Genero);
+      if (GeneroProto_.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GeneroProto_);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2265,8 +2449,8 @@ namespace ServidorAdministrativo.Protos {
       if (other == null) {
         return;
       }
-      if (other.Genero.Length != 0) {
-        Genero = other.Genero;
+      if (other.GeneroProto_.Length != 0) {
+        GeneroProto_ = other.GeneroProto_;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2283,7 +2467,7 @@ namespace ServidorAdministrativo.Protos {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Genero = input.ReadString();
+            GeneroProto_ = input.ReadString();
             break;
           }
         }
@@ -2301,7 +2485,7 @@ namespace ServidorAdministrativo.Protos {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Genero = input.ReadString();
+            GeneroProto_ = input.ReadString();
             break;
           }
         }

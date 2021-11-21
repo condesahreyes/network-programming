@@ -8,26 +8,26 @@ namespace IServices
 {
     public interface IJuegoService
     {
-            bool EsJuegoExistente(Juego unJuego);
+            Task<bool> EsJuegoExistente(Juego unJuego);
 
             Task<List<Juego>> ObtenerJuegos();
 
             Task<bool> AgregarJuego(Juego juego);
 
-            bool AgregarCalificacion(Calificacion calificacion);
+            Task<bool> AgregarCalificacion(Calificacion calificacion);
 
-            Juego AdquirirJuegoPorUsuario(string juego, Usuario usuario);
+            Task<Juego> AdquirirJuegoPorUsuario(string juego, Usuario usuario);
 
-            List<Juego> JuegoUsuarios(Usuario usuario);
+            Task<List<Juego>> JuegoUsuarios(Usuario usuario);
 
-            Juego BuscarJuegoPortTitulo(string unTitulo);
+            Task<Juego> BuscarJuegoPortTitulo(string unTitulo);
 
-            List<Juego> BuscarJuegoPorGenero(string unGenero);
+            Task<List<Juego>> BuscarJuegoPorGenero(string unGenero);
 
-            Juego ObtenerJuegoPorTitulo(string tituloJuego);
+            Task<Juego> ObtenerJuegoPorTitulo(string tituloJuego);
 
-            List<Juego> BuscarJuegoPorCalificacion(int ranking);
+            Task<List<Juego>> BuscarJuegoPorCalificacion(int ranking);
 
-            bool EliminarJuego(string tituloJuego);
+            Task<bool> EliminarJuego(string tituloJuego);
 }
 }

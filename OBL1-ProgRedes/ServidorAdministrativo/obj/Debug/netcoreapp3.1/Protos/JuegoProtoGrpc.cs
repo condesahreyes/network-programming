@@ -47,8 +47,7 @@ namespace ServidorAdministrativo.Protos {
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.MensajeVacio> __Marshaller_juegoProtoService_MensajeVacio = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.MensajeVacio.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.JuegosProto> __Marshaller_juegoProtoService_JuegosProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.JuegosProto.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.Mensaje> __Marshaller_juegoProtoService_Mensaje = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.Mensaje.Parser));
-    static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.UsuarioProto> __Marshaller_juegoProtoService_UsuarioProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.UsuarioProto.Parser));
-    static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.GeneroProto> __Marshaller_juegoProtoService_GeneroProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.GeneroProto.Parser));
+    static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.ProtoUsuario> __Marshaller_juegoProtoService_ProtoUsuario = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.ProtoUsuario.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto> __Marshaller_juegoProtoService_JuegoPorUsuarioProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.MensajeInt> __Marshaller_juegoProtoService_MensajeInt = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.MensajeInt.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.CalificacionProto> __Marshaller_juegoProtoService_CalificacionProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.CalificacionProto.Parser));
@@ -81,19 +80,19 @@ namespace ServidorAdministrativo.Protos {
         __Marshaller_juegoProtoService_Mensaje,
         __Marshaller_juegoProtoService_JuegoProto);
 
-    static readonly grpc::Method<global::ServidorAdministrativo.Protos.UsuarioProto, global::ServidorAdministrativo.Protos.JuegosProto> __Method_JuegoUsuarios = new grpc::Method<global::ServidorAdministrativo.Protos.UsuarioProto, global::ServidorAdministrativo.Protos.JuegosProto>(
+    static readonly grpc::Method<global::ServidorAdministrativo.Protos.ProtoUsuario, global::ServidorAdministrativo.Protos.JuegosProto> __Method_JuegoUsuarios = new grpc::Method<global::ServidorAdministrativo.Protos.ProtoUsuario, global::ServidorAdministrativo.Protos.JuegosProto>(
         grpc::MethodType.Unary,
         __ServiceName,
         "JuegoUsuarios",
-        __Marshaller_juegoProtoService_UsuarioProto,
+        __Marshaller_juegoProtoService_ProtoUsuario,
         __Marshaller_juegoProtoService_JuegosProto);
 
-    static readonly grpc::Method<global::ServidorAdministrativo.Protos.GeneroProto, global::ServidorAdministrativo.Protos.JuegoProto> __Method_BuscarJuegoPorGenero = new grpc::Method<global::ServidorAdministrativo.Protos.GeneroProto, global::ServidorAdministrativo.Protos.JuegoProto>(
+    static readonly grpc::Method<global::ServidorAdministrativo.Protos.Mensaje, global::ServidorAdministrativo.Protos.JuegosProto> __Method_BuscarJuegoPorGenero = new grpc::Method<global::ServidorAdministrativo.Protos.Mensaje, global::ServidorAdministrativo.Protos.JuegosProto>(
         grpc::MethodType.Unary,
         __ServiceName,
         "BuscarJuegoPorGenero",
-        __Marshaller_juegoProtoService_GeneroProto,
-        __Marshaller_juegoProtoService_JuegoProto);
+        __Marshaller_juegoProtoService_Mensaje,
+        __Marshaller_juegoProtoService_JuegosProto);
 
     static readonly grpc::Method<global::ServidorAdministrativo.Protos.MensajeVacio, global::ServidorAdministrativo.Protos.MensajeVacio> __Method_VerCatalogo = new grpc::Method<global::ServidorAdministrativo.Protos.MensajeVacio, global::ServidorAdministrativo.Protos.MensajeVacio>(
         grpc::MethodType.Unary,
@@ -160,12 +159,12 @@ namespace ServidorAdministrativo.Protos {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::ServidorAdministrativo.Protos.JuegosProto> JuegoUsuarios(global::ServidorAdministrativo.Protos.UsuarioProto request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::ServidorAdministrativo.Protos.JuegosProto> JuegoUsuarios(global::ServidorAdministrativo.Protos.ProtoUsuario request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::ServidorAdministrativo.Protos.JuegoProto> BuscarJuegoPorGenero(global::ServidorAdministrativo.Protos.GeneroProto request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::ServidorAdministrativo.Protos.JuegosProto> BuscarJuegoPorGenero(global::ServidorAdministrativo.Protos.Mensaje request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -225,8 +224,8 @@ namespace ServidorAdministrativo.Protos {
       serviceBinder.AddMethod(__Method_ObtenerJuegos, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.MensajeVacio, global::ServidorAdministrativo.Protos.JuegosProto>(serviceImpl.ObtenerJuegos));
       serviceBinder.AddMethod(__Method_EsJuegoExistente, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.JuegoProto, global::ServidorAdministrativo.Protos.ProtoBool>(serviceImpl.EsJuegoExistente));
       serviceBinder.AddMethod(__Method_BuscarJuegoPortTitulo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.Mensaje, global::ServidorAdministrativo.Protos.JuegoProto>(serviceImpl.BuscarJuegoPortTitulo));
-      serviceBinder.AddMethod(__Method_JuegoUsuarios, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.UsuarioProto, global::ServidorAdministrativo.Protos.JuegosProto>(serviceImpl.JuegoUsuarios));
-      serviceBinder.AddMethod(__Method_BuscarJuegoPorGenero, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.GeneroProto, global::ServidorAdministrativo.Protos.JuegoProto>(serviceImpl.BuscarJuegoPorGenero));
+      serviceBinder.AddMethod(__Method_JuegoUsuarios, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.ProtoUsuario, global::ServidorAdministrativo.Protos.JuegosProto>(serviceImpl.JuegoUsuarios));
+      serviceBinder.AddMethod(__Method_BuscarJuegoPorGenero, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.Mensaje, global::ServidorAdministrativo.Protos.JuegosProto>(serviceImpl.BuscarJuegoPorGenero));
       serviceBinder.AddMethod(__Method_VerCatalogo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.MensajeVacio, global::ServidorAdministrativo.Protos.MensajeVacio>(serviceImpl.VerCatalogo));
       serviceBinder.AddMethod(__Method_AdquirirJuegoPorUsuario, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto, global::ServidorAdministrativo.Protos.JuegoProto>(serviceImpl.AdquirirJuegoPorUsuario));
       serviceBinder.AddMethod(__Method_BuscarJuegoPorCalificacion, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.MensajeInt, global::ServidorAdministrativo.Protos.JuegosProto>(serviceImpl.BuscarJuegoPorCalificacion));
