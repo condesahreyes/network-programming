@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5kMoVSYq7exP5CLZgP9BUwiasVl7oWEAX2y7StrlfHnq1zMwt+ZDLrGq1Cma/oJjhOrqYf9ifoPHdyhZZEQVcA==",
+  "dgSpecHash": "CHnZlF2mOHWz0lMOsCO3Bsg0pRTgGupaFHiOLP+cYYu0EKf154Q2S0vb+HGTe8OPTH67X55UA2wwyjM0lgvZhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hreye\\Desktop\\laJuliTomaMate\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\webApiAdmin\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hreye\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",

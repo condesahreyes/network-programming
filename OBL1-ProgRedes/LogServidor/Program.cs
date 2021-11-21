@@ -20,6 +20,7 @@ namespace LogServidor
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("https://localhost:5003");
                     webBuilder.UseStartup<Startup>();
                 });
     }
