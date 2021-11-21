@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\jpercivale\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\jpercivale\\.nuget\\packages"
-    ]
-  }
-}
