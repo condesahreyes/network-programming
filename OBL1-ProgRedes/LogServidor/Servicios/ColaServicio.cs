@@ -24,6 +24,7 @@ namespace LogServidor
         private void RecibirLogs()
         {
             var consumer = new EventingBasicConsumer(this._canal);
+
             Task.Run(() =>
             {
                 consumer.Received += (model, ea) =>
@@ -34,8 +35,12 @@ namespace LogServidor
                     Console.WriteLine(message);
                 };
 
-                this._canal.BasicConsume(_queueName, true, consumer);
+                this._canal.BasicConsume(
+                                queue: this._queueName,
+                                autoAck: true,
+                                consumer: consumer);
             });
+
         }
     }
 }

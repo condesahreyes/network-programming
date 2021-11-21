@@ -1,13 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Fnob1Q7i9tjvt630x4yLLSOlYzS9LOMjv+OaTG+whafkSp4zVSC2YHpdZ9WIGIFFiUgMdQW74iF7w/LlZ2ouKg==",
+  "dgSpecHash": "5kMoVSYq7exP5CLZgP9BUwiasVl7oWEAX2y7StrlfHnq1zMwt+ZDLrGq1Cma/oJjhOrqYf9ifoPHdyhZZEQVcA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\laJuliTomaMate\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jpercivale\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.19\\microsoft.netcore.app.host.win-x64.3.1.19.nupkg.sha512"
+    "C:\\Users\\hreye\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
+    "C:\\Users\\hreye\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\hreye\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
   ],
   "logs": []
 }

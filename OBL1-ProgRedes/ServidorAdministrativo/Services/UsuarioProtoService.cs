@@ -9,6 +9,7 @@ namespace ServidorAdministrativo.Services
     {
         LogServices logServices;
         Persistencia persistencia;
+
         public UsuarioProtoService(LogServices logServices)
         {
             this.logServices = logServices;

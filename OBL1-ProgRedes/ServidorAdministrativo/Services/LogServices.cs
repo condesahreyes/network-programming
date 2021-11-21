@@ -1,20 +1,26 @@
-﻿using RabbitMQ.Client;
+﻿using Microsoft.Extensions.Configuration;
+using RabbitMQ.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ServidorAdministrativo.Services
 {
     public class LogServices
     {
-        private const string _queueName = "logQueue";
+        private string _queueName;
         private IModel _canal;
+        private string hostName;
 
         public LogServices()
         {
-            _canal = new ConnectionFactory { HostName = "localhost" }.CreateConnection().CreateModel();
+            IConfiguration configuracion = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appSettings.json", optional: false).Build();
+
+            this.hostName = configuracion.GetSection("Queue:Hostname").Value;
+            this._queueName = configuracion.GetSection("Queue:Name").Value;
+            _canal = new ConnectionFactory { HostName = this.hostName }.CreateConnection().CreateModel();
             QueueDeclare(_canal);
         }
 

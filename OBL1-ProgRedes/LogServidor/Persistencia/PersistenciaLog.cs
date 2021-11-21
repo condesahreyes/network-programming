@@ -5,10 +5,8 @@ namespace LogServidor.Persistencia
     public class PersistenciaLog
     {
         private static PersistenciaLog persistencia;
-
         private List<LogModelo> logsModel;
         private List<string> log;
-
 
         public PersistenciaLog() {
             this.logsModel = new List<LogModelo>();
