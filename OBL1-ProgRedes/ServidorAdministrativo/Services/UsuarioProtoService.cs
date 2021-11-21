@@ -7,9 +7,12 @@ namespace ServidorAdministrativo.Services
 {
     public class UsuarioProtoService : ServicioUsuario.ServicioUsuarioBase
     {
+        LogServices logServices;
         Persistencia persistencia;
-        public UsuarioProtoService()
+
+        public UsuarioProtoService(LogServices logServices)
         {
+            this.logServices = logServices;
             this.persistencia = Persistencia.ObtenerPersistencia();
         }
 
@@ -18,6 +21,7 @@ namespace ServidorAdministrativo.Services
             Usuario usuario = new Usuario(request.Nombre);
             this.persistencia.usuarios.Add(usuario);
 
+            this.logServices.SendMessages("usuario " + request.Nombre + " dado de alta");
             return await Task.FromResult(new RespuestaProto
             {
                 Estado = "Ok"
@@ -32,6 +36,7 @@ namespace ServidorAdministrativo.Services
 
             usuariosDominio.ForEach(x => usuarios.Usuario.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
 
+            this.logServices.SendMessages("Lista de usuarios solicitada");
             return await Task.FromResult(usuarios);
         }
 
@@ -45,6 +50,7 @@ namespace ServidorAdministrativo.Services
                     return await Task.FromResult(new MensajeVacio() { });
                 }
 
+            this.logServices.SendMessages("usuario " + request.Nombre + " inicio sesión");
             return await Task.FromResult(new MensajeVacio() { });
         }
 
@@ -58,6 +64,7 @@ namespace ServidorAdministrativo.Services
                     return await Task.FromResult(new MensajeVacio() { });
                 }
 
+            this.logServices.SendMessages("usuario " + request.Nombre + " cerro sesión");
             return await Task.FromResult(new MensajeVacio() { });
         }
 
@@ -71,6 +78,7 @@ namespace ServidorAdministrativo.Services
                     return await Task.FromResult(new BoolProto() { Estado=true });
                 }
 
+            this.logServices.SendMessages("usuario " + request.Nombre + " eliminado");
             return await Task.FromResult(new BoolProto() { Estado = false });
         }
 
@@ -84,6 +92,7 @@ namespace ServidorAdministrativo.Services
                     return await Task.FromResult(new MensajeVacio() { });
                 }
 
+            this.logServices.SendMessages("usuario " + request.Nombre + " modificado");
             return await Task.FromResult(new MensajeVacio() { });
         }
     }

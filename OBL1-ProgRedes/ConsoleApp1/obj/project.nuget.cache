@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jh0OlXMGDIiaUME33ZVld4XF7nrpZGbmOuCvsm8M4or9+63Yl0YZ+8n7U4aPb213toVVfB4me37PjtqIoK7zrw==",
+  "dgSpecHash": "12qkpF/GaCh92/9U/LQB3eaYGS+15I+L9SJRB9+/7Nqd43Wzmr5zPkWqcevGkBWCglsG8DJjUB2Y0SpAPYSYZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj",
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\laJuliTomaMate\\Prog.-Redes\\OBL1-ProgRedes\\ConsoleApp1\\Cliente.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hreye\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",

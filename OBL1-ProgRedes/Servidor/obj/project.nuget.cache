@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jZPRVdGimKHZMBS7ehowWAZBeTmCaCHT2+qEgODvRnz2+pCCeWFIbyN0mnURhnS1TTGf74xrufY2Yq/EG1mGsw==",
+  "dgSpecHash": "WoshUHWH+UJfRbImr9sAcqlIhNtM81oE58mJdpUj/A7Dc40Drn+s1F8Uiy6wgdy42xPw4xp3W+Mz7Ykw3nteBA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hreye\\Desktop\\la version estable de julietaaaaaaaaaa\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\laJuliTomaMate\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hreye\\.nuget\\packages\\google.protobuf\\3.13.0\\google.protobuf.3.13.0.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\grpc.aspnetcore\\2.32.0\\grpc.aspnetcore.2.32.0.nupkg.sha512",
@@ -28,10 +28,12 @@
     "C:\\Users\\hreye\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.3\\microsoft.extensions.logging.abstractions.3.0.3.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\microsoft.extensions.options\\3.0.3\\microsoft.extensions.options.3.0.3.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\hreye\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.5.1\\system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512",
-    "C:\\Users\\hreye\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\hreye\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
-    "C:\\Users\\hreye\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512"
+    "C:\\Users\\hreye\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512",
+    "C:\\Users\\hreye\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
   ],
   "logs": []
 }
