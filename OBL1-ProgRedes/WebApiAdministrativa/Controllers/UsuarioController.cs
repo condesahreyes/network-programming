@@ -26,18 +26,11 @@ namespace WebApiAdministrativa.Controllers
             return (StatusCode((int)HttpStatusCode.OK, UsuarioEntradaSalida.DominioAModelo(usuario)));
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<ActionResult> Get()
         {
             List<Usuario> usuarios = await servicioUsuario.ObtenerUsuarios();
             return (StatusCode((int)HttpStatusCode.OK, UsuarioEntradaSalida.ListarUsuarioModelo(usuarios)));
-        }
-
-        [HttpGet]
-        public async Task<ActionResult> GetUser(UsuarioEntradaSalida unUsuario)
-        {
-            Usuario usuario = await servicioUsuario.ObtenerUsuario(UsuarioEntradaSalida.ModeloADominio(unUsuario));
-            return (StatusCode((int)HttpStatusCode.OK,  UsuarioEntradaSalida.DominioAModelo(usuario)));
         }
 
         [HttpPut("{nombreUsuario}")]
