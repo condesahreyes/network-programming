@@ -4,6 +4,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using IRepositorio;
+using Repositorio;
 
 namespace ServidorAdministrativo
 {
@@ -13,6 +15,8 @@ namespace ServidorAdministrativo
         {
             services.AddGrpc();
             services.AddSingleton<LogServices, LogServices>();
+            services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
+            services.AddScoped<IRepositorioJuego, IRepositorioJuego>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

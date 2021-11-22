@@ -1,5 +1,4 @@
-﻿using WebApiAdministrativa.Modelos.UsuarioModelos;
-using WebApiAdministrativa.Modelos.JuegoModelos;
+﻿using WebApiAdministrativa.Modelos.JuegoModelos;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using LogicaNegocio;
@@ -9,12 +8,15 @@ using IServices;
 namespace WebApiAdministrativa.Controllers
 {
     [Route("administrativo/juegos")]
+    [ApiController]
     public class JuegoController : ControllerBase
     {
-        private IJuegoService servicioJuego;
-        private const string juegoExistente = "Ya existe juego";
-        private const string juegoInexistente = "No existe juego";
         private const string noExisteJuegoUsuario = "No existe juego y/o usuario";
+        private const string juegoInexistente = "No existe juego";
+        private const string juegoExistente = "Ya existe juego";
+
+        private IJuegoService servicioJuego;
+
         public JuegoController(IJuegoService servicioJuego)
         {
             this.servicioJuego = servicioJuego;
@@ -29,6 +31,15 @@ namespace WebApiAdministrativa.Controllers
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoExistente));
         }
 
+        [HttpPut("{tituloJuego}")]
+        public async Task<ActionResult> Put([FromRoute] string tituloJuego, [FromBody] JuegoEntrada juegoNuevo)
+        {
+            Juego juegoModificado = await servicioJuego.ModificarJuego(tituloJuego, JuegoEntrada.ModeloADominio(juegoNuevo));
+
+            return (juegoModificado != null) ? (StatusCode((int)HttpStatusCode.OK, juegoModificado)) :
+                (StatusCode((int)HttpStatusCode.BadRequest, juegoModificado));
+        }
+
         [HttpDelete("{tituloJuego}")]
         public async Task<ActionResult> Delete([FromRoute] string tituloJuego)
         {
@@ -38,28 +49,17 @@ namespace WebApiAdministrativa.Controllers
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));
         }
 
-        /*
-        [HttpPut("{tituloJuego}")]
-        public async Task<ActionResult> Update([FromRoute] string tituloJuego, [FromBody] JuegoEntrada juegoModificado)
+        [HttpPost("{tituloJuego}/usuarios/{nombreUsuario}")]
+        public async Task<ActionResult> PostJuegoUsuario([FromRoute] string tituloJuego, [FromRoute] string nombreUsuario)
         {
-            bool eliminado = await servicioJuego.(tituloJuego);
-
-            return (eliminado == true) ? (StatusCode((int)HttpStatusCode.NoContent, "")) :
-                (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));
-        }*/
-
-        [HttpPost("{tituloJuego}")]
-        public async Task<ActionResult> Delete([FromRoute] string tituloJuego, [FromBody] UsuarioEntradaSalida usuario)
-        {
-            Juego juego = await servicioJuego.AdquirirJuegoPorUsuario(tituloJuego, UsuarioEntradaSalida.ModeloADominio(usuario));
-            bool eliminado = await servicioJuego.EliminarJuego(tituloJuego);
+            Juego juego = await servicioJuego.AdquirirJuegoPorUsuario(tituloJuego, new Usuario(nombreUsuario));
 
             return (juego != null) ? (StatusCode((int)HttpStatusCode.Created, juego)) :
                 (StatusCode((int)HttpStatusCode.BadRequest, noExisteJuegoUsuario));
         }
 
         [HttpDelete("{tituloJuego}/desasociarJuego/{usuarioName}")]
-        public async Task<ActionResult> DeleteJuego([FromRoute] string tituloJuego, [FromRoute] string usuarioName)
+        public async Task<ActionResult> DeleteJuegoUsuario([FromRoute] string tituloJuego, [FromRoute] string usuarioName)
         {
             bool desasocia = await servicioJuego.DesasociarJuegoAUsuario(tituloJuego, new Usuario(usuarioName));
 
@@ -67,14 +67,5 @@ namespace WebApiAdministrativa.Controllers
                 (StatusCode((int)HttpStatusCode.BadRequest, desasocia));
         }
 
-        [HttpPut("{tituloJuego}")]
-        public async Task<ActionResult> Put([FromRoute] string tituloJuego, [FromBody] JuegoEntrada juegoNuevo)
-        {
-            Juego juegoModificado = await servicioJuego.ModificarJuego(tituloJuego, JuegoEntrada.ModeloADominio(juegoNuevo));
-
-            return (juegoModificado != null) ? (StatusCode((int)HttpStatusCode.OK, juegoModificado)) :
-                (StatusCode((int)HttpStatusCode.BadRequest, juegoModificado));
-        }
     }
-   
 }

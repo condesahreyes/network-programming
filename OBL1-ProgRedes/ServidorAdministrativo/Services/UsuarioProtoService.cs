@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using LogicaNegocio;
+using IRepositorio;
 using Grpc.Core;
 
 namespace ServidorAdministrativo.Services
@@ -8,18 +9,18 @@ namespace ServidorAdministrativo.Services
     public class UsuarioProtoService : ServicioUsuario.ServicioUsuarioBase
     {
         LogServices logServices;
-        Persistencia persistencia;
+        IRepositorioUsuario repositorioUsuario;
 
-        public UsuarioProtoService(LogServices logServices)
+        public UsuarioProtoService(LogServices logServices, IRepositorioUsuario repositorioUsuario)
         {
             this.logServices = logServices;
-            this.persistencia = Persistencia.ObtenerPersistencia();
+            this.repositorioUsuario = repositorioUsuario;
         }
 
         public override async Task<RespuestaProto> AltaUsuario(UsuarioProto request, ServerCallContext context)
         {
             Usuario usuario = new Usuario(request.Nombre);
-            this.persistencia.usuarios.Add(usuario);
+            repositorioUsuario.AgregarUsuario(usuario);
 
             this.logServices.SendMessages("usuario " + request.Nombre + " dado de alta");
             return await Task.FromResult(new RespuestaProto
@@ -30,7 +31,7 @@ namespace ServidorAdministrativo.Services
 
         public override async Task<UsuariosProto> ObtenerUsuarios(MensajeVacio request, ServerCallContext context)
         {
-            List<Usuario> usuariosDominio = this.persistencia.usuarios;
+            List<Usuario> usuariosDominio = repositorioUsuario.ObtenerUsuarios();
 
             UsuariosProto usuarios = new UsuariosProto();
 
@@ -42,13 +43,7 @@ namespace ServidorAdministrativo.Services
 
         public override async Task<MensajeVacio> ActualizarAUsuarioActivo(UsuarioProto request, ServerCallContext context)
         {
-            List<Usuario> misUsuarios = this.persistencia.usuarios;
-            foreach (var usuario in misUsuarios)
-                if (request.Nombre == usuario.NombreUsuario)
-                {
-                    usuario.UsuarioActivo = true;
-                    return await Task.FromResult(new MensajeVacio() { });
-                }
+            repositorioUsuario.ActualizarEstadoUsuario(request.Nombre, true);
 
             this.logServices.SendMessages("usuario " + request.Nombre + " inicio sesión");
             return await Task.FromResult(new MensajeVacio() { });
@@ -56,13 +51,7 @@ namespace ServidorAdministrativo.Services
 
         public override async Task<MensajeVacio> ActualizarAUsuarioInactivo(UsuarioProto request, ServerCallContext context)
         {
-            List<Usuario> misUsuarios = this.persistencia.usuarios;
-            foreach (var usuario in misUsuarios)
-                if (request.Nombre == usuario.NombreUsuario)
-                {
-                    usuario.UsuarioActivo = false;
-                    return await Task.FromResult(new MensajeVacio() { });
-                }
+            repositorioUsuario.ActualizarEstadoUsuario(request.Nombre, false);
 
             this.logServices.SendMessages("usuario " + request.Nombre + " cerro sesión");
             return await Task.FromResult(new MensajeVacio() { });
@@ -70,29 +59,21 @@ namespace ServidorAdministrativo.Services
 
         public override async Task<BoolProto> EliminarUsuario(UsuarioProto request, ServerCallContext context)
         {
-            List<Usuario> misUsuarios = this.persistencia.usuarios;
-            foreach (var usuario in misUsuarios)
-                if (request.Nombre == usuario.NombreUsuario && usuario.UsuarioActivo==false)
-                {
-                    this.persistencia.usuarios.Remove(usuario);
-                    return await Task.FromResult(new BoolProto() { Estado=true });
-                }
+            bool eliminado = repositorioUsuario.EliminarUsuario(request.Nombre);
 
-            this.logServices.SendMessages("usuario " + request.Nombre + " eliminado");
-            return await Task.FromResult(new BoolProto() { Estado = false });
+            if(eliminado)
+                this.logServices.SendMessages("usuario " + request.Nombre + " eliminado");
+
+            return await Task.FromResult(new BoolProto() { Estado = eliminado });
         }
 
         public override async Task<MensajeVacio> ModificarUsuario(UsuarioModificacionProto request, ServerCallContext context)
         {
-            List<Usuario> misUsuarios = this.persistencia.usuarios;
-            foreach (var usuario in misUsuarios)
-                if (request.Nombre == usuario.NombreUsuario)
-                {
-                    usuario.NombreUsuario = request.NombreModificado;
-                    return await Task.FromResult(new MensajeVacio() { });
-                }
+            bool modificado = repositorioUsuario.ModificarUsuario(request.Nombre, request.NombreModificado);
 
-            this.logServices.SendMessages("usuario " + request.Nombre + " modificado");
+            if(modificado)
+                this.logServices.SendMessages("usuario " + request.Nombre + " modificado");
+
             return await Task.FromResult(new MensajeVacio() { });
         }
     }

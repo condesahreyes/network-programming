@@ -1,9 +1,9 @@
-﻿using IServices;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using LogicaNegocio;
+using IServices;
 using Servicios;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Servidor.Logica
 {

@@ -21,3 +21,7 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.csproj.CopyComplete
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\IRepositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\IRepositorio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Repositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Repositorio.pdb

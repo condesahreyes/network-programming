@@ -1,6 +1,6 @@
-﻿using LogicaNegocio;
+﻿using System.Collections.Generic;
 using ServidorAdministrativo;
-using System.Collections.Generic;
+using LogicaNegocio;
 
 namespace Servicios.Mappers
 {
@@ -17,18 +17,7 @@ namespace Servicios.Mappers
             List<UsuarioProto> usuariosProto = new List<UsuarioProto>();
 
             foreach (var usu in proto.Usuario)
-                usuarios.Add(MapperUsuario.MapearProtoUsuario(usu));
-
-            return usuarios;
-        }
-
-        public static UsuariosProto MapearUsuariosProto(List<Usuario> misUsuarios)
-        {
-            List<Usuario> usuariosDominio = misUsuarios;
-
-            UsuariosProto usuarios = new UsuariosProto();
-
-            usuariosDominio.ForEach(x => usuarios.Usuario.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
+                usuarios.Add(MapearProtoUsuario(usu));
 
             return usuarios;
         }

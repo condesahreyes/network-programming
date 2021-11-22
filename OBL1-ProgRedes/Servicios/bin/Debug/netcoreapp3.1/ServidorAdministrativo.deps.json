@@ -33,7 +33,9 @@
         "dependencies": {
           "Dominio": "1.0.0",
           "Grpc.AspNetCore": "2.32.0",
+          "IRepositorio": "1.0.0",
           "RabbitMQ.Client": "6.2.2",
+          "Repositorio": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -513,6 +515,29 @@
         },
         "compile": {
           "Dominio.dll": {}
+        }
+      },
+      "IRepositorio/1.0.0": {
+        "dependencies": {
+          "Dominio": "1.0.0"
+        },
+        "runtime": {
+          "IRepositorio.dll": {}
+        },
+        "compile": {
+          "IRepositorio.dll": {}
+        }
+      },
+      "Repositorio/1.0.0": {
+        "dependencies": {
+          "Dominio": "1.0.0",
+          "IRepositorio": "1.0.0"
+        },
+        "runtime": {
+          "Repositorio.dll": {}
+        },
+        "compile": {
+          "Repositorio.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -2378,6 +2403,16 @@
       "hashPath": "system.threading.channels.4.7.1.nupkg.sha512"
     },
     "Dominio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IRepositorio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repositorio/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

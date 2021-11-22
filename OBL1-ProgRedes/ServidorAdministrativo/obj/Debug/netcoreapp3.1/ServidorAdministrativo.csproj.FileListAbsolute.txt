@@ -31,3 +31,7 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Deb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.genruntimeconfig.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\IRepositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\IRepositorio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Repositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Repositorio.pdb

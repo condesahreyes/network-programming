@@ -52,6 +52,33 @@ namespace LogicaNegocio
             return CreacionDeJuego();
         }
 
+        public static void MostrarMensaje(string mensaje)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n" + mensaje);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public override string ToString()
+        {
+            string calificaciones = "";
+            int enumerado = 0;
+
+            foreach (Calificacion unaCalificacion in this.calificaciones)
+            {
+                enumerado++;
+                calificaciones += enumerado + ". " + unaCalificacion.ToString() + "\n";
+            }
+
+            if (calificaciones != "")
+                return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " +
+                    Sinopsis + "\n" + "Calificaciones: " + "\n" + calificaciones;
+            else
+                return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " +
+                    Sinopsis + "\n" + "Calificaciones: Aun no ha sido calificado";
+        }
+
+
         private static Juego CreacionDeJuego()
         {
             MostrarMensaje("Ingrese titulo del juego:");
@@ -94,32 +121,6 @@ namespace LogicaNegocio
                 }
             }
             return caratula;
-        }
-
-        public static void MostrarMensaje(string mensaje)
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\n" + mensaje);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
-        public override string ToString()
-        {
-            string calificaciones = "";
-            int enumerado = 0;
-
-            foreach (Calificacion unaCalificacion in this.calificaciones)
-            {
-                enumerado++;
-                calificaciones += enumerado + ". " + unaCalificacion.ToString() + "\n";
-            }
-
-            if(calificaciones != "")
-                return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " + 
-                    Sinopsis + "\n" + "Calificaciones: " + "\n" + calificaciones;
-            else
-                return "Titulo: " + Titulo + " - Genero: " + Genero + " - Sinopsis: " +
-                    Sinopsis + "\n" + "Calificaciones: Aun no ha sido calificado";
         }
 
     }

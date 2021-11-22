@@ -371,6 +371,19 @@
           "bin/placeholder/Dominio.dll": {}
         }
       },
+      "IRepositorio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/IRepositorio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/IRepositorio.dll": {}
+        }
+      },
       "IServices/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -397,6 +410,20 @@
           "bin/placeholder/Protocolo.dll": {}
         }
       },
+      "Repositorio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Dominio": "1.0.0",
+          "IRepositorio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repositorio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repositorio.dll": {}
+        }
+      },
       "Servicios/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -420,7 +447,9 @@
         "dependencies": {
           "Dominio": "1.0.0",
           "Grpc.AspNetCore": "2.32.0",
-          "RabbitMQ.Client": "6.2.2"
+          "IRepositorio": "1.0.0",
+          "RabbitMQ.Client": "6.2.2",
+          "Repositorio": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ServidorAdministrativo.dll": {}
@@ -1044,6 +1073,11 @@
       "path": "../Dominio/Dominio.csproj",
       "msbuildProject": "../Dominio/Dominio.csproj"
     },
+    "IRepositorio/1.0.0": {
+      "type": "project",
+      "path": "../IRepositorio/IRepositorio.csproj",
+      "msbuildProject": "../IRepositorio/IRepositorio.csproj"
+    },
     "IServices/1.0.0": {
       "type": "project",
       "path": "../IServices/IServices.csproj",
@@ -1053,6 +1087,11 @@
       "type": "project",
       "path": "../Protocolo/Protocolo.csproj",
       "msbuildProject": "../Protocolo/Protocolo.csproj"
+    },
+    "Repositorio/1.0.0": {
+      "type": "project",
+      "path": "../Repositorio/Repositorio.csproj",
+      "msbuildProject": "../Repositorio/Repositorio.csproj"
     },
     "Servicios/1.0.0": {
       "type": "project",

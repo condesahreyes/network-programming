@@ -41,3 +41,7 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.genruntimeconfig.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\IRepositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\IRepositorio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\Repositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\Repositorio.pdb

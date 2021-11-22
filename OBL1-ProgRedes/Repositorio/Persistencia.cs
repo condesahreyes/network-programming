@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using LogicaNegocio;
 
-namespace ServidorAdministrativo
+namespace Repositorio
 {
     public class Persistencia
     {
