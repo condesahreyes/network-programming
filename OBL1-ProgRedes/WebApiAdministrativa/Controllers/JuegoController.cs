@@ -35,15 +35,15 @@ namespace WebApiAdministrativa.Controllers
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));
         }
 
-        /*
-        [HttpDelete("{tituloJuego}")]
-        public async Task<ActionResult> Update([FromRoute] string tituloJuego, [FromBody] )
+        
+        [HttpPut("{tituloJuego}")]
+        public async Task<ActionResult> Update([FromRoute] string tituloJuego, [FromBody] JuegoEntrada juegoModificado)
         {
-            bool eliminado = await servicioJuego.EliminarJuego(tituloJuego);
+            bool eliminado = await servicioJuego.(tituloJuego);
 
             return (eliminado == true) ? (StatusCode((int)HttpStatusCode.NoContent, "")) :
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));
-        }*/
+        }
 
     }
    
