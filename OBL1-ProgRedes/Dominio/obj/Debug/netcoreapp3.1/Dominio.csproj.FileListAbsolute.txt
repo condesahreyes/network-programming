@@ -1,6 +1,7 @@
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\Dominio.deps.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\Dominio.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.AssemblyReference.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfoInputs.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfo.cs

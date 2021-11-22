@@ -1,7 +1,3 @@
 is_global = true
 build_property.RootNamespace = WebApiAdministrativa
-<<<<<<< HEAD
-build_property.ProjectDir = C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\
-=======
 build_property.ProjectDir = C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\
->>>>>>> feature/CorrecionDeLogicaJuego

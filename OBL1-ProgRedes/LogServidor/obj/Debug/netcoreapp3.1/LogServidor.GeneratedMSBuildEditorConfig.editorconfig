@@ -1,7 +1,3 @@
 is_global = true
 build_property.RootNamespace = LogServidor
-<<<<<<< HEAD
-build_property.ProjectDir = C:\Users\jpercivale\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\
-=======
 build_property.ProjectDir = C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\
->>>>>>> feature/CorrecionDeLogicaJuego

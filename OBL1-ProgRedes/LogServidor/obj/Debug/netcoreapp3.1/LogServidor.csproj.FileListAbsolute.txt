@@ -8,6 +8,7 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\bin\Debug\netcorea
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\bin\Debug\netcoreapp3.1\LogServidor.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\obj\Debug\netcoreapp3.1\LogServidor.csproj.AssemblyReference.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\obj\Debug\netcoreapp3.1\LogServidor.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\obj\Debug\netcoreapp3.1\LogServidor.AssemblyInfoInputs.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\LogServidor\obj\Debug\netcoreapp3.1\LogServidor.AssemblyInfo.cs

@@ -1,19 +1,12 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "Fnob1Q7i9tjvt630x4yLLSOlYzS9LOMjv+OaTG+whafkSp4zVSC2YHpdZ9WIGIFFiUgMdQW74iF7w/LlZ2ouKg==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
-=======
   "dgSpecHash": "e9U1xXWDHITe1pqcUGSCyYgN1V/oTDY4OzKle/8CxKKhQwLbaqrbK7+5Tc1wvXAn1qGXBblaRccF6rarD8Hl8Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
->>>>>>> feature/CorrecionDeLogicaJuego
   "expectedPackageFiles": [
-    "C:\\Users\\jpercivale\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512",
-    "C:\\Users\\jpercivale\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.19\\microsoft.netcore.app.host.win-x64.3.1.19.nupkg.sha512"
+    "C:\\Users\\hreye\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
+    "C:\\Users\\hreye\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\hreye\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
   ],
   "logs": []
 }
