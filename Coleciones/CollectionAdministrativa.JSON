@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "f19dd8df-a162-4d23-bf57-db543a2dbb92",
+		"name": "Administrativo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "Alta de usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NombreUsuario\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5002/administrativo/usuarios",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NombreUsuario\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5002/administrativo/usuarios/{nombreUsuario}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"usuarios",
+								"{nombreUsuario}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5002/administrativo/usuarios",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5002/administrativo/usuarios/{tituloJuego}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"usuarios",
+								"{tituloJuego}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "juego",
+			"item": [
+				{
+					"name": "Obtener juegos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5002/administrativo/juegos",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"juegos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear juego",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\": \"\",\r\n    \"Genero\": \"\",\r\n    \"Sinopsis\": \"\",\r\n    \"Caratula\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5002/administrativo/juegos",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"juegos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar juego",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Genero\": \"\",\r\n    \"Sinopsis\": \"\",\r\n    \"Caratula\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5002/administrativo/juegos/{tituloJuego}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"juegos",
+								"{tituloJuego}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar juego",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5002/administrativo/juegos/{tituloJuego}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"juegos",
+								"{tituloJuego}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar juego a usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5002/administrativo/juegos/{tituloJuego}/usuarios/{nombreUsuario}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"juegos",
+								"{tituloJuego}",
+								"usuarios",
+								"{nombreUsuario}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desasociar juego usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5002/administrativo/juegos/{tituloJuego}/usuarios/{nombreUsuario}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"administrativo",
+								"juegos",
+								"{tituloJuego}",
+								"usuarios",
+								"{nombreUsuario}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
