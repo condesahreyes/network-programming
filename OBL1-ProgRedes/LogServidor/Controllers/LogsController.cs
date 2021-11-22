@@ -15,7 +15,7 @@ namespace LogServidor.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetLogs([FromQuery(Name ="usuario")] string usuario, 
+        public ActionResult ObtenerLogs([FromQuery(Name ="usuario")] string usuario, 
             [FromQuery(Name = "juego")] string juego, [FromQuery(Name = "fecha")] string fecha)
         {
             List<string> logs = persistencia.ObtenerLogs(fecha, usuario, juego);

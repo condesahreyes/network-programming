@@ -11,34 +11,34 @@ namespace LogServidor
     {
         private readonly IModel _canal;
         private PersistenciaLog _persistenciaLog;
-        private string _queueName;
+        private string _colaNombre;
 
-        public ColaServicio(IModel canal, PersistenciaLog persisteniaLog, string queueName)
+        public ColaServicio(IModel canal, PersistenciaLog persisteniaLog, string colaNombre)
         {
             this._canal = canal;
             this._persistenciaLog = persisteniaLog;
-            this._queueName = queueName;
+            this._colaNombre = colaNombre;
             RecibirLogs();
         }
 
         private void RecibirLogs()
         {
-            var consumer = new EventingBasicConsumer(this._canal);
+            var consumidor = new EventingBasicConsumer(this._canal);
 
             Task.Run(() =>
             {
-                consumer.Received += (model, ea) =>
+                consumidor.Received += (model, ea) =>
                 {
-                    var body = ea.Body.ToArray();
-                    var message = Encoding.UTF8.GetString(body);
-                    this._persistenciaLog.AgregarLog(message);
-                    Console.WriteLine(message);
+                    var cuerpoMensaje = ea.Body.ToArray();
+                    var mensaje = Encoding.UTF8.GetString(cuerpoMensaje);
+                    this._persistenciaLog.AgregarLog(mensaje);
+                    Console.WriteLine(mensaje);
                 };
 
                 this._canal.BasicConsume(
-                                queue: this._queueName,
+                                queue: this._colaNombre,
                                 autoAck: true,
-                                consumer: consumer);
+                                consumer: consumidor);
             });
 
         }

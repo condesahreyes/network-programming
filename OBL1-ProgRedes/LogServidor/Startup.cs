@@ -24,16 +24,16 @@ namespace LogServidor
             services.AddControllers();
             persistenciaLog = PersistenciaLog.ObtenerPersistencia();
 
-            var queueHostname = Configuration.GetSection("Queue:Hostname").Value;
+            var colaHosname = Configuration.GetSection("Queue:Hostname").Value;
             var nombreCola = Configuration.GetSection("Queue:Name").Value;
 
-            var factory = new ConnectionFactory() { HostName = queueHostname };
+            var factory = new ConnectionFactory() { HostName = colaHosname };
             IConnection conexion = factory.CreateConnection();
             IModel canal = conexion.CreateModel();
 
             canal.QueueDeclare(nombreCola, false , false, false, null);
-            ColaServicio queueService = new ColaServicio(canal, persistenciaLog, nombreCola);
-            services.AddSingleton<ColaServicio>(queueService);
+            ColaServicio colaServicio = new ColaServicio(canal, persistenciaLog, nombreCola);
+            services.AddSingleton<ColaServicio>(colaServicio);
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
