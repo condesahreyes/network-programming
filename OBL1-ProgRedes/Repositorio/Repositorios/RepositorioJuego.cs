@@ -15,13 +15,15 @@ namespace Repositorio.Repositorios
 
         public bool AgregarCalificacion(Calificacion calificacion)
         {
-            Juego juego = JuegoPorTitulo(calificacion.TituloJuego);
+                Juego juego = JuegoPorTitulo(calificacion.TituloJuego);
 
-            if (juego == null)
-                return false;
+                if (juego == null)
+                    return false;
 
-            juego.calificaciones.Add(calificacion);
-
+            lock (persistencia.juegos)
+            {
+                juego.calificaciones.Add(calificacion);
+            }
             return true;
         }
 
@@ -32,8 +34,10 @@ namespace Repositorio.Repositorios
             if (juego == null)
                 return false;
 
-            this.persistencia.juegos.Remove(juego);
-
+            lock (persistencia.juegos)
+            {
+                this.persistencia.juegos.Remove(juego);
+            }
             return true;
         }
 
@@ -43,28 +47,37 @@ namespace Repositorio.Repositorios
             if (juego == null)
                 return false;
 
-            this.persistencia.juegos.Add(juego);
+            lock (persistencia.juegos)
+            {
+                this.persistencia.juegos.Add(juego);
+            }
             return true;
         }
 
         public List<Juego> ObtenerJuegos()
         {
-            return this.persistencia.juegos;
+            lock (persistencia.juegos)
+            {
+                return this.persistencia.juegos;
+            }
         }
 
         public bool DesasociarJuegoUsuario(string tituloJuego, string nombreUsuario)
         {
-            Juego juego = JuegoPorTitulo(tituloJuego);
+            lock (persistencia.juegos)
+            {
+                Juego juego = JuegoPorTitulo(tituloJuego);
 
-            if (juego == null)
-                return false;
+                if (juego == null)
+                    return false;
 
-            foreach (Usuario usuario in juego.usuarios)
-                if(usuario.NombreUsuario == nombreUsuario)
-                {
-                    juego.usuarios.Remove(usuario);
-                    return true;
-                }
+                foreach (Usuario usuario in juego.usuarios)
+                    if (usuario.NombreUsuario == nombreUsuario)
+                    {
+                        juego.usuarios.Remove(usuario);
+                        return true;
+                    }
+            }
 
             return false;
         }
@@ -77,8 +90,10 @@ namespace Repositorio.Repositorios
             if (juego == null || usuario == null)
                 return null;
 
-            juego.usuarios.Add(usuario);
-
+            lock (persistencia.juegos)
+            {
+                juego.usuarios.Add(usuario);
+            }
             return juego;
         }
 
@@ -98,12 +113,18 @@ namespace Repositorio.Repositorios
 
         private Usuario ObtenerUsuario(string nombreUsuario)
         {
-            return this.persistencia.usuarios.Find(x => x.NombreUsuario == nombreUsuario);
+            lock (persistencia.juegos)
+            {
+                return this.persistencia.usuarios.Find(x => x.NombreUsuario == nombreUsuario);
+            }
         }
 
         private Juego JuegoPorTitulo(string tituloJuego)
         {
-            return this.persistencia.juegos.Find(x => x.Titulo.Equals(tituloJuego));
+            lock (persistencia.juegos)
+            {
+                return this.persistencia.juegos.Find(x => x.Titulo.Equals(tituloJuego));
+            }
         }
 
     }

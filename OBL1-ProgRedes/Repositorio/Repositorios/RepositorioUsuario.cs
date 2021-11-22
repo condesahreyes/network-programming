@@ -15,45 +15,59 @@ namespace Repositorio
 
         public void AgregarUsuario(Usuario usuario)
         {
-            this.persistencia.usuarios.Add(usuario);
+            lock (persistencia.juegos)
+            {
+                this.persistencia.usuarios.Add(usuario);
+            }
         }
 
         public List<Usuario> ObtenerUsuarios()
         {
-            return this.persistencia.usuarios;
+            lock (persistencia.juegos)
+            {
+                return this.persistencia.usuarios;
+            }
         }
 
         public void ActualizarEstadoUsuario(string nombreUsuario, bool estado)
         {
-            foreach (var usuario in this.persistencia.usuarios)
-                if (nombreUsuario == usuario.NombreUsuario)
-                {
-                    usuario.UsuarioActivo = estado;
-                    return;
-                }
+            lock (persistencia.juegos)
+            {
+                foreach (var usuario in this.persistencia.usuarios)
+                    if (nombreUsuario == usuario.NombreUsuario)
+                    {
+                        usuario.UsuarioActivo = estado;
+                        return;
+                    }
+            }
         }
 
         public bool EliminarUsuario(string nombreUsuario)
         {
-            foreach (var usuario in this.persistencia.usuarios)
-                if (nombreUsuario == usuario.NombreUsuario && usuario.UsuarioActivo == false)
-                {
-                    this.persistencia.usuarios.Remove(usuario);
-                    return true;
-                }
+            lock (persistencia.juegos)
+            {
+                foreach (var usuario in this.persistencia.usuarios)
+                    if (nombreUsuario == usuario.NombreUsuario && usuario.UsuarioActivo == false)
+                    {
+                        this.persistencia.usuarios.Remove(usuario);
+                        return true;
+                    }
+            }
 
             return false;
         }
 
         public bool ModificarUsuario(string nombreUsuario, string nombreUsuarioModificado)
         {
-            foreach (var usuario in this.persistencia.usuarios)
-                if (nombreUsuario == usuario.NombreUsuario && usuario.UsuarioActivo == false)
-                {
-                    usuario.NombreUsuario = nombreUsuarioModificado;
-                    return true;
-                }
-
+            lock (persistencia.juegos)
+            {
+                foreach (var usuario in this.persistencia.usuarios)
+                    if (nombreUsuario == usuario.NombreUsuario && usuario.UsuarioActivo == false)
+                    {
+                        usuario.NombreUsuario = nombreUsuarioModificado;
+                        return true;
+                    }
+            }
             return false;
         }
     }
