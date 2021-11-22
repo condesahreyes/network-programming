@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+option csharp_namespace = "ServidorAdministrativo.Protos";
+
+package juegoProtoService;
+
+service ServicioJuego {
+	rpc AgregarJuegos(JuegoProto) returns (ProtoBool);
+	rpc ObtenerJuegos(MensajeVacio) returns (JuegosProto);
+	rpc EsJuegoExistente(JuegoProto) returns(ProtoBool);
+	rpc BuscarJuegoPortTitulo(Mensaje) returns(JuegoProto);
+	rpc JuegoUsuarios(ProtoUsuario) returns(JuegosProto);
+	rpc BuscarJuegoPorGenero(Mensaje) returns(JuegosProto);
+	rpc VerCatalogo(MensajeVacio) returns(MensajeVacio);
+	rpc AdquirirJuegoPorUsuario(JuegoPorUsuarioProto) returns(JuegoProto);
+	rpc BuscarJuegoPorCalificacion(MensajeInt) returns(JuegosProto);
+	rpc EliminarJuego(Mensaje) returns(ProtoBool);
+	rpc AgregarCalificacion(CalificacionProto) returns(ProtoBool);
+	rpc ModificarJuego(JuegoModificarProto) returns(JuegoProto); 
+	rpc DesasociarJuegoUsuario(JuegoPorUsuarioProto) returns (ProtoBool);
+}
+
+message MensajeVacio { }
+
+message JuegosProto{
+	repeated JuegoProto juego = 1;
+}
+
+message JuegoModificarProto{
+	string tituloJuego = 1;
+	JuegoProto juegoModificado = 2;
+}
+
+message JuegoProto {
+  int32 ranking = 1;
+  int32 notas = 2;  
+  string titulo = 3;
+  string sinposis = 4;
+  string Caratula = 5;
+  string Genero = 6;
+  ProtoUsuarios usuarios = 7;
+  CalificacionesProto calificaciones = 8;
+}
+
+message ProtoUsuarios{
+	repeated ProtoUsuario usuarios = 1;
+}
+
+message ProtoBool{
+	bool boolProto = 1;
+}
+
+message CalificacionesProto{
+	repeated CalificacionProto calificaciones = 8;
+}
+
+message CalificacionProto{
+	string comentario = 1;
+	string usuario = 2;
+	string tituloJuegoo = 3;
+	int32 nota = 4;
+}
+
+message Mensaje{ 
+	string mensaje = 1;
+}
+
+message MensajeInt{ 
+	int32 mensaje = 1;
+}
+
+message JuegoPorUsuarioProto{
+	string tituloJuego = 1;
+	string nombreUsuario=2;
+}
+
+message ProtoUsuario{
+	string nombre =1;
+}
+
+message GeneroProto{
+	string generoProto = 1;
+}

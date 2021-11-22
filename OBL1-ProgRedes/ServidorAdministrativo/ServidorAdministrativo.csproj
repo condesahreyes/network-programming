@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\juegoProto.proto" />
+    <None Remove="Protos\userProto.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IRepositorio\IRepositorio.csproj" />
+    <ProjectReference Include="..\Repositorio\Repositorio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\juegoProto.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\userProto.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+</Project>

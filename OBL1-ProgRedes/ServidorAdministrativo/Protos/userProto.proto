@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option csharp_namespace = "ServidorAdministrativo";
+
+package userProtoService;
+
+service ServicioUsuario {
+	rpc AltaUsuario (UsuarioProto) returns (RespuestaProto);
+	rpc ObtenerUsuarios(MensajeVacio) returns (UsuariosProto);
+	rpc ActualizarAUsuarioActivo(UsuarioProto) returns (MensajeVacio);
+	rpc ActualizarAUsuarioInactivo(UsuarioProto) returns (MensajeVacio);
+	rpc EliminarUsuario(UsuarioProto) returns (BoolProto);
+	rpc ModificarUsuario(UsuarioModificacionProto) returns(BoolProto);
+}
+
+message MensajeVacio { }
+
+message UsuariosProto{
+	repeated UsuarioProto usuario = 1;
+}
+
+message UsuarioProto {
+  string nombre = 1;
+}
+
+message RespuestaProto {
+  string estado = 1;
+}
+
+message BoolProto {
+  bool estado = 1;
+}
+
+message UsuarioModificacionProto{
+	string nombre = 1;
+	string nombreModificado = 2;
+}
