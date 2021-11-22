@@ -14,6 +14,8 @@ namespace WebApiAdministrativa.Controllers
     {
         private const string usuarioModificado = "El usuario fue modificado correctamente";
         private const string noExisteUsuario = "El usuario no existe o esta activo";
+        private const string operacionExitosa = "Operacion exitosa";
+
 
         private IUsuarioService servicioUsuario;
 
@@ -38,9 +40,9 @@ namespace WebApiAdministrativa.Controllers
         }
 
         [HttpPut("{nombreUsuario}")]
-        public async Task<ActionResult> Put([FromRoute] string nombreUsuario, [FromBody] string nuevoNombre)
+        public async Task<ActionResult> Put([FromRoute] string nombreUsuario, [FromBody] UsuarioEntradaSalida nuevoUsuario)
         {
-            bool modifico = await servicioUsuario.ModificarUsuario(nombreUsuario, nuevoNombre);
+            bool modifico = await servicioUsuario.ModificarUsuario(nombreUsuario, nuevoUsuario.NombreUsuario);
             return (modifico==true)?(StatusCode((int)HttpStatusCode.OK, usuarioModificado)) :
                 (StatusCode((int)HttpStatusCode.BadRequest, noExisteUsuario));
         }
@@ -49,7 +51,7 @@ namespace WebApiAdministrativa.Controllers
         public async Task<ActionResult> Delete([FromRoute] string nombreUsuario)
         {
             bool elimino = await servicioUsuario.EliminarUsuario(nombreUsuario);
-            return (elimino==true)?(StatusCode((int)HttpStatusCode.OK, elimino)):
+            return (elimino==true)?(StatusCode((int)HttpStatusCode.NoContent, "")):
                 (StatusCode((int)HttpStatusCode.BadRequest, noExisteUsuario));
         }
     }

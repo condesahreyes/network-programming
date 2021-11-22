@@ -86,13 +86,23 @@ namespace Repositorio.Repositorios
         {
             Juego juego = JuegoPorTitulo(tituloJuego);
             Usuario usuario = ObtenerUsuario(nombreUsuario);
+            List<Usuario> usuarios = new List<Usuario>();
 
             if (juego == null || usuario == null)
                 return null;
 
             lock (persistencia.juegos)
             {
-                juego.usuarios.Add(usuario);
+                if(juego.usuarios == null)
+                {
+                    usuarios.Add(usuario);
+                    juego.usuarios = usuarios;
+
+                }
+                else
+                {
+                    juego.usuarios.Add(usuario);
+                }
             }
             return juego;
         }

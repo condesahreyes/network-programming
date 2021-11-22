@@ -39,7 +39,7 @@ namespace WebApiAdministrativa.Controllers
             Juego juegoModificado = await servicioJuego.ModificarJuego(tituloJuego, JuegoEntrada.ModeloADominio(juegoNuevo));
 
             return (juegoModificado != null) ? (StatusCode((int)HttpStatusCode.OK, juegoModificado)) :
-                (StatusCode((int)HttpStatusCode.BadRequest, juegoModificado));
+                (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));
         }
 
         [HttpDelete("{tituloJuego}")]
@@ -47,7 +47,7 @@ namespace WebApiAdministrativa.Controllers
         {
             bool eliminado = await servicioJuego.EliminarJuego(tituloJuego);
             
-            return (eliminado == true) ? (StatusCode((int)HttpStatusCode.NoContent, operacionExitosa)) : 
+            return (eliminado == true) ? (StatusCode((int)HttpStatusCode.NoContent, "")) : 
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));
         }
 
@@ -65,7 +65,7 @@ namespace WebApiAdministrativa.Controllers
         {
             bool desasocia = await servicioJuego.DesasociarJuegoAUsuario(tituloJuego, new Usuario(usuarioName));
 
-            return (desasocia == true) ? (StatusCode((int)HttpStatusCode.NoContent, operacionExitosa)) :
+            return (desasocia == true) ? (StatusCode((int)HttpStatusCode.NoContent, "")) :
                 (StatusCode((int)HttpStatusCode.BadRequest, noExisteJuegoUsuario));
         }
 

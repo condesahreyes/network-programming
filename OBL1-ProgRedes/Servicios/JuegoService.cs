@@ -61,8 +61,7 @@ namespace Servicios
 
         public async Task<List<Juego>> JuegoUsuarios(Usuario usuario)
         {
-            JuegosProto jugoRequest = await juegoProtoService.
-                JuegoUsuariosAsync(MapperJuego.MapearUsuarioProto(usuario));
+            JuegosProto jugoRequest = await juegoProtoService.JuegoUsuariosAsync(MapperJuego.MapearUsuarioProto(usuario));
             return await Task.FromResult(MapperJuego.MapperProtoJuegos(jugoRequest));
         }
 
@@ -122,7 +121,7 @@ namespace Servicios
             JuegoProto juegoGuardado = await juegoProtoService.
                 BuscarJuegoPortTituloAsync(new Mensaje { Mensaje_ = tituloJuego });
             
-            if (juegoGuardado == null)
+            if (juegoGuardado.Titulo == "" && juegoGuardado.Titulo != tituloJuego)
                 return null;
             JuegoModificarProto juegoProtoModificar = new JuegoModificarProto
             {
