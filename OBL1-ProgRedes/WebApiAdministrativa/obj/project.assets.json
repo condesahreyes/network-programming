@@ -348,7 +348,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Dominio": "1.0.0",
           "Grpc.AspNetCore": "2.32.0",
           "IRepositorio": "1.0.0",
           "RabbitMQ.Client": "6.2.2",
@@ -818,7 +817,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Dominio >= 1.0.0",
       "IServicios >= 1.0.0",
       "Servicios >= 1.0.0"
     ]
@@ -850,9 +848,6 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
-            },
             "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj": {
               "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj"
             },

@@ -2,8 +2,8 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\ServidorAdministrativo.runtimeconfig.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\ServidorAdministrativo.runtimeconfig.dev.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\ServidorAdministrativo.exe
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\AppSettings.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Servicios.deps.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Servicios.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Servicios.pdb
@@ -25,3 +25,9 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.csproj.CopyComplete
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\obj\Debug\netcoreapp3.1\Servicios.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Servicios.dll.config
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Microsoft.Data.Tools.Schema.Sql.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Microsoft.Data.Tools.Utilities.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Servicios\bin\Debug\netcoreapp3.1\Microsoft.SqlServer.TransactSql.ScriptDom.dll

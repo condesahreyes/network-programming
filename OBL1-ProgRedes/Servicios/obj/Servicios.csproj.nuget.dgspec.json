@@ -339,9 +339,6 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
-              },
               "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IRepositorio\\IRepositorio.csproj": {
                 "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IRepositorio\\IRepositorio.csproj"
               },

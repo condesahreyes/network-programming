@@ -14,6 +14,8 @@ namespace WebApiAdministrativa.Controllers
         private const string noExisteJuegoUsuario = "No existe juego y/o usuario";
         private const string juegoInexistente = "No existe juego";
         private const string juegoExistente = "Ya existe juego";
+        private const string operacionExitosa = "Operacion exitosa";
+
 
         private IJuegoService servicioJuego;
 
@@ -45,7 +47,7 @@ namespace WebApiAdministrativa.Controllers
         {
             bool eliminado = await servicioJuego.EliminarJuego(tituloJuego);
             
-            return (eliminado == true) ? (StatusCode((int)HttpStatusCode.NoContent, "")) : 
+            return (eliminado == true) ? (StatusCode((int)HttpStatusCode.NoContent, operacionExitosa)) : 
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));
         }
 
@@ -58,13 +60,13 @@ namespace WebApiAdministrativa.Controllers
                 (StatusCode((int)HttpStatusCode.BadRequest, noExisteJuegoUsuario));
         }
 
-        [HttpDelete("{tituloJuego}/desasociarJuego/{usuarioName}")]
+        [HttpDelete("{tituloJuego}/usuarios/{usuarioName}")]
         public async Task<ActionResult> DeleteJuegoUsuario([FromRoute] string tituloJuego, [FromRoute] string usuarioName)
         {
             bool desasocia = await servicioJuego.DesasociarJuegoAUsuario(tituloJuego, new Usuario(usuarioName));
 
-            return (desasocia == true) ? (StatusCode((int)HttpStatusCode.OK, desasocia)) :
-                (StatusCode((int)HttpStatusCode.BadRequest, desasocia));
+            return (desasocia == true) ? (StatusCode((int)HttpStatusCode.NoContent, operacionExitosa)) :
+                (StatusCode((int)HttpStatusCode.BadRequest, noExisteJuegoUsuario));
         }
 
     }

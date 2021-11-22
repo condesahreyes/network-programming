@@ -1,3 +1,9 @@
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.csproj.AssemblyReference.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.AssemblyInfoInputs.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.AssemblyInfo.cs
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.csproj.CoreCompileInputs.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\ServidorAdministrativo.deps.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\ServidorAdministrativo.runtimeconfig.json
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\ServidorAdministrativo.runtimeconfig.dev.json
@@ -25,18 +31,12 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\Repositorio.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\Servicios.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\ServidorAdministrativo.dll
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\Dominio.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\IServicios.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\Servicios.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\Dominio.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\IRepositorio.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\Repositorio.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\ServidorAdministrativo.pdb
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.csproj.AssemblyReference.cache
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.AssemblyInfoInputs.cache
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.AssemblyInfo.cs
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.csproj.CoreCompileInputs.cache
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\staticwebassets\WebApiAdministrativa.StaticWebAssets.Manifest.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\staticwebassets\WebApiAdministrativa.StaticWebAssets.xml
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\scopedcss\bundle\WebApiAdministrativa.styles.css
@@ -45,3 +45,4 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\obj\Debug\netcoreapp3.1\WebApiAdministrativa.genruntimeconfig.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\WebApiAdministrativa\bin\Debug\netcoreapp3.1\Servicios.dll.config
