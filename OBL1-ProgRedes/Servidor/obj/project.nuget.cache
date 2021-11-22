@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/Dbo+Cg0MhAz3cfCHGo+FZg85A1Byrs6pUJtjzcVG1Y0ENnEpHb95VEopx0oVYOajnUxqYkM0c7EjfV2xys+EA==",
+  "dgSpecHash": "TCXDbrx2kLZBb3kkKz4yrzMWfp4inyGDyrH/SKcaS77JJ1P4K4mpdi444LjZ7/2wyU3CYb/gumSMW3Waoa2NRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hreye\\Desktop\\el ultimo merge\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hreye\\.nuget\\packages\\google.protobuf\\3.13.0\\google.protobuf.3.13.0.nupkg.sha512",
     "C:\\Users\\hreye\\.nuget\\packages\\grpc.aspnetcore\\2.32.0\\grpc.aspnetcore.2.32.0.nupkg.sha512",

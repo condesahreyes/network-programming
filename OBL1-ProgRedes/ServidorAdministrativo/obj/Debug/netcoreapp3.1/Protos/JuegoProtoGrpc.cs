@@ -51,6 +51,7 @@ namespace ServidorAdministrativo.Protos {
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto> __Marshaller_juegoProtoService_JuegoPorUsuarioProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.MensajeInt> __Marshaller_juegoProtoService_MensajeInt = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.MensajeInt.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.CalificacionProto> __Marshaller_juegoProtoService_CalificacionProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.CalificacionProto.Parser));
+    static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.JuegoModificarProto> __Marshaller_juegoProtoService_JuegoModificarProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.JuegoModificarProto.Parser));
 
     static readonly grpc::Method<global::ServidorAdministrativo.Protos.JuegoProto, global::ServidorAdministrativo.Protos.ProtoBool> __Method_AgregarJuegos = new grpc::Method<global::ServidorAdministrativo.Protos.JuegoProto, global::ServidorAdministrativo.Protos.ProtoBool>(
         grpc::MethodType.Unary,
@@ -129,6 +130,20 @@ namespace ServidorAdministrativo.Protos {
         __Marshaller_juegoProtoService_CalificacionProto,
         __Marshaller_juegoProtoService_ProtoBool);
 
+    static readonly grpc::Method<global::ServidorAdministrativo.Protos.JuegoModificarProto, global::ServidorAdministrativo.Protos.JuegoProto> __Method_ModificarJuego = new grpc::Method<global::ServidorAdministrativo.Protos.JuegoModificarProto, global::ServidorAdministrativo.Protos.JuegoProto>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ModificarJuego",
+        __Marshaller_juegoProtoService_JuegoModificarProto,
+        __Marshaller_juegoProtoService_JuegoProto);
+
+    static readonly grpc::Method<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto, global::ServidorAdministrativo.Protos.ProtoBool> __Method_DesasociarJuegoUsuario = new grpc::Method<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto, global::ServidorAdministrativo.Protos.ProtoBool>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DesasociarJuegoUsuario",
+        __Marshaller_juegoProtoService_JuegoPorUsuarioProto,
+        __Marshaller_juegoProtoService_ProtoBool);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -194,6 +209,16 @@ namespace ServidorAdministrativo.Protos {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task<global::ServidorAdministrativo.Protos.JuegoProto> ModificarJuego(global::ServidorAdministrativo.Protos.JuegoModificarProto request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::ServidorAdministrativo.Protos.ProtoBool> DesasociarJuegoUsuario(global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -211,7 +236,9 @@ namespace ServidorAdministrativo.Protos {
           .AddMethod(__Method_AdquirirJuegoPorUsuario, serviceImpl.AdquirirJuegoPorUsuario)
           .AddMethod(__Method_BuscarJuegoPorCalificacion, serviceImpl.BuscarJuegoPorCalificacion)
           .AddMethod(__Method_EliminarJuego, serviceImpl.EliminarJuego)
-          .AddMethod(__Method_AgregarCalificacion, serviceImpl.AgregarCalificacion).Build();
+          .AddMethod(__Method_AgregarCalificacion, serviceImpl.AgregarCalificacion)
+          .AddMethod(__Method_ModificarJuego, serviceImpl.ModificarJuego)
+          .AddMethod(__Method_DesasociarJuegoUsuario, serviceImpl.DesasociarJuegoUsuario).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -231,6 +258,8 @@ namespace ServidorAdministrativo.Protos {
       serviceBinder.AddMethod(__Method_BuscarJuegoPorCalificacion, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.MensajeInt, global::ServidorAdministrativo.Protos.JuegosProto>(serviceImpl.BuscarJuegoPorCalificacion));
       serviceBinder.AddMethod(__Method_EliminarJuego, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.Mensaje, global::ServidorAdministrativo.Protos.ProtoBool>(serviceImpl.EliminarJuego));
       serviceBinder.AddMethod(__Method_AgregarCalificacion, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.CalificacionProto, global::ServidorAdministrativo.Protos.ProtoBool>(serviceImpl.AgregarCalificacion));
+      serviceBinder.AddMethod(__Method_ModificarJuego, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.JuegoModificarProto, global::ServidorAdministrativo.Protos.JuegoProto>(serviceImpl.ModificarJuego));
+      serviceBinder.AddMethod(__Method_DesasociarJuegoUsuario, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto, global::ServidorAdministrativo.Protos.ProtoBool>(serviceImpl.DesasociarJuegoUsuario));
     }
 
   }

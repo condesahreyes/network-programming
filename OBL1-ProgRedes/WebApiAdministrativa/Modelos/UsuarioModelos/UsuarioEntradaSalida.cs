@@ -26,14 +26,6 @@ namespace WebApiAdministrativa.Modelos.UsuarioModelos
                 NombreUsuario = unUsuario.NombreUsuario
             };
         }
-        public static List<UsuarioEntradaSalida> ListarUsuarioModelo(List<Usuario> usuarios)
-        {
-            List<UsuarioEntradaSalida> usuariosModelo = new List<UsuarioEntradaSalida>();
-
-            usuarios.ForEach(u => usuariosModelo.Add(UsuarioEntradaSalida.DominioAModelo(u)));
-
-            return usuariosModelo;
-        }
 
         public static List<UsuarioEntradaSalida> ListarUsuarioModelo(List<Usuario> usuarios)
         {

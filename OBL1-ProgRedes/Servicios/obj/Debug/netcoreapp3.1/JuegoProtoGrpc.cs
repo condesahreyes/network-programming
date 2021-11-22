@@ -51,6 +51,7 @@ namespace ServidorAdministrativo.Protos {
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto> __Marshaller_juegoProtoService_JuegoPorUsuarioProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.MensajeInt> __Marshaller_juegoProtoService_MensajeInt = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.MensajeInt.Parser));
     static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.CalificacionProto> __Marshaller_juegoProtoService_CalificacionProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.CalificacionProto.Parser));
+    static readonly grpc::Marshaller<global::ServidorAdministrativo.Protos.JuegoModificarProto> __Marshaller_juegoProtoService_JuegoModificarProto = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ServidorAdministrativo.Protos.JuegoModificarProto.Parser));
 
     static readonly grpc::Method<global::ServidorAdministrativo.Protos.JuegoProto, global::ServidorAdministrativo.Protos.ProtoBool> __Method_AgregarJuegos = new grpc::Method<global::ServidorAdministrativo.Protos.JuegoProto, global::ServidorAdministrativo.Protos.ProtoBool>(
         grpc::MethodType.Unary,
@@ -127,6 +128,20 @@ namespace ServidorAdministrativo.Protos {
         __ServiceName,
         "AgregarCalificacion",
         __Marshaller_juegoProtoService_CalificacionProto,
+        __Marshaller_juegoProtoService_ProtoBool);
+
+    static readonly grpc::Method<global::ServidorAdministrativo.Protos.JuegoModificarProto, global::ServidorAdministrativo.Protos.JuegoProto> __Method_ModificarJuego = new grpc::Method<global::ServidorAdministrativo.Protos.JuegoModificarProto, global::ServidorAdministrativo.Protos.JuegoProto>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ModificarJuego",
+        __Marshaller_juegoProtoService_JuegoModificarProto,
+        __Marshaller_juegoProtoService_JuegoProto);
+
+    static readonly grpc::Method<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto, global::ServidorAdministrativo.Protos.ProtoBool> __Method_DesasociarJuegoUsuario = new grpc::Method<global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto, global::ServidorAdministrativo.Protos.ProtoBool>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DesasociarJuegoUsuario",
+        __Marshaller_juegoProtoService_JuegoPorUsuarioProto,
         __Marshaller_juegoProtoService_ProtoBool);
 
     /// <summary>Service descriptor</summary>
@@ -333,6 +348,38 @@ namespace ServidorAdministrativo.Protos {
       public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.ProtoBool> AgregarCalificacionAsync(global::ServidorAdministrativo.Protos.CalificacionProto request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_AgregarCalificacion, null, options, request);
+      }
+      public virtual global::ServidorAdministrativo.Protos.JuegoProto ModificarJuego(global::ServidorAdministrativo.Protos.JuegoModificarProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ModificarJuego(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::ServidorAdministrativo.Protos.JuegoProto ModificarJuego(global::ServidorAdministrativo.Protos.JuegoModificarProto request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ModificarJuego, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegoProto> ModificarJuegoAsync(global::ServidorAdministrativo.Protos.JuegoModificarProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ModificarJuegoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.JuegoProto> ModificarJuegoAsync(global::ServidorAdministrativo.Protos.JuegoModificarProto request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ModificarJuego, null, options, request);
+      }
+      public virtual global::ServidorAdministrativo.Protos.ProtoBool DesasociarJuegoUsuario(global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DesasociarJuegoUsuario(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::ServidorAdministrativo.Protos.ProtoBool DesasociarJuegoUsuario(global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DesasociarJuegoUsuario, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.ProtoBool> DesasociarJuegoUsuarioAsync(global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DesasociarJuegoUsuarioAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.Protos.ProtoBool> DesasociarJuegoUsuarioAsync(global::ServidorAdministrativo.Protos.JuegoPorUsuarioProto request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DesasociarJuegoUsuario, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override ServicioJuegoClient NewInstance(ClientBaseConfiguration configuration)

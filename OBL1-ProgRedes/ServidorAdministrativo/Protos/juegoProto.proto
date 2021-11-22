@@ -16,12 +16,19 @@ service ServicioJuego {
 	rpc BuscarJuegoPorCalificacion(MensajeInt) returns(JuegosProto);
 	rpc EliminarJuego(Mensaje) returns(ProtoBool);
 	rpc AgregarCalificacion(CalificacionProto) returns(ProtoBool);
+	rpc ModificarJuego(JuegoModificarProto) returns(JuegoProto); 
+	rpc DesasociarJuegoUsuario(JuegoPorUsuarioProto) returns (ProtoBool);
 }
 
 message MensajeVacio { }
 
 message JuegosProto{
 	repeated JuegoProto juego = 1;
+}
+
+message JuegoModificarProto{
+	string tituloJuego = 1;
+	JuegoProto juegoModificado = 2;
 }
 
 message JuegoProto {
