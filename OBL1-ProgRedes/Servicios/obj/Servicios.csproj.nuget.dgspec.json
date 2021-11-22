@@ -116,12 +116,12 @@
         }
       }
     },
-    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj": {
+    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
-        "projectName": "IServices",
-        "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj",
+        "projectName": "IServicios",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj",
         "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\obj\\",
         "projectStyle": "PackageReference",
@@ -262,8 +262,8 @@
               "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
                 "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
               },
-              "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj": {
-                "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj"
+              "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj": {
+                "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj"
               },
               "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj": {
                 "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\ServidorAdministrativo\\ServidorAdministrativo.csproj"

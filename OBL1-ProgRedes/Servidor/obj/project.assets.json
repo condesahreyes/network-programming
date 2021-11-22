@@ -384,17 +384,17 @@
           "bin/placeholder/IRepositorio.dll": {}
         }
       },
-      "IServices/1.0.0": {
+      "IServicios/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Dominio": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/IServices.dll": {}
+          "bin/placeholder/IServicios.dll": {}
         },
         "runtime": {
-          "bin/placeholder/IServices.dll": {}
+          "bin/placeholder/IServicios.dll": {}
         }
       },
       "Protocolo/1.0.0": {
@@ -431,7 +431,7 @@
           "Dominio": "1.0.0",
           "Google.Protobuf": "3.13.0",
           "Grpc.Net.ClientFactory": "2.32.0",
-          "IServices": "1.0.0",
+          "IServicios": "1.0.0",
           "ServidorAdministrativo": "1.0.0"
         },
         "compile": {
@@ -1078,10 +1078,10 @@
       "path": "../IRepositorio/IRepositorio.csproj",
       "msbuildProject": "../IRepositorio/IRepositorio.csproj"
     },
-    "IServices/1.0.0": {
+    "IServicios/1.0.0": {
       "type": "project",
-      "path": "../IServices/IServices.csproj",
-      "msbuildProject": "../IServices/IServices.csproj"
+      "path": "../IServices/IServicios.csproj",
+      "msbuildProject": "../IServices/IServicios.csproj"
     },
     "Protocolo/1.0.0": {
       "type": "project",
@@ -1108,7 +1108,7 @@
     ".NETCoreApp,Version=v3.1": [
       "Dominio >= 1.0.0",
       "Grpc.Tools >= 2.42.0",
-      "IServices >= 1.0.0",
+      "IServicios >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 5.0.0",
       "Microsoft.Extensions.Configuration.Json >= 5.0.0",
       "Protocolo >= 1.0.0",
@@ -1145,8 +1145,8 @@
             "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
               "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
             },
-            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj": {
-              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj"
+            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj"
             },
             "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
               "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj"

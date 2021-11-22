@@ -5,16 +5,22 @@ using Servicios.Mappers;
 using Grpc.Net.Client;
 using LogicaNegocio;
 using IServices;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace Servicios
 {
     public class JuegoService : IJuegoService
     {
-        GrpcChannel canal = GrpcChannel.ForAddress("https://localhost:5001");
+        IConfiguration configuracion = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("AppSettings.json", optional: false).Build();
+
         ServicioJuego.ServicioJuegoClient juegoProtoService;
 
         public JuegoService()
         {
+            GrpcChannel canal = GrpcChannel.ForAddress(configuracion["canalGrpc"]);
             this.juegoProtoService = new ServicioJuego.ServicioJuegoClient(canal);
         }
 

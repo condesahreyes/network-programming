@@ -1,20 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ServidorAdministrativo;
 using Servicios.Mappers;
 using Grpc.Net.Client;
 using LogicaNegocio;
 using IServices;
+using System.IO;
 
 namespace Servicios
 { 
     public class UsuarioService : IUsuarioService {
 
-        GrpcChannel canal = GrpcChannel.ForAddress("https://localhost:5001");
+        IConfiguration configuracion = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("AppSettings.json", optional: false).Build();
+
         ServicioUsuario.ServicioUsuarioClient userProtoService;
 
         public UsuarioService()
         {
+            GrpcChannel canal = GrpcChannel.ForAddress(configuracion["canalGrpc"]);
             this.userProtoService = new ServicioUsuario.ServicioUsuarioClient(canal);
         }
 

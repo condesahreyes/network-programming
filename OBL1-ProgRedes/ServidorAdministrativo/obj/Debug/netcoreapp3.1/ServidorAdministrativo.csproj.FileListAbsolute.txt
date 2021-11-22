@@ -16,7 +16,11 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Deb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\IRepositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Repositorio.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\IRepositorio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Repositorio.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.csproj.AssemblyReference.cache
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.AssemblyInfoInputs.cache
@@ -31,7 +35,3 @@ C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Deb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.dll
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.pdb
 C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\obj\Debug\netcoreapp3.1\ServidorAdministrativo.genruntimeconfig.cache
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\IRepositorio.dll
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\IRepositorio.pdb
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Repositorio.dll
-C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\ServidorAdministrativo\bin\Debug\netcoreapp3.1\Repositorio.pdb

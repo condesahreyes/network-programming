@@ -10,7 +10,7 @@
         "dependencies": {
           "Dominio": "1.0.0",
           "Grpc.Tools": "2.42.0",
-          "IServices": "1.0.0",
+          "IServicios": "1.0.0",
           "Microsoft.Extensions.Configuration": "5.0.0",
           "Microsoft.Extensions.Configuration.Json": "5.0.0",
           "Protocolo": "1.0.0",
@@ -280,12 +280,12 @@
           "IRepositorio.dll": {}
         }
       },
-      "IServices/1.0.0": {
+      "IServicios/1.0.0": {
         "dependencies": {
           "Dominio": "1.0.0"
         },
         "runtime": {
-          "IServices.dll": {}
+          "IServicios.dll": {}
         }
       },
       "Protocolo/1.0.0": {
@@ -310,7 +310,7 @@
           "Dominio": "1.0.0",
           "Google.Protobuf": "3.13.0",
           "Grpc.Net.ClientFactory": "2.32.0",
-          "IServices": "1.0.0",
+          "IServicios": "1.0.0",
           "ServidorAdministrativo": "1.0.0"
         },
         "runtime": {
@@ -557,7 +557,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "IServices/1.0.0": {
+    "IServicios/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

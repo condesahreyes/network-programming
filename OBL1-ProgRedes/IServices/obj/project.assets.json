@@ -32,9 +32,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
-      "projectName": "IServices",
-      "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
+      "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj",
+      "projectName": "IServicios",
+      "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServicios.csproj",
       "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\obj\\",
       "projectStyle": "PackageReference",

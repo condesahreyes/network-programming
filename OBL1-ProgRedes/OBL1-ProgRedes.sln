@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Protocolo", "Protocolo\Prot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servicios", "Servicios\Servicios.csproj", "{A6153391-DF60-4983-BE46-859A7B9694DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IServices", "IServices\IServices.csproj", "{EAAD0760-DCEC-4570-B46A-43AD52072937}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IServicios", "IServices\IServicios.csproj", "{EAAD0760-DCEC-4570-B46A-43AD52072937}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServidorAdministrativo", "ServidorAdministrativo\ServidorAdministrativo.csproj", "{CA2C94ED-79A9-401B-8F13-E59946C53DF0}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRepositorio", "IRepositorio\IRepositorio.csproj", "{B65A99C6-9208-45D2-91A7-CCDD5C986C32}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Administrativo", "Administrativo", "{AC4A60A8-311B-4279-8014-E1EB156D83AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Capa De Servicios", "Capa De Servicios", "{27485BC4-2F60-4096-96BE-04D046885476}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +82,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A6153391-DF60-4983-BE46-859A7B9694DD} = {27485BC4-2F60-4096-96BE-04D046885476}
+		{EAAD0760-DCEC-4570-B46A-43AD52072937} = {27485BC4-2F60-4096-96BE-04D046885476}
+		{CA2C94ED-79A9-401B-8F13-E59946C53DF0} = {AC4A60A8-311B-4279-8014-E1EB156D83AA}
+		{767FDD2B-235A-424B-91EB-929B8C7AF83B} = {AC4A60A8-311B-4279-8014-E1EB156D83AA}
+		{B65A99C6-9208-45D2-91A7-CCDD5C986C32} = {AC4A60A8-311B-4279-8014-E1EB156D83AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D9429C2-9FBE-4981-8B61-6EFBCDE5D7A3}
