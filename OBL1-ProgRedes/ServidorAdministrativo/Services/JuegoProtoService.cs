@@ -9,8 +9,10 @@ namespace ServidorAdministrativo.Services
     public class JuegoProtoService : ServicioJuego.ServicioJuegoBase
     {
         Persistencia persistencia;
-        public JuegoProtoService()
+        LogServices logServices;
+        public JuegoProtoService(LogServices logServices)
         {
+            this.logServices = logServices;
             this.persistencia = Persistencia.ObtenerPersistencia();
         }
         
@@ -24,6 +26,7 @@ namespace ServidorAdministrativo.Services
 
             juego.calificaciones.Add(calificacionNueva);
 
+            this.logServices.SendMessages("juego " + calificacion.TituloJuegoo + " calificado");
             return await Task.FromResult(new ProtoBool() { BoolProto = true });
         }
 
@@ -37,6 +40,7 @@ namespace ServidorAdministrativo.Services
                     return await Task.FromResult(new ProtoBool() { BoolProto = true });
                 }
 
+            this.logServices.SendMessages("juego " + nombreJuego.Mensaje_ + " eliminado");
             return await Task.FromResult(new ProtoBool() { BoolProto = false });
         }
 
@@ -46,9 +50,10 @@ namespace ServidorAdministrativo.Services
             JuegosProto juegosRetorno = new JuegosProto();
             foreach (var juego in juegos)
                 if (ranking.Mensaje == juego.Ranking)
-                {
                     juegosRetorno.Juego.Add(MapperJuegoProto(juego));
-                }
+
+            this.logServices.SendMessages("juegos buscados por calificación " + ranking);
+
             return await Task.FromResult(juegosRetorno);
         }
 
@@ -69,7 +74,10 @@ namespace ServidorAdministrativo.Services
             else
             {
                 juego.usuarios.Add(usuario);
-            }   
+            }
+
+            this.logServices.SendMessages("juego " + juegoUsuario.TituloJuego + 
+                " adquirido por " + juegoUsuario.NombreUsuario);
 
             return await Task.FromResult(MapperJuegoProto(juego));
         }
@@ -83,6 +91,9 @@ namespace ServidorAdministrativo.Services
                 {
                     juegosRetorno.Juego.Add(MapperJuegoProto(juego));
                 }
+
+            this.logServices.SendMessages("juegos buscado por genero " + genero.Mensaje_);
+
             return await Task.FromResult(juegosRetorno);
         }
 
@@ -95,6 +106,8 @@ namespace ServidorAdministrativo.Services
             {
                 juegosProto.Juego.Add(MapperJuegoProto(juego));
             }
+
+            this.logServices.SendMessages("juegos buscado por usuario " + usuario.Nombre);
 
             return await Task.FromResult(juegosProto);
         }
@@ -109,12 +122,16 @@ namespace ServidorAdministrativo.Services
                     juegoRetorno = MapperJuegoProto(juego);
                 }
 
+            this.logServices.SendMessages("juegos buscado por titulo " + titulo.Mensaje_);
+
             return await Task.FromResult(juegoRetorno);
         }
 
         public override async Task<ProtoBool> EsJuegoExistente(JuegoProto unJuego, ServerCallContext context)
         {
             bool juegoExistente = this.persistencia.juegos.Exists(x => x.Titulo.Equals(unJuego.Titulo));
+            this.logServices.SendMessages("Consulta juego " + unJuego.Titulo + " existe");
+
             return await Task.FromResult(new ProtoBool() { BoolProto = juegoExistente });
         } 
         
@@ -129,6 +146,8 @@ namespace ServidorAdministrativo.Services
             Juego nuevoJuego = MapperProtoJuego(unJuego);
             this.persistencia.juegos.Add(nuevoJuego);
 
+            this.logServices.SendMessages("Alta juego " + unJuego.Titulo);
+
             return await Task.FromResult(new ProtoBool() { BoolProto = true });
         }
 
@@ -138,6 +157,8 @@ namespace ServidorAdministrativo.Services
             JuegosProto juegos = new JuegosProto();
 
             juegosDominio.ForEach(x => juegos.Juego.Add(MapperJuegoProto(x)));
+
+            this.logServices.SendMessages("Consulta de juegos");
 
             return await Task.FromResult(juegos);
         }
@@ -152,6 +173,7 @@ namespace ServidorAdministrativo.Services
                     juego.usuarios.Remove(usuario);
                     return await Task.FromResult(new ProtoBool { BoolProto = true });
                 }
+            this.logServices.SendMessages("Juego " + request.TituloJuego +  "desasociado al usuario " + request.NombreUsuario);
 
             return await Task.FromResult(new ProtoBool { BoolProto = false });
         }
