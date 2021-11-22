@@ -58,6 +58,23 @@ namespace WebApiAdministrativa.Controllers
                 (StatusCode((int)HttpStatusCode.BadRequest, noExisteJuegoUsuario));
         }
 
+        [HttpDelete("{tituloJuego}/desasociarJuego/{usuarioName}")]
+        public async Task<ActionResult> DeleteJuego([FromRoute] string tituloJuego, [FromRoute] string usuarioName)
+        {
+            bool desasocia = await servicioJuego.DesasociarJuegoAUsuario(tituloJuego, new Usuario(usuarioName));
+
+            return (desasocia == true) ? (StatusCode((int)HttpStatusCode.OK, desasocia)) :
+                (StatusCode((int)HttpStatusCode.BadRequest, desasocia));
+        }
+
+        [HttpPut("{tituloJuego}")]
+        public async Task<ActionResult> Put([FromRoute] string tituloJuego, [FromBody] JuegoEntrada juegoNuevo)
+        {
+            Juego juegoModificado = await servicioJuego.ModificarJuego(tituloJuego, JuegoEntrada.ModeloADominio(juegoNuevo));
+
+            return (juegoModificado != null) ? (StatusCode((int)HttpStatusCode.OK, juegoModificado)) :
+                (StatusCode((int)HttpStatusCode.BadRequest, juegoModificado));
+        }
     }
    
 }
