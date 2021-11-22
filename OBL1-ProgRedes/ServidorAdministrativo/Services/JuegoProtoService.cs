@@ -95,6 +95,7 @@ namespace ServidorAdministrativo.Services
             {
                 juegosProto.Juego.Add(MapperJuegoProto(juego));
             }
+
             return await Task.FromResult(juegosProto);
         }
 
@@ -107,6 +108,7 @@ namespace ServidorAdministrativo.Services
                 {
                     juegoRetorno = MapperJuegoProto(juego);
                 }
+
             return await Task.FromResult(juegoRetorno);
         }
 
@@ -132,16 +134,36 @@ namespace ServidorAdministrativo.Services
 
         public override async Task<JuegosProto> ObtenerJuegos(Protos.MensajeVacio request, ServerCallContext context)
         {
-            List<JuegoProto> juegosProto = new List<JuegoProto>();
             List<Juego> juegosDominio = this.persistencia.juegos;
-
             JuegosProto juegos = new JuegosProto();
 
-            juegosDominio.ForEach(x => juegosProto.Add(MapperJuegoProto(x)));
-
-            juegos.Juego.AddRange(juegosProto);
+            juegosDominio.ForEach(x => juegos.Juego.Add(MapperJuegoProto(x)));
 
             return await Task.FromResult(juegos);
+        }
+
+        public override async Task<ProtoBool> DesasociarJuegoUsuario(JuegoPorUsuarioProto request, ServerCallContext context)
+        {
+            Juego juego = JuegoPorTitulo(request.TituloJuego);
+
+            foreach (Usuario usuario in juego.usuarios)
+                if (usuario.NombreUsuario == request.NombreUsuario)
+                {
+                    juego.usuarios.Remove(usuario);
+                    return await Task.FromResult(new ProtoBool { BoolProto = true });
+                }
+
+            return await Task.FromResult(new ProtoBool { BoolProto = false });
+        }
+
+        public override async Task<JuegoProto> ModificarJuego(JuegoModificarProto request, ServerCallContext context)
+        {
+            Juego juego = JuegoPorTitulo(request.TituloJuego);
+            juego.Caratula = request.JuegoModificado.Caratula;
+            juego.Sinopsis = request.JuegoModificado.Sinposis;
+            juego.Genero = request.JuegoModificado.Genero;
+            
+            return await Task.FromResult(MapperJuegoProto(juego));
         }
 
         private Usuario ObtenerUsuario(string nombreUsuario)
@@ -156,7 +178,6 @@ namespace ServidorAdministrativo.Services
 
         private List<Juego> JuegosUsuarios(Usuario usuario)
         {
-
             List<Juego> retorno = new List<Juego>();
             foreach(var juego in persistencia.juegos)
             {
@@ -168,6 +189,7 @@ namespace ServidorAdministrativo.Services
                     }
                 }
             }
+
             return retorno;   
         }
 

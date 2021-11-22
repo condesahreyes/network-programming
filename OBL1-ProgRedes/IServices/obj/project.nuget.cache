@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "TNxjfb0CsiT9d0yO929nQsmAXFsIBaDnZOHpDj+W7IMnTJ65EEyJZ+3oc4LgWgVevUpxKP//NB9CmIwiwIFVlA==",
   "success": true,
   "projectFilePath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
+=======
+  "dgSpecHash": "bah0NijIq66XDlbpIrJgIglKTASA+j++CXD1HDqSRO8W6Imj0nIFHo9FYVC1gwV6Xt+H3RyLPR1tT3Dfhl7nsg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
+>>>>>>> feature/CorrecionDeLogicaJuego
   "expectedPackageFiles": [],
   "logs": []
 }

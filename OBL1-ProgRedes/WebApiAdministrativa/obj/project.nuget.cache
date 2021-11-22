@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "QKiNSZDzHV0iLjfHB451mswAwWF0INn3YngNh2qcNIazNc+XqABugR9omBoLDhWVYlOTFsPJeZ/MKw6IXOzptw==",
   "success": true,
   "projectFilePath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\WebApiAdministrativa\\WebApiAdministrativa.csproj",
+=======
+  "dgSpecHash": "PFNwRSJ2uPlOnFjQw9lyRh988YbIdZG9B6DFO8IWfyZXi/uUIdVXU1E3PZpMg7o+UMs7Q5gUXQW7aKQgFAPv8g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\WebApiAdministrativa\\WebApiAdministrativa.csproj",
+>>>>>>> feature/CorrecionDeLogicaJuego
   "expectedPackageFiles": [
     "C:\\Users\\jpercivale\\.nuget\\packages\\google.protobuf\\3.13.0\\google.protobuf.3.13.0.nupkg.sha512",
     "C:\\Users\\jpercivale\\.nuget\\packages\\grpc.aspnetcore\\2.32.0\\grpc.aspnetcore.2.32.0.nupkg.sha512",

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
         "packagesPath": "C:\\Users\\jpercivale\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\obj\\",
+=======
+    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
+        "projectName": "LogServidor",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\obj\\",
+>>>>>>> feature/CorrecionDeLogicaJuego
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jpercivale\\AppData\\Roaming\\NuGet\\NuGet.Config",

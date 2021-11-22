@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
         "packagesPath": "C:\\Users\\jpercivale\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",
+=======
+    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
+        "projectName": "Dominio",
+        "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj",
+        "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\obj\\",
+>>>>>>> feature/CorrecionDeLogicaJuego
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jpercivale\\AppData\\Roaming\\NuGet\\NuGet.Config",

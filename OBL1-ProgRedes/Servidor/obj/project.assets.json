@@ -1082,11 +1082,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
       "projectName": "Servidor",
       "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
       "packagesPath": "C:\\Users\\jpercivale\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
+      "projectName": "Servidor",
+      "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\Servidor.csproj",
+      "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servidor\\obj\\",
+>>>>>>> feature/CorrecionDeLogicaJuego
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jpercivale\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1103,6 +1111,7 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
               "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
             },
@@ -1114,6 +1123,19 @@
             },
             "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj": {
               "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj"
+=======
+            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+            },
+            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj"
+            },
+            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Protocolo\\Protocolo.csproj"
+            },
+            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Servicios\\Servicios.csproj"
+>>>>>>> feature/CorrecionDeLogicaJuego
             }
           }
         }

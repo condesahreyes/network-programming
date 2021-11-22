@@ -32,11 +32,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
       "projectName": "IServices",
       "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
       "packagesPath": "C:\\Users\\jpercivale\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
+      "projectName": "IServices",
+      "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\IServices.csproj",
+      "packagesPath": "C:\\Users\\hreye\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\IServices\\obj\\",
+>>>>>>> feature/CorrecionDeLogicaJuego
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jpercivale\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +61,13 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
               "projectPath": "C:\\Users\\jpercivale\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+=======
+            "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\hreye\\Desktop\\Prog.-Redes\\OBL1-ProgRedes\\Dominio\\Dominio.csproj"
+>>>>>>> feature/CorrecionDeLogicaJuego
             }
           }
         }
