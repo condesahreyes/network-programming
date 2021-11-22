@@ -1,8 +1,10 @@
-﻿using IServices;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using System.Threading.Tasks;
+﻿using WebApiAdministrativa.Modelos.UsuarioModelos;
 using WebApiAdministrativa.Modelos.JuegoModelos;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using LogicaNegocio;
+using System.Net;
+using IServices;
 
 namespace WebApiAdministrativa.Controllers
 {
@@ -12,6 +14,7 @@ namespace WebApiAdministrativa.Controllers
         private IJuegoService servicioJuego;
         private const string juegoExistente = "Ya existe juego";
         private const string juegoInexistente = "No existe juego";
+        private const string noExisteJuegoUsuario = "No existe juego y/o usuario";
         public JuegoController(IJuegoService servicioJuego)
         {
             this.servicioJuego = servicioJuego;
@@ -35,7 +38,7 @@ namespace WebApiAdministrativa.Controllers
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));
         }
 
-        
+        /*
         [HttpPut("{tituloJuego}")]
         public async Task<ActionResult> Update([FromRoute] string tituloJuego, [FromBody] JuegoEntrada juegoModificado)
         {
@@ -43,6 +46,16 @@ namespace WebApiAdministrativa.Controllers
 
             return (eliminado == true) ? (StatusCode((int)HttpStatusCode.NoContent, "")) :
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));
+        }*/
+
+        [HttpPost("{tituloJuego}")]
+        public async Task<ActionResult> Delete([FromRoute] string tituloJuego, [FromBody] UsuarioEntradaSalida usuario)
+        {
+            Juego juego = await servicioJuego.AdquirirJuegoPorUsuario(tituloJuego, UsuarioEntradaSalida.ModeloADominio(usuario));
+            bool eliminado = await servicioJuego.EliminarJuego(tituloJuego);
+
+            return (juego != null) ? (StatusCode((int)HttpStatusCode.Created, juego)) :
+                (StatusCode((int)HttpStatusCode.BadRequest, noExisteJuegoUsuario));
         }
 
     }

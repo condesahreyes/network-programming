@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "5q6sVc67oWBC2Vsvuv2/Xi18Kd6OXrfbRCqRfDgolATj7eZj+st/etqAvc8R8OtVVRGm+P8Ksven4+R8sQlVgg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hreye\\Desktop\\el ultimo merge\\Prog.-Redes\\OBL1-ProgRedes\\LogServidor\\LogServidor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hreye\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
+    "C:\\Users\\hreye\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\hreye\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

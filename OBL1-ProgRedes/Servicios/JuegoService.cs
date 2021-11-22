@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using LogicaNegocio;
-using System;
-using IServices;
-using Grpc.Net.Client;
-using ServidorAdministrativo.Protos;
+﻿using ServidorAdministrativo.Protos;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Grpc.Net.Client;
+using LogicaNegocio;
+using IServices;
+using System;
 
 namespace Servicios
 {
@@ -221,5 +221,15 @@ namespace Servicios
                 Usuario = proto.Usuario
             };
          }
+
+        public Task<bool> DesasociarJuegoAUsuario(string juego, Usuario usuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Juego> ModificarJuego(string tiuuloJuego, Juego juegoModificado)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
