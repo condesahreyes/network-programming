@@ -22,7 +22,7 @@ namespace ServidorAdministrativo.Services
             Usuario usuario = new Usuario(request.Nombre);
             repositorioUsuario.AgregarUsuario(usuario);
 
-            this.logServices.SendMessages("usuario " + request.Nombre + " dado de alta");
+            this.logServices.EnviarMensaje("usuario " + request.Nombre + " dado de alta");
             return await Task.FromResult(new RespuestaProto
             {
                 Estado = "Ok"
@@ -37,7 +37,7 @@ namespace ServidorAdministrativo.Services
 
             usuariosDominio.ForEach(x => usuarios.Usuario.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
 
-            this.logServices.SendMessages("Lista de usuarios solicitada");
+            this.logServices.EnviarMensaje("Lista de usuarios solicitada");
             return await Task.FromResult(usuarios);
         }
 
@@ -45,7 +45,7 @@ namespace ServidorAdministrativo.Services
         {
             repositorioUsuario.ActualizarEstadoUsuario(request.Nombre, true);
 
-            this.logServices.SendMessages("usuario " + request.Nombre + " inicio sesión");
+            this.logServices.EnviarMensaje("usuario " + request.Nombre + " inicio sesión");
             return await Task.FromResult(new MensajeVacio() { });
         }
 
@@ -53,7 +53,7 @@ namespace ServidorAdministrativo.Services
         {
             repositorioUsuario.ActualizarEstadoUsuario(request.Nombre, false);
 
-            this.logServices.SendMessages("usuario " + request.Nombre + " cerro sesión");
+            this.logServices.EnviarMensaje("usuario " + request.Nombre + " cerro sesión");
             return await Task.FromResult(new MensajeVacio() { });
         }
 
@@ -62,19 +62,19 @@ namespace ServidorAdministrativo.Services
             bool eliminado = repositorioUsuario.EliminarUsuario(request.Nombre);
 
             if(eliminado)
-                this.logServices.SendMessages("usuario " + request.Nombre + " eliminado");
+                this.logServices.EnviarMensaje("usuario " + request.Nombre + " eliminado");
 
             return await Task.FromResult(new BoolProto() { Estado = eliminado });
         }
 
-        public override async Task<MensajeVacio> ModificarUsuario(UsuarioModificacionProto request, ServerCallContext context)
+        public override async Task<BoolProto> ModificarUsuario(UsuarioModificacionProto request, ServerCallContext context)
         {
             bool modificado = repositorioUsuario.ModificarUsuario(request.Nombre, request.NombreModificado);
 
             if(modificado)
-                this.logServices.SendMessages("usuario " + request.Nombre + " modificado");
+                this.logServices.EnviarMensaje("usuario " + request.Nombre + " modificado");
 
-            return await Task.FromResult(new MensajeVacio() { });
+            return await Task.FromResult(new BoolProto() { Estado = modificado });
         }
     }
 }

@@ -84,12 +84,12 @@ namespace ServidorAdministrativo {
         __Marshaller_userProtoService_UsuarioProto,
         __Marshaller_userProtoService_BoolProto);
 
-    static readonly grpc::Method<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.MensajeVacio> __Method_ModificarUsuario = new grpc::Method<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.MensajeVacio>(
+    static readonly grpc::Method<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.BoolProto> __Method_ModificarUsuario = new grpc::Method<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.BoolProto>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ModificarUsuario",
         __Marshaller_userProtoService_UsuarioModificacionProto,
-        __Marshaller_userProtoService_MensajeVacio);
+        __Marshaller_userProtoService_BoolProto);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -126,7 +126,7 @@ namespace ServidorAdministrativo {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::ServidorAdministrativo.MensajeVacio> ModificarUsuario(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::ServidorAdministrativo.BoolProto> ModificarUsuario(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -157,7 +157,7 @@ namespace ServidorAdministrativo {
       serviceBinder.AddMethod(__Method_ActualizarAUsuarioActivo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.UsuarioProto, global::ServidorAdministrativo.MensajeVacio>(serviceImpl.ActualizarAUsuarioActivo));
       serviceBinder.AddMethod(__Method_ActualizarAUsuarioInactivo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.UsuarioProto, global::ServidorAdministrativo.MensajeVacio>(serviceImpl.ActualizarAUsuarioInactivo));
       serviceBinder.AddMethod(__Method_EliminarUsuario, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.UsuarioProto, global::ServidorAdministrativo.BoolProto>(serviceImpl.EliminarUsuario));
-      serviceBinder.AddMethod(__Method_ModificarUsuario, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.MensajeVacio>(serviceImpl.ModificarUsuario));
+      serviceBinder.AddMethod(__Method_ModificarUsuario, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.BoolProto>(serviceImpl.ModificarUsuario));
     }
 
   }

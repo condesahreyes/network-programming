@@ -36,5 +36,13 @@ namespace WebApiAdministrativa.Modelos.JuegoModelos
             this.Ranking = unJuego.Ranking;
             this.Notas = unJuego.Notas;
         }
+
+        public static List<JuegoSalida> JuegosAModelo(List<Juego> juegos)
+        {
+            List<JuegoSalida> juegosSalida = new List<JuegoSalida>();
+            juegos.ForEach(j => juegosSalida.Add(new JuegoSalida(j)));
+
+            return juegosSalida;
+        }
     }
 }

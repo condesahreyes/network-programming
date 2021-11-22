@@ -28,13 +28,13 @@ namespace Servicios
         {
             ProtoBool juegoProto = await juegoProtoService.EsJuegoExistenteAsync(
                 MapperJuego.MapperJuegoProto(unJuego));
-            return await Task.FromResult(juegoProto.BoolProto);
+            return juegoProto.BoolProto;
         }
 
         public async Task<List<Juego>> ObtenerJuegos()
         {
             JuegosProto juegosProto = await juegoProtoService.ObtenerJuegosAsync(new MensajeVacio() { });
-            return await (MapperJuego.MapearJuegosProto(juegosProto));
+            return (MapperJuego.MapearJuegosProto(juegosProto));
         }
 
         public async Task<bool> AgregarJuego(Juego juego)
@@ -42,62 +42,63 @@ namespace Servicios
             ProtoBool agregado = await juegoProtoService.AgregarJuegosAsync(
                 MapperJuego.MapperJuegoProto(juego));
 
-            return await Task.FromResult(agregado.BoolProto);
+            return agregado.BoolProto;
         }
 
         public async Task<bool> AgregarCalificacion(Calificacion calificacion)
         {
             ProtoBool agregada = await juegoProtoService.
                 AgregarCalificacionAsync(MapperJuego.MapperCalificacionProto(calificacion));
-            return await Task.FromResult(agregada.BoolProto);
+            return agregada.BoolProto;
         }
 
         public async Task<Juego> AdquirirJuegoPorUsuario(string juego, Usuario usuario)
         {
             JuegoProto juegoProto = await juegoProtoService.AdquirirJuegoPorUsuarioAsync
                 (new JuegoPorUsuarioProto { TituloJuego = juego, NombreUsuario = usuario.NombreUsuario });
-            return await Task.FromResult(MapperJuego.MapperProtoJuego(juegoProto)); 
+            
+            return MapperJuego.MapperProtoJuego(juegoProto); 
         }
 
         public async Task<List<Juego>> JuegoUsuarios(Usuario usuario)
         {
             JuegosProto jugoRequest = await juegoProtoService.JuegoUsuariosAsync(MapperJuego.MapearUsuarioProto(usuario));
-            return await Task.FromResult(MapperJuego.MapperProtoJuegos(jugoRequest));
+            return MapperJuego.MapperProtoJuegos(jugoRequest);
         }
 
         public async Task<Juego> BuscarJuegoPortTitulo(string unTitulo)
         {
             JuegoProto juegoProto = await juegoProtoService.
                 BuscarJuegoPortTituloAsync(new Mensaje { Mensaje_ = unTitulo });
-            return await Task.FromResult(MapperJuego.MapperProtoJuego(juegoProto));
+            return MapperJuego.MapperProtoJuego(juegoProto);
         }
 
         public async Task<List<Juego>> BuscarJuegoPorGenero(string unGenero)
         {
             JuegosProto juegoProto = await juegoProtoService.
                 BuscarJuegoPorGeneroAsync(new Mensaje { Mensaje_ = unGenero });
-            return await Task.FromResult(MapperJuego.MapperProtoJuegos(juegoProto));
+            return MapperJuego.MapperProtoJuegos(juegoProto);
         }
 
         public async  Task<Juego> ObtenerJuegoPorTitulo(string tituloJuego)
         {
            JuegoProto juegoProto = await juegoProtoService.
                 BuscarJuegoPortTituloAsync(new Mensaje { Mensaje_ = tituloJuego});
-            return await Task.FromResult(MapperJuego.MapperProtoJuego(juegoProto));
+            return MapperJuego.MapperProtoJuego(juegoProto);
         }
 
         public async Task<List<Juego>> BuscarJuegoPorCalificacion(int ranking)
         {
             JuegosProto juegoProto = await juegoProtoService.
                 BuscarJuegoPorCalificacionAsync(new MensajeInt { Mensaje = ranking});
-            return await Task.FromResult(MapperJuego.MapperProtoJuegos(juegoProto));
+            return MapperJuego.MapperProtoJuegos(juegoProto);
         }
 
         public async Task<bool> EliminarJuego(string tituloJuego)
         {
             ProtoBool protoBool = await juegoProtoService.
                 EliminarJuegoAsync(new Mensaje { Mensaje_ = tituloJuego});
-            return await Task.FromResult(protoBool.BoolProto);
+            return protoBool.BoolProto;
         }
 
         public async Task<bool> DesasociarJuegoAUsuario(string juego, Usuario usuario)
@@ -130,7 +131,7 @@ namespace Servicios
             };
 
             JuegoProto modificado = await juegoProtoService.ModificarJuegoAsync(juegoProtoModificar);
-            return await Task.FromResult(MapperJuego.MapperProtoJuego(modificado));
+            return MapperJuego.MapperProtoJuego(modificado);
         }
     }
 }

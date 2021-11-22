@@ -84,12 +84,12 @@ namespace ServidorAdministrativo {
         __Marshaller_userProtoService_UsuarioProto,
         __Marshaller_userProtoService_BoolProto);
 
-    static readonly grpc::Method<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.MensajeVacio> __Method_ModificarUsuario = new grpc::Method<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.MensajeVacio>(
+    static readonly grpc::Method<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.BoolProto> __Method_ModificarUsuario = new grpc::Method<global::ServidorAdministrativo.UsuarioModificacionProto, global::ServidorAdministrativo.BoolProto>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ModificarUsuario",
         __Marshaller_userProtoService_UsuarioModificacionProto,
-        __Marshaller_userProtoService_MensajeVacio);
+        __Marshaller_userProtoService_BoolProto);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -200,19 +200,19 @@ namespace ServidorAdministrativo {
       {
         return CallInvoker.AsyncUnaryCall(__Method_EliminarUsuario, null, options, request);
       }
-      public virtual global::ServidorAdministrativo.MensajeVacio ModificarUsuario(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::ServidorAdministrativo.BoolProto ModificarUsuario(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return ModificarUsuario(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::ServidorAdministrativo.MensajeVacio ModificarUsuario(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::CallOptions options)
+      public virtual global::ServidorAdministrativo.BoolProto ModificarUsuario(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_ModificarUsuario, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.MensajeVacio> ModificarUsuarioAsync(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.BoolProto> ModificarUsuarioAsync(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return ModificarUsuarioAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.MensajeVacio> ModificarUsuarioAsync(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::ServidorAdministrativo.BoolProto> ModificarUsuarioAsync(global::ServidorAdministrativo.UsuarioModificacionProto request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_ModificarUsuario, null, options, request);
       }

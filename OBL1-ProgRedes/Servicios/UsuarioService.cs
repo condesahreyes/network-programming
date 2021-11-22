@@ -79,12 +79,8 @@ namespace Servicios
             foreach (Usuario unUsuario in usuarios)
                 if (unUsuario.NombreUsuario == nombreUsuario && unUsuario.UsuarioActivo == false)
                 {
-                    await userProtoService.ModificarUsuarioAsync(modificacionProto);
-                    return true;
-                }
-                else if (unUsuario.NombreUsuario == nombreUsuario && unUsuario.UsuarioActivo == true)
-                {
-                    return false;
+                    BoolProto modificado = await userProtoService.ModificarUsuarioAsync(modificacionProto);
+                    return modificado.Estado;
                 }
 
             return false;

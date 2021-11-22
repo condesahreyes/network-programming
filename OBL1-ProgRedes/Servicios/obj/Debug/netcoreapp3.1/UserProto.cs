@@ -30,7 +30,7 @@ namespace ServidorAdministrativo {
             "CgZub21icmUYASABKAkiIAoOUmVzcHVlc3RhUHJvdG8SDgoGZXN0YWRvGAEg",
             "ASgJIhsKCUJvb2xQcm90bxIOCgZlc3RhZG8YASABKAgiRAoYVXN1YXJpb01v",
             "ZGlmaWNhY2lvblByb3RvEg4KBm5vbWJyZRgBIAEoCRIYChBub21icmVNb2Rp",
-            "ZmljYWRvGAIgASgJMqAECg9TZXJ2aWNpb1VzdWFyaW8STwoLQWx0YVVzdWFy",
+            "ZmljYWRvGAIgASgJMp0ECg9TZXJ2aWNpb1VzdWFyaW8STwoLQWx0YVVzdWFy",
             "aW8SHi51c2VyUHJvdG9TZXJ2aWNlLlVzdWFyaW9Qcm90bxogLnVzZXJQcm90",
             "b1NlcnZpY2UuUmVzcHVlc3RhUHJvdG8SUgoPT2J0ZW5lclVzdWFyaW9zEh4u",
             "dXNlclByb3RvU2VydmljZS5NZW5zYWplVmFjaW8aHy51c2VyUHJvdG9TZXJ2",
@@ -40,10 +40,10 @@ namespace ServidorAdministrativo {
             "dGl2bxIeLnVzZXJQcm90b1NlcnZpY2UuVXN1YXJpb1Byb3RvGh4udXNlclBy",
             "b3RvU2VydmljZS5NZW5zYWplVmFjaW8STgoPRWxpbWluYXJVc3VhcmlvEh4u",
             "dXNlclByb3RvU2VydmljZS5Vc3VhcmlvUHJvdG8aGy51c2VyUHJvdG9TZXJ2",
-            "aWNlLkJvb2xQcm90bxJeChBNb2RpZmljYXJVc3VhcmlvEioudXNlclByb3Rv",
-            "U2VydmljZS5Vc3VhcmlvTW9kaWZpY2FjaW9uUHJvdG8aHi51c2VyUHJvdG9T",
-            "ZXJ2aWNlLk1lbnNhamVWYWNpb0IZqgIWU2Vydmlkb3JBZG1pbmlzdHJhdGl2",
-            "b2IGcHJvdG8z"));
+            "aWNlLkJvb2xQcm90bxJbChBNb2RpZmljYXJVc3VhcmlvEioudXNlclByb3Rv",
+            "U2VydmljZS5Vc3VhcmlvTW9kaWZpY2FjaW9uUHJvdG8aGy51c2VyUHJvdG9T",
+            "ZXJ2aWNlLkJvb2xQcm90b0IZqgIWU2Vydmlkb3JBZG1pbmlzdHJhdGl2b2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

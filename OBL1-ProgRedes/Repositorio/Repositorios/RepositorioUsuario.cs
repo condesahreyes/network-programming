@@ -59,6 +59,9 @@ namespace Repositorio
 
         public bool ModificarUsuario(string nombreUsuario, string nombreUsuarioModificado)
         {
+            if (ExisteUsuario(nombreUsuarioModificado))
+                return false;
+
             lock (persistencia.juegos)
             {
                 foreach (var usuario in this.persistencia.usuarios)
@@ -69,6 +72,17 @@ namespace Repositorio
                     }
             }
             return false;
+        }
+
+        private bool ExisteUsuario(string nombreUsuarioModificado)
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            lock (persistencia.usuarios)
+            {
+                listaUsuarios = persistencia.usuarios;
+            }
+
+            return listaUsuarios.Exists(u => u.NombreUsuario == nombreUsuarioModificado);
         }
     }
 }

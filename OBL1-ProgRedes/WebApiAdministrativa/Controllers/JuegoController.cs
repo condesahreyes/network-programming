@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using LogicaNegocio;
 using System.Net;
 using IServices;
+using System.Collections.Generic;
 
 namespace WebApiAdministrativa.Controllers
 {
@@ -14,14 +15,19 @@ namespace WebApiAdministrativa.Controllers
         private const string noExisteJuegoUsuario = "No existe juego y/o usuario";
         private const string juegoInexistente = "No existe juego";
         private const string juegoExistente = "Ya existe juego";
-        private const string operacionExitosa = "Operacion exitosa";
-
 
         private IJuegoService servicioJuego;
 
         public JuegoController(IJuegoService servicioJuego)
         {
             this.servicioJuego = servicioJuego;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            List<Juego> juegos = await servicioJuego.ObtenerJuegos();
+            return (StatusCode((int)HttpStatusCode.OK, JuegoSalida.JuegosAModelo(juegos)));
         }
 
         [HttpPost]
@@ -32,11 +38,11 @@ namespace WebApiAdministrativa.Controllers
             return (creado == true) ? (StatusCode((int)HttpStatusCode.Created, unJuego)) :
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoExistente));
         }
-
+        
         [HttpPut("{tituloJuego}")]
-        public async Task<ActionResult> Put([FromRoute] string tituloJuego, [FromBody] JuegoEntrada juegoNuevo)
+        public async Task<ActionResult> Put([FromRoute] string tituloJuego, [FromBody] JuegoModificar juegoNuevo)
         {
-            Juego juegoModificado = await servicioJuego.ModificarJuego(tituloJuego, JuegoEntrada.ModeloADominio(juegoNuevo));
+            Juego juegoModificado = await servicioJuego.ModificarJuego(tituloJuego, JuegoModificar.ModeloADominio(juegoNuevo, tituloJuego));
 
             return (juegoModificado != null) ? (StatusCode((int)HttpStatusCode.OK, juegoModificado)) :
                 (StatusCode((int)HttpStatusCode.BadRequest, juegoInexistente));

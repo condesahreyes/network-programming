@@ -1,0 +1,2 @@
+obj\Release\netcoreapp3.1/JuegoProto.cs \
+obj\Release\netcoreapp3.1/JuegoProtoGrpc.cs: ../ServidorAdministrativo/Protos/juegoProto.proto

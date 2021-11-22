@@ -8,7 +8,7 @@ namespace Servicios.Mappers
     public class MapperJuego
     {
 
-        public static Task<List<Juego>> MapearJuegosProto(JuegosProto juegos)
+        public static List<Juego> MapearJuegosProto(JuegosProto juegos)
         {
             List<Juego> listaJuegos = new List<Juego>();
 
@@ -17,7 +17,7 @@ namespace Servicios.Mappers
                 listaJuegos.Add(MapperProtoJuego(unJuego));
             }
 
-            return Task.FromResult(listaJuegos);
+            return listaJuegos;
         }
 
         public static JuegoProto MapperJuegoProto(Juego juego)
@@ -63,6 +63,9 @@ namespace Servicios.Mappers
         }
         public static Juego MapperProtoJuego(JuegoProto unJuego)
         {
+            if (unJuego == null || string.IsNullOrEmpty(unJuego.Titulo))
+                return null;
+
             return new Juego
             {
                 Sinopsis = unJuego.Sinposis,

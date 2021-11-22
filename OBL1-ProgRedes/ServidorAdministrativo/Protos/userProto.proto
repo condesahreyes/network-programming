@@ -10,7 +10,7 @@ service ServicioUsuario {
 	rpc ActualizarAUsuarioActivo(UsuarioProto) returns (MensajeVacio);
 	rpc ActualizarAUsuarioInactivo(UsuarioProto) returns (MensajeVacio);
 	rpc EliminarUsuario(UsuarioProto) returns (BoolProto);
-	rpc ModificarUsuario(UsuarioModificacionProto) returns(MensajeVacio);
+	rpc ModificarUsuario(UsuarioModificacionProto) returns(BoolProto);
 }
 
 message MensajeVacio { }
