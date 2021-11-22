@@ -12,12 +12,9 @@ namespace WebApiAdministrativa.Modelos.JuegoModelos
         public string Titulo { get; set; }
         public string Genero { get; set; }
 
-        public int Ranking { get; set; }
-        public int Notas { get; set; }
+        public List<CalificacionEntradaSalida> calificaciones { get; set; }
 
-        public List<CalificacionEntradaSalida> calificaciones;
-
-        public List<UsuarioEntradaSalida> usuarios;
+        public List<UsuarioEntradaSalida> usuarios { get; set; }
 
         public JuegoSalida() { }
 
@@ -33,8 +30,6 @@ namespace WebApiAdministrativa.Modelos.JuegoModelos
             this.Genero = unJuego.Genero;
             this.Sinopsis = unJuego.Sinopsis;
             this.Caratula = unJuego.Caratula;
-            this.Ranking = unJuego.Ranking;
-            this.Notas = unJuego.Notas;
         }
 
         public static List<JuegoSalida> JuegosAModelo(List<Juego> juegos)

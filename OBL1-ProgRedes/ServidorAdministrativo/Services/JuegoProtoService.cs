@@ -169,6 +169,7 @@ namespace ServidorAdministrativo.Services
             List<Juego> retorno = new List<Juego>();
             foreach(var juego in juegosPersistidos)
             {
+              if(juego.usuarios !=null)
               foreach(var usu in juego.usuarios)
                 {
                     if(usu.NombreUsuario == usuario.NombreUsuario)

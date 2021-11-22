@@ -32,6 +32,7 @@ namespace LogicaNegocio
         public Juego()
         {
             this.calificaciones = new List<Calificacion>();
+            this.usuarios = new List<Usuario>();
         }
 
         public static Juego CrearJuego()
