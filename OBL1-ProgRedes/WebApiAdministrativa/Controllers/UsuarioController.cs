@@ -1,16 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using System.Net;
-using WebApiAdministrativa.Modelos.UsuarioModelos;
-using IServices;
-using LogicaNegocio;
+﻿using WebApiAdministrativa.Modelos.UsuarioModelos;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using LogicaNegocio;
+using System.Net;
+using IServices;
 
 namespace WebApiAdministrativa.Controllers
 {
     [Route("administrativo/usuarios")]
+    [ApiController]
     public class UsuarioController : ControllerBase
     {
+        private const string usuarioModificado = "El usuario fue modificado correctamente";
+        private const string noExisteUsuario = "El usuario no existe o esta activo";
+
         private IUsuarioService servicioUsuario;
 
         public UsuarioController(IUsuarioService servicioUsuario)
@@ -23,7 +27,7 @@ namespace WebApiAdministrativa.Controllers
         {
             Usuario usuario = await servicioUsuario.ObtenerUsuario(UsuarioEntradaSalida.ModeloADominio(unUsuario));
 
-            return (StatusCode((int)HttpStatusCode.OK, UsuarioEntradaSalida.DominioAModelo(usuario)));
+            return (StatusCode((int)HttpStatusCode.Created, UsuarioEntradaSalida.DominioAModelo(usuario)));
         }
 
         [HttpGet]
@@ -37,14 +41,16 @@ namespace WebApiAdministrativa.Controllers
         public async Task<ActionResult> Put([FromRoute] string nombreUsuario, [FromBody] string nuevoNombre)
         {
             bool modifico = await servicioUsuario.ModificarUsuario(nombreUsuario, nuevoNombre);
-            return (StatusCode((int)HttpStatusCode.OK, modifico));
+            return (modifico==true)?(StatusCode((int)HttpStatusCode.OK, usuarioModificado)) :
+                (StatusCode((int)HttpStatusCode.BadRequest, noExisteUsuario));
         }
 
         [HttpDelete("{nombreUsuario}")]
-        public async Task<ActionResult> Delete([FromRoute] string nombreUsuario, [FromBody] string nuevoNombre)
+        public async Task<ActionResult> Delete([FromRoute] string nombreUsuario)
         {
-            bool modifico = await servicioUsuario.ModificarUsuario(nombreUsuario, nuevoNombre);
-            return (StatusCode((int)HttpStatusCode.OK, modifico));
+            bool elimino = await servicioUsuario.EliminarUsuario(nombreUsuario);
+            return (elimino==true)?(StatusCode((int)HttpStatusCode.OK, elimino)):
+                (StatusCode((int)HttpStatusCode.BadRequest, noExisteUsuario));
         }
     }
 }

@@ -1,19 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ServidorAdministrativo;
+using Servicios.Mappers;
 using Grpc.Net.Client;
 using LogicaNegocio;
 using IServices;
+using System.IO;
 
 namespace Servicios
 { 
     public class UsuarioService : IUsuarioService {
 
-        GrpcChannel canal = GrpcChannel.ForAddress("https://localhost:5001");
+        IConfiguration configuracion = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("AppSettings.json", optional: false).Build();
+
         ServicioUsuario.ServicioUsuarioClient userProtoService;
 
         public UsuarioService()
         {
+            GrpcChannel canal = GrpcChannel.ForAddress(configuracion["canalGrpc"]);
             this.userProtoService = new ServicioUsuario.ServicioUsuarioClient(canal);
         }
 
@@ -42,7 +49,7 @@ namespace Servicios
         {
             UsuariosProto usuariosProto = await userProtoService.ObtenerUsuariosAsync(new MensajeVacio());
 
-            List<Usuario> usuariosDominio = MapearProtoUsuarios(usuariosProto);
+            List<Usuario> usuariosDominio = MapperUsuario.MapearProtoUsuarios(usuariosProto);
 
             return usuariosDominio;
         }
@@ -65,6 +72,7 @@ namespace Servicios
         {
             List<Usuario> usuarios = await ObtenerUsuarios();
             UsuarioModificacionProto modificacionProto = new UsuarioModificacionProto();
+
             modificacionProto.Nombre = nombreUsuario;
             modificacionProto.NombreModificado = nuevoNombreUsuario;
 
@@ -80,55 +88,6 @@ namespace Servicios
                 }
 
             return false;
-        }
-
-        private async Task<bool> NoEsUsuarioExistente(Usuario unUsuario)
-        {
-            List<Usuario> misUsuarios = await ObtenerUsuarios();
-
-            foreach (var usuario in misUsuarios)
-                if (unUsuario.NombreUsuario == usuario.NombreUsuario)
-                    return false;
-
-            return true;
-        }
-
-        private async Task<Usuario> DevolverUsuarioExistente(Usuario unUsuario)
-        {
-            List<Usuario> misUsuarios = await ObtenerUsuarios();
-            foreach (var usuario in misUsuarios)
-                if (unUsuario.NombreUsuario == usuario.NombreUsuario)
-                    return usuario;
-
-            return null;
-        }
-
-        private static Usuario MapearProtoUsuario(UsuarioProto proto)
-        {
-            return new Usuario(proto.Nombre);
-        }
-
-        private List<Usuario> MapearProtoUsuarios(UsuariosProto proto)
-        {
-            List<Usuario> usuarios = new List<Usuario>();
-            List<UsuarioProto> usuariosProto = new List<UsuarioProto>();
-
-            foreach (var usu in proto.Usuario)
-                usuarios.Add(MapearProtoUsuario(usu));
-
-            return usuarios;
-        }
-
-        //IMPORTANTE BORRAR ESTO SI NO LO VOY A USAR
-        private UsuariosProto MapearUsuariosProto(List<Usuario> misUsuarios)
-        {
-            List<Usuario> usuariosDominio = misUsuarios;
-
-            UsuariosProto usuarios = new UsuariosProto();
-
-            usuariosDominio.ForEach(x => usuarios.Usuario.Add(new UsuarioProto { Nombre = x.NombreUsuario }));
-
-            return usuarios;
         }
     }
 }

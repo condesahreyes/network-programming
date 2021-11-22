@@ -1,0 +1,15 @@
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.deps.json
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\bin\Debug\netcoreapp3.1\IRepositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\bin\Debug\netcoreapp3.1\IRepositorio.pdb
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.csproj.AssemblyReference.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfoInputs.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfo.cs
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.csproj.CoreCompileInputs.cache
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.csproj.CopyComplete
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.dll
+C:\Users\hreye\Desktop\Prog.-Redes\OBL1-ProgRedes\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.pdb

@@ -12,7 +12,7 @@
           "Google.Protobuf": "3.13.0",
           "Grpc.Net.ClientFactory": "2.32.0",
           "Grpc.Tools": "2.32.0",
-          "IServices": "1.0.0",
+          "IServicios": "1.0.0",
           "ServidorAdministrativo": "1.0.0"
         },
         "runtime": {
@@ -181,19 +181,38 @@
           "Dominio.dll": {}
         }
       },
-      "IServices/1.0.0": {
+      "IRepositorio/1.0.0": {
         "dependencies": {
           "Dominio": "1.0.0"
         },
         "runtime": {
-          "IServices.dll": {}
+          "IRepositorio.dll": {}
+        }
+      },
+      "IServicios/1.0.0": {
+        "dependencies": {
+          "Dominio": "1.0.0"
+        },
+        "runtime": {
+          "IServicios.dll": {}
+        }
+      },
+      "Repositorio/1.0.0": {
+        "dependencies": {
+          "Dominio": "1.0.0",
+          "IRepositorio": "1.0.0"
+        },
+        "runtime": {
+          "Repositorio.dll": {}
         }
       },
       "ServidorAdministrativo/1.0.0": {
         "dependencies": {
           "Dominio": "1.0.0",
           "Grpc.AspNetCore": "2.32.0",
-          "RabbitMQ.Client": "6.2.2"
+          "IRepositorio": "1.0.0",
+          "RabbitMQ.Client": "6.2.2",
+          "Repositorio": "1.0.0"
         },
         "runtime": {
           "ServidorAdministrativo.dll": {}
@@ -380,7 +399,17 @@
       "serviceable": false,
       "sha512": ""
     },
-    "IServices/1.0.0": {
+    "IRepositorio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IServicios/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repositorio/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,16 +1,15 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace WebApiAdministrativa
 {
     public class Program
     {
+        private static IConfiguration configuracion = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("AppSettings.json", optional: false).Build();
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -20,7 +19,8 @@ namespace WebApiAdministrativa
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls("https://localhost:5002");
+                    string url = configuracion["WebApi"];
+                    webBuilder.UseUrls(url);
                     webBuilder.UseStartup<Startup>();
                 });
     }

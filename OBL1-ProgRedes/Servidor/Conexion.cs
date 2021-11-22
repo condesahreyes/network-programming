@@ -22,7 +22,6 @@ namespace Servidor
         private FuncionalidadCliente funcionalidadesCliente;
 
         private IUsuarioService usuarioService = new UsuarioService();
-        private IJuegoService juegoService = new JuegoService();
 
         private TcpClient handler;
 

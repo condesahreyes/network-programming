@@ -17,9 +17,7 @@ namespace LogicaNegocio
             this.Nota = nota;
             this.Usuario = usuario;
         }
-        public Calificacion()
-        {
-        }
+        public Calificacion() { }
 
         public static Calificacion CrearCalificacion(string usuario, string tituloJuego)
         {

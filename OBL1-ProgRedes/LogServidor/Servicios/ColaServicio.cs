@@ -1,9 +1,9 @@
 ﻿using LogServidor.Persistencia;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System;
-using System.Text;
 using System.Threading.Tasks;
+using RabbitMQ.Client.Events;
+using RabbitMQ.Client;
+using System.Text;
+using System;
 
 namespace LogServidor
 {
