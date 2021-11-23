@@ -43,7 +43,7 @@ namespace LogServidor.Persistencia
             foreach (string log  in this.logs)
             {
                 string logLower = log.ToLower();
-                bool filtrarPorUsuario = usuario == null && log.Split(" ")[0].Equals("usuario") && usuario!="" && logLower.Contains(usuario);
+                bool filtrarPorUsuario = usuario != null && log.Split(" ")[0].Equals("usuario") && usuario!="" && logLower.Contains(usuario);
                 bool filtrarPorJuego = juego != null && log.Split(" ")[0].Equals("juego") && juego!="" && logLower.Contains(juego);
                 bool filtrarPorFecha = fecha != "" && fecha != null && logLower.Contains(fecha);
 

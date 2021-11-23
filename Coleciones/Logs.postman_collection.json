@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "071b00e2-3d85-4db3-aedc-c1a13603443f",
+		"name": "Logs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ObtenerLogs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5003/logs/?usuario={nombreUsuario}&juego={tituloJuego}&fecha={fecha}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"logs",
+						""
+					],
+					"query": [
+						{
+							"key": "usuario",
+							"value": "{nombreUsuario}"
+						},
+						{
+							"key": "juego",
+							"value": "{tituloJuego}"
+						},
+						{
+							"key": "fecha",
+							"value": "{fecha}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -125,7 +125,7 @@ namespace ServidorAdministrativo.Services
             bool juegoAgregado = repositorioJuego.AgregarJuego(nuevoJuego);
 
             if(juegoAgregado)
-                this.logServices.EnviarMensaje("Alta juego " + unJuego.Titulo);
+                this.logServices.EnviarMensaje("juego " + unJuego.Titulo + " dado de alta");
 
             return await Task.FromResult(new ProtoBool() { BoolProto = juegoAgregado });
         }
