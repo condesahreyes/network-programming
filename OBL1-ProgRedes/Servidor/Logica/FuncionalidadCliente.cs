@@ -23,118 +23,118 @@ namespace Servidor
             this.juegoService = new JuegoService();
         }
 
-        public async Task<Usuario> InicioSesionCliente(Usuario usuario, int largoMensajeARecibir)
+        public async Task<Usuario> InicioSesionClienteAsync(Usuario usuario, int largoMensajeARecibir)
         {
             usuario = await Controlador.RecibirUsuarioAsync(transferencia, largoMensajeARecibir);
 
-            await EnviarRespuesta(usuario, usuario != null);
+            await EnviarRespuestaAsync(usuario, usuario != null);
 
-            Usuario usuarioCreado = await usuarioService.ObtenerUsuario(usuario);
+            Usuario usuarioCreado = await usuarioService.ObtenerUsuarioAsync(usuario);
 
-            await usuarioService.ActualizarAUsuarioActivo(usuario.NombreUsuario);
+            await usuarioService.ActualizarAUsuarioActivoAsync(usuario.NombreUsuario);
 
             return usuarioCreado;
         }
 
-        public async Task CrearJuego(int largoMensajeARecibir)
+        public async Task CrearJuegoAysnc(int largoMensajeARecibir)
         {
             Juego juego = await Controlador.PublicarJuegoAsync(transferencia, largoMensajeARecibir);
 
-            string caratula = await RecibirArchivos();
+            string caratula = await RecibirArchivosAsync();
             juego.Caratula = caratula;
 
-            await EnviarRespuesta(juego, await juegoService.AgregarJuego(juego));
+            await EnviarRespuestaAsync(juego, await juegoService.AgregarJuegoAsync(juego));
         }
 
-        public async Task EnviarListaJuegos()
+        public async Task EnviarListaJuegosAysnc()
         {
-            List<Juego> juegos = await juegoService.ObtenerJuegos();
+            List<Juego> juegos = await juegoService.ObtenerJuegosAsync();
             string juegosString =  Mapper.ListaDeJuegosAString(juegos);
 
-            await EnviarMensaje(juegosString, Accion.ListaJuegos);
+            await EnviarMensajeAsync(juegosString, Accion.ListaJuegos);
         }
 
-        public async Task VerJuegosAdquiridos(int largoMensajeARecibir, Usuario usuario)
+        public async Task VerJuegosAdquiridosAysnc(int largoMensajeARecibir, Usuario usuario)
         {
-            List<Juego> juegos = await juegoService.JuegoUsuarios(usuario);
+            List<Juego> juegos = await juegoService.JuegoUsuariosAsync(usuario);
             string juegosString =  Mapper.ListaDeJuegosAString(juegos);
-            await EnviarMensaje(juegosString, Accion.VerJuegosAdquiridos);
+            await EnviarMensajeAsync(juegosString, Accion.VerJuegosAdquiridos);
         }
 
-        public async Task AdquirirJuego(int largoMensajeARecibir, Usuario usuario)
+        public async Task AdquirirJuegoAsync(int largoMensajeARecibir, Usuario usuario)
         {
             string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
 
-            Juego juegoAdquirido = await juegoService.AdquirirJuegoPorUsuario(tituloJuego, usuario);
-            await EnviarRespuesta(juegoAdquirido, juegoAdquirido!=null);
+            Juego juegoAdquirido = await juegoService.AdquirirJuegoPorUsuarioAsync(tituloJuego, usuario);
+            await EnviarRespuestaAsync(juegoAdquirido, juegoAdquirido!=null);
         }
 
-        public async Task EnviarDetalleDeUnJuego(int largoMensaje)
+        public async Task EnviarDetalleDeUnJuegoAsync(int largoMensaje)
         {
             string  tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensaje);
-            Juego juego = await juegoService.ObtenerJuegoPorTitulo(tituloJuego);
+            Juego juego = await juegoService.ObtenerJuegoPorTituloAsync(tituloJuego);
             if(juego != null)
             {
                 string juegoEnString = Mapper.JuegoAString(juego);
 
-                await EnviarMensaje(juegoEnString, Accion.EnviarDetalleJuego);
+                await EnviarMensajeAsync(juegoEnString, Accion.EnviarDetalleJuego);
                 await ControladorDeArchivos.EnviarArchivoAsync(Directory.GetCurrentDirectory() + @"\" + 
                     juego.Caratula, transferencia);
             }
             else
             {
-                await EnviarRespuesta(juego, false);
+                await EnviarRespuestaAsync(juego, false);
             }
         }
 
-        public async Task CrearCalificacion(int largoMensajeARecibir)
+        public async Task CrearCalificacionAsync(int largoMensajeARecibir)
         {
             Calificacion calificacion = await Controlador.PublicarCalificacionAsync(transferencia, largoMensajeARecibir);
 
-            bool fueAgregado =  await juegoService.AgregarCalificacion(calificacion);
+            bool fueAgregado =  await juegoService.AgregarCalificacionAsync(calificacion);
 
-            await EnviarRespuesta(null, fueAgregado);
+            await EnviarRespuestaAsync(null, fueAgregado);
         }
 
-        public async Task BuscarJuegoPorTitulo(int largoMensajeARecibir)
+        public async Task BuscarJuegoPorTituloAsync(int largoMensajeARecibir)
         {
             string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
-            Juego juego = await  juegoService.ObtenerJuegoPorTitulo(tituloJuego);
+            Juego juego = await  juegoService.ObtenerJuegoPorTituloAsync(tituloJuego);
             string juegoEnString =  Mapper.JuegoAString(juego);
 
-            await EnviarMensaje(juegoEnString, Accion.BuscarTitulo);
+            await EnviarMensajeAsync(juegoEnString, Accion.BuscarTitulo);
         }
 
-        public async Task BuscarJuegoPorGenero(int largoMensajeARecibir)
+        public async Task BuscarJuegoPorGeneroAsync(int largoMensajeARecibir)
         {
             string generoJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
-            List<Juego> juego = await juegoService .BuscarJuegoPorGenero(generoJuego);
+            List<Juego> juego = await juegoService .BuscarJuegoPorGeneroAsync(generoJuego);
             string juegoEnString = Mapper.ListaJuegosAString(juego);
 
-            await EnviarMensaje(juegoEnString, Accion.BuscarGenero);
+            await EnviarMensajeAsync(juegoEnString, Accion.BuscarGenero);
         }
 
-        public async Task BuscarJuegoPorCalificacion(int largoMensajeARecibir)
+        public async Task BuscarJuegoPorCalificacionAsync(int largoMensajeARecibir)
         {
             string rankingString = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensajeARecibir);
 
             int ranking = Convert.ToInt32(rankingString);
 
-            List<Juego> juegos = await  juegoService.BuscarJuegoPorCalificacion(ranking);
+            List<Juego> juegos = await  juegoService.BuscarJuegoPorCalificacionAsync(ranking);
 
             string juegosString = Mapper.ListaJuegosAString(juegos);
 
-            await EnviarMensaje(juegosString, Accion.BuscarCalificacion);
+            await EnviarMensajeAsync(juegosString, Accion.BuscarCalificacion);
         }
 
-        public async Task EliminarJuego(int largoMensaje)
+        public async Task EliminarJuegoAsync(int largoMensaje)
         {
             string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensaje);
-            juegoService.EliminarJuego(tituloJuego);
-            await EnviarRespuesta(tituloJuego, juegoService.BuscarJuegoPortTitulo(tituloJuego) == null);
+            await juegoService.EliminarJuegoAsync(tituloJuego);
+            await EnviarRespuestaAsync(tituloJuego, juegoService.BuscarJuegoPortTituloAsync(tituloJuego) == null);
         }
 
-        public async Task ModificarJuego(int largoMensaje)
+        public async Task ModificarJuegoAsync(int largoMensaje)
         {
             string tituloJuego = await Controlador.RecibirMensajeGenericoAsync(transferencia, largoMensaje);
             Encabezado encabezado = await Controlador.RecibirEncabezadoAsync(transferencia);
@@ -143,24 +143,24 @@ namespace Servidor
 
             Juego juego = Mapper.StringAJuego(juegoEnString);
 
-            string caratula = await RecibirArchivos();
+            string caratula = await RecibirArchivosAsync();
             juego.Caratula = caratula;
 
-            bool fueEliminado = await  juegoService.EliminarJuego(tituloJuego);
+            bool fueEliminado = await  juegoService.EliminarJuegoAsync(tituloJuego);
             bool fueAgregadoElModificado = false;
 
             if (fueEliminado == false)
             {
-                await EnviarRespuesta(null, fueAgregadoElModificado);
+                await EnviarRespuestaAsync(null, fueAgregadoElModificado);
                 return;
             }
 
-            fueAgregadoElModificado = await juegoService.AgregarJuego(juego);
+            fueAgregadoElModificado = await juegoService.AgregarJuegoAsync(juego);
 
-            await EnviarRespuesta(juego, fueAgregadoElModificado);
+            await EnviarRespuestaAsync(juego, fueAgregadoElModificado);
         }
 
-        public async Task<string> RecibirArchivos()
+        public async Task<string> RecibirArchivosAsync()
         {
             Encabezado encabezado = await Controlador.RecibirEncabezadoAsync(transferencia);
 
@@ -170,7 +170,7 @@ namespace Servidor
             return nombreArchivo;
         }
 
-        private async Task EnviarRespuesta(object obj, bool ok)
+        private async Task EnviarRespuestaAsync(object obj, bool ok)
         {
             if (obj == null && !ok)
                 await Controlador.EnviarMensajeClienteObjetoEliminadoAsync(transferencia);
@@ -180,12 +180,12 @@ namespace Servidor
                 await Controlador.EnviarMensajeClienteErrorAsync(transferencia);
         }
 
-        private async Task EnviarMensaje(string mensaje, string accion)
+        private async Task EnviarMensajeAsync(string mensaje, string accion)
         {
             Encabezado encabezado = new Encabezado(mensaje.Length, accion);
 
             await Controlador.EnviarEncabezadoAsync(transferencia, encabezado);
-            await Controlador.EnviarDatos(transferencia, mensaje);
+            await Controlador.EnviarDatosAsync(transferencia, mensaje);
         }
 
     }

@@ -11,9 +11,9 @@ namespace Cliente
 
         public Menu() { }
 
-        public async Task MenuPrincipal()
+        public async Task MenuPrincipalAsync()
         {
-            this.funcionalidadesCliente = await Funcionalidad.ObtenerInstancia();
+            this.funcionalidadesCliente = await Funcionalidad.ObtenerInstanciaAsync();
             int opcion = Metodo.ObtenerOpcion(Mensaje.menuPrincipal, 0, 1);
 
             switch (opcion)
@@ -23,13 +23,13 @@ namespace Cliente
                     funcionalidadesCliente.DesconectarUsuario(usuario);
                     break;
                 case 1:
-                    usuario = await funcionalidadesCliente.InicioSesion();
-                    await MenuFuncionalidades();
+                    usuario = await funcionalidadesCliente.InicioSesionAsync();
+                    await MenuFuncionalidadesAsync();
                     break;
             }
         }
 
-        public async Task MenuFuncionalidades()
+        public async Task MenuFuncionalidadesAsync()
         {
             int opcion = -1;
             while (opcion != 0)
@@ -42,25 +42,25 @@ namespace Cliente
                         funcionalidadesCliente.DesconectarUsuario(this.usuario);
                         break;
                     case 1:
-                        await funcionalidadesCliente.PublicarJuego();
+                        await funcionalidadesCliente.PublicarJuegoAsync();
                         break;
                     case 2:
-                        await funcionalidadesCliente.BajaModificacionJuego();
+                        await funcionalidadesCliente.BajaModificacionJuegoAsync();
                         break;
                     case 3:
-                        await funcionalidadesCliente.BuscarJuego();
+                        await funcionalidadesCliente.BuscarJuegoAsync();
                         break;
                     case 4:
-                        await funcionalidadesCliente.CalificarUnJuego(this.usuario);
+                        await funcionalidadesCliente.CalificarUnJuegoAsync(this.usuario);
                         break;
                     case 5:
-                        await funcionalidadesCliente.DetalleDeUnJuego();
+                        await funcionalidadesCliente.DetalleDeUnJuegoAsync();
                         break;
                     case 6:
-                        await funcionalidadesCliente.AdquirirJuego(this.usuario);
+                        await funcionalidadesCliente.AdquirirJuegoAsync(this.usuario);
                         break;
                     case 7:
-                        await funcionalidadesCliente.ListaJuegosAdquiridos(this.usuario);
+                        await funcionalidadesCliente.ListaJuegosAdquiridosAsync(this.usuario);
                         break;
                 }
             }

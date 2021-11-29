@@ -16,7 +16,7 @@ namespace Cliente
 
         public Conexion() { }
 
-        public async Task InstanciarTransferencia()
+        public async Task InstanciarTransferenciaAsync()
         {
             IConfiguration configuracion = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -40,7 +40,7 @@ namespace Cliente
             transferencia.Desconectar();
         }
 
-        public async Task<string> EsperarPorRespuesta()
+        public async Task<string> EsperarPorRespuestaAsync()
         {
             string respuesta = await Controlador.RecibirMensajeGenericoAsync
                 (transferencia, Constante.largoEncabezado);
@@ -49,37 +49,37 @@ namespace Cliente
             return respuestas[0];
         }
 
-        public async Task EnvioEncabezado(int largoMensaje, string accion)
+        public async Task EnvioEncabezadoAsync(int largoMensaje, string accion)
         {
             Encabezado encabezado = new Encabezado(largoMensaje, accion);
             await Controlador.EnviarEncabezadoAsync(transferencia, encabezado);
         }
 
-        public async Task<Encabezado> RecibirEncabezado()
+        public async Task<Encabezado> RecibirEncabezadoAsync()
         {
             return await Controlador.RecibirEncabezadoAsync(transferencia);
         }
 
-        public async Task EnvioDeMensaje(string mensaje)
+        public async Task EnvioDeMensajeAsync(string mensaje)
         {
-            await Controlador.EnviarDatos(transferencia, mensaje);
+            await Controlador.EnviarDatosAsync(transferencia, mensaje);
         }
 
-        public async Task<string> RecibirMensaje()
+        public async Task<string> RecibirMensajeAsync()
         {
-            Encabezado encabezado = await RecibirEncabezado();
+            Encabezado encabezado = await RecibirEncabezadoAsync();
 
             return await Controlador.RecibirMensajeGenericoAsync(transferencia, encabezado.largoMensaje);
         }
 
-        public async Task<Juego> RecibirUnJuegoPorTitulo(string titulo)
+        public async Task<Juego> RecibirUnJuegoPorTituloAsync(string titulo)
         {
             return await Controlador.RecibirUnJuegoPorTituloAsync(transferencia, titulo);
         }
 
-        public async Task<List<string>> RecibirListaDeJuegos()
+        public async Task<List<string>> RecibirListaDeJuegosAsync()
         {
-            await EnvioEncabezado(0, Accion.ListaJuegos);
+            await EnvioEncabezadoAsync(0, Accion.ListaJuegos);
 
             string juegos = await Controlador.RecibirEncabezadoYMensajeAsync
                 (transferencia, Accion.ListaJuegos);
@@ -87,7 +87,7 @@ namespace Cliente
             return Mapper.StringAListaJuegosString(juegos);
         }
 
-        public async Task<List<string>> RecibirListaDeJuegosAdquiridos()
+        public async Task<List<string>> RecibirListaDeJuegosAdquiridosAsync()
         {
             string juegos = await Controlador.RecibirEncabezadoYMensajeAsync
                 (transferencia, Accion.VerJuegosAdquiridos);
@@ -95,14 +95,14 @@ namespace Cliente
             return Mapper.StringAListaJuegosString(juegos);
         }
 
-        public async Task EnvioDeArchivo(string archivo)
+        public async Task EnvioDeArchivoAsync(string archivo)
         {
             await ControladorDeArchivos.EnviarArchivoAsync(archivo, transferencia);
         }
 
-        public async Task<string> RecibirArchivos(string caratula)
+        public async Task<string> RecibirArchivosAsync(string caratula)
         {
-            Encabezado encabezado = await RecibirEncabezado();
+            Encabezado encabezado = await RecibirEncabezadoAsync();
 
             if (encabezado.accion == Accion.EliminarJuego)
                 return "";

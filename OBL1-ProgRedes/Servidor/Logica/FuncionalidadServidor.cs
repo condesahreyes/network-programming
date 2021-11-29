@@ -18,9 +18,9 @@ namespace Servidor.Logica
             this.juegoService = new JuegoService();
         }
 
-        public async Task VerListaUsuario()
+        public async Task VerListaUsuarioAsync()
         {
-            List<Usuario> usuarios = await usuarioService.ObtenerUsuarios();
+            List<Usuario> usuarios = await usuarioService.ObtenerUsuariosAsync();
 
             if (usuarios.Count == 0)
             {
@@ -34,9 +34,9 @@ namespace Servidor.Logica
                 Console.WriteLine(usuario.NombreUsuario);
         }
 
-        public async Task VerCatalogoJuegos()
+        public async Task VerCatalogoJuegosAsync()
         {
-            List<Juego> juegos = await juegoService.ObtenerJuegos();
+            List<Juego> juegos = await juegoService.ObtenerJuegosAsync();
 
             if (juegos.Count == 0)
             {

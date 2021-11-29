@@ -7,12 +7,12 @@ namespace Cliente
 {
     public class Cliente
     {
-        static async Task Main(string[] args)
+        static async Task MainAsync(string[] args)
         {
             try
             {
                 Menu menu = new Menu();
-                await menu.MenuPrincipal();
+                await menu.MenuPrincipalAsync();
             }
             catch (Exception)
             {

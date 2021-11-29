@@ -6,30 +6,30 @@ namespace IServices
 {
     public interface IJuegoService
     {
-        Task<bool> EsJuegoExistente(Juego unJuego);
+        Task<bool> EsJuegoExistenteAsync(Juego unJuego);
 
-        Task<List<Juego>> ObtenerJuegos();
+        Task<List<Juego>> ObtenerJuegosAsync();
 
-        Task<bool> AgregarJuego(Juego juego);
+        Task<bool> AgregarJuegoAsync(Juego juego);
 
-        Task<bool> AgregarCalificacion(Calificacion calificacion);
+        Task<bool> AgregarCalificacionAsync(Calificacion calificacion);
 
-        Task<Juego> AdquirirJuegoPorUsuario(string juego, Usuario usuario);
+        Task<Juego> AdquirirJuegoPorUsuarioAsync(string juego, Usuario usuario);
 
-        Task<List<Juego>> JuegoUsuarios(Usuario usuario);
+        Task<List<Juego>> JuegoUsuariosAsync(Usuario usuario);
 
-        Task<Juego> BuscarJuegoPortTitulo(string unTitulo);
+        Task<Juego> BuscarJuegoPortTituloAsync(string unTitulo);
 
-        Task<List<Juego>> BuscarJuegoPorGenero(string unGenero);
+        Task<List<Juego>> BuscarJuegoPorGeneroAsync(string unGenero);
 
-        Task<Juego> ObtenerJuegoPorTitulo(string tituloJuego);
+        Task<Juego> ObtenerJuegoPorTituloAsync(string tituloJuego);
 
-        Task<List<Juego>> BuscarJuegoPorCalificacion(int ranking);
+        Task<List<Juego>> BuscarJuegoPorCalificacionAsync(int ranking);
 
-        Task<bool> EliminarJuego(string tituloJuego);
+        Task<bool> EliminarJuegoAsync(string tituloJuego);
 
-        Task<bool> DesasociarJuegoAUsuario(string juego, Usuario usuario);
+        Task<bool> DesasociarJuegoAUsuarioAsync(string juego, Usuario usuario);
 
-        Task<Juego> ModificarJuego(string tiuuloJuego, Juego juegoModificado);
+        Task<Juego> ModificarJuegoAsync(string tiuuloJuego, Juego juegoModificado);
     }
 }

@@ -14,29 +14,29 @@ namespace Cliente
 
         public  Funcionalidad() { }
 
-        public static async Task InstanciarConexion()
+        public static async Task InstanciarConexionAsync()
         {
             conexionCliente = new Conexion();
-            await conexionCliente.InstanciarTransferencia();
+            await conexionCliente.InstanciarTransferenciaAsync();
         }
 
-        public static async Task<Funcionalidad> ObtenerInstancia()
+        public static async Task<Funcionalidad> ObtenerInstanciaAsync()
         {
             if (_instancia == null)
             {
                 _instancia = new Funcionalidad();
-                await InstanciarConexion();
+                await InstanciarConexionAsync();
             }
   
             return _instancia;
         }
 
-        public async Task<Usuario> InicioSesion()
+        public async Task<Usuario> InicioSesionAsync()
         {
             Usuario usuario = Usuario.CrearUsuario();
             string nombreUsuario = usuario.NombreUsuario;
 
-            await EnvioYRespuesta(nombreUsuario, Accion.Login, Mensaje.InicioSesion, 
+            await EnvioYRespuestaAsync(nombreUsuario, Accion.Login, Mensaje.InicioSesion, 
                 Mensaje.ErrorGenerico, Mensaje.ErrorGenerico);
 
             return usuario;
@@ -47,7 +47,7 @@ namespace Cliente
             conexionCliente.DesconectarUsuario(usuario);
         }
 
-        public async Task PublicarJuego()
+        public async Task PublicarJuegoAsync()
         {
             Juego unJuego = Juego.CrearJuego();
 
@@ -55,12 +55,12 @@ namespace Cliente
 
             string caratula = unJuego.Caratula;
 
-            await EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.PublicarJuego);
-            await conexionCliente.EnvioDeArchivo(caratula);
-            await RecibirRespuestas(Mensaje.JuegoCreado, Mensaje.JuegoExistente, Mensaje.JuegoEliminado);
+            await EnvioMensajeConPrevioEncabezadoAsync(juegoEnString, Accion.PublicarJuego);
+            await conexionCliente.EnvioDeArchivoAsync(caratula);
+            await RecibirRespuestasAsync(Mensaje.JuegoCreado, Mensaje.JuegoExistente, Mensaje.JuegoEliminado);
         }
 
-        public async Task BuscarJuego()
+        public async Task BuscarJuegoAsync()
         {
             int opcion = Metodo.ObtenerOpcion(Mensaje.buscarJuegoPorFiltro, 0, 2);
             string filtro = "";
@@ -84,13 +84,13 @@ namespace Cliente
                 accion = Accion.BuscarCalificacion;
             }
 
-            List<Juego> juegos = await BuscarJuegoPorFiltro(filtro, accion);
+            List<Juego> juegos = await BuscarJuegoPorFiltroAsync(filtro, accion);
             Mensaje.MostrarObjetoJuego(juegos);
         }
 
-        public async Task DetalleDeUnJuego()
+        public async Task DetalleDeUnJuegoAsync()
         {
-            string titulo = await DevolverTituloJuegoSeleccionado();
+            string titulo = await DevolverTituloJuegoSeleccionadoAsync();
 
             if (titulo == "")
             {
@@ -99,9 +99,9 @@ namespace Cliente
             }
             try
             {
-                Juego juego = await conexionCliente.RecibirUnJuegoPorTitulo(titulo);
+                Juego juego = await conexionCliente.RecibirUnJuegoPorTituloAsync(titulo);
 
-                await conexionCliente.RecibirArchivos(juego.Caratula);
+                await conexionCliente.RecibirArchivosAsync(juego.Caratula);
                 Mensaje.MostrarJuego(juego);
             }
             catch(Exception)
@@ -110,9 +110,9 @@ namespace Cliente
             }
         }
 
-        public async Task CalificarUnJuego(Usuario usuario)
+        public async Task CalificarUnJuegoAsync(Usuario usuario)
         {
-            string titulo = await DevolverTituloJuegoSeleccionado();
+            string titulo = await DevolverTituloJuegoSeleccionadoAsync();
 
             if (titulo == "")
             {
@@ -124,26 +124,26 @@ namespace Cliente
 
             string calificacionEnString = Mapper.CalificacionAString(unaCalificacion);
 
-            await EnvioYRespuesta(calificacionEnString, Accion.PublicarCalificacion,
+            await EnvioYRespuestaAsync(calificacionEnString, Accion.PublicarCalificacion,
                 Mensaje.CalificacionCreada, Mensaje.ErrorGenerico, Mensaje.JuegoEliminado);
         }
 
-        public async Task AdquirirJuego(Usuario usuario)
+        public async Task AdquirirJuegoAsync(Usuario usuario)
         {
-           string tituloJuego = await DevolverTituloJuegoSeleccionado();
-           await EnvioYRespuesta(tituloJuego, Accion.AdquirirJuego, Mensaje.JuegoAdquirido, Mensaje.ErrorAdquirirJuego, Mensaje.JuegoEliminado);
+           string tituloJuego = await DevolverTituloJuegoSeleccionadoAsync();
+           await EnvioYRespuestaAsync(tituloJuego, Accion.AdquirirJuego, Mensaje.JuegoAdquirido, Mensaje.ErrorAdquirirJuego, Mensaje.JuegoEliminado);
         }
 
-        public async Task ListaJuegosAdquiridos(Usuario usuario)
+        public async Task ListaJuegosAdquiridosAsync(Usuario usuario)
         {
-            await conexionCliente.EnvioEncabezado(0, Accion.VerJuegosAdquiridos);
-            List<string> juegosAdquiridos = await conexionCliente.RecibirListaDeJuegosAdquiridos();
+            await conexionCliente.EnvioEncabezadoAsync(0, Accion.VerJuegosAdquiridos);
+            List<string> juegosAdquiridos = await conexionCliente.RecibirListaDeJuegosAdquiridosAsync();
             Mensaje.MostrarJuegos(juegosAdquiridos, Mensaje.noHayJuegosRegistrados, Mensaje.listadoJuegoAdquiridos);
         }
 
-        public async Task BajaModificacionJuego()
+        public async Task BajaModificacionJuegoAsync()
         {
-            string titulo = await DevolverTituloJuegoSeleccionado();
+            string titulo = await DevolverTituloJuegoSeleccionadoAsync();
 
             if (titulo == "")
             {
@@ -154,40 +154,40 @@ namespace Cliente
             int opcion = Metodo.ObtenerOpcion(Mensaje.bajaModificacion, 0, 1);
 
             if (opcion == 0)
-                await EnvioYRespuesta(titulo, Accion.EliminarJuego, Mensaje.JuegoEliminadoOk, 
+                await EnvioYRespuestaAsync(titulo, Accion.EliminarJuego, Mensaje.JuegoEliminadoOk, 
                     Mensaje.JuegoEliminadoError, Mensaje.JuegoEliminado);
             else if (opcion == 1)
-                await ModificarUnJuego(titulo);
+                await ModificarUnJuegoAsync(titulo);
         }
 
-        private async Task ModificarUnJuego(string titulo)
+        private async Task ModificarUnJuegoAsync(string titulo)
         {
             Juego juegoModificado = Juego.ModificarJuego();
             string juegoEnString = Mapper.JuegoAString(juegoModificado);
 
-            await conexionCliente.EnvioEncabezado(titulo.Length, Accion.ModificarJuego);
-            await conexionCliente.EnvioDeMensaje(titulo);
+            await conexionCliente.EnvioEncabezadoAsync(titulo.Length, Accion.ModificarJuego);
+            await conexionCliente.EnvioDeMensajeAsync(titulo);
 
-            await EnvioMensajeConPrevioEncabezado(juegoEnString, Accion.ModificarJuego);
+            await EnvioMensajeConPrevioEncabezadoAsync(juegoEnString, Accion.ModificarJuego);
 
-            await conexionCliente.EnvioDeArchivo(juegoModificado.Caratula);
+            await conexionCliente.EnvioDeArchivoAsync(juegoModificado.Caratula);
 
-            await RecibirRespuestas(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError, Mensaje.JuegoEliminado);
+            await RecibirRespuestasAsync(Mensaje.JuegoModificadoOk, Mensaje.JuegoModificadoError, Mensaje.JuegoEliminado);
         }
 
-        private async Task<List<Juego>> BuscarJuegoPorFiltro(string filtro, string accion)
+        private async Task<List<Juego>> BuscarJuegoPorFiltroAsync(string filtro, string accion)
         {
-            await conexionCliente.EnvioEncabezado(filtro.Length, accion);
-            await conexionCliente.EnvioDeMensaje(filtro);
+            await conexionCliente.EnvioEncabezadoAsync(filtro.Length, accion);
+            await conexionCliente.EnvioDeMensajeAsync(filtro);
 
-            string mensaje = await conexionCliente.RecibirMensaje();
+            string mensaje = await conexionCliente.RecibirMensajeAsync();
 
             return Mapper.PasarStringAListaDeJuegos(mensaje);
         }
 
-        private async Task<string> DevolverTituloJuegoSeleccionado()
+        private async Task<string> DevolverTituloJuegoSeleccionadoAsync()
         {
-            List<string> juegos = await conexionCliente.RecibirListaDeJuegos();
+            List<string> juegos = await conexionCliente.RecibirListaDeJuegosAsync();
 
             if (juegos.Count == 0)
             {
@@ -206,22 +206,22 @@ namespace Cliente
             return juegos[juegoSeleccionado];
         }
 
-        private async Task EnvioYRespuesta(string mensaje, string accion, Action Ok, Action Error, Action Eliminado)
+        private async Task EnvioYRespuestaAsync(string mensaje, string accion, Action Ok, Action Error, Action Eliminado)
         {
-            await EnvioMensajeConPrevioEncabezado(mensaje, accion);
+            await EnvioMensajeConPrevioEncabezadoAsync(mensaje, accion);
 
-            await RecibirRespuestas(Ok, Error, Eliminado);
+            await RecibirRespuestasAsync(Ok, Error, Eliminado);
         }
 
-        private async Task EnvioMensajeConPrevioEncabezado(string mensaje, string accion)
+        private async Task EnvioMensajeConPrevioEncabezadoAsync(string mensaje, string accion)
         {
-            await conexionCliente.EnvioEncabezado(mensaje.Length, accion);
-            await conexionCliente.EnvioDeMensaje(mensaje);
+            await conexionCliente.EnvioEncabezadoAsync(mensaje.Length, accion);
+            await conexionCliente.EnvioDeMensajeAsync(mensaje);
         }
 
-        private async Task RecibirRespuestas(Action RespuestaOk, Action RespuestaError, Action Eliminado)
+        private async Task RecibirRespuestasAsync(Action RespuestaOk, Action RespuestaError, Action Eliminado)
         {
-            string respuestaServidor = await conexionCliente.EsperarPorRespuesta();
+            string respuestaServidor = await conexionCliente.EsperarPorRespuestaAsync();
 
             if (respuestaServidor == Constante.MensajeOk)
                 RespuestaOk();

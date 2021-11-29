@@ -6,16 +6,16 @@ namespace IServices
 {
     public interface IUsuarioService
     {
-        Task ActualizarAUsuarioInactivo(string nombreUsuario);
+        Task ActualizarAUsuarioInactivoAsync(string nombreUsuario);
 
-        Task ActualizarAUsuarioActivo(string nombreUsuario);
+        Task ActualizarAUsuarioActivoAsync(string nombreUsuario);
 
-        Task<Usuario> ObtenerUsuario(Usuario usuario);
+        Task<Usuario> ObtenerUsuarioAsync(Usuario usuario);
 
-        Task<bool> EliminarUsuario(string nombreUsuario);
+        Task<bool> EliminarUsuarioAsync(string nombreUsuario);
 
-        Task<bool> ModificarUsuario(string nombreUsuario, string nuevoNombreUsuario);
+        Task<bool> ModificarUsuarioAsync(string nombreUsuario, string nuevoNombreUsuario);
 
-        Task<List<Usuario>> ObtenerUsuarios();
+        Task<List<Usuario>> ObtenerUsuariosAsync();
     }
 }

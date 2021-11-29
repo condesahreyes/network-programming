@@ -17,7 +17,7 @@ namespace ServidorAdministrativo.Services
             this.repositorioUsuario = repositorioUsuario;
         }
 
-        public override async Task<RespuestaProto> AltaUsuario(UsuarioProto request, ServerCallContext context)
+        public override async Task<RespuestaProto> AltaUsuarioAsync(UsuarioProto request, ServerCallContext context)
         {
             Usuario usuario = new Usuario(request.Nombre);
             repositorioUsuario.AgregarUsuario(usuario);
@@ -29,7 +29,7 @@ namespace ServidorAdministrativo.Services
             });
         }
 
-        public override async Task<UsuariosProto> ObtenerUsuarios(MensajeVacio request, ServerCallContext context)
+        public override async Task<UsuariosProto> ObtenerUsuariosAsync(MensajeVacio request, ServerCallContext context)
         {
             List<Usuario> usuariosDominio = repositorioUsuario.ObtenerUsuarios();
 
@@ -41,7 +41,7 @@ namespace ServidorAdministrativo.Services
             return await Task.FromResult(usuarios);
         }
 
-        public override async Task<MensajeVacio> ActualizarAUsuarioActivo(UsuarioProto request, ServerCallContext context)
+        public override async Task<MensajeVacio> ActualizarAUsuarioActivoAsync(UsuarioProto request, ServerCallContext context)
         {
             repositorioUsuario.ActualizarEstadoUsuario(request.Nombre, true);
 
@@ -49,7 +49,7 @@ namespace ServidorAdministrativo.Services
             return await Task.FromResult(new MensajeVacio() { });
         }
 
-        public override async Task<MensajeVacio> ActualizarAUsuarioInactivo(UsuarioProto request, ServerCallContext context)
+        public override async Task<MensajeVacio> ActualizarAUsuarioInactivoAsync(UsuarioProto request, ServerCallContext context)
         {
             repositorioUsuario.ActualizarEstadoUsuario(request.Nombre, false);
 
@@ -57,7 +57,7 @@ namespace ServidorAdministrativo.Services
             return await Task.FromResult(new MensajeVacio() { });
         }
 
-        public override async Task<BoolProto> EliminarUsuario(UsuarioProto request, ServerCallContext context)
+        public override async Task<BoolProto> EliminarUsuarioAsync(UsuarioProto request, ServerCallContext context)
         {
             bool eliminado = repositorioUsuario.EliminarUsuario(request.Nombre);
 
@@ -67,7 +67,7 @@ namespace ServidorAdministrativo.Services
             return await Task.FromResult(new BoolProto() { Estado = eliminado });
         }
 
-        public override async Task<BoolProto> ModificarUsuario(UsuarioModificacionProto request, ServerCallContext context)
+        public override async Task<BoolProto> ModificarUsuarioAsync(UsuarioModificacionProto request, ServerCallContext context)
         {
             bool modificado = repositorioUsuario.ModificarUsuario(request.Nombre, request.NombreModificado);
 
