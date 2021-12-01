@@ -24,9 +24,9 @@ namespace Servicios
             this.userProtoService = new ServicioUsuario.ServicioUsuarioClient(canal);
         }
 
-        public async Task<Usuario> ObtenerUsuario(Usuario usuario)
+        public async Task<Usuario> ObtenerUsuarioAsync(Usuario usuario)
         {
-            List<Usuario> usuariosDominio = await ObtenerUsuarios();
+            List<Usuario> usuariosDominio = await ObtenerUsuariosAsync();
 
             Usuario miUsuario = usuariosDominio.Find(x => x.NombreUsuario == usuario.NombreUsuario);
             
@@ -39,13 +39,13 @@ namespace Servicios
             return usuario;
         }
 
-        public async Task ActualizarAUsuarioInactivo(string nombreUsuario)
+        public async Task ActualizarAUsuarioInactivoAsync(string nombreUsuario)
         {
             UsuarioProto usuarioRequest = new UsuarioProto { Nombre = nombreUsuario };
             await userProtoService.ActualizarAUsuarioInactivoAsync(usuarioRequest);
         }
 
-        public async Task<List<Usuario>> ObtenerUsuarios()
+        public async Task<List<Usuario>> ObtenerUsuariosAsync()
         {
             UsuariosProto usuariosProto = await userProtoService.ObtenerUsuariosAsync(new MensajeVacio());
 
@@ -54,13 +54,13 @@ namespace Servicios
             return usuariosDominio;
         }
 
-        public async Task ActualizarAUsuarioActivo(string nombreUsuario)
+        public async Task ActualizarAUsuarioActivoAsync(string nombreUsuario)
         {
             UsuarioProto usuarioRequest = new UsuarioProto { Nombre = nombreUsuario };
             await userProtoService.ActualizarAUsuarioActivoAsync(usuarioRequest);
         }
 
-        public async Task<bool> EliminarUsuario(string nombreUsuario)
+        public async Task<bool> EliminarUsuarioAsync(string nombreUsuario)
         {
             UsuarioProto usuarioRequest = new UsuarioProto { Nombre = nombreUsuario };
             BoolProto protoBool = await userProtoService.EliminarUsuarioAsync(usuarioRequest);
@@ -68,9 +68,9 @@ namespace Servicios
             return protoBool.Estado;
         }
 
-        public async Task<bool> ModificarUsuario(string nombreUsuario, string nuevoNombreUsuario)
+        public async Task<bool> ModificarUsuarioAsync(string nombreUsuario, string nuevoNombreUsuario)
         {
-            List<Usuario> usuarios = await ObtenerUsuarios();
+            List<Usuario> usuarios = await ObtenerUsuariosAsync();
             UsuarioModificacionProto modificacionProto = new UsuarioModificacionProto();
 
             modificacionProto.Nombre = nombreUsuario;

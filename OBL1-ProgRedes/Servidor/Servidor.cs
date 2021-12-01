@@ -4,10 +4,10 @@ namespace Servidor
 {
     public class Servidor
     {
-        static async Task Main(string[] args)
+        static async Task MainAsync(string[] args)
         {
             Conexion server = new Conexion();
-            await server.Escuchar();
+            await server.EscucharAsync();
         }
     }
 }

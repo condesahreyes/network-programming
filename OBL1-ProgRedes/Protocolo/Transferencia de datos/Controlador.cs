@@ -41,7 +41,7 @@ namespace Protocolo
             return Encoding.ASCII.GetString(datos, 0, largoMensaje);
         }
 
-        public static async Task EnviarDatos(Transferencia transferencia, string datos)
+        public static async Task EnviarDatosAsync(Transferencia transferencia, string datos)
         {
             await transferencia.EnvioDeDatosAsync(datos);
         }
@@ -85,7 +85,7 @@ namespace Protocolo
         {
             Encabezado encabezado = new Encabezado(tituloJuego.Length, Accion.PedirDetalleJuego);
             await EnviarEncabezadoAsync(transferencia, encabezado);
-            await EnviarDatos (transferencia, tituloJuego);
+            await EnviarDatosAsync (transferencia, tituloJuego);
             string juego = await RecibirEncabezadoYMensajeAsync(transferencia, Accion.EnviarDetalleJuego);
             return Mapper.StringAJuego(juego);
         }
